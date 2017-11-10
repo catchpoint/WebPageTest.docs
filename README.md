@@ -1,2 +1,6 @@
 # webpagetest-docs
-Documentation for WebPageTest
+Documentation for [WebPageTest](https://github.com/WPO-Foundation/webpagetest)
+
+# User Documentation
+
+# Developer Documentation
