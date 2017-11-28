@@ -1,14 +1,14 @@
 # Microsoft Edge Agent Design
 The WebPageTest agent ([wptagent](https://github.com/WPO-Foundation/wptagent)) needs to be able to do several things to automate and measure performance:
-1. [Launch the browser with (optionally) a clean profile (cache, cookies, etc).](#high-level-design)
+1. [Launch the browser with (optionally) a clean profile (cache, cookies, etc).](#browser-launch)
 1. [Automate navigating to pages.](#page-navigation)
 1. [Run Javascript in the context of the page and get the output.](#executing-javascript)
-1. [Monitor the page load status and network activity.](monitoring-activity)
-1. [Get detailed timing information and headers for all network requests.](request-information)
-1. [Retrieve response bodies for all network requests (for optimization checks).](response-bodies)
-1. [Record video of the browser viewport.](video-capture)
-1. [Intercept outbound network requests to block or modify headers.](request-interception)
-1. [Monitor the browser main thread interactivity.](main-thread-interactivity)
+1. [Monitor the page load status and network activity.](#monitoring-activity)
+1. [Get detailed timing information and headers for all network requests.](#request-information)
+1. [Retrieve response bodies for all network requests (for optimization checks).](#response-bodies)
+1. [Record video of the browser viewport.](#video-capture)
+1. [Intercept outbound network requests to block or modify headers.](#request-interception)
+1. [Monitor the browser main thread interactivity.](#main-thread-interactivity)
 
 ## High-level design
 wptagent uses [webdriver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) to drive the browser. It uses [ETW](https://msdn.microsoft.com/en-us/library/windows/desktop/aa363668(v=vs.85).aspx) events captured in realtime by [wpt-etw](https://github.com/WPO-Foundation/wpt-etw) for monitoring activity, getting request details and response bodies.  For request interception and monitoring of the main thread it uses an [extension](https://github.com/WPO-Foundation/wptagent/tree/master/internal/support/edge/extension).
