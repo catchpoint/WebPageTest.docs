@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="944" height="470" viewBox="0, 0, 944, 470">
+  <g id="Background">
+    <rect x="0" y="0" width="944" height="470" fill="#FFFFFF"/>
+  </g>
+  <g id="Layer_1">
+    <g>
+      <g>
+        <path d="M19,282.5 L376,282.5 L376,412 L19,412 z" fill="#FFFFFF"/>
+        <path d="M19,282.5 L376,282.5 L376,412 L19,412 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      </g>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 189.907, 400.448)">
+        <tspan x="-32.469" y="4.32" font-family="Helvetica" font-size="16">wptagent</tspan>
+      </text>
+    </g>
+    <g>
+      <g>
+        <path d="M19,282.5 L376,282.5 L376,321.5 L19,321.5 z" fill="#FFFFFF"/>
+        <path d="M19,282.5 L376,282.5 L376,321.5 L19,321.5 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      </g>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 197.5, 302)">
+        <tspan x="-141.867" y="4.32" font-family="Helvetica" font-size="16">Local http server - http://127.0.0.1:8888/</tspan>
+      </text>
+    </g>
+    <g>
+      <g>
+        <path d="M25,21.5 L233.5,21.5 L233.5,64 L25,64 z" fill="#FFFFFF"/>
+        <path d="M25,21.5 L233.5,21.5 L233.5,64 L25,64 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      </g>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 129.25, 42.75)">
+        <tspan x="-53.355" y="4.32" font-family="Helvetica" font-size="16">Microsoft Edge</tspan>
+      </text>
+    </g>
+    <g>
+      <g>
+        <path d="M392.5,21.5 L756,21.5 L756,302.5 L392.5,302.5 z" fill="#FFFFFF"/>
+        <path d="M392.5,21.5 L756,21.5 L756,302.5 L392.5,302.5 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      </g>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 579.159, 35.784)">
+        <tspan x="-27.562" y="4.32" font-family="Helvetica" font-size="16">wpt-etw</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M132.5,64 L132.217,97.401" fill-opacity="0" stroke="#000000" stroke-width="8"/>
+      <path d="M125.017,97.34 L132.054,116.6 L139.417,97.462 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="8" stroke-opacity="1"/>
+    </g>
+    <g>
+      <g>
+        <path d="M25,123 L233.5,123 L233.5,177.5 L25,177.5 z" fill="#FFFFFF"/>
+        <path d="M25,123 L233.5,123 L233.5,177.5 L25,177.5 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      </g>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 129.25, 150.25)">
+        <tspan x="-92.906" y="4.32" font-family="Helvetica" font-size="16">Windows ETW subsystem</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M233.5,145.5 L408.041,91.559" fill-opacity="0" stroke="#000000" stroke-width="8"/>
+      <path d="M410.167,98.438 L426.385,85.89 L405.915,84.68 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="8" stroke-opacity="1"/>
+    </g>
+    <g>
+      <path d="M424,69.5 L617.5,69.5 L617.5,102 L424,102 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 520.75, 85.75)">
+        <tspan x="-44.457" y="4.32" font-family="Helvetica" font-size="16">Filter Events</tspan>
+      </text>
+    </g>
+    <path d="M875.616,363.376 C857.603,363.376 843,355.723 843,346.281 C843,336.839 857.603,329.186 875.616,329.186 C893.63,329.186 908.232,336.839 908.232,346.281 C908.232,355.723 893.63,363.376 875.616,363.376 z M843,405.665 L843,346.281 M908.232,405.665 L908.232,346.281 M843,405.665 C843,407.653 874.941,435.357 908.232,405.665" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+    <g>
+      <g>
+        <path d="M870.213,320.403 C865.013,142.533 803.831,84.134 617.5,89.5" fill-opacity="0" stroke="#000000" stroke-width="3"/>
+        <path d="M866.014,320.492 L870.449,331.601 L874.412,320.315 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="3" stroke-opacity="1"/>
+      </g>
+      <text fill="#000000" transform="matrix(0.423, 0.906, -0.906, 0.423, 858.606, 179.738)">
+        <tspan x="-62.707" y="4.32" font-family="Helvetica" font-size="16">Response Bodies</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M870.5,419.314 C855.314,467.42 410.455,464.914 321.175,419.651" fill-opacity="0" stroke="#000000" stroke-width="3"/>
+      <path d="M323.548,416.185 L311.934,413.324 L318.803,423.116 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="3" stroke-opacity="1"/>
+    </g>
+    <g opacity="0.214">
+      <g>
+        <path d="M413,246.5 L648,246.5 L648,282.5 L413,282.5 z" fill="#FFFFFF"/>
+        <path d="M413,246.5 L648,246.5 L648,282.5 L413,282.5 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      </g>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 530.5, 264.5)">
+        <tspan x="-104.801" y="4.32" font-family="Helvetica" font-size="16">Event Thread (100ms polling)</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M292.5,555.5 L293.452,559.786" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <path d="M296.381,559.135 L291.717,551.976 L290.524,560.436 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+    </g>
+    <g opacity="0.218">
+      <path d="M657.25,213 C611.548,213 574.5,195.763 574.5,174.5 C574.5,153.237 611.548,136 657.25,136 C702.952,136 740,153.237 740,174.5 C740,195.763 702.952,213 657.25,213 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 657.25, 174.5)">
+        <tspan x="-72.926" y="4.32" font-family="Helvetica" font-size="16">Accumulated Events</tspan>
+      </text>
+    </g>
+    <g opacity="0.218">
+      <path d="M564,102 L596.992,138.799" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <path d="M594.758,140.802 L602.332,144.755 L599.226,136.796 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+    </g>
+    <g opacity="0.221">
+      <path d="M547,246.5 L595.707,211.274" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <path d="M597.465,213.705 L602.19,206.586 L593.949,208.843 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+    </g>
+  </g>
+</svg>
