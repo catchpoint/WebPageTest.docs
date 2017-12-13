@@ -3,7 +3,7 @@ WebPagetest is available as a software package for installation and running of p
 
 ## Releases
 
-The latest release is [17.08](https://github.com/WPO-Foundation/webpagetest/releases/tag/WebPageTest-17.08)
+The latest release is [available on GitHub](https://github.com/WPO-Foundation/webpagetest/releases)
 
 ## Easy Deployment (on EC2)
 
