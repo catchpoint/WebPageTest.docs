@@ -86,6 +86,13 @@ The Linux images include Chrome, Chrome Beta, Chrome Dev, Firefox Stable, Firefo
 * IE11/Chrome/Firefox/Safari - ami-4bd6dc2f
 * Linux - ami-460a1622
 
+## eu-west-3 (Paris)
+
+* IE9/Chrome/Firefox/Safari - ami-734bfc0e
+* IE10/Chrome/Firefox/Safari - ami-8a4ef9f7
+* IE11/Chrome/Firefox/Safari - ami-f84cfb85
+* Linux - ami-424dfa3f
+
 ## eu-central (Frankfurt)
 
 * IE9/Chrome/Firefox/Safari - ami-879c85eb
