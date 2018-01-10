@@ -2,7 +2,7 @@
 
 We have prepared public AMI's for EC2 that can be used as WebPagetest testers that are configured dynamically through the instance user data. The images have all of the software needed on a test system installed and configured (including AVISynth for generating videos and dummynet for doing the traffic shaping).
 
-c4.large or faster instances are recommended (faster may not show any benefit).  The m3.medium instances seem to be getting slower (or browsers are getting more bloated).
+**c4.large** or faster instances are recommended (faster may not show any benefit).  The m3.medium instances seem to be getting slower (or browsers are getting more bloated).
 
 # Configuration
 
@@ -37,107 +37,124 @@ The instances will automatically install the latest supported versions of Chrome
 
 The Linux images include Chrome, Chrome Beta, Chrome Dev, Firefox Stable, Firefox Nightly, Opera, Opera Beta and Opera Developer.
 
+The Windows (wptagent) images include IE 11, Chrome, Chrome Beta, Chrome Dev, Firefox Stable, Firefox ESR, Firefox Beta and Firefox Nightly
+
 ## us-east-1 (Virginia)
 
-* IE9/Chrome/Firefox/Safari - ami-83e4c5e9
-* IE10/Chrome/Firefox/Safari - ami-0ae1c060
-* IE11/Chrome/Firefox/Safari - ami-4a84a220
 * Linux - ami-68dd6812
+* Windows (wptagent) - ami-52f0a828
+* IE9/Chrome/Firefox/Safari - ami-83e4c5e9 (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-0ae1c060 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-4a84a220 (deprecated)
 
 ## us-east-2 (Ohio)
 
-* IE9/Chrome/Firefox/Safari - ami-c86933ad
-* IE10/Chrome/Firefox/Safari - ami-55742e30
-* IE11/Chrome/Firefox/Safari - ami-c96933ac
 * Linux - ami-e6012e83
+* Windows (wptagent) - ami-1e9ab17b
+* IE9/Chrome/Firefox/Safari - ami-c86933ad (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-55742e30 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-c96933ac (deprecated)
 
 ## us-west-1 (California)
 
-* IE9/Chrome/Firefox/Safari - ami-03d6a263
-* IE10/Chrome/Firefox/Safari - ami-05eb9f65
-* IE11/Chrome/Firefox/Safari - ami-678afe07
 * Linux - ami-660f3006
+* Windows (wptagent) - ami-9c5053fc
+* IE9/Chrome/Firefox/Safari - ami-03d6a263 (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-05eb9f65 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-678afe07 (deprecated)
 
 ## us-west-2 (Oregon)
 
-* IE9/Chrome/Firefox/Safari - ami-03e80c63
-* IE10/Chrome/Firefox/Safari - ami-fdeb0f9d
-* IE11/Chrome/Firefox/Safari - ami-b4ab4fd4
 * Linux - ami-71a36909
+* Windows (wptagent) - ami-d89621a0
+* IE9/Chrome/Firefox/Safari - ami-03e80c63 (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-fdeb0f9d (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-b4ab4fd4 (deprecated)
 
 ## ca-central-1 (Canada Central)
 
-* IE9/Chrome/Firefox/Safari - ami-184efc7c
-* IE10/Chrome/Firefox/Safari - ami-13328077
-* IE11/Chrome/Firefox/Safari - ami-0345f767
 * Linux - ami-ac3981c8
+* Windows (wptagent) - ami-3f9a1f5b
+* IE9/Chrome/Firefox/Safari - ami-184efc7c (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-13328077 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-0345f767 (deprecated)
 
 ## eu-west-1 (Ireland)
 
-* IE9/Chrome/Firefox/Safari - ami-2d5fea5e
-* IE10/Chrome/Firefox/Safari - ami-3b45f048
-* IE11/Chrome/Firefox/Safari - ami-a3a81dd0
 * Linux - ami-d754f4ae
+* Windows (wptagent) - ami-36c3514f
+* IE9/Chrome/Firefox/Safari - ami-2d5fea5e (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-3b45f048 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-a3a81dd0 (deprecated)
 
 ## eu-west-2 (London)
 
-* IE9/Chrome/Firefox/Safari - ami-4ad6dc2e
-* IE10/Chrome/Firefox/Safari - ami-2dd5df49
-* IE11/Chrome/Firefox/Safari - ami-4bd6dc2f
 * Linux - ami-460a1622
+* Windows (wptagent) - ami-30594254
+* IE9/Chrome/Firefox/Safari - ami-4ad6dc2e (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-2dd5df49 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-4bd6dc2f (deprecated)
 
 ## eu-west-3 (Paris)
 
-* IE9/Chrome/Firefox/Safari - ami-734bfc0e
-* IE10/Chrome/Firefox/Safari - ami-8a4ef9f7
-* IE11/Chrome/Firefox/Safari - ami-f84cfb85
 * Linux - ami-424dfa3f
+* Windows (wptagent) - ami-9b0bbce6
+* IE9/Chrome/Firefox/Safari - ami-734bfc0e (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-8a4ef9f7 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-f84cfb85 (deprecated)
 
 ## eu-central (Frankfurt)
 
-* IE9/Chrome/Firefox/Safari - ami-879c85eb
-* IE10/Chrome/Firefox/Safari - ami-ec9b8280
-* IE11/Chrome/Firefox/Safari - ami-87f2ebeb
 * Linux - ami-deef6bb1
+* Windows (wptagent) - ami-8d1e8ce2
+* IE9/Chrome/Firefox/Safari - ami-879c85eb (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-ec9b8280 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-87f2ebeb (deprecated)
 
 ## ap-northeast-1 (Tokyo)
 
-* IE9/Chrome/Firefox/Safari - ami-4ed6e820
-* IE10/Chrome/Firefox/Safari - ami-ebd3ed85
-* IE11/Chrome/Firefox/Safari - ami-2f221c41
 * Linux - ami-ba9738dc
+* Windows (wptagent) - ami-f750c891
+* IE9/Chrome/Firefox/Safari - ami-4ed6e820 (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-ebd3ed85 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-2f221c41 (deprecated)
 
 ## ap-northeast-2 (Seoul)
 
-* IE9/Chrome/Firefox/Safari - ami-b2e12fdc
-* IE10/Chrome/Firefox/Safari - ami-76e12f18
-* IE11/Chrome/Firefox/Safari - ami-15e52b7b
 * Linux - ami-33ba1e5d
+* Windows (wptagent) - ami-b69e3ed8
+* IE9/Chrome/Firefox/Safari - ami-b2e12fdc (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-76e12f18 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-15e52b7b (deprecated)
 
 ## ap-southeast-1 (Singapore)
 
-* IE9/Chrome/Firefox/Safari - ami-f87ab69b
-* IE10/Chrome/Firefox/Safari - ami-ce78b4ad
-* IE11/Chrome/Firefox/Safari - ami-3e55995d
 * Linux - ami-ad4c00ce
+* Windows (wptagent) - ami-a89eedd4
+* IE9/Chrome/Firefox/Safari - ami-f87ab69b (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-ce78b4ad (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-3e55995d (deprecated)
 
 ## ap-southeast-2 (Sydney)
 
-* IE9/Chrome/Firefox/Safari - ami-306c4853
-* IE10/Chrome/Firefox/Safari - ami-25644046
-* IE11/Chrome/Firefox/Safari - ami-e88eab8b
 * Linux - ami-3e14fa5c
+* Windows (wptagent) - ami-4937ca2b
+* IE9/Chrome/Firefox/Safari - ami-306c4853 (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-25644046 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-e88eab8b (deprecated)
 
 ## ap-south-1 (Mumbai)
 
-* IE9/Chrome/Firefox/Safari - ami-7a86ec15
-* IE10/Chrome/Firefox/Safari - ami-bf80ead0
-* IE11/Chrome/Firefox/Safari - ami-d498f2bb
 * Linux - ami-6bde9304
+* Windows (wptagent) - ami-cf3f68a0
+* IE9/Chrome/Firefox/Safari - ami-7a86ec15 (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-bf80ead0 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-d498f2bb (deprecated)
 
 ## sa-east (Sao Paulo)
 
-* IE9/Chrome/Firefox/Safari - ami-79c54515
-* IE10/Chrome/Firefox/Safari - ami-7cc54510
-* IE11/Chrome/Firefox/Safari - ami-203abb4c
 * Linux - ami-b3007bdf
+* Windows (wptagent) - ami-1f672573
+* IE9/Chrome/Firefox/Safari - ami-79c54515 (deprecated)
+* IE10/Chrome/Firefox/Safari - ami-7cc54510 (deprecated)
+* IE11/Chrome/Firefox/Safari - ami-203abb4c (deprecated)
