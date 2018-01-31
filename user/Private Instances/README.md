@@ -36,6 +36,14 @@ The Web Server can be any OS that supports PHP (Linux and Windows have both been
     * jpegtran
     * exiftool
 
+Debian/Ubuntu install:
+```bash
+sudo apt-get update && \
+sudo apt-get -y dist-upgrade && \
+sudo apt-get -y install python2.7 nginx php-fpm php-cli php-xml php-apcu php-gd php-zip php-mbstring php-curl php-sqlite3 beanstalkd imagemagick ffmpeg libjpeg-turbo-progs libimage-exiftool-perl python-setuptools python-dev build-essential python-pip python-numpy python-scipy && \
+sudo pip install monotonic ujson pillow pyssim
+```
+
 ## Test Machine(s)
 
 VM's or physical machines are both supported for desktop testing on Windows, Linux and OS X.  Non-emulated mobile testing requires Android or iOS devices as well as a tethered host to control the devices (Raspberry Pi's are recommended).
