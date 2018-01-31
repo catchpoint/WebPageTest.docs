@@ -40,7 +40,7 @@ Debian/Ubuntu install:
 ```bash
 sudo apt-get update && \
 sudo apt-get -y dist-upgrade && \
-sudo apt-get -y install python2.7 nginx php-fpm php-cli php-xml php-apcu php-gd php-zip php-mbstring php-curl php-sqlite3 beanstalkd imagemagick ffmpeg libjpeg-turbo-progs libimage-exiftool-perl python-setuptools python-dev build-essential python-pip python-numpy python-scipy && \
+sudo apt-get -y install zip python2.7 nginx php-fpm php-cli php-xml php-apcu php-gd php-zip php-mbstring php-curl php-sqlite3 beanstalkd imagemagick ffmpeg libjpeg-turbo-progs libimage-exiftool-perl python-setuptools python-dev build-essential python-pip python-numpy python-scipy && \
 sudo pip install monotonic ujson pillow pyssim
 ```
 
