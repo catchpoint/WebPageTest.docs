@@ -42,7 +42,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## us-east-1 (Virginia)
 
 * Linux - ami-68dd6812
-* Windows (wptagent) - ami-52f0a828
+* Windows (wptagent) - ami-7463650e
 * IE9/Chrome/Firefox/Safari - ami-83e4c5e9 (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-0ae1c060 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-4a84a220 (deprecated)
@@ -50,7 +50,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## us-east-2 (Ohio)
 
 * Linux - ami-e6012e83
-* Windows (wptagent) - ami-1e9ab17b
+* Windows (wptagent) - ami-29e4d14c
 * IE9/Chrome/Firefox/Safari - ami-c86933ad (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-55742e30 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-c96933ac (deprecated)
@@ -58,7 +58,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## us-west-1 (California)
 
 * Linux - ami-660f3006
-* Windows (wptagent) - ami-9c5053fc
+* Windows (wptagent) - ami-ab5f50cb
 * IE9/Chrome/Firefox/Safari - ami-03d6a263 (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-05eb9f65 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-678afe07 (deprecated)
@@ -66,7 +66,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## us-west-2 (Oregon)
 
 * Linux - ami-71a36909
-* Windows (wptagent) - ami-d89621a0
+* Windows (wptagent) - ami-373b804f
 * IE9/Chrome/Firefox/Safari - ami-03e80c63 (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-fdeb0f9d (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-b4ab4fd4 (deprecated)
@@ -74,7 +74,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## ca-central-1 (Canada Central)
 
 * Linux - ami-ac3981c8
-* Windows (wptagent) - ami-3f9a1f5b
+* Windows (wptagent) - ami-62ef6b06
 * IE9/Chrome/Firefox/Safari - ami-184efc7c (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-13328077 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-0345f767 (deprecated)
@@ -82,7 +82,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## eu-west-1 (Ireland)
 
 * Linux - ami-d754f4ae
-* Windows (wptagent) - ami-36c3514f
+* Windows (wptagent) - ami-57fa972e
 * IE9/Chrome/Firefox/Safari - ami-2d5fea5e (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-3b45f048 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-a3a81dd0 (deprecated)
@@ -90,7 +90,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## eu-west-2 (London)
 
 * Linux - ami-460a1622
-* Windows (wptagent) - ami-30594254
+* Windows (wptagent) - ami-f0f1eb94
 * IE9/Chrome/Firefox/Safari - ami-4ad6dc2e (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-2dd5df49 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-4bd6dc2f (deprecated)
@@ -98,7 +98,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## eu-west-3 (Paris)
 
 * Linux - ami-424dfa3f
-* Windows (wptagent) - ami-9b0bbce6
+* Windows (wptagent) - ami-96b305eb
 * IE9/Chrome/Firefox/Safari - ami-734bfc0e (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-8a4ef9f7 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-f84cfb85 (deprecated)
@@ -106,7 +106,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## eu-central (Frankfurt)
 
 * Linux - ami-deef6bb1
-* Windows (wptagent) - ami-8d1e8ce2
+* Windows (wptagent) - ami-17a03a78
 * IE9/Chrome/Firefox/Safari - ami-879c85eb (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-ec9b8280 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-87f2ebeb (deprecated)
@@ -114,7 +114,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## ap-northeast-1 (Tokyo)
 
 * Linux - ami-ba9738dc
-* Windows (wptagent) - ami-f750c891
+* Windows (wptagent) - ami-40bcd726
 * IE9/Chrome/Firefox/Safari - ami-4ed6e820 (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-ebd3ed85 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-2f221c41 (deprecated)
@@ -122,7 +122,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## ap-northeast-2 (Seoul)
 
 * Linux - ami-33ba1e5d
-* Windows (wptagent) - ami-b69e3ed8
+* Windows (wptagent) - ami-2f08ab41
 * IE9/Chrome/Firefox/Safari - ami-b2e12fdc (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-76e12f18 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-15e52b7b (deprecated)
@@ -130,7 +130,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## ap-southeast-1 (Singapore)
 
 * Linux - ami-ad4c00ce
-* Windows (wptagent) - ami-a89eedd4
+* Windows (wptagent) - ami-7b9ade07
 * IE9/Chrome/Firefox/Safari - ami-f87ab69b (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-ce78b4ad (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-3e55995d (deprecated)
@@ -138,7 +138,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## ap-southeast-2 (Sydney)
 
 * Linux - ami-3e14fa5c
-* Windows (wptagent) - ami-4937ca2b
+* Windows (wptagent) - ami-1eeb137c
 * IE9/Chrome/Firefox/Safari - ami-306c4853 (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-25644046 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-e88eab8b (deprecated)
@@ -146,7 +146,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## ap-south-1 (Mumbai)
 
 * Linux - ami-6bde9304
-* Windows (wptagent) - ami-cf3f68a0
+* Windows (wptagent) - ami-f7c69698
 * IE9/Chrome/Firefox/Safari - ami-7a86ec15 (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-bf80ead0 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-d498f2bb (deprecated)
@@ -154,7 +154,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 ## sa-east (Sao Paulo)
 
 * Linux - ami-b3007bdf
-* Windows (wptagent) - ami-1f672573
+* Windows (wptagent) - ami-2c521d40
 * IE9/Chrome/Firefox/Safari - ami-79c54515 (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-7cc54510 (deprecated)
 * IE11/Chrome/Firefox/Safari - ami-203abb4c (deprecated)
