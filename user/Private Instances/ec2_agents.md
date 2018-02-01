@@ -37,7 +37,7 @@ The instances will automatically install the latest supported versions of Chrome
 
 The Linux images include Chrome, Chrome Beta, Chrome Dev, Firefox Stable, Firefox Nightly, Opera, Opera Beta and Opera Developer.
 
-The Windows (wptagent) images include IE 11, Chrome, Chrome Beta, Chrome Dev, Firefox Stable, Firefox ESR, Firefox Beta and Firefox Nightly
+The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable releases)
 
 ## us-east-1 (Virginia)
 
