@@ -36,14 +36,6 @@ The Web Server can be any OS that supports PHP (Linux and Windows have both been
     * jpegtran
     * exiftool
 
-Debian/Ubuntu install:
-```bash
-sudo apt-get update && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y install zip python2.7 nginx php-fpm php-cli php-xml php-apcu php-gd php-zip php-mbstring php-curl php-sqlite3 beanstalkd imagemagick ffmpeg libjpeg-turbo-progs libimage-exiftool-perl python-setuptools python-dev build-essential python-pip python-numpy python-scipy && \
-sudo pip install monotonic ujson pillow pyssim
-```
-
 ## Test Machine(s)
 
 VM's or physical machines are both supported for desktop testing on Windows, Linux and OS X.  Non-emulated mobile testing requires Android or iOS devices as well as a tethered host to control the devices (Raspberry Pi's are recommended).
@@ -72,6 +64,15 @@ The configuration files in the archive have a .sample extension so if you are up
 
 After configuring the web server visit http://{server}/install/ and the software will run a self-check to make sure all of the permissions are ok and all of the required utilities are installed and available.
 
+## Ubuntu
+Debian/Ubuntu install:
+```bash
+sudo apt-get update && \
+sudo apt-get -y dist-upgrade && \
+sudo apt-get -y install zip python2.7 nginx php-fpm php-cli php-xml php-apcu php-gd php-zip php-mbstring php-curl php-sqlite3 beanstalkd imagemagick ffmpeg libjpeg-turbo-progs libimage-exiftool-perl python-setuptools python-dev build-essential python-pip python-numpy python-scipy && \
+sudo pip install monotonic ujson pillow pyssim
+```
+
 ## Apache
 Configure Apache with the required modules and set to allow for .htaccess overrides.
 
@@ -85,6 +86,60 @@ A sample site configuration file might look like this:
 <VirtualHost *:80>
         DocumentRoot /var/www/webpagetest
 </VirtualHost>
+```
+
+## Linux Tuning
+/etc/security/limits.conf:
+```
+* soft nofile 250000
+* hard nofile 300000
+```
+
+/etc/sysctl.conf:
+```
+# Increase system IP port limits to allow for more connections
+net.ipv4.ip_local_port_range = 2000 65000
+net.ipv4.tcp_window_scaling = 1
+
+# number of packets to keep in backlog before the kernel starts dropping them
+net.ipv4.tcp_max_syn_backlog = 3240000
+
+# increase socket listen backlog
+net.core.somaxconn = 65535
+net.ipv4.tcp_max_tw_buckets = 1440000
+
+# Increase TCP buffer sizes
+net.core.rmem_default = 8388608
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 87380 16777216
+net.ipv4.tcp_wmem = 4096 65536 16777216
+
+net.netfilter.nf_conntrack_max = 1048576
+net.netfilter.nf_conntrack_generic_timeout = 300
+net.netfilter.nf_conntrack_tcp_timeout_syn_sent = 60
+net.netfilter.nf_conntrack_tcp_timeout_syn_recv = 60
+net.netfilter.nf_conntrack_tcp_timeout_established = 600
+net.netfilter.nf_conntrack_tcp_timeout_fin_wait = 5
+net.netfilter.nf_conntrack_tcp_timeout_close_wait = 5
+net.netfilter.nf_conntrack_tcp_timeout_last_ack = 30
+net.netfilter.nf_conntrack_tcp_timeout_time_wait = 5
+net.netfilter.nf_conntrack_tcp_timeout_close = 5
+net.netfilter.nf_conntrack_tcp_timeout_max_retrans = 60
+net.netfilter.nf_conntrack_tcp_timeout_unacknowledged = 60
+net.netfilter.nf_conntrack_udp_timeout = 300
+net.netfilter.nf_conntrack_udp_timeout_stream = 300
+net.netfilter.nf_conntrack_icmp_timeout = 30
+net.netfilter.nf_conntrack_events_retry_timeout = 15
+
+# Disable IPv6
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+
+net.ipv4.neigh.default.gc_thresh1 = 512
+net.ipv4.neigh.default.gc_thresh2 = 1024
+net.ipv4.neigh.default.gc_thresh3 = 2048
 ```
 
 Using the PHP DSO handler mod_php can dramatically reduce the CPU required when working with large numbers of agents uploading results.
