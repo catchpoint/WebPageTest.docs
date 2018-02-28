@@ -65,7 +65,7 @@ The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable 
 
 ## us-west-2 (Oregon)
 
-* Linux - ami-20180228
+* Linux - ami-9c39b1e4
 * Windows (wptagent) - ami-373b804f
 * IE9/Chrome/Firefox/Safari - ami-03e80c63 (deprecated)
 * IE10/Chrome/Firefox/Safari - ami-fdeb0f9d (deprecated)
