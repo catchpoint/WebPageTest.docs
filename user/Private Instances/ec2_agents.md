@@ -29,7 +29,7 @@ wpt_server=www.webpagetest.org wpt_loc=Test wpt_key=xxxxx
 
 ## Sample locations.ini
 
-A [sample locations.ini](https://github.com/WPO-Foundation/webpagetest/blob/master/www/settings/ec2_locations.ini) for the server is available that is configured with all of the available EC2 regions.
+A [sample ec2_locations.ini](https://github.com/WPO-Foundation/webpagetest/blob/master/www/settings/ec2_locations.ini) for the server is available that is configured with all of the available EC2 regions.
 
 # AMI Images
 
@@ -38,6 +38,10 @@ The instances will automatically install the latest supported versions of Chrome
 The Linux images include Chrome, Chrome Beta, Chrome Dev, Firefox Stable, Firefox Nightly, Opera, Opera Beta and Opera Developer.
 
 The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable releases)
+
+Remote Desktop to a Windows Test Agent:
+
+The password is: 2dialit
 
 ## us-east-1 (Virginia)
 
