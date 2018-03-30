@@ -1,6 +1,8 @@
 # Google Cloud Test Agents
 There is a public image available for creating test agent instances.  It is published from the ```webpagetest-official``` project and has the name ```wpt-linux-20180313```.  There is also an [automated script](https://github.com/WPO-Foundation/wptagent/blob/master/docs/gce_walkthrough.md) for creating an image on Google Cloud from an Ubuntu 16.04 base image if more control over the image is needed (or if there are problems accessing the public image).
 
+The agents automatically install all system and browser updates before starting testing so there is no need to manually update the image.
+
 **n1-standard-2** or faster instances are recommended (faster may not show any benefit).
 
 # Configuration
@@ -29,3 +31,7 @@ wpt_server=www.webpagetest.org wpt_key=xxxxx
 ## Sample locations.ini
 
 A [sample locations.ini](https://github.com/WPO-Foundation/webpagetest/blob/master/www/settings/locations.ini.GCE-sample) for the server is available that is configured with all of the available GCE regions.
+
+# Auto-Scaling
+
+The linux agents auto-scale well for bulk testing using a [Managed Instance group](https://cloud.google.com/compute/docs/instance-groups/).  In that mode it is recommended to use preemptable instances and set a target CPU utilization to 10% (for n1-standard-2 instances) and with a cool-down period of 600 seconds.  One instance will need to be running in each region at all times and it will scale up as needed when running tests.
