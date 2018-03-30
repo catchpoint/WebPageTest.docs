@@ -187,13 +187,16 @@ There is a public image for [running test agents on Google Cloud](gce_agents.md)
 
 * Waiting at the front of the queue
     * Commonly the issue is in your locations.ini. Double check that your location settings match that of which your agent is pulling the server with. Also note if you're using a key, do they match. You can check your Apache access logs for incoming requests being made by your test agent. 
+    * Validate you've set your Security Group IDs and SubnetIDs in the settings.ini and ec2_locations.ini. Otherwise the agent will launch in the default VPC and only associate with the default security group ID.
+    * Validate the agent is able to communicate with the server to get work - do you need to add security group rules?
 * The test completed but there were no successful results
     * If you're using a 64-bit Windows client you will be unable to perform traffic shaping (using dummynet.) In your locations.ini, add connectivity=LAN to the test location.
 * Waterfall charts are missing
     * Check if the GD library is installed. The GD library is used for drawing the waterfalls and generating thumbnail images.
     * Look to see if php-zip, php5-zip or a similar zip library is installed. With some default PHP distributions the library is not present.
 * Screen captures are black
-    * When disconnecting from RDP, try rebooting the instance versus disconnecting from the RDP client. RDP locks up the desktop when you disconnect which will cause the screen shots and video to break.
+    * Use "tscon 1 /dest:console" instead of disconnecting from RDP using the Start Menu or the "X" in the Remote Desktop Client.
+    * You can also reboot the instance rather than disconnecting from the RDP client. RDP automatically locks up the server console when you disconnect, which will cause the screen shots and video to break.
 * Error message like this in /var/log/apache2/error.log:
     * [Mon Apr 30 10:18:14 2012] [error] [client 1.2.3.4] PHP Warning: POST Content-Length of 22689689 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
     * PHP enforces a limit on the size of uploaded files, and an agent is uploading something larger than this limit. Change upload_max_filesize and post_max_filesize to larger values in php.ini.
