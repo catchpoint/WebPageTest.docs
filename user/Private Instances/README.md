@@ -18,7 +18,7 @@ WebPageTest can be configured to run all on one system (with the web server and 
 
 ## Web Server
 
-The Web Server can be any OS that supports PHP (Linux and Windows have both been tested).
+The Web Server can be any OS that supports PHP (Linux and Windows have both been tested).  Ubuntu 16.04 is recommended.
 
 * Nginx (php-fpm recommended) or Apache 2.x+:
 * PHP 5.3.0 or later (7.x+ recommended) with the following modules:
@@ -73,6 +73,35 @@ sudo apt-get -y install zip python2.7 nginx php-fpm php-cli php-xml php-apcu php
 sudo pip install monotonic ujson pillow pyssim
 ```
 
+## Nginx
+Configure the server root to point to the www directory, to pass php to php_fpm and include the nginx.conf bundled with the code.
+
+A sample server configuration block might look like this:
+```
+server {
+        listen 80 default;
+        server_name _;
+
+        root   /var/www/webpagetest/www;
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        location ~ \.php$ {
+                limit_except GET POST HEAD {
+                        deny all;
+                }
+                #fastcgi_pass   127.0.0.1:9000;
+                fastcgi_pass    unix:/run/php/php7.0-fpm.sock;
+                #fastcgi_index  index.php;
+                fastcgi_param  SCRIPT_FILENAME  /var/www/webpagetest/www$fastcgi_script_name;
+                fastcgi_param  HTTP_MOD_REWRITE On;
+                include fastcgi.conf;
+        }
+
+        include /var/www/webpagetest/www/nginx.conf;
+}
+```
+
 ## Apache
 Configure Apache with the required modules and set to allow for .htaccess overrides.
 
@@ -87,6 +116,8 @@ A sample site configuration file might look like this:
         DocumentRoot /var/www/webpagetest
 </VirtualHost>
 ```
+
+Using the PHP DSO handler mod_php can dramatically reduce the CPU required when working with large numbers of agents uploading results.
 
 ## Linux Tuning
 /etc/security/limits.conf:
@@ -142,44 +173,15 @@ net.ipv4.neigh.default.gc_thresh2 = 1024
 net.ipv4.neigh.default.gc_thresh3 = 2048
 ```
 
-Using the PHP DSO handler mod_php can dramatically reduce the CPU required when working with large numbers of agents uploading results.
-
-## Nginx
-Configure the server root to point to the www directory, to pass php to php_fpm and include the nginx.conf bundled with the code.
-
-A sample server configuration block might look like this:
-```
-server {
-        listen 80 default;
-        server_name _;
-
-        root   /var/www/webpagetest/www;
-
-        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-        #
-        location ~ \.php$ {
-                limit_except GET POST HEAD {
-                        deny all;
-                }
-                #fastcgi_pass   127.0.0.1:9000;
-                fastcgi_pass    unix:/run/php/php7.0-fpm.sock;
-                #fastcgi_index  index.php;
-                fastcgi_param  SCRIPT_FILENAME  /var/www/webpagetest/www$fastcgi_script_name;
-                fastcgi_param  HTTP_MOD_REWRITE On;
-                include fastcgi.conf;
-        }
-
-        include /var/www/webpagetest/www/nginx.conf;
-}
-```
-
 # Test Agent Install
 
 The wptagent installation docs are available [here](https://github.com/WPO-Foundation/wptagent/blob/master/docs/install.md).
 
 The legacy wptdriver installation docs are available [here](wptdriver.md).
 
-There are public AMI's for [running test agents on Amazon EC2](ec2_agents.md) and a [walkthrough doc](https://github.com/WPO-Foundation/wptagent/blob/master/docs/gce_walkthrough.md) for setting up test agents to run on Google's Cloud.
+There are public AMI's for [running test agents on Amazon EC2](ec2_agents.md).
+
+There is a public image for [running test agents on Google Cloud](gce_agents.md).
 
 # Troubleshooting
 
