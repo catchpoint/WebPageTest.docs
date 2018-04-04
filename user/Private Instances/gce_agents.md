@@ -4,7 +4,7 @@ There is a public image available for creating test agent instances. The agents 
 If you are using the agents with a server in Google cloud, make sure to set up the server first so you will have the agent configuration information available.
 
 ## Create an Instance Template
-THere is a setup script that will automatically create an instance template for preemptable n1-standard-2 instances using the public image (the recommended configuration).
+There is a setup script that will automatically create an instance template for preemptable n1-standard-2 instances using the public image (the recommended configuration).
 
 In the top-right corner of the Google cloud console is a button to launch the cloud shell:
 ![GCE Cloud Shell](images/gce_shell_button.png)
