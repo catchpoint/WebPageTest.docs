@@ -5,6 +5,13 @@ WebPagetest is available as a software package for installation and running of p
 
 The latest release is [available on GitHub](https://github.com/WPO-Foundation/webpagetest/releases)
 
+## Easy Deployment (on Google Cloud)
+
+There is a [server script](gce_server.md) and [public image for test agents](gce_agents.md).
+* Pre-configured for testing in all Google Cloud regions.
+* Automatically updates to the latest server and agent code.
+* Auto-scales test agents as needed.
+
 ## Easy Deployment (on EC2)
 
 There is an [EC2 AMI](https://github.com/WPO-Foundation/webpagetest/blob/master/docs/EC2/Server%20AMI.md) available for the WebPageTest server that provides a lot of benefits:
