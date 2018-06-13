@@ -11,9 +11,8 @@ The configuration of the test agents is done through user data strings when inst
 ## Parameters
 
 * **wpt_server** - the web server where WebPagetest is running
-* **wpt_url** - (Linux agents only) Base URL to the work directory for fetching.  i.e. https://www.webpagetest.org/work/
+* **wpt_url** - (optional in place of wpt_server) Base URL to the work directory for fetching.  i.e. https://www.webpagetest.org/work/
 * **wpt_loc** - The location ID (if not specified it will fall back to wpt_location or be built from the region - ec2-us-east for example)
-* **wpt_location** - (deprecated) The location name to use for URLBlast (if not specified it will be built from the region and browser - ec2-us-east-IE8 for example).  wptdriver will append _wptdriver to this location ID if wpt_loc is not set.
 * **wpt_key** - secret key for the specified location
 * **wpt_timeout** - default timeout setting for each test in seconds (overridden by server settings on a per-test basis)
 * **wpt_username** - username for basic authentication with WPT server. Ignored if wpt_password is not specified.
@@ -37,7 +36,7 @@ The instances will automatically install the latest supported versions of Chrome
 
 The Linux images include Chrome, Chrome Beta, Chrome Dev, Firefox Stable, Firefox Nightly, Opera, Opera Beta and Opera Developer.
 
-The Windows (wptagent) images include IE 11, Chrome and Firefox (current stable releases)
+The Windows images include IE 11, Chrome and Firefox (current stable releases)
 
 Remote Desktop to a Windows Test Agent:
 
@@ -46,119 +45,74 @@ The password is: 2dialit
 ## us-east-1 (Virginia)
 
 * Linux - ami-a88c20d5
-* Windows (wptagent) - ami-7463650e
-* IE9/Chrome/Firefox/Safari - ami-83e4c5e9 (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-0ae1c060 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-4a84a220 (deprecated)
+* Windows (wptagent) - ami-c682c3b9
 
 ## us-east-2 (Ohio)
 
 * Linux - ami-b13505d4
-* Windows (wptagent) - ami-29e4d14c
-* IE9/Chrome/Firefox/Safari - ami-c86933ad (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-55742e30 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-c96933ac (deprecated)
+* Windows (wptagent) - ami-ef08368a
 
 ## us-west-1 (California)
 
 * Linux - ami-236f7f43
-* Windows (wptagent) - ami-ab5f50cb
-* IE9/Chrome/Firefox/Safari - ami-03d6a263 (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-05eb9f65 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-678afe07 (deprecated)
+* Windows (wptagent) - ami-b725c1d4
 
 ## us-west-2 (Oregon)
 
 * Linux - ami-5e305726
-* Windows (wptagent) - ami-373b804f
-* IE9/Chrome/Firefox/Safari - ami-03e80c63 (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-fdeb0f9d (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-b4ab4fd4 (deprecated)
+* Windows (wptagent) - ami-07d7947f
 
 ## ca-central-1 (Canada Central)
 
 * Linux - ami-8871f7ec
-* Windows (wptagent) - ami-62ef6b06
-* IE9/Chrome/Firefox/Safari - ami-184efc7c (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-13328077 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-0345f767 (deprecated)
+* Windows (wptagent) - ami-57078433
 
 ## eu-west-1 (Ireland)
 
 * Linux - ami-6758061e
-* Windows (wptagent) - ami-57fa972e
-* IE9/Chrome/Firefox/Safari - ami-2d5fea5e (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-3b45f048 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-a3a81dd0 (deprecated)
+* Windows (wptagent) - ami-f9414d80
 
 ## eu-west-2 (London)
 
 * Linux - ami-6d1afb0a
-* Windows (wptagent) - ami-f0f1eb94
-* IE9/Chrome/Firefox/Safari - ami-4ad6dc2e (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-2dd5df49 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-4bd6dc2f (deprecated)
+* Windows (wptagent) - ami-cd8668aa
 
 ## eu-west-3 (Paris)
 
 * Linux - ami-9d00b6e0
-* Windows (wptagent) - ami-96b305eb
-* IE9/Chrome/Firefox/Safari - ami-734bfc0e (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-8a4ef9f7 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-f84cfb85 (deprecated)
+* Windows (wptagent) - ami-902f9eed
 
 ## eu-central-1 (Frankfurt)
 
 * Linux - ami-dceab537
-* Windows (wptagent) - ami-17a03a78
-* IE9/Chrome/Firefox/Safari - ami-879c85eb (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-ec9b8280 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-87f2ebeb (deprecated)
+* Windows (wptagent) - ami-b725165c
 
 ## ap-northeast-1 (Tokyo)
 
 * Linux - ami-1771676b
-* Windows (wptagent) - ami-40bcd726
-* IE9/Chrome/Firefox/Safari - ami-4ed6e820 (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-ebd3ed85 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-2f221c41 (deprecated)
+* Windows (wptagent) - ami-77925d08
 
 ## ap-northeast-2 (Seoul)
 
 * Linux - ami-1b2e8175
-* Windows (wptagent) - ami-2f08ab41
-* IE9/Chrome/Firefox/Safari - ami-b2e12fdc (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-76e12f18 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-15e52b7b (deprecated)
+* Windows (wptagent) - ami-76923818
 
 ## ap-southeast-1 (Singapore)
 
 * Linux - ami-ba4267c6
-* Windows (wptagent) - ami-7b9ade07
-* IE9/Chrome/Firefox/Safari - ami-f87ab69b (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-ce78b4ad (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-3e55995d (deprecated)
+* Windows (wptagent) - ami-ec0b0c90
 
 ## ap-southeast-2 (Sydney)
 
 * Linux - ami-aed01ecc
-* Windows (wptagent) - ami-1eeb137c
-* IE9/Chrome/Firefox/Safari - ami-306c4853 (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-25644046 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-e88eab8b (deprecated)
+* Windows (wptagent) - ami-b7c11ed5
 
 ## ap-south-1 (Mumbai)
 
 * Linux - ami-e5f0d58a
-* Windows (wptagent) - ami-f7c69698
-* IE9/Chrome/Firefox/Safari - ami-7a86ec15 (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-bf80ead0 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-d498f2bb (deprecated)
+* Windows (wptagent) - ami-4481a92b
 
 ## sa-east (Sao Paulo)
 
 * Linux - ami-717b2d1d
-* Windows (wptagent) - ami-2c521d40
-* IE9/Chrome/Firefox/Safari - ami-79c54515 (deprecated)
-* IE10/Chrome/Firefox/Safari - ami-7cc54510 (deprecated)
-* IE11/Chrome/Firefox/Safari - ami-203abb4c (deprecated)
+* Windows (wptagent) - ami-3f570c53
