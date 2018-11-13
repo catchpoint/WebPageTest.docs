@@ -45,74 +45,74 @@ The password is: 2dialit
 ## us-east-1 (Virginia)
 
 * Linux - ami-a88c20d5
-* Windows (wptagent) - ami-c682c3b9
+* Windows (wptagent) - ami-0243225507fe8de48
 
 ## us-east-2 (Ohio)
 
 * Linux - ami-b13505d4
-* Windows (wptagent) - ami-ef08368a
+* Windows (wptagent) - ami-0665d0218a8f0ba3c
 
 ## us-west-1 (California)
 
 * Linux - ami-236f7f43
-* Windows (wptagent) - ami-b725c1d4
+* Windows (wptagent) - ami-0e3b1b06fc51f9419
 
 ## us-west-2 (Oregon)
 
 * Linux - ami-5e305726
-* Windows (wptagent) - ami-07d7947f
+* Windows (wptagent) - ami-086bc7fc09f080d6c
 
 ## ca-central-1 (Canada Central)
 
 * Linux - ami-8871f7ec
-* Windows (wptagent) - ami-57078433
+* Windows (wptagent) - ami-006d745d9e8a8c9d7
 
 ## eu-west-1 (Ireland)
 
 * Linux - ami-6758061e
-* Windows (wptagent) - ami-f9414d80
+* Windows (wptagent) - ami-01183e0d95a7a9278
 
 ## eu-west-2 (London)
 
 * Linux - ami-6d1afb0a
-* Windows (wptagent) - ami-cd8668aa
+* Windows (wptagent) - ami-04eb3f425168adcaf
 
 ## eu-west-3 (Paris)
 
 * Linux - ami-9d00b6e0
-* Windows (wptagent) - ami-902f9eed
+* Windows (wptagent) - ami-057d918b4283bfcf6
 
 ## eu-central-1 (Frankfurt)
 
 * Linux - ami-dceab537
-* Windows (wptagent) - ami-b725165c
+* Windows (wptagent) - ami-08c40b3aee1ed3d7e
 
 ## ap-northeast-1 (Tokyo)
 
 * Linux - ami-1771676b
-* Windows (wptagent) - ami-77925d08
+* Windows (wptagent) - ami-038a758cd7009d53c
 
 ## ap-northeast-2 (Seoul)
 
 * Linux - ami-1b2e8175
-* Windows (wptagent) - ami-76923818
+* Windows (wptagent) - ami-0ee73f7def019fea4
 
 ## ap-southeast-1 (Singapore)
 
 * Linux - ami-ba4267c6
-* Windows (wptagent) - ami-ec0b0c90
+* Windows (wptagent) - ami-08e43a896835e5edf
 
 ## ap-southeast-2 (Sydney)
 
 * Linux - ami-aed01ecc
-* Windows (wptagent) - ami-b7c11ed5
+* Windows (wptagent) - ami-04a1b7b999a1ce25c
 
 ## ap-south-1 (Mumbai)
 
 * Linux - ami-e5f0d58a
-* Windows (wptagent) - ami-4481a92b
+* Windows (wptagent) - ami-04b71d98a32816060
 
 ## sa-east (Sao Paulo)
 
 * Linux - ami-717b2d1d
-* Windows (wptagent) - ami-3f570c53
+* Windows (wptagent) - ami-0ab79fdc06f83d17e
