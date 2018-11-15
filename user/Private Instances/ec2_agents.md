@@ -45,74 +45,74 @@ The password is: 2dialit
 ## us-east-1 (Virginia)
 
 * Linux - ami-a88c20d5
-* Windows (wptagent) - ami-0243225507fe8de48
+* Windows (wptagent) - ami-0137821046846369e
 
 ## us-east-2 (Ohio)
 
 * Linux - ami-b13505d4
-* Windows (wptagent) - ami-0665d0218a8f0ba3c
+* Windows (wptagent) - ami-0a98bb237df9af133
 
 ## us-west-1 (California)
 
 * Linux - ami-236f7f43
-* Windows (wptagent) - ami-0e3b1b06fc51f9419
+* Windows (wptagent) - ami-048a5e62197a602db
 
 ## us-west-2 (Oregon)
 
 * Linux - ami-5e305726
-* Windows (wptagent) - ami-086bc7fc09f080d6c
+* Windows (wptagent) - ami-0897d1ae40fa1a1d3
 
 ## ca-central-1 (Canada Central)
 
 * Linux - ami-8871f7ec
-* Windows (wptagent) - ami-006d745d9e8a8c9d7
+* Windows (wptagent) - ami-0135a2cddc6342cff
 
 ## eu-west-1 (Ireland)
 
 * Linux - ami-6758061e
-* Windows (wptagent) - ami-01183e0d95a7a9278
+* Windows (wptagent) - ami-03009a026570febbb
 
 ## eu-west-2 (London)
 
 * Linux - ami-6d1afb0a
-* Windows (wptagent) - ami-04eb3f425168adcaf
+* Windows (wptagent) - ami-0bfd048263183c4ae
 
 ## eu-west-3 (Paris)
 
 * Linux - ami-9d00b6e0
-* Windows (wptagent) - ami-057d918b4283bfcf6
+* Windows (wptagent) - ami-01dfded38684ffcd2
 
 ## eu-central-1 (Frankfurt)
 
 * Linux - ami-dceab537
-* Windows (wptagent) - ami-08c40b3aee1ed3d7e
+* Windows (wptagent) - ami-0f997690f364fc126
 
 ## ap-northeast-1 (Tokyo)
 
 * Linux - ami-1771676b
-* Windows (wptagent) - ami-038a758cd7009d53c
+* Windows (wptagent) - ami-07a931524bd2cde14
 
 ## ap-northeast-2 (Seoul)
 
 * Linux - ami-1b2e8175
-* Windows (wptagent) - ami-0ee73f7def019fea4
+* Windows (wptagent) - ami-06ab5d0ec63b30b00
 
 ## ap-southeast-1 (Singapore)
 
 * Linux - ami-ba4267c6
-* Windows (wptagent) - ami-08e43a896835e5edf
+* Windows (wptagent) - ami-095c29723d8dee5f2
 
 ## ap-southeast-2 (Sydney)
 
 * Linux - ami-aed01ecc
-* Windows (wptagent) - ami-04a1b7b999a1ce25c
+* Windows (wptagent) - ami-027cdaac89ade2d51
 
 ## ap-south-1 (Mumbai)
 
 * Linux - ami-e5f0d58a
-* Windows (wptagent) - ami-04b71d98a32816060
+* Windows (wptagent) - ami-0a33c03a5877c94ca
 
 ## sa-east (Sao Paulo)
 
 * Linux - ami-717b2d1d
-* Windows (wptagent) - ami-0ab79fdc06f83d17e
+* Windows (wptagent) - ami-02999bb04bc882183
