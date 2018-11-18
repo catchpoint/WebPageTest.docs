@@ -36,83 +36,79 @@ The instances will automatically install the latest supported versions of Chrome
 
 The Linux images include Chrome, Chrome Beta, Chrome Dev, Firefox Stable, Firefox Nightly, Opera, Opera Beta and Opera Developer.
 
-The Windows images include IE 11, Chrome and Firefox (current stable releases)
-
-Remote Desktop to a Windows Test Agent:
-
-The password is: 2dialit
+The Windows images include IE 11, Chrome and Firefox (current stable releases).
 
 ## us-east-1 (Virginia)
 
-* Linux - ami-a88c20d5
+* Linux - ami-0930bfd032ed4386d
 * Windows (wptagent) - ami-0137821046846369e
 
 ## us-east-2 (Ohio)
 
-* Linux - ami-b13505d4
+* Linux - ami-0488bc772e9b2068b
 * Windows (wptagent) - ami-0a98bb237df9af133
 
 ## us-west-1 (California)
 
-* Linux - ami-236f7f43
+* Linux - ami-0de94d323ef31408d
 * Windows (wptagent) - ami-048a5e62197a602db
 
 ## us-west-2 (Oregon)
 
-* Linux - ami-5e305726
+* Linux - ami-03359e6c0aa3f0c44
 * Windows (wptagent) - ami-0897d1ae40fa1a1d3
 
 ## ca-central-1 (Canada Central)
 
-* Linux - ami-8871f7ec
+* Linux - ami-0062d34f6fc4d9244
 * Windows (wptagent) - ami-0135a2cddc6342cff
 
 ## eu-west-1 (Ireland)
 
-* Linux - ami-6758061e
+* Linux - ami-0a2b5953aa14f505d
 * Windows (wptagent) - ami-03009a026570febbb
 
 ## eu-west-2 (London)
 
-* Linux - ami-6d1afb0a
+* Linux - ami-007feb0ab68f0bde2
 * Windows (wptagent) - ami-0bfd048263183c4ae
 
 ## eu-west-3 (Paris)
 
-* Linux - ami-9d00b6e0
+* Linux - ami-0e40348a29b26b849
 * Windows (wptagent) - ami-01dfded38684ffcd2
 
 ## eu-central-1 (Frankfurt)
 
-* Linux - ami-dceab537
+* Linux - ami-0168263ac10ea280c
 * Windows (wptagent) - ami-0f997690f364fc126
 
 ## ap-northeast-1 (Tokyo)
 
-* Linux - ami-1771676b
+* Linux - ami-0ffda5ec7ab22e682
 * Windows (wptagent) - ami-07a931524bd2cde14
 
 ## ap-northeast-2 (Seoul)
 
-* Linux - ami-1b2e8175
+* Linux - ami-02b80e149d1eeaf8a
 * Windows (wptagent) - ami-06ab5d0ec63b30b00
 
 ## ap-southeast-1 (Singapore)
 
-* Linux - ami-ba4267c6
+* Linux - ami-0fce88fb3ea3e8e2f
 * Windows (wptagent) - ami-095c29723d8dee5f2
 
 ## ap-southeast-2 (Sydney)
 
-* Linux - ami-aed01ecc
+* Linux - ami-0cb761649a8ad2af9
 * Windows (wptagent) - ami-027cdaac89ade2d51
 
 ## ap-south-1 (Mumbai)
 
-* Linux - ami-e5f0d58a
+* Linux - ami-08f54b4b01b95766e
 * Windows (wptagent) - ami-0a33c03a5877c94ca
 
 ## sa-east (Sao Paulo)
 
-* Linux - ami-717b2d1d
+* Linux - ami-022c10d0035316d2f
 * Windows (wptagent) - ami-02999bb04bc882183
