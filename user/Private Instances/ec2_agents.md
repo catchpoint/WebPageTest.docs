@@ -40,75 +40,75 @@ The Windows images include IE 11, Chrome and Firefox (current stable releases).
 
 ## us-east-1 (Virginia)
 
-* Linux - ami-0930bfd032ed4386d
+* Linux - ami-0c381f1dda90c3675
 * Windows (wptagent) - ami-0137821046846369e
 
 ## us-east-2 (Ohio)
 
-* Linux - ami-0488bc772e9b2068b
+* Linux - ami-0274b92d8c52fc6b4
 * Windows (wptagent) - ami-0a98bb237df9af133
 
 ## us-west-1 (California)
 
-* Linux - ami-0de94d323ef31408d
+* Linux - ami-074d3bf6c09399fe4
 * Windows (wptagent) - ami-048a5e62197a602db
 
 ## us-west-2 (Oregon)
 
-* Linux - ami-03359e6c0aa3f0c44
+* Linux - ami-05005dae47dbf7f84
 * Windows (wptagent) - ami-0897d1ae40fa1a1d3
 
 ## ca-central-1 (Canada Central)
 
-* Linux - ami-0062d34f6fc4d9244
+* Linux - ami-00c89b2d9a56b638f
 * Windows (wptagent) - ami-0135a2cddc6342cff
 
 ## eu-west-1 (Ireland)
 
-* Linux - ami-0a2b5953aa14f505d
+* Linux - ami-0866ef4003c1ed81a
 * Windows (wptagent) - ami-03009a026570febbb
 
 ## eu-west-2 (London)
 
-* Linux - ami-007feb0ab68f0bde2
+* Linux - ami-0216e20b9b9641702
 * Windows (wptagent) - ami-0bfd048263183c4ae
 
 ## eu-west-3 (Paris)
 
-* Linux - ami-0e40348a29b26b849
+* Linux - ami-0be6ed98c2016f3e9
 * Windows (wptagent) - ami-01dfded38684ffcd2
 
 ## eu-central-1 (Frankfurt)
 
-* Linux - ami-0168263ac10ea280c
+* Linux - ami-06d9cb9d0b774eeff
 * Windows (wptagent) - ami-0f997690f364fc126
 
 ## ap-northeast-1 (Tokyo)
 
-* Linux - ami-0ffda5ec7ab22e682
+* Linux - ami-02eb0667991d551fa
 * Windows (wptagent) - ami-07a931524bd2cde14
 
 ## ap-northeast-2 (Seoul)
 
-* Linux - ami-02b80e149d1eeaf8a
+* Linux - ami-0a3d9d26ccf940667
 * Windows (wptagent) - ami-06ab5d0ec63b30b00
 
 ## ap-southeast-1 (Singapore)
 
-* Linux - ami-0fce88fb3ea3e8e2f
+* Linux - ami-078835ef69447d0a3
 * Windows (wptagent) - ami-095c29723d8dee5f2
 
 ## ap-southeast-2 (Sydney)
 
-* Linux - ami-0cb761649a8ad2af9
+* Linux - ami-03b4d42e8c041c3bd
 * Windows (wptagent) - ami-027cdaac89ade2d51
 
 ## ap-south-1 (Mumbai)
 
-* Linux - ami-08f54b4b01b95766e
+* Linux - ami-06ab31a6641705cf4
 * Windows (wptagent) - ami-0a33c03a5877c94ca
 
 ## sa-east (Sao Paulo)
 
-* Linux - ami-022c10d0035316d2f
+* Linux - ami-0a1e71c5eeb90c66d
 * Windows (wptagent) - ami-02999bb04bc882183
