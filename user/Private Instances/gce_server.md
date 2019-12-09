@@ -36,7 +36,7 @@ Keep the metadata string handy for configuring the agent instance template if yo
 ![GCE Server Setup Complete](images/gce_server_setup_complete.png)
 
 ### Profit
-At this point you have a server that is fully configured an ready to go.  Test locations have automatically been configured for all of the Google Cloud regions.
+At this point you have a server that is fully configured and ready to go.  Test locations have automatically been configured for all of the Google Cloud regions.
 
 The web UI is enabled by default and can be reached at http://[server].  Until agents are up and running the location list in the UI will remain empty.  You can see the full list of location ID's by visiting http://[server]/getLocations.php?f=html&hidden=1.
 
