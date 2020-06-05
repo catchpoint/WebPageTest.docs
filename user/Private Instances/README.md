@@ -5,19 +5,9 @@ WebPagetest is available as a software package for installation and running of p
 
 The latest release is [available on GitHub](https://github.com/WPO-Foundation/webpagetest/releases)
 
-## Easy Deployment (on Google Cloud)
+## Easy Deployment Script for Ubuntu 18.04
 
-There is a [server script](gce_server.md) and [public image for test agents](gce_agents.md).
-* Pre-configured for testing in all Google Cloud regions.
-* Automatically updates to the latest server and agent code.
-* Auto-scales test agents as needed.
-
-## Easy Deployment (on EC2)
-
-There is an [EC2 AMI](https://github.com/WPO-Foundation/webpagetest/blob/master/docs/EC2/Server%20AMI.md) available for the WebPageTest server that provides a lot of benefits:
-* No configuration required (up and running in 5 minutes).
-* Automatically starts and stops EC2 test agents in all of the EC2 regions as needed.
-* Automatically updates to the latest server and agent code.
+There are scripts for automating the configuration of a [WebPageTest server](https://github.com/WPO-Foundation/wptserver-install) or [Agent](https://github.com/WPO-Foundation/wptagent-install) starting with an Ubuntu 18.04 server instance (including special support for EC2 and Google Cloud).
 
 # System Requirements
 
@@ -25,7 +15,7 @@ WebPageTest can be configured to run all on one system (with the web server and 
 
 ## Web Server
 
-The Web Server can be any OS that supports PHP (Linux and Windows have both been tested).  Ubuntu 16.04 is recommended.
+The Web Server can be any OS that supports PHP (Linux and Windows have both been tested).  Ubuntu 18.04 is recommended.
 
 * Nginx (php-fpm recommended) or Apache 2.x+:
 * PHP 5.3.0 or later (7.x+ recommended) with the following modules:
@@ -49,7 +39,7 @@ VM's or physical machines are both supported for desktop testing on Windows, Lin
 
 # Installation
 
-The zip archive contains 2 folders.  The www folder is the web server software. The agent folder contains the legacy wptdriver agent for the test machine(s).  For the test agents it is recommended to use the newer [cross-platform agent](https://github.com/WPO-Foundation/wptagent/blob/master/docs/install.md) (which is distributed separately).
+The zip archive contains 2 folders.  The www folder is the web server software. For the test agents it is recommended to use the [cross-platform agent](https://github.com/WPO-Foundation/wptagent/blob/master/docs/install.md) (which is distributed separately).
 
 The configuration files in the archive have a .sample extension so if you are updating an existing install you can just overwrite the current files with the new ones from the archive.
 
@@ -183,12 +173,6 @@ net.ipv4.neigh.default.gc_thresh3 = 2048
 # Test Agent Install
 
 The wptagent installation docs are available [here](https://github.com/WPO-Foundation/wptagent/blob/master/docs/install.md).
-
-The legacy wptdriver installation docs are available [here](wptdriver.md).
-
-There are public AMI's for [running test agents on Amazon EC2](ec2_agents.md).
-
-There is a public image for [running test agents on Google Cloud](gce_agents.md).
 
 # Troubleshooting
 
