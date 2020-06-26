@@ -82,4 +82,20 @@ Install all the necessary packages from the package manager (RPM)
 	
 ###  EC2 setup using autoscaling/lc
    create a launch configuration with userdata script and amazon-linux2        ami and attach it to an autoscaling group. This any number of agents can be scaled up based on the need.
+   
+### EC2 Docker setup for agent on amazon-linux2
+    1. do a docker build using the docker file which is available in the webpagetest github
+       https://github.com/WPO-Foundation/wptagent
+    2. for amazon-linux2, to resolve the traffic shaping issues, make sure to run the command
+	   modprobe ifb numifbs=1 before starting docker and pass the argument as --shaper netem,eth0 while running the container.
+	   a sample userdata is as below
+
+	#!/usr/bin/env bash
+	sudo yum update -y
+	sudo amazon-linux-extras install docker
+	modprobe ifb numifbs=1
+	sudo service docker start
+	sudo usermod -a -G docker ec2-user
+	docker pull <docker image for wptagent>
+	docker run -d -e SERVER_URL=<server_url> -e LOCATION=<location> -e KEY=<key> -e "--shaper netem,eth0" --cap-add=NET_ADMIN --init <docker image for  wptagent>
 
