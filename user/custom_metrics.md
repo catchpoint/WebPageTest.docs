@@ -21,7 +21,7 @@ return viewport;
 * Firefox
 
 ## Things to watch out for
-* The scripts must be blocking and return the data of interest directly.  Async operations (timers, RequestAnimationFrame, Ajax requests, etc) are not supported.
+* Asynchronous operations are supported by returning a Promise, but it must resolve after 30 seconds.
 * Custom metrics live in the same namespace as the built-in metrics and can override built-in metrics if they have the same name.
 * Metric names should be simple alpha-numeric and probably without spaces.
 
