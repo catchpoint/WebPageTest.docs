@@ -61,6 +61,7 @@ In response you will either get redirected to the results page or you will get a
 |  appendua |  optional |  String to append to the user agent string. This is in addition to the default PTST/ver string. If "keepua" is also specified it will still append. Allows for substitution with some test parameters:%TESTID% - Replaces with the test ID for the current test%RUN% - Replaces with the current run number%CACHED% - Replaces with 1 for repeat view tests and 0 for initial view%VERSION% - Replaces with the current wptdriver version number |   |
 |  lighthouse |  optional |  Set to 1 to have a lighthouse test also performed (Chrome-only, wptagent agents only) |   |
 |  type |  optional |  For running alternative test types, can specify 'traceroute' or 'lighthouse' (lighthouse as a test type is only supported on wptagent agents) |   |
+|  injectScript |  optional |  JavaScript to run on the page as soon as the document exists.  |   |
 
 ## Specifying connectivity
 If the connectivity is not specified, by default you will get the Cable (5/1 Mbps, 28ms RTT) profile. The connectivity is specified as part of the location in the format:
