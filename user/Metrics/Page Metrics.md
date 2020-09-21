@@ -22,7 +22,6 @@ These are the metrics and measurements captured at a page-level and exposed in t
 * **domComplete** - (also chromeUserTiming.domComplete) Browser-reported time of the time when the DOM state changed to complete (RAIL)
 * **basePageSSLTime** - Time spent negotiating TLS for the base page
 * **connections** - Number of connections used to load the page content
-* **domains** - Number of domains used to load the page content
 * **requests** - (also requestsFull) Number of individual requests to load the page
 * **requestsDoc** - Number of requests before the document complete time (onLoad event)
 * **responses_200** - Number of requests that resulted in a 200 response code
@@ -103,7 +102,8 @@ These are the metrics and measurements captured at a page-level and exposed in t
 * **smallImageCount** - Number of "small" images on the page
 * **maybeCaptcha** - A possible Captcha challenge page was detected
 * **Images** - List of the images on the page DOM including the image URL, dimensions and display dimensions
-* **breakdown** - Array of the bytes and request counts by domain
+* **breakdown** - Array of the bytes and request counts by content type
+* **domains** - List of domains used to load content, the number of requests, bytes and connections used as well as the CDN if one was detected.
 
 ## Browser State
 * **browser_name** - Name of the browser being used in the test (i.e. Chrome)
