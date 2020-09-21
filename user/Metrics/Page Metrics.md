@@ -69,7 +69,6 @@ These are the metrics and measurements captured at a page-level and exposed in t
 * heroElementTimes.LastPaintedHero
 * **heroElements** - Array of the hero elements, their positions and timings
 
-
 # Interactivity Metrics
 * **TotalBlockingTime** - (Chrome Web Vitals Metric) Total amount of time where the main thread was blocked by long tasts after the initial content was rendered
 * **maxFID** - The largest long-task after the initial content was rendered (longest time the user's input can be blocked)
@@ -104,6 +103,7 @@ These are the metrics and measurements captured at a page-level and exposed in t
 * **smallImageCount** - Number of "small" images on the page
 * **maybeCaptcha** - A possible Captcha challenge page was detected
 * **Images** - List of the images on the page DOM including the image URL, dimensions and display dimensions
+* **breakdown** - Array of the bytes and request counts by domain
 
 ## Browser State
 * **browser_name** - Name of the browser being used in the test (i.e. Chrome)
