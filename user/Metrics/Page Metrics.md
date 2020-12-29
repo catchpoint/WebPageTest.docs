@@ -58,16 +58,6 @@ These are the metrics and measurements captured at a page-level and exposed in t
 * **titleTime** - (deprecated) Time until the page title became available
 * **aft** - (deprecated) Above-The-Fold Time
 
-# Hero Element Timings (deprecated - use LargestContentfulPaint)
-* FirstPaintedHero
-* LastPaintedHero
-* heroElementTimes
-* heroElementTimes.FirstPaintedHero
-* heroElementTimes.Heading
-* heroElementTimes.Image
-* heroElementTimes.LastPaintedHero
-* **heroElements** - Array of the hero elements, their positions and timings
-
 # Interactivity Metrics
 * **TotalBlockingTime** - (Chrome Web Vitals Metric) Total amount of time where the main thread was blocked by long tasts after the initial content was rendered
 * **maxFID** - The largest long-task after the initial content was rendered (longest time the user's input can be blocked)
