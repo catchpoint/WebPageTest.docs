@@ -20,7 +20,7 @@
     - [Request Manipulation](#request-manipulation)
       - [block](#block)
       - [blockDomains](#blockdomains)
-      - [blockDomainsExecpt](#blockdomainsexecpt)
+      - [blockDomainsExcept](#blockdomainsexcept)
       - [setCookie](#setcookie)
       - [setDns](#setdns)
       - [setDNSName](#setdnsname)
@@ -284,7 +284,7 @@ example: blockDomains    adswrapper.js addthis.com
 <block domains> - space-delimited list of domains to block
 ```
 
-#### blockDomainsExecpt
+#### blockDomainsExcept
 Blocks all requests not from one of the given domains from loading (useful for blocking content like ads). Takes a space-delimited list of full domains to allow.
 Browser Support: Desktop (wptdriver 300+)
 ```
