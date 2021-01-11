@@ -94,7 +94,7 @@ Browser is only required in a Chrome/Firefox install where wptdriver is configur
 
 ### Available locations for API calls
 
-Only locations listed [here](https://www.webpagetest.org/getLocations.php?k=A&f=html) are available for API calls. Others will return `invalid location` when requested.
+On the public instance with an API key that starts with "A.", only locations listed [here](https://www.webpagetest.org/getLocations.php?k=A&f=html) are available for API calls. Others will return `invalid location` when requested.
 
 ## XML response
 
