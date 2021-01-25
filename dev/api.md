@@ -95,6 +95,10 @@ The supported profiles for the public instance are:
 
 Browser is only required in a Chrome/Firefox install where wptdriver is configured for multiple browsers.
 
+### Available locations for API calls
+
+On the public instance with an API key that starts with "A.", only locations listed [here](https://www.webpagetest.org/getLocations.php?k=A&f=html) are available for API calls. Others will return `invalid location` when requested.
+
 ## XML response
 
 The XML response follows the format of REST API's. You will get a HTTP 200 response to the request itself indicating that the request was parsed but the result of the submission itself will be in the XML. See the samples for a full example XML response.
