@@ -42,7 +42,7 @@ Each request for a piece of content to the web server has to travel from the use
 ### High-level Metrics:
 The data table at the top of the results page gives you some high-level information about the page that was loaded:
 
-![](qs_metrics.jpeg)
+![](qs_metrics.png)
 
 #### First View:
 The First View row is a test that was done with a browser that had its cache and cookies cleared out and represents what a first-time visitor to the page will experience.
