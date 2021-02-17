@@ -4,17 +4,17 @@ The FCC prepared a report on the state of Broadband Internet access in the US an
 ## Connectivity Emulation (dummynet)
 The purpose of the connectivity emulation in WebPagetest is to provide realistic "last mile" performance from the test agents (but not to alter additional latency in getting to servers physically distributed).  This means that the goal is to realistically emulate parts 2-6 of the network diagram from the FCC report with the public Internet segment being routed as it would normally:
 
-![FCC Network diagram](fcc_net.png)
+![FCC Network diagram](/img/fcc_net.png)
 
 ## Latency and Advertised Bandwidth
 The test servers used in the FCC testing were geographically distributed close to the measurement locations and validated against measurement points within the provider's network so the latency measurements should be accurate measurements of the part of the network that we are looking to duplicate in dummynet.
 
-![FCC latency](fcc_latency.png)
+![FCC latency](/img/fcc_latency.png)
 
 ## Downstream Bandwidth
 
-![FCC Downstream bandwidth](fcc_down.png)
+![FCC Downstream bandwidth](/img/fcc_down.png)
 
 ## Upstream Bandwidth
 
-![FCC Upstream bandwidth](fcc_up.png)
+![FCC Upstream bandwidth](/img/fcc_up.png)

@@ -24,7 +24,7 @@ The configuration of the test agents is done through user data strings when inst
 wpt_server=www.webpagetest.org wpt_loc=Test wpt_key=xxxxx
 ```
 
-![EC2 user data](images/ec2config.png)
+![EC2 user data](/img/ec2config.png)
 
 ## Sample locations.ini
 

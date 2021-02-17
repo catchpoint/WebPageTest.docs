@@ -5,17 +5,17 @@ At its core, WebPagetest is used for measuring and analyzing the performance of 
 ### Enter The Page URL:
 The first thing you need to do is decide on a page to test.  Most people start with the main page for their site (but don't neglect the other pages people visit either).  Once you have decided on a page you'd like to test you go to WebPagetest and give it the URL for the page you want tested:
 
-![](qs_url.png)
+![](/img/qs_url.png)
 
 ### Select a Location:
 Next you should decide where you want the test to be run from.  WebPagetest has test machines that are physically located around the world and you should test from a location that is close to where your users are visiting from.  You can either pick a location from the list or if you click on the Change button you can pick a location from a map view (just click on a balloon to select a location and then click ok).  If you hold the pointer over the bubbles they will display a message telling you where the location is:
 
-![](qs_map.png)
+![](/img/qs_map.png)
 
 ### Select a Browser:
 Finally, you need to decide what browser to use for the test.  Different locations support different browsers so if a given location doesn't have the browser you are looking for, you can try a different location.  The Dulles, VA USA location supports all of the browsers that WebPagetest works with (Chrome, Firefox, Edge, Internet Explorer, Android, iOS).  We usually recommend using Chrome for initial testing because it has the most information reported.
 
-![](qs_browser.png)
+![](/img/qs_browser.png)
 
 ### Submit the Test
 After everything is configured the way you like, click on the "Start Test" button and your request will be sent to the test location for testing.  The test may take a while to run depending on how many tests are ahead of yours (figure at least one minute for each test ahead of yours but it's not unusual for it to be even longer than that).  Once the test is complete you will be presented with the results.
@@ -26,7 +26,7 @@ The results screen can be a bit intimidating the first time you see it because t
 ### Optimization Grades:
 At the top of the results page are a set of grades for the most critical performance optimizations.  These cover the basic optimizations that apply to just about all sites and anything that isn't an A or a B justifies some serious scrutiny and investigation.
 
-![](qs_grades.png)
+![](/img/qs_grades.png)
 
 #### Keep-alive Enabled:
 Each request for a piece of content on the page (image, javascript, css, flash, etc) needs to be made over a connection to the web server.  Setting up new connections can take a lot of time so it is best to re-use connections when you can and keep-alive is the way that is done.  They are enabled by default on most configurations and are part of the HTTP 1.1 standard but there are times when they will be broken (sometimes unintentionally).  Enabling keep-alives is usually just a configuration change on the server and does not require any changes to the page itself and can usually reduce the time to load a page by 40-50%.
@@ -42,7 +42,7 @@ Each request for a piece of content to the web server has to travel from the use
 ### High-level Metrics:
 The data table at the top of the results page gives you some high-level information about the page that was loaded:
 
-![](qs_metrics.png)
+![](/img/qs_metrics.png)
 
 #### First View:
 The First View row is a test that was done with a browser that had its cache and cookies cleared out and represents what a first-time visitor to the page will experience.

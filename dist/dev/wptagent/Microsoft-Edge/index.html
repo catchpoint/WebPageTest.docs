@@ -13,7 +13,7 @@
 </ol>
 <h2 id="high-level-design">High-level design</h2>
 <p>wptagent uses <a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">webdriver</a> to drive the browser. It uses <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa363668(v=vs.85).aspx">ETW</a> events captured in realtime by <a href="https://github.com/WPO-Foundation/wpt-etw">wpt-etw</a> for monitoring activity, getting request details and response bodies.  For request interception and monitoring of the main thread it uses an <a href="https://github.com/WPO-Foundation/wptagent/tree/master/internal/support/edge/extension">extension</a>.</p>
-<p><img src="images/edge-overview.svg" alt="Overview"></p>
+<p><img src="/img/edge-overview.svg" alt="Overview" width="944" height="704"></p>
 <h1 id="browser-launch">Browser Launch</h1>
 <p>wptagent clears the cache (for first view tests) by deleting the following folders under <code>%LOCALAPPDATA%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe</code>:</p>
 <ul>
@@ -34,7 +34,7 @@
 <p>Live updates from Edge for page navigation status and request activity is probably the most complicated piece of the architecture (and had the most false-starts).</p>
 <p>wptagent uses an external app (<a href="https://github.com/WPO-Foundation/wpt-etw">wpt-etw</a>) that runs in an elevated session to monitor ETW (Event Trace for Windows) events emitted by the Edge engine (WinInet and MSHtml specifically).  wpt-etw filters the trace events for the ones of interest and batches them up in 100ms bundles of events.  The event bundles are then POSTed to the http server running in wptagent (at <a href="http://127.0.0.1:8888/">http://127.0.0.1:8888/</a>) as a JSON array of trace events.  The trace events trigger activity updates in the wptagent activity monitoring code and wptagent watches for the page load notifications to know when navigation is complete.</p>
 <p>There is the potential for some additional buffering as the Windows kernel buffers trace events internally but it is not an issue in practice.  The kernel buffering is for a maximum of 3 seconds but when activity is ongoing there are enough events generated that in practice it is delayed for a much shorter period (and timely delivery within a few seconds is not critical to wptagent operation since the individual events are timestamped).</p>
-<p><img src="images/edge-etw-requests.svg" alt="etw requests"></p>
+<p><img src="/img/edge-etw-requests.svg" alt="etw requests" width="944" height="470"></p>
 <h2 id="failed-design-%231---extension-direct-to-wptagent">Failed design #1 - extension direct to wptagent</h2>
 <p>The initial plan for detecting the browser activity for Microsoft Edge was to use the same architecture as the Firefox agent where an extension listens to <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/webNavigation">webNavigation</a> and <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/webRequest">webRequest</a> events and forwards them to wptagent using fetch to POST the data to <a href="http://127.0.0.1:8888/">http://127.0.0.1:8888/</a>.</p>
 <p>It turns out that Edge blocks all local network activity from extensions making it impossible to fetch to localhost (or even to a local server on the same network).</p>
@@ -49,17 +49,17 @@
 <h1 id="response-bodies">Response Bodies</h1>
 <p>WinInet will log the raw byte streams (post transfer-encodeing which WinInet strips out automatically) if the <code>Microsoft-Windows-WinInet-Capture</code> ETW category is enabled.  To minimize overhead the response bodies are processed by wpt-etw directly and written to disk in a directory provided by wptagent.  Each request is written to a file that is named based on it's request ID so they can be matched-up by wptagent when the post-processing optimization checks are done (or gathered and sent back to the server if the test requires keeping the response bodies).</p>
 <p>The response bodies are streamed to disk as they come in. WinInet also streams the raw request and response headers but those are ignored and only the response body bytes are streamed to disk (which is consistent with how wptagent processes bodies for other browsers).</p>
-<p><img src="images/edge-etw-bodies.svg" alt="etw bodies"></p>
+<p><img src="/img/edge-etw-bodies.svg" alt="etw bodies" width="944" height="470"></p>
 <h1 id="video-capture">Video Capture</h1>
 <p>Video capture is done using the same video capture support in wptagent used for all desktop browsers (to make apples-to-apples comparisons possible).  Specifically it uses ffmpeg with gdigrab to record the region of the desktop where the browser window was placed (using webdriver).  ffmpeg is configured to record as a x264rgb video with ultrafast settings and highest quality to minimize the amount of overhead on the system from video capture.  By default it will record at 10fps but can be configured using the --fps command-line option or on a per-test basis.</p>
 <p>To ensure that video capture has started before the testing is started the size of the video file is monitored and once it exceeds 10KB the testing is started.  If this step is skipped it is quite possible (and likely) that the video capture will start capturing after the start of the test.</p>
 <p>To synchronize the video with the measured activity an orange overlay is placed on the page before ffmpeg recording is started (a solid-color div positioned over the page contents, even if starting from a blank page).  Immediately before navigation the div is removed and in post-processing the orange frames are removed from the captured video so the video frames ane navigation both start at the same point.  The same overlay is used for multi-step scripts and is placed over the existing page before each step.  The overlays are written into the page using the script execution support exposed by webdriver.  The overlay is also used to locate the viewport for cropping of the video capture.</p>
-<p><img src="images/edge-orange.png" alt="orange"></p>
+<p><img src="/img/edge-orange.png" alt="orange" width="425" height="320"></p>
 <h1 id="request-interception">Request Interception</h1>
 <p>wptagent uses an extension with blocking webRequest listeners to intercept any requests that need to be blocked or modified.  The listeners are only installed if they are going to be needed.  The difficult part lies in communicating the configuration data to the extension since the extension can not communicate directly with wptagent.</p>
 <p>As part of the startup, wptagent uses webdriver to load <a href="http://127.0.0.1:8888/config.html">http://127.0.0.1:8888/config.html</a> which is a locally-served page that has the configuration data for the request interception encoded as json in a hidden div with a well-known ID.  The extension has a content script (<a href="https://github.com/WPO-Foundation/wptagent/blob/master/internal/support/edge/extension/config-script.js">config-script.js</a>) that is configured to run after that specific page has been loaded.  The content script extracts the JSON config data from the DOM and sends it to the extension's background page where it is processed.</p>
 <p>The background page builds a list of modifications that are necessary and installs webRequest listeners if needed.</p>
-<p><img src="images/edge-intercept.svg" alt="intercept"></p>
+<p><img src="/img/edge-intercept.svg" alt="intercept" width="944" height="704"></p>
 <h1 id="main-thread-interactivity">Main Thread Interactivity</h1>
 <p>To measure the responsiveness of the browser's main thread wptagent uses a content script (<a href="https://github.com/WPO-Foundation/wptagent/blob/master/internal/support/edge/extension/long-tasks.js">long-tasks.js</a>) that attaches to every page load as soon as possible (at document_start).</p>
 <p>The content script posts a series of requestAnimationFrame calls and measures whenever it takes more than 50ms and builds a list of the "long tasks".</p>
@@ -70,7 +70,7 @@
 <li>The idle periods are encoded as JSON and written into a hidden DOM element with a well-known ID.</li>
 <li>At the end of the test when it needs to collect the interactive periods, wptagent executes a script that posts the message to the content script and it polls the DOM waiting for the hidden DOM element to be written and extracts the timing data from it when it is available.</li>
 </ul>
-<p><img src="images/edge-long-tasks.svg" alt="intercept"></p>
+<p><img src="/img/edge-long-tasks.svg" alt="intercept" width="944" height="704"></p>
 <h1 id="known-issues">Known Issues</h1>
 <h2 id="cookie-clearing">Cookie Clearing</h2>
 <p>The Fall Creators Update of Windows 10 introduced a change where Edge uses a centralized cookie store that is not cleared either by using the IE clearing logic or in any of the Edge-specific application directories so cookies currently persist.  Using an extension to clear them also doesn't work as there is no way to enumerate all cookies in Edge.</p>

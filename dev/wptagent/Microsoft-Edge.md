@@ -13,7 +13,7 @@ The WebPageTest agent ([wptagent](https://github.com/WPO-Foundation/wptagent)) n
 ## High-level design
 wptagent uses [webdriver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) to drive the browser. It uses [ETW](https://msdn.microsoft.com/en-us/library/windows/desktop/aa363668(v=vs.85).aspx) events captured in realtime by [wpt-etw](https://github.com/WPO-Foundation/wpt-etw) for monitoring activity, getting request details and response bodies.  For request interception and monitoring of the main thread it uses an [extension](https://github.com/WPO-Foundation/wptagent/tree/master/internal/support/edge/extension).
 
-![Overview](images/edge-overview.svg)
+![Overview](/img/edge-overview.svg)
 
 # Browser Launch
 wptagent clears the cache (for first view tests) by deleting the following folders under ```%LOCALAPPDATA%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe```:
@@ -44,7 +44,7 @@ wptagent uses an external app ([wpt-etw](https://github.com/WPO-Foundation/wpt-e
 
 There is the potential for some additional buffering as the Windows kernel buffers trace events internally but it is not an issue in practice.  The kernel buffering is for a maximum of 3 seconds but when activity is ongoing there are enough events generated that in practice it is delayed for a much shorter period (and timely delivery within a few seconds is not critical to wptagent operation since the individual events are timestamped).
 
-![etw requests](images/edge-etw-requests.svg)
+![etw requests](/img/edge-etw-requests.svg)
 
 ## Failed design #1 - extension direct to wptagent
 The initial plan for detecting the browser activity for Microsoft Edge was to use the same architecture as the Firefox agent where an extension listens to [webNavigation](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/webNavigation) and [webRequest](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/webRequest) events and forwards them to wptagent using fetch to POST the data to http://127.0.0.1:8888/.
@@ -70,7 +70,7 @@ WinInet will log the raw byte streams (post transfer-encodeing which WinInet str
 
 The response bodies are streamed to disk as they come in. WinInet also streams the raw request and response headers but those are ignored and only the response body bytes are streamed to disk (which is consistent with how wptagent processes bodies for other browsers).
 
-![etw bodies](images/edge-etw-bodies.svg)
+![etw bodies](/img/edge-etw-bodies.svg)
 
 # Video Capture
 Video capture is done using the same video capture support in wptagent used for all desktop browsers (to make apples-to-apples comparisons possible).  Specifically it uses ffmpeg with gdigrab to record the region of the desktop where the browser window was placed (using webdriver).  ffmpeg is configured to record as a x264rgb video with ultrafast settings and highest quality to minimize the amount of overhead on the system from video capture.  By default it will record at 10fps but can be configured using the --fps command-line option or on a per-test basis.
@@ -79,7 +79,7 @@ To ensure that video capture has started before the testing is started the size 
 
 To synchronize the video with the measured activity an orange overlay is placed on the page before ffmpeg recording is started (a solid-color div positioned over the page contents, even if starting from a blank page).  Immediately before navigation the div is removed and in post-processing the orange frames are removed from the captured video so the video frames ane navigation both start at the same point.  The same overlay is used for multi-step scripts and is placed over the existing page before each step.  The overlays are written into the page using the script execution support exposed by webdriver.  The overlay is also used to locate the viewport for cropping of the video capture.
 
-![orange](images/edge-orange.png)
+![orange](/img/edge-orange.png)
 
 # Request Interception
 wptagent uses an extension with blocking webRequest listeners to intercept any requests that need to be blocked or modified.  The listeners are only installed if they are going to be needed.  The difficult part lies in communicating the configuration data to the extension since the extension can not communicate directly with wptagent.
@@ -88,7 +88,7 @@ As part of the startup, wptagent uses webdriver to load http://127.0.0.1:8888/co
 
 The background page builds a list of modifications that are necessary and installs webRequest listeners if needed.
 
-![intercept](images/edge-intercept.svg)
+![intercept](/img/edge-intercept.svg)
 
 # Main Thread Interactivity
 To measure the responsiveness of the browser's main thread wptagent uses a content script ([long-tasks.js](https://github.com/WPO-Foundation/wptagent/blob/master/internal/support/edge/extension/long-tasks.js)) that attaches to every page load as soon as possible (at document_start).
@@ -101,7 +101,7 @@ Content scripts run in an isolated sandbox from the page (and from webdriver) so
 * The idle periods are encoded as JSON and written into a hidden DOM element with a well-known ID.
 * At the end of the test when it needs to collect the interactive periods, wptagent executes a script that posts the message to the content script and it polls the DOM waiting for the hidden DOM element to be written and extracts the timing data from it when it is available.
 
-![intercept](images/edge-long-tasks.svg)
+![intercept](/img/edge-long-tasks.svg)
 
 # Known Issues
 ## Cookie Clearing

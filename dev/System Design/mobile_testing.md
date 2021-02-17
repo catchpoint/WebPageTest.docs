@@ -8,7 +8,7 @@ For mobile testing you have a few options for network connectivity:
 * WiFi with per-test traffic shaping
 This is what the mobile testing network looks like for the public instance of WebPagetest (at least as of this writing in 2014):
 
-![Network Diagram](mobile_testing.png)
+![Network Diagram](/img/mobile_testing.png)
 
 The different configuration build on top of each other:
 ## Devices
