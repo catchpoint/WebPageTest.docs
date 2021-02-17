@@ -1,0 +1,20 @@
+<nav class="primaryNav">
+    {% set navPages = collections.all | eleventyNavigation %}
+{% macro renderNavListItem(entry) -%}
+<li{% if entry.url == page.url %} class="is-active"{% endif %}>
+  <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+{%- if entry.children.length -%}
+  <ul>
+    {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
+  </ul>
+{%- endif -%}
+</li>
+{%- endmacro %}
+<details>
+  <summary>Menu</summary>
+  <ul>
+    {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
+    </ul>
+</details>
+
+</nav>

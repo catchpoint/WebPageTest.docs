@@ -1,0 +1,15 @@
+<h1 id="administration-of-private-instances">Administration of Private Instances</h1>
+<h2 id="useful-pages-for-debugging">Useful Pages for Debugging</h2>
+<p>The following pages are available on the WebPageTest master, which can be helpful in<br>
+determining the state of your cluster:</p>
+<h3 id="%2Fgetlocations.php">/getLocations.php</h3>
+<p>Add the ?f=html query parameter for a more human readable format.</p>
+<p>getLocations returns back information on the number of testers and the tests being<br>
+executed in each location.</p>
+<h3 id="%2Fgettesters.php">/getTesters.php</h3>
+<p>Add the ?f=html query parameter for a more human readable format.</p>
+<p>getTesters returns a table of the active test machines with detailed information on<br>
+the current state.</p>
+<h2 id="administrative-operations">Administrative Operations</h2>
+<h3 id="clearing-of-webpagetest-queues">Clearing of WebPageTest Queues</h3>
+<p>WebPageTestQueue objects live in $DATA_ROOT/work/jobs directory on the master. Deleting those files will remove the jobs from the queue.</p>

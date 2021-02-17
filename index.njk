@@ -1,0 +1,35 @@
+{% include 'siteHead.html' %}
+<body class="home">
+    {% include 'head.html' %}
+    {% include 'doc-nav.html' %}
+    <div class="hero-callout">
+        <div>
+        <h1 id="welcome-to-webpagetest">Welcome to WebPageTest</h1>
+        <p><a href="https://www.webpagetest.org/">WebPageTest</a> is a web performance tool providing deep diagnostic information about how a page performs under a variety of conditions.</p>
+        <p>Each test can be run from different locations around the world, on real browsers, over any number of customizable network conditions.</p>
+        <p><a href="/docs" class="btn">Get started →</a></p>
+        </div>
+        <img class="hero" src="/img/wpt-teaser.png" alt="">
+
+    </div>
+    <main class="wide">
+        <div class="g-two-up">
+            <div>
+                <img class="hero" src="/img/interpret-teaser.png" alt="">
+                <h2>Understanding Your Results</h2>
+                <p><a href="http://WebPageTest.org">WebPageTest.org</a> is the freely available public instance of WebPageTest that you can use to drive your testing.</p>
+                <p><a href="/docs" class="btn">Let's dive in →</a></p>
+            </div>
+            <div>
+                <img class="hero" src="/img/api-teaser.png" alt="">
+                <h2>Using the API</h2>
+                <p>WebPageTest offers a rich API that can be used to programmatically run tests and retrieve test results so that you can incorporate WebPageTest into your existing workflows and continuous integration environments.</p>
+                <p><a href="/docs" class="btn">Learn about the API →</a></p>
+                </div>
+        </div>
+
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>

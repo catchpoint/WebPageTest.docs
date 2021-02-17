@@ -1,0 +1,120 @@
+<h1 id="request-level-metrics">Request-level metrics</h1>
+<p>Not currently exposed in the JSON but captured by the agent is the timestamp and duration of all JS execution (eval, function calls, etc) for each Javascript request.</p>
+<h2 id="request-details">Request Details</h2>
+<ul>
+<li><strong>method</strong> - HTTP method (GET, POST, etc)</li>
+<li><strong>full_url</strong> - Full URL for the request</li>
+<li><strong>host</strong> - Hostname for the request</li>
+<li><strong>url</strong> - Path of the request</li>
+<li><strong>is_secure</strong> - 1 for https, 0 for http</li>
+<li><strong>responseCode</strong> - Response code</li>
+<li><strong>ip_addr</strong> - Server IP address</li>
+<li><strong>server_port</strong> - TCP server port connected to for the connection</li>
+<li><strong>client_port</strong> - TCP port on the client used for the connection (to aid in tcpdump inspection)</li>
+<li><strong>cdn_provider</strong> - Detected CDN for the origin</li>
+<li><strong>documentURL</strong> - URL of the Document context that originated the request (iFrames, service worker, etc)</li>
+<li><strong>frame_id</strong> - Frame ID that the request belongs to</li>
+<li><strong>is_base_page</strong> - true if this is in the chain of requests for the base page</li>
+<li><strong>final_base_page</strong> - true if this is the final base page request</li>
+<li><strong>initiator</strong> - Initiator URL for what triggered the request</li>
+<li><strong>initiator_line</strong> - Line of code in the initiator file that triggered the request</li>
+<li><strong>initiator_column</strong> - Column of the row in the initiator file</li>
+<li><strong>initiator_type</strong> - Initiator type</li>
+<li><strong>priority</strong> - Networking stack priority associated with the request when it was first sent (does not include reprioritizations)</li>
+<li><strong>initial_priority</strong> - Renderer priority associated with the request when it was first sent (does not include reprioritizations)</li>
+<li><strong>id</strong> - Unique Request ID within this page data</li>
+<li><strong>index</strong> - Ordered index of this request (0+)</li>
+<li><strong>number</strong> - Ordered index of this request (1+)</li>
+<li><strong>raw_id</strong> - Unprocessed request ID</li>
+<li><strong>request_id</strong> - Processed Request ID</li>
+<li><strong>server_rtt</strong> - Estimated RTT to the server for this request</li>
+<li><strong>socket</strong> - Connection ID that was used for this request</li>
+</ul>
+<h2 id="request-timings">Request Timings</h2>
+<p>-1 (or missing) indicates a timing is N/A</p>
+<ul>
+<li><strong>created</strong> - Timestamp when the browser first created the request</li>
+<li><strong>all_start</strong> - Timestamp of the start of the request</li>
+<li><strong>all_end</strong> - Timestamp of the end of the request</li>
+<li><strong>all_ms</strong> - Full duration of the request</li>
+<li><strong>dns_start</strong> - Timestamp of the start of the DNS lookup</li>
+<li><strong>dns_end</strong> - Timestamp of the end of the DNS lookup</li>
+<li><strong>dns_ms</strong> - Duration of the DNS lookup</li>
+<li><strong>connect_start</strong> - Timestamp of the start of the socket connect</li>
+<li><strong>connect_end</strong> - Timestamp of the end of the socket connect</li>
+<li><strong>connect_ms</strong> - Duration of the socket connect</li>
+<li><strong>ssl_start</strong> - Timestamp of the start of TLS negotiation</li>
+<li><strong>ssl_end</strong> - Timestamp of the end of TLS negotiation</li>
+<li><strong>ssl_ms</strong> - Duration of the TLS negotiation</li>
+<li><strong>ttfb_start</strong> - Timestamp of when the request was sent</li>
+<li><strong>ttfb_end</strong> - Timestamp of the first byte of the response</li>
+<li><strong>ttfb_ms</strong> - Duration of the first byte</li>
+<li><strong>load_start</strong> - Timestamp of the start of the request</li>
+<li><strong>load_start_float</strong> - Timestamp of the start of the request (with microseconds - for sorting)</li>
+<li><strong>load_end</strong> - Timestamp of the end of the request</li>
+<li><strong>load_ms</strong> - Duration of the request/response</li>
+<li><strong>download_start</strong> - Timestamp of the start of the response</li>
+<li><strong>download_end</strong> - Timestamp of the end of the response</li>
+<li><strong>download_ms</strong> - Duration to receive the response</li>
+</ul>
+<h2 id="request-stats">Request Stats</h2>
+<ul>
+<li><strong>bytesIn</strong> - Size of the response data</li>
+<li><strong>bytesOut</strong> - Size of the request data</li>
+<li><strong>objectSize</strong> - Wire size of the response object</li>
+<li><strong>objectSizeUncompressed</strong> - Uncompressed size of the response object</li>
+</ul>
+<h1 id="headers">Headers</h1>
+<ul>
+<li><strong>headers</strong> - Raw request and response headers</li>
+<li><strong>cacheControl</strong> - Response cache-control header value</li>
+<li><strong>cache_time</strong> - Calculated cache time (if any)</li>
+<li><strong>contentEncoding</strong> - Response content-encoding header value</li>
+<li><strong>contentType</strong> - Response content-type header value</li>
+<li><strong>expires</strong> - Response expires header value</li>
+</ul>
+<h2 id="protocol-information">Protocol Information</h2>
+<ul>
+<li><strong>protocol</strong> - Protocol used</li>
+<li><strong>http2_stream_id</strong> - HTTP/2 Stream ID</li>
+<li><strong>http2_stream_dependency</strong> - HTTP/2 Stream Dependency</li>
+<li><strong>http2_stream_exclusive</strong> - HTTP/2 stream exclusive flag</li>
+<li><strong>http2_stream_weight</strong> - HTTP/2 stream weight</li>
+<li><strong>certificates</strong> - Raw certificates received from server during TLS negotiation</li>
+<li><strong>http2_server_settings</strong> - List of server-specified HTTP/2 options (concurrent stream count)</li>
+<li><strong>securityDetails</strong> - Details about the TLS negotiation (TLS protocol, SAN list, Ciphers, certificate details)</li>
+<li><strong>tls_cipher_suite</strong> - Negotiated TLS cipher suite</li>
+<li><strong>tls_next_proto</strong> - Advertised next-protocol</li>
+<li><strong>tls_resumed</strong> - If a TLS session was resumed</li>
+<li><strong>tls_version</strong> - TLS version used</li>
+</ul>
+<h2 id="javascript%2Fcpu-details">Javascript/CPU details</h2>
+<ul>
+<li><strong>cpu.*</strong> - Time spent on the main thread for each category of dev tools event</li>
+<li><strong>cpuTimes</strong> - Time spent on the main thread for each category of dev tools event</li>
+</ul>
+<h2 id="optimization-checks">Optimization Checks</h2>
+<p>-1 designates N/A</p>
+<ul>
+<li><strong>score_cache</strong> - Score for caching of static content (0-100)</li>
+<li><strong>score_cdn</strong> - Score for using a CDN for static content (0-100)</li>
+<li><strong>score_compress</strong> - Score for properly compressing a JPEG image (0-100)</li>
+<li><strong>image_save</strong> - Bytes saved by properly compressing this lossy image</li>
+<li><strong>image_total</strong> - Original image size</li>
+<li><strong>score_gzip</strong> - Score for properly compressing this text resource (0-100)</li>
+<li><strong>gzip_save</strong> - Bytes saved by properly compressing this text response</li>
+<li><strong>gzip_total</strong> - Original wire-size of the response</li>
+<li><strong>score_keep-alive</strong> - Score for properly using keep-alive on the connection that served this response</li>
+<li><strong>score_etags</strong> - (deprecated)</li>
+<li><strong>score_cookies</strong> - (deprecated)</li>
+<li><strong>score_combine</strong> - (deprecated)</li>
+<li><strong>score_minify</strong> - (deprecated)</li>
+<li><strong>minify_save</strong> - (deprecated)</li>
+<li><strong>minify_total</strong> - (deprecated)</li>
+</ul>
+<h2 id="misc">Misc</h2>
+<ul>
+<li><strong>chunks</strong> - Time and size of each data chunk received</li>
+<li><strong>font_details</strong> - Decoded details of font files (details of all of the tables)</li>
+<li><strong>jpeg_scan_count</strong> - Number of scans for JPEG images</li>
+</ul>

@@ -1,0 +1,17 @@
+<html><head></head><body><h1 id="google-cloud-test-agents">Google Cloud Test Agents</h1>
+<p>There is a public image available for creating test agent instances. The agents automatically install all system and browser updates before starting testing so there is no need to manually update the image.</p>
+<p>If you are using the agents with a server in Google cloud, make sure to set up the server first so you will have the agent configuration information available.</p>
+<h2 id="create-an-instance-template">Create an Instance Template</h2>
+<p>There is a setup script that will automatically create an instance template for preemptable n1-standard-2 instances using the public image (the recommended configuration).</p>
+<p>In the top-right corner of the Google cloud console is a button to launch the cloud shell:<br>
+<img src="images/gce_shell_button.png" alt="GCE Cloud Shell"></p>
+<p>Launch the shell and when it is running, paste the command to create the image template:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">bash</span> <span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token function">curl</span> -s https://raw.githubusercontent.com/WPO-Foundation/wptagent-install/master/gce_image.sh<span class="token punctuation">)</span></code></pre>
+<p>The shell will prompt you for the template name and metadata configuration string to use for the instances (the string was provided at the end of the server setup script).<br>
+<img src="images/gce_template.png" alt="GCE Template Create"></p>
+<p>After a few seconds the script will complete and there will be an instance template in the project that can be used for launching agents in any region (manually or as part of a managed instance group).</p>
+<h2 id="auto-scaling">Auto-Scaling</h2>
+<p>The linux agents auto-scale well for bulk testing using a <a href="https://cloud.google.com/compute/docs/instance-groups/">Managed Instance group</a>.  In that mode it is recommended to use preemptable instances and set a target CPU utilization to 20% (for n1-standard-2 instances) and with a cool-down period of 600 seconds.  One instance will need to be running in each region at all times and it will scale up as needed when running tests.</p>
+<p>The instances take a few minutes to connect to the server after launching because they install all of the latest OS and browser updates and reboot before starting to process work.</p>
+<p><img src="images/gce_mig.png" alt="GCE Instance Group"></p>
+</body></html>

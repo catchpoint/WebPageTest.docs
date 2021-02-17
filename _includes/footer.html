@@ -1,0 +1,12 @@
+<footer>
+    &copy; 2021
+    <a href="https://github.com/WPO-Foundation/webpagetest-docs/blob/main/{{ page.inputPath }}">Edit this page on GitHub</a>
+
+</footer>
+<script>
+    {% set siteJS %}
+        {% include 'scripts/force-display-state.js' %}
+        {% include 'scripts/in-page-nav.js' %}
+    {% endset %}
+    {{ siteJS  | jsmin | safe}}
+</script>

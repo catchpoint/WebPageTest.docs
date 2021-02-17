@@ -1,0 +1,123 @@
+<html><head></head><body><h1 id="ec2-test-agents">EC2 Test Agents</h1>
+<p>We have prepared public AMI's for EC2 that can be used as WebPagetest testers that are configured dynamically through the instance user data. The images have all of the software needed on a test system installed and configured (including AVISynth for generating videos and dummynet for doing the traffic shaping).</p>
+<p><strong>c4.large</strong> or faster instances are recommended (faster may not show any benefit).  The m3.medium instances seem to be getting slower (or browsers are getting more bloated).</p>
+<h1 id="configuration">Configuration</h1>
+<p>The configuration of the test agents is done through user data strings when instances are started.</p>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li><strong>wpt_server</strong> - the web server where WebPagetest is running</li>
+<li><strong>wpt_url</strong> - (optional in place of wpt_server) Base URL to the work directory for fetching.  i.e. <a href="https://www.webpagetest.org/work/">https://www.webpagetest.org/work/</a></li>
+<li><strong>wpt_loc</strong> - The location ID (if not specified it will fall back to wpt_location or be built from the region - ec2-us-east for example)</li>
+<li><strong>wpt_key</strong> - secret key for the specified location</li>
+<li><strong>wpt_timeout</strong> - default timeout setting for each test in seconds (overridden by server settings on a per-test basis)</li>
+<li><strong>wpt_username</strong> - username for basic authentication with WPT server. Ignored if wpt_password is not specified.</li>
+<li><strong>wpt_password</strong> - password for basic authentication with WPT server. Ignored if wpt_username is not specified.</li>
+<li><strong>wpt_validcertificate</strong> - Ignored unless the scheme of the wpt_server is 'https' If the value is '0', the hostname and expiry of the certificate are not checked. If the value is '1', the CN of the WPT server SSL certificate must match the hostname specified in the wpt_server parameter, and the certificate must be valid. (defaults to '0')</li>
+</ul>
+<h2 id="example-user-data-string">Example User Data string</h2>
+<pre><code>wpt_server=www.webpagetest.org wpt_loc=Test wpt_key=xxxxx
+</code></pre>
+<p><img src="images/ec2config.png" alt="EC2 user data"></p>
+<h2 id="sample-locations.ini">Sample locations.ini</h2>
+<p>A <a href="https://github.com/WPO-Foundation/webpagetest/blob/master/www/settings/ec2_locations.ini">sample ec2_locations.ini</a> for the server is available that is configured with all of the available EC2 regions.</p>
+<h1 id="ami-images">AMI Images</h1>
+<p>The instances will automatically install the latest supported versions of Chrome and Firefox when they start up (and will automatically update while they are running).</p>
+<p>The Linux images include Chrome, Chrome Beta, Chrome Dev, Firefox Stable, Firefox Nightly, Firefox ESR and Brave.</p>
+<p>The Windows images include IE 11, Chrome and Firefox (current stable releases).</p>
+<h2 id="north-america">North America</h2>
+<h3 id="us-east-1-(virginia)">us-east-1 (Virginia)</h3>
+<ul>
+<li>Linux - ami-0ff1ec702aef8a505</li>
+<li>Windows - ami-0137821046846369e</li>
+</ul>
+<h3 id="us-east-2-(ohio)">us-east-2 (Ohio)</h3>
+<ul>
+<li>Linux - ami-032fef5d23ea0e939</li>
+<li>Windows - ami-0a98bb237df9af133</li>
+</ul>
+<h3 id="us-west-1-(california)">us-west-1 (California)</h3>
+<ul>
+<li>Linux - ami-0b9de5336b84a4c4b</li>
+<li>Windows - ami-048a5e62197a602db</li>
+</ul>
+<h3 id="us-west-2-(oregon)">us-west-2 (Oregon)</h3>
+<ul>
+<li>Linux - ami-002b2269eefa6111f</li>
+<li>Windows - ami-0897d1ae40fa1a1d3</li>
+</ul>
+<h3 id="ca-central-1-(canada-central)">ca-central-1 (Canada Central)</h3>
+<ul>
+<li>Linux - ami-057a97e61c7780543</li>
+<li>Windows - ami-0135a2cddc6342cff</li>
+</ul>
+<h2 id="south-america">South America</h2>
+<h3 id="sa-east-(sao-paulo)">sa-east (Sao Paulo)</h3>
+<ul>
+<li>Linux - ami-011669bc22e16e605</li>
+<li>Windows - ami-02999bb04bc882183</li>
+</ul>
+<h2 id="europe">Europe</h2>
+<h3 id="eu-west-1-(ireland)">eu-west-1 (Ireland)</h3>
+<ul>
+<li>Linux - ami-0e2565bb8c7b90f43</li>
+<li>Windows - ami-03009a026570febbb</li>
+</ul>
+<h3 id="eu-west-2-(london)">eu-west-2 (London)</h3>
+<ul>
+<li>Linux - ami-06badbc5839910762</li>
+<li>Windows - ami-0bfd048263183c4ae</li>
+</ul>
+<h3 id="eu-west-3-(paris)">eu-west-3 (Paris)</h3>
+<ul>
+<li>Linux - ami-036a59c9f80c74a9d</li>
+<li>Windows - ami-01dfded38684ffcd2</li>
+</ul>
+<h3 id="eu-central-1-(frankfurt)">eu-central-1 (Frankfurt)</h3>
+<ul>
+<li>Linux - ami-01ae3bb0255c7ac83</li>
+<li>Windows - ami-0f997690f364fc126</li>
+</ul>
+<h3 id="eu-north-1-(stockholm)">eu-north-1 (Stockholm)</h3>
+<ul>
+<li>Linux - ami-0df268efe3d2883e9</li>
+<li>Windows - ami-09c6529cb8cbc072e</li>
+</ul>
+<h2 id="middle-east">Middle East</h2>
+<h3 id="me-south-1-(bahrain)">me-south-1 (Bahrain)</h3>
+<ul>
+<li>Linux - ami-06ccd9a3dd5ae3ded</li>
+<li>Windows - ami-099c65b608dce0ba3</li>
+</ul>
+<h2 id="asia">Asia</h2>
+<h3 id="ap-south-1-(mumbai)">ap-south-1 (Mumbai)</h3>
+<ul>
+<li>Linux - ami-0307d8587d2ce3b95</li>
+<li>Windows - ami-0a33c03a5877c94ca</li>
+</ul>
+<h3 id="ap-east-1-(hong-kong)">ap-east-1 (Hong Kong)</h3>
+<ul>
+<li>Linux - ami-024bb910823ce5546</li>
+<li>Windows - ami-05a28524d0486371e</li>
+</ul>
+<h3 id="ap-northeast-1-(tokyo)">ap-northeast-1 (Tokyo)</h3>
+<ul>
+<li>Linux - ami-0ff59980c037b43bc</li>
+<li>Windows - ami-07a931524bd2cde14</li>
+</ul>
+<h3 id="ap-northeast-2-(seoul)">ap-northeast-2 (Seoul)</h3>
+<ul>
+<li>Linux - ami-06ba06a34b6767345</li>
+<li>Windows - ami-06ab5d0ec63b30b00</li>
+</ul>
+<h3 id="ap-southeast-1-(singapore)">ap-southeast-1 (Singapore)</h3>
+<ul>
+<li>Linux - ami-0fdcd32c618f3a205</li>
+<li>Windows - ami-095c29723d8dee5f2</li>
+</ul>
+<h2 id="oceania">Oceania</h2>
+<h3 id="ap-southeast-2-(sydney)">ap-southeast-2 (Sydney)</h3>
+<ul>
+<li>Linux - ami-0f7bdddeb5b01b1a8</li>
+<li>Windows - ami-027cdaac89ade2d51</li>
+</ul>
+</body></html>
