@@ -1,3 +1,9 @@
+---
+title: 'Request-Level Metrics'
+eleventyNavigation:
+    parent: Metrics 
+    key: Request-Level Metrics
+---
 # Request-level metrics
 Not currently exposed in the JSON but captured by the agent is the timestamp and duration of all JS execution (eval, function calls, etc) for each Javascript request.
 

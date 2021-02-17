@@ -1,3 +1,9 @@
+---
+title: 'Speed Index'
+eleventyNavigation:
+    parent: Metrics 
+    key: Speed Index
+---
 # Speed Index
 The Speed Index is the average time at which visible parts of the page are displayed.  It is expressed in milliseconds and dependent on size of the view port.
 

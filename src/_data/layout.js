@@ -1,0 +1,1 @@
+module.exports = "layouts/docs-page.njk"

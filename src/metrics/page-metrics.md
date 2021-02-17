@@ -1,3 +1,9 @@
+---
+title: 'Page-Level Metrics'
+eleventyNavigation:
+    parent: Metrics 
+    key: Page-Level Metrics
+---
 # Page-level Metrics
 
 These are the metrics and measurements captured at a page-level and exposed in the JSON data.

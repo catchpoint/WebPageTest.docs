@@ -1,3 +1,9 @@
+---
+title: 'Mobile Agent Configuration'
+eleventyNavigation:
+    parent: Private Instances 
+    key: Mobile Device Agents
+---
 # Example Mobile Agent Configuration (physical devices)
 (Pictures coming soon)
 

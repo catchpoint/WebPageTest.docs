@@ -1,3 +1,9 @@
+---
+title: 'EC2 Test Agents'
+eleventyNavigation:
+    parent: Private Instances 
+    key: EC2 Agents
+---
 # EC2 Test Agents
 
 We have prepared public AMI's for EC2 that can be used as WebPagetest testers that are configured dynamically through the instance user data. The images have all of the software needed on a test system installed and configured (including AVISynth for generating videos and dummynet for doing the traffic shaping).

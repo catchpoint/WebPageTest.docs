@@ -1,3 +1,9 @@
+---
+title: 'Metrics'
+eleventyNavigation:
+  key: Metrics
+  order: 1
+---
 # Metrics
 ## Page-level Metrics
 These are the top-level measurements captured and displayed for the overall page.

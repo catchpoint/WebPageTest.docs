@@ -1,3 +1,9 @@
+---
+title: 'Private Instances'
+eleventyNavigation:
+  key: Private Instances
+  order: 3
+---
 # Private Instances
 WebPagetest is available as a software package for installation and running of private instances. 
 

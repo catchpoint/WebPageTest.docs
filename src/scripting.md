@@ -1,51 +1,10 @@
-- [Scripting](#scripting)
-  - [Command Reference](#command-reference)
-    - [Navigation/DOM Interaction](#navigationdom-interaction)
-      - [navigate](#navigate)
-      - [click](#click)
-      - [clickAndWait](#clickandwait)
-      - [selectValue](#selectvalue)
-      - [sendClick / sendClickAndWait](#sendclick--sendclickandwait)
-      - [sendKeyDown / sendKeyUp / sendKeyPress (AndWait)](#sendkeydown--sendkeyup--sendkeypress-andwait)
-      - [setInnerHTML](#setinnerhtml)
-      - [setInnerText](#setinnertext)
-      - [setValue](#setvalue)
-      - [submitForm](#submitform)
-      - [exec](#exec)
-      - [execAndWait](#execandwait)
-    - [End Conditions](#end-conditions)
-      - [setABM](#setabm)
-      - [setActivityTimeout](#setactivitytimeout)
-      - [setTimeout](#settimeout)
-    - [Request Manipulation](#request-manipulation)
-      - [block](#block)
-      - [blockDomains](#blockdomains)
-      - [blockDomainsExcept](#blockdomainsexcept)
-      - [setCookie](#setcookie)
-      - [setDns](#setdns)
-      - [setDNSName](#setdnsname)
-      - [setUserAgent](#setuseragent)
-      - [overrideHost](#overridehost)
-      - [overrideHostUrl](#overridehosturl)
-      - [addHeader](#addheader)
-      - [setHeader](#setheader)
-      - [resetHeaders](#resetheaders)
-    - [Misc](#misc)
-      - [combineSteps](#combinesteps)
-      - [if/else/endif](#ifelseendif)
-      - [expireCache](#expirecache)
-      - [firefoxPref](#firefoxpref)
-      - [setEventName](#seteventname)
-      - [setLocation](#setlocation)
-      - [setViewportSize](#setviewportsize)
-      - [sleep](#sleep)
-  - [Sample scripts](#sample-scripts)
-    - [Mail test](#mail-test)
-    - [MyAOL Authenticated profile](#myaol-authenticated-profile)
-      - [DNS Override](#dns-override)
-      - [iPhone Spoofing](#iphone-spoofing)
+---
+eleventyNavigation:
+  key: Scripting
+  order: 2
+---
 # Scripting
-Pagetest has a scripting capability that lets you automate a multi-step test (for example, logging into a site or sending an e-mail message). The scripts are contained in files where a single file constitutes a browser session (the browser will be closed after the script is complete). The files are plain text files and can be edited by any text editor.
+WebPageTest has a scripting capability that lets you automate a multi-step test (for example, logging into a site or sending an e-mail message). The scripts are contained in files where a single file constitutes a browser session (the browser will be closed after the script is complete). The files are plain text files and can be edited by any text editor.
 
 You can test a script in the desktop version by selecting "Run Script" from the File menu.
 

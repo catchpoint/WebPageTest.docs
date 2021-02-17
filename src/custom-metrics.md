@@ -1,3 +1,8 @@
+---
+eleventyNavigation:
+  key: Custom Metrics
+  order: 1
+---
 # Custom Metrics
 
 WebPagetest can execute arbitrary javascript at the end of a test to collect custom metrics.  These can be defined statically in the server configuration or be specified at runtime on a per-test basis.

@@ -1,3 +1,9 @@
+---
+title: 'Private Instance Administration'
+eleventyNavigation:
+    parent: Private Instances 
+    key: Administration
+---
 # Administration of Private Instances
 
 ## Useful Pages for Debugging

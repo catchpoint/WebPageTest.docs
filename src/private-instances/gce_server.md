@@ -1,3 +1,9 @@
+---
+title: 'Google Cloud WebPageTest Server'
+eleventyNavigation:
+    parent: Private Instances 
+    key: Google Cloud Server
+---
 # Google WebPageTest Server
 
 ## Create Cloud Storage Bucket (optional)

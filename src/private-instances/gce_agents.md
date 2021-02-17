@@ -1,3 +1,9 @@
+---
+title: 'Google Clolud Test Agents'
+eleventyNavigation:
+    parent: Private Instances 
+    key: Google Cloud Agents
+---
 # Google Cloud Test Agents
 There is a public image available for creating test agent instances. The agents automatically install all system and browser updates before starting testing so there is no need to manually update the image.
 

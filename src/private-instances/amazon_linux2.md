@@ -1,4 +1,10 @@
-## EC2 server
+---
+title: 'EC2 WebPageTest Server'
+eleventyNavigation:
+    parent: Private Instances 
+    key: EC2 Server
+---
+# EC2 server
 
 Create an autoscaling group. Attach a launch config with userdata script  (below setup can be included in the userdata bash commands) and an amazon linux2 ami (t2.micro). Create a loadbalancer and target group for the server (we can pass the load balancer url to the agents and when we restack, we don’t have to depend on the static ip). For security group, make sure you allow right ingress rules so that the test agents can connect to the loadbalancer. This way all the agents connect to the server using the loadbalancer url.
 
