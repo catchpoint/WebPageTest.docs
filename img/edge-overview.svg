@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="944" height="704" viewBox="0, 0, 944, 704">
+  <g id="Background">
+    <rect x="0" y="0" width="944" height="704" fill="#FFFFFF"/>
+  </g>
+  <g id="Layer_1">
+    <path d="M150,87 L460,87 L460,361 L150,361 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+    <path d="M274,429 L659,429 L659,640.5 L274,640.5 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+    <g>
+      <path d="M274,429 L659,429 L659,485.5 L274,485.5 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 466.5, 457.25)">
+        <tspan x="-141.867" y="4.32" font-family="Helvetica" font-size="16">Local http server - http://127.0.0.1:8888/</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M53.5,422 L212,422 L212,502 L53.5,502 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 132.75, 462)">
+        <tspan x="-59.129" y="4.32" font-family="Helvetica" font-size="16">webdriver server</tspan>
+      </text>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 305, 97.5)">
+      <tspan x="-53.355" y="5.5" font-family="Helvetica" font-size="16" fill="#000000">Microsoft Edge</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 466.5, 623)">
+      <tspan x="-32.469" y="5.5" font-family="Helvetica" font-size="16" fill="#000000">wptagent</tspan>
+    </text>
+    <g>
+      <path d="M680.737,218.655 L874.743,218.655 L874.743,273.076 L680.737,273.076 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <text transform="matrix(1, 0, 0, 1, 777.74, 245.866)">
+        <tspan x="-27.562" y="2" font-family="Helvetica" font-size="16" fill="#000000">wpt-etw</tspan>
+      </text>
+    </g>
+    <path d="M822.153,469.224 C804.14,469.224 789.537,461.57 789.537,452.128 C789.537,442.687 804.14,435.033 822.153,435.033 C840.167,435.033 854.77,442.687 854.77,452.128 C854.77,461.57 840.167,469.224 822.153,469.224 z M789.537,511.512 L789.537,452.128 M854.77,511.512 L854.77,452.128 M789.537,511.512 C789.537,513.5 821.479,541.204 854.77,511.512" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+    <g>
+      <path d="M581.883,56 L714.383,56 L714.383,108 L581.883,108 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <text transform="matrix(1, 0, 0, 1, 648.133, 82)">
+        <tspan x="-52.449" y="-4.5" font-family="Helvetica" font-size="16" fill="#000000">Windows ETW </tspan>
+        <tspan x="-38.234" y="15.5" font-family="Helvetica" font-size="16" fill="#000000">subsystem</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M460,143.461 L550.671,98.394" fill-opacity="0" stroke="#000000" stroke-width="8"/>
+      <path d="M553.876,104.842 L567.864,89.849 L547.466,91.947 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="8" stroke-opacity="1"/>
+    </g>
+    <g>
+      <path d="M700.911,114.719 L748.878,190.696" fill-opacity="0" stroke="#000000" stroke-width="8"/>
+      <path d="M742.79,194.54 L759.128,206.931 L754.966,186.852 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="8" stroke-opacity="1"/>
+    </g>
+    <g>
+      <g>
+        <path d="M715.586,273.076 L633.243,427.096" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+        <path d="M630.598,425.681 L629.471,434.151 L635.889,428.51 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+      </g>
+      <text fill="#000000" transform="matrix(0.471, -0.882, 0.882, 0.471, 688.167, 362.541)">
+        <tspan x="-55.594" y="4.32" font-family="Helvetica" font-size="16">Loading Activity</tspan>
+      </text>
+    </g>
+    <g>
+      <g>
+        <path d="M785.038,278.925 L807.398,423.372" fill-opacity="0" stroke="#000000" stroke-width="2"/>
+        <path d="M803.84,423.922 L808.867,432.859 L810.956,422.821 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+      </g>
+      <text fill="#000000" transform="matrix(0.153, 0.988, -0.988, 0.153, 814.909, 354.225)">
+        <tspan x="-62.707" y="4.32" font-family="Helvetica" font-size="16">Response Bodies</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M172.511,273.076 L437.489,273.076 L437.489,299.619 L172.511,299.619 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 305, 286.348)">
+        <tspan x="-72.926" y="4.32" font-family="Helvetica" font-size="16">Config content script</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M172.511,143.461 L432.256,143.461 L432.256,189 L172.511,189 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 302.383, 166.23)">
+        <tspan x="-99.184" y="4.32" font-family="Helvetica" font-size="16">Extension background page</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M172.511,318 L437.489,318 L437.489,345.39 L172.511,345.39 z" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <text fill="#000000" transform="matrix(1, 0, -0, 1, 305, 331.695)">
+        <tspan x="-90.129" y="4.32" font-family="Helvetica" font-size="16">Long Tasks content script</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M305,576.5 L185.316,490.742" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <path d="M187.063,488.303 L178.813,486.082 L183.568,493.181 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+    </g>
+    <g>
+      <path d="M172.511,429 L199.006,353.877" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <path d="M201.836,354.875 L201.667,346.333 L196.177,352.879 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+    </g>
+    <g>
+      <path d="M97.5,432 L174.558,245.816" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <path d="M177.33,246.963 L177.618,238.424 L171.786,244.669 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+    </g>
+    <g>
+      <path d="M212,273.076 L191.068,250.147" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <path d="M193.283,248.124 L185.674,244.239 L188.852,252.169 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+    </g>
+    <g>
+      <path d="M347,273.076 L356.385,197.931" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <path d="M359.362,198.302 L357.376,189.992 L353.408,197.559 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+    </g>
+    <g>
+      <path d="M449.5,352 L450.404,437.001" fill-opacity="0" stroke="#000000" stroke-width="1"/>
+      <path d="M447.404,437.032 L450.489,445 L453.404,436.969 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="1" stroke-opacity="1"/>
+    </g>
+  </g>
+</svg>
