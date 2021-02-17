@@ -52,7 +52,7 @@ module.exports = function(config) {
 	config.setLibrary("md", markdownLib);
 
 	return {
-		dir: { input: './', output: 'dist', includes: '_includes' },
+		dir: { input: './src', output: 'dist', includes: '_includes', data: '_data' },
 		passthroughFileCopy: true
 	};
 };

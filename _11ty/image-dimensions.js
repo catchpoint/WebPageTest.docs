@@ -14,7 +14,7 @@ const processImages = async (img, outputPath) => {
         //Local image so resolve our relative path
         src =
             "/" +
-            path.relative("./", path.resolve(path.dirname(outputPath), src));
+            path.relative("./src/", path.resolve(path.dirname(outputPath), src));
         if (path.sep == "\\") {
             src = src.replace(/\\/g, "/");
         }
@@ -23,7 +23,7 @@ const processImages = async (img, outputPath) => {
     let dimensions;
     try {
         // Check for image size
-        dimensions = await sizeOf("./" + src);
+        dimensions = await sizeOf("./src/" + src);
     } catch (e) {
         console.warn(e.message, src);
         return;
