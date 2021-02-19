@@ -17,9 +17,8 @@ The hardware described is the hardware in use by the public instance but exact p
 * All recent iOS devices should work as test agents as long as they are running iOS 9.3 or later.
 
 ## Support Hardware
-* [Raspberry Pi 3 Model B](https://www.amazon.com/gp/product/B01CD5VC92/ref=oh_aui_search_detailpage?ie=UTF8&psc=1) with [heatsink cooling kit](https://www.amazon.com/gp/product/B01GE7Q060/ref=oh_aui_search_detailpage?ie=UTF8&psc=1) - One per phone
-* [Samsung Evo Select 32GB micro SD Card](https://www.amazon.com/gp/product/B06XWN9Q99/ref=oh_aui_search_detailpage?ie=UTF8&psc=1) - One per Raspberry Pi
-* [Micro USB PoE Splitter](https://www.amazon.com/gp/product/B01MDLUSE7/ref=oh_aui_detailpage_o00_s01?ie=UTF8&psc=1) - One per Raspberry Pi
+* [Raspberry Pi 4 model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) with [POE Hat](https://www.raspberrypi.org/products/poe-hat/) - One per phone
+* [Sandisk A1+ Micro SD Card - 32GB+](https://shop.westerndigital.com/c/memory-cards.SD.microsd_cards) - One per Raspberry Pi
 * [8-port](https://www.amazon.com/gp/product/B00LW9A328/ref=oh_aui_search_detailpage?ie=UTF8&psc=1) or [48-port](https://www.amazon.com/NETGEAR-ProSAFE-GS752TP-Gigabit-GS752TP-100NAS/dp/B00BGTPQO4/) managed PoE switch
 * [RJ-45 SFP Transceiver](https://www.amazon.com/gp/product/B01FRQJ1Y2/ref=oh_aui_search_detailpage?ie=UTF8&psc=1) (optional) - One per switch. Allows use of SFP port on switch for uplink connection saving PoE ports for test devices
 * [Slim Ethernet patch cable](https://www.amazon.com/gp/product/B01BGV2ZC2/ref=oh_aui_search_detailpage?ie=UTF8&psc=1) - One per Raspberry Pi, length as appropriate to reach from switch to test device
