@@ -167,7 +167,7 @@ pre {
 }
 
 a{
-    color: rgb(47,128,237);
+    color: #0243a9;
     text-decoration:none;
 }
 a:hover{
@@ -405,6 +405,42 @@ nav li ul{
     .primaryNav a{
         border-bottom: 0;
     }
+}
+.has-js .primaryNav .is-closed ul{
+    display: none;
+}
+.has-js .primaryNav .is-active ul, .has-js .primaryNav .is-open ul{
+    display: block;
+}
+.has-js .is-open a,
+.has-js .is-closed a{
+    position: relative;
+}
+.has-js .is-closed > a::after {
+    content: "";
+    border-style: solid;
+    border-color: inherit;
+    border-width: 0 2px 2px 0;
+    height: auto;
+    width: auto;
+    position: absolute;
+    padding: 3px;
+    top: .9em;
+    margin-left: 6px;
+    transform: rotate(45deg);
+}
+.has-js .is-open > a::after{
+    content: "";
+    border-style: solid;
+    border-color: inherit;
+    border-width: 0 2px 2px 0;
+    height: auto;
+    width: auto;
+    position: absolute;
+    padding: 3px;
+    top: 1em;
+    margin-left: 3px;
+    transform: rotate(-45deg);
 }
 
 /* Footer */

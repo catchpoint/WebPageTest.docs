@@ -17,5 +17,8 @@
         {% endset %}
         {{ siteCSS | cssmin | safe}}
     </style>
+    <script type="text/javascript">
+        document.documentElement.className += 'has-js';
+    </script>
     <meta name="robots" content="noimageindex, nofollow, nosnippet">
 </head>
