@@ -1,0 +1,8 @@
+[build]
+    functions = "functions"
+
+[[redirects]]
+    from = "/.netlify/functions/get-webpagetest-url"
+    to = "/latest-webpagetest-run"
+    status = 301
+    
