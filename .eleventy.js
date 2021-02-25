@@ -5,10 +5,7 @@ const pluginTOC = require('eleventy-plugin-nesting-toc');
 const imageOptimizations = require('./_11ty/image-dimensions.js');
 
 module.exports = function(config) {
-	config.addPassthroughCopy('img');
-	config.addPassthroughCopy('fonts');
-	config.addPassthroughCopy('sw.js');
-	config.addPassthroughCopy('manifest.json');
+	config.addPassthroughCopy('src/img');
 
 	config.addPlugin(pluginTOC, {tags: ['h2']});
 	config.addPlugin(syntaxHighlight);
