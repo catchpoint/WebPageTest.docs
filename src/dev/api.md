@@ -1,3 +1,6 @@
+---
+title: 'WebPageTest API Documentation'
+---
 # Submitting test requests
 You can submit tests to pagetest either by doing a POST or a GET to http://www.webpagetest.org/runtest.php
 
