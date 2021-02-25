@@ -2,7 +2,6 @@
     functions = "functions"
 
 [[redirects]]
-    from = "/.netlify/functions/get-webpagetest-url"
-    to = "/latest-webpagetest-run"
-    status = 301
-    
+    from = "/latest-webpagetest-run"
+    to = "/.netlify/functions/get-webpagetest-url"
+    status = 200
