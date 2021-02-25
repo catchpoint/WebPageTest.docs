@@ -1,0 +1,13 @@
+<nav class="primaryNav">
+
+<details>
+  <summary>Menu</summary>
+    {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({
+      activeListItemClass: "is-active",
+      activeAnchorClass: "is-active-link",
+      listItemHasChildrenClass: "is-closed",
+      activeKey: eleventyNavigation.key
+    }) | safe }}
+</details>
+
+</nav>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#092141">
+    <title>{% if title %} {{title}} {% else %} Welcome to WebPageTest {% endif %} | WebPageTest Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/img/favicon-96x96.png" sizes="96x96" type="image/png" />
+    <link rel="icon" href="/img/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/img/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="description" content="{{site.description}}" />
+    <style type="text/css">
+        {% set siteCSS %}
+            {% include 'styles.css' %}
+        {% endset %}
+        {{ siteCSS | cssmin | safe}}
+    </style>
+    <script type="text/javascript">
+        document.documentElement.className += 'has-js';
+    </script>
+    <meta name="robots" content="noimageindex, nofollow, nosnippet">
+</head>

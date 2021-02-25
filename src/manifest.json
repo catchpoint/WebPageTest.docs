@@ -1,0 +1,21 @@
+{
+	"short_name": "WPT Docs",
+	"name": "WebPageTest Documentation",
+	"icons": [
+		{
+			"src": "/img/icons-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/img/icons-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#092141",
+	"display": "minimal-ui",
+	"theme_color": "#092141",
+	"description": "Documentation for WebPageTest"
+}
