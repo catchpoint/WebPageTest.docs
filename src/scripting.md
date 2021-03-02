@@ -4,7 +4,7 @@ eleventyNavigation:
   order: 2
 ---
 # Scripting
-WebPageTest has a scripting capability that lets you automate a multi-step test (for example, logging into a site or sending an e-mail message).
+WebPageTest has a scripting capability that lets you automate a multi-step test (for example, logging into a site or sending an e-mail message). 
 
 Each line of the script file contains a command and any necessary parameters and is tab-delimited (i.e. the command is followed by a tab then the first parameter then a tab and the second parameter etc until the end of the line). The number of parameters and what they control is dependent on the command.
 
