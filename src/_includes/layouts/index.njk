@@ -1,0 +1,35 @@
+{% include 'siteHead.html' %}
+<body class="home">
+    {% include 'head.html' %}
+    {% include 'doc-nav.html' %}
+    <div class="hero-callout">
+        <div>
+        <h1 id="welcome-to-webpagetest">Welcome to WebPageTest</h1>
+        <p><a href="https://www.webpagetest.org/">WebPageTest</a> is a web performance tool providing deep diagnostic information about how a page performs under a variety of conditions.</p>
+        <p>Each test can be run from different locations around the world, on real browsers, over any number of customizable network conditions.</p>
+        <p><a href="/getting-started" class="btn">Get started →</a></p>
+        </div>
+        <img class="hero" src="/img/wpt-teaser.png" alt="">
+
+    </div>
+    <main class="wide">
+        <div class="g-two-up">
+            <div>
+                <img class="hero" src="/img/scripting-teaser.png" alt="">
+                <h2>Advanced Testing with Scripting</h2>
+                <p>WebPageTest's scripting language enables everything from multi-step testing, request blocking and manipulation, custom headers and more.</p>
+                <p><a href="/scripting" class="btn">Learn about WebPageTest scripts →</a></p>
+            </div>
+            <div>
+                <img class="hero" src="/img/custom-metrics-teaser.png" alt="">
+                <h2>Capturing Custom Metrics</h2>
+                <p>WebPagetest can execute arbitrary JavaScript at the end of a test, enabling a wide variety of custom defined metrics.</p>
+                <p><a href="/custom-metrics" class="btn">Learn about Custom Metrics →</a></p>
+                </div>
+        </div>
+
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,17 @@
+<footer>
+    &copy; 2021
+    <a href="https://github.com/WPO-Foundation/webpagetest-docs/blob/main/{{ page.inputPath }}">Edit this page on GitHub</a>
+
+    <p>
+        Keep us honest! Here's the <a href="/latest-webpagetest-run">WebPageTest results</a> for the most recent deploy of this site.
+    </p>
+
+</footer>
+<script>
+    {% set siteJS %}
+        {% include 'scripts/force-display-state.js' %}
+        {% include 'scripts/in-page-nav.js' %}
+        {% include 'scripts/nav-toggle.js' %}
+    {% endset %}
+    {{ siteJS  | jsmin | safe}}
+</script>

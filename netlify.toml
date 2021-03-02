@@ -1,0 +1,23 @@
+[build]
+    functions = "functions"
+
+[[redirects]]
+    from = "/latest-webpagetest-run"
+    to = "/.netlify/functions/get-webpagetest-url"
+    status = 200
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    cache-control = "max-age=900,must-revalidate"
+    x-frame-options = "SAMEORIGIN"
+    x-xss-protection = "1; mode=block"
+    x-content-type-options = "nosniff"
+[[headers]]
+  for = "/img/*"
+    [headers.values]
+    cache-control = "max-age=31536000"
+[[headers]]
+  for = "/manifest.json"
+    [headers.values]
+    cache-control = "max-age=31536000"

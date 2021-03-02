@@ -1,0 +1,15 @@
+{% include 'siteHead.html' %}
+<body>
+    {% include 'head.html' %}
+    {% include 'doc-nav.html' %}
+    <main>
+        {{ content | safe }}
+
+    
+    </main>
+    <aside class="pageNav">
+            {{ content | toc | safe }}
+    </aside>
+    {% include 'footer.html' %}
+</body>
+</html>
