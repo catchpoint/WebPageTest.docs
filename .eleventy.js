@@ -34,18 +34,29 @@ module.exports = function(config) {
 	const markdownItAnchor = require('markdown-it-anchor');
 	const markdownItAttrs = require('markdown-it-attrs');
 	const markdownItDefList = require("markdown-it-deflist");
+	const markdownItContainer = require("markdown-it-container");
 	let options = {
 	  html: true,
 	  linkify: true,
 	  breaks: true
 	};
-	let markdownLib = markdownIt(options).use(
-		markdownItAnchor, 
-		markdownItAttrs, {
+	let markdownLib = markdownIt(options)
+		.use(markdownItAnchor)
+		.use(markdownItAttrs, {
 			leftDelimiter: '{:',
 			rightDelimiter: '}',
-		}
-	);
+		})
+		.use(markdownItContainer,'', {
+			validate: () => true,
+			render: (tokens, idx) => {
+				if (tokens[idx].nesting === 1) {
+					const classList = tokens[idx].info.trim()
+					return `<div ${classList && `class="${classList}"`}>`;
+				} else {
+					return `</div>`;
+				}
+			}
+		});
 	
 	config.setLibrary("md", markdownLib);
 

@@ -1,31 +1,163 @@
 ---
-title: 'WebPageTest API Documentation'
+title: 'WebPageTest API Reference'
+eleventyNavigation:
+  key: API
+  order: 1
 ---
-# Submitting test requests
-You can submit tests to pagetest either by doing a POST or a GET to http://www.webpagetest.org/runtest.php
+# WebPageTest REST API
+The WebPageTest [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API provides a way for you to programatically interact with WebPageTest and all of its functionality, enabling you to integrate WebPageTest data into your existing processes and workflows in the way that best suits your needs.
 
-In response you will either get redirected to the results page or you will get an xml or json response (depending on if xml or json was requested).
+::: note
+The [official Node.js WebPageTest API wrapper](https://github.com/marcelduran/webpagetest-api)—built by Marcel Duran—provides a convenient NodeJS interface for the API and also exposes handy a <abbr title="Command Line Interface">CLI</abbr>.
+:::
 
-## Parameters
-| Parameter | Required | Description | Default |
-| --- |  --- |  --- |  --- |
-| url | required | URL to be tested |  |
-| label |  optional |  Label for the test |   |
-| location | optional | Location to test from | Dulles 5Mbps Cable |
-| runs | optional | Number of test runs (1-10 on the public instance) | 1 |
-| fvonly | optional | Set to 1 to skip the Repeat View test | 0 |
-| domelement | optional | DOM Element to record for sub-measurement |  |
-| private | optional | Set to 0 to make the test visible in the history log (defaults to private) | 1 |
-| connections | optional | Override the number of concurrent connections IE uses (0 to not override) | 0 |
-| web10 | optional | Set to 1 to force the test to stop at Document Complete (onLoad) | 0 |
-| script | optional | Scripted test to execute |  |
-| block | optional | space-delimited list of urls to block (substring match) |  |
-| login | optional | User name to use for authenticated tests (http authentication) |  |
-| password | optional | Password to use for authenticated tests (http authentication) |  |
-| authType | optional | Type of authentication to use: 0 = Basic Auth, 1 = SNS | 0 |
-| video | optional | Set to 1 to capture video (video is required for calculating Speed Index) | 0 |
-| f | optional | Format. Set to "xml" to request an XML response instead of a redirect or "json" for JSON-encoded response |  |
-| r | optional | When using the xml interface, will echo back in the response |  |
+## Authentication
+The WebPageTest API uses API keys to authenticate all tests submitted to the public WebPageTest testing agents.
+
+::: note
+API keys may or may not be required for requests made to any [private instances](/private-instances/) you maintain on your own. Check with the administrator of your private instance to verify.
+:::
+
+Your API keys are directly tied to your account, so be sure to keep them secure. Avoid sharing them in any public area, such as GitHub or client-side code.
+
+You can pass your API key along with tests requests by using the `k` parameter.
+
+```text
+https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}
+```
+
+## Running a Test
+To submit a test to the WebPageTest agents, you submit either a POST or GET request to the https://www.webpagetest.org/runtest.php, along with your API key, the URL you want to test and any optional parameters to configure your how the test is run and what data it will return when completed.
+
+By default, after a successful request to the /runtest.php endpoint, you will be redirected to the results page.
+
+You can optionally set the response format using the `f` parameter to return either an XML response (`f=xml`) or JSON response (`f=json`).
+
+```text
+//this will result in a redirect
+https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}
+
+//this will return an XML response
+https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}&f=xml
+
+//this will return a JSON response
+https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}&f=json
+```
+
+Here's an example response when the format parameter is provided to the endpoint:
+
+::: code-tabs
+```json
+{
+	"statusCode": 200,
+	"statusText": "Ok",
+	"data": {
+		"testId": "210226_DiFK_f46266890a46bb1bff7a59a20ddc339c",
+		"jsonUrl": "https://www.webpagetest.org/jsonResult.php?test=210226_DiFK_f46266890a46bb1bff7a59a20ddc339c",
+		"xmlUrl": "https://www.webpagetest.org/xmlResult/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/",
+		"userUrl": "https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/",
+		"summaryCSV": "https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/page_data.csv",
+		"detailCSV": "https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/requests.csv"
+	}
+}
+```
+
+```xml
+<response>
+	<statusCode>200</statusCode>
+	<statusText>Ok</statusText>
+	<data>
+		<testId>210226_DiFK_f46266890a46bb1bff7a59a20ddc339c</testId>
+		<xmlUrl>https://www.webpagetest.org/xmlResult/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/</xmlUrl>
+		<userUrl>https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/</userUrl>
+		<summaryCSV>https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/page_data.csv</summaryCSV>
+		<detailCSV>https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/requests.csv</detailCSV>
+		<jsonUrl>https://www.webpagetest.org/jsonResult.php?test=210226_DiFK_f46266890a46bb1bff7a59a20ddc339c</jsonUrl>
+	</data>
+</response>
+```
+:::
+
+The response object contains the following attributes:
+
+::: api-list
+- `statusCode` (int)  
+The HTTP response status code for the submission. A 200 code indicates a succesful submission. Any errors will result in a status code of 400.
+- `statusText` (string)
+Descriptive error text explaining the failure. In the case of a 200 status code, the `statusText` will be "Ok".
+- `requestId` (string)
+The request ID echoed back from the request parameter (`r`). If no request parameter was sent, the requestID will not be included in the response object.
+- `data` (object)
+An object containing information for the test run, including URLs and the test ID.
+:::
+
+The `data` object is comprised of the following attributes:
+
+::: api-list
+- `testId` (string)  
+The ID assigned to the test request and used in all of the associated URLs.
+- `xmlUrl` (string)
+The URL used to retrieve the test results in XML format.
+- `jsonURL` (string)
+The URL used to retrieve the test results in JSON format.
+- `userURL` (string)
+The URL used to direct users to a results page on WebPageTest (the same page you would be redirected to by default if the format parameter was not passed along when submitting the test).
+- `summaryCSV` (string)
+A URL to the summary results (page-level data and basic timings) in CSV format. *Will return a 404 if the test is not yet complete.*
+- `detailCSV` (string)
+A URL to the full detailed results (including request-level data and timings) in CSV format. *Will return a 404 if the test is not yet complete.*
+:::
+
+### Full List of Parameters
+::: api-list
+- `url` <small>required</small>
+The URL to be tested
+- `label` <small>optional</small>
+A label for the test.
+- `location` <small>optional</small>
+The location to test from. The location is comprised of the location of the testing agent, the browser to test on, and the connectivity in the following format: `location:browser.connectivity`  
+**Default:** Dulles:Chrome.Cable
+- `runs` <small>optional</small>
+The number of test runs (1-10 on the public instance).
+**Default:** 1
+- `fvonly` <small>optional</small>
+Set to 1 to skip the Repeat View test; set to 0 to run a test against both the first view and the repeat view for a given test. Each repeat view test counts as another test run against your API limit.
+**Default:** 0
+- `domelement` <small>optional</small>
+DOM element to record for sub-measurement.
+- `private` <small>optional</small>
+Set to 0 to make the test visible in the public history log. Set to 1 to make the test private.
+**Default:** 1
+- `web10` <small>optional</small>
+Set to 1 to force the test to stop at Document Complete (onLoad).
+**Default:** 0
+- `script` <small>optional</small>
+Scripted test to execute. See the [Scripting docs](/scripting/) for more details.
+- `block` <small>optional</small>
+A space-delimited list of urls to block (based on a substring match).
+- `login` <small>optional</small>
+User name to use for authenticated tests (HTTP authentication).
+- `password` <small>optional</small>
+Password to use for authenticated tests (HTTP authentication).
+- `authType` <small>optional</small>
+Type of HTTP authentication to use. Set to 0 for Basic Authentication; set to 1 for SNS.
+**Default:** 0
+- `video` <small>optional</small>
+Set to 1 to capture video. Video is required for calculating Speed Index as well as providing the filmstrip view.
+**Default:** 0
+- `f` <small>optional</small>
+The format to return. Set to "xml" to request an XML response; set to "json" to request a JSON-encoded response. If no format parameter is passed, the API call will result in a redirect.
+- `r` <small>optional</small>
+Request ID. When used with the "xml" or "json" format, will echo back in the response object.
+- `notify` <small>optional</small>
+Email-address to notify with the test results.
+- `pingback` <small>optional</small>
+URL to ping when the test is complete. The test ID will be passed as an "id" parameter.
+- `bwDown` <small>optional</small>
+Download bandwidth in Kbps (used when specifiying a custom connectivity profile).
+- 
+:::
+
 | notify | optional | e-mail address to notify with the test results |  |
 | pingback | optional | URL to ping when the test is complete (the test ID will be passed as an "id" parameter) |  |
 | bwDown | optional | Download bandwidth in Kbps (used when specifying a custom connectivity profile) |  |
@@ -101,32 +233,6 @@ Browser is only required in a Chrome/Firefox install where wptdriver is configur
 ### Available locations for API calls
 
 On the public instance with an API key that starts with "A.", only locations listed [here](https://www.webpagetest.org/getLocations.php?k=A&f=html) are available for API calls. Others will return `invalid location` when requested.
-
-## XML response
-
-The XML response follows the format of REST API's. You will get a HTTP 200 response to the request itself indicating that the request was parsed but the result of the submission itself will be in the XML. See the samples for a full example XML response.
-```xml
-<response>
-    <statusCode></statusCode>
-    <statusText></statusText>
-    <requestId></requestId>
-    <data>
-        <testId></testId>
-        <xmlUrl></xmlUrl>
-        <userUrl></userUrl>
-        <summaryCSV></summaryCSV>
-        <detailCSV></detailCSV>
-    </data>
-</response>
-```
-* **statusCode** - 200 indicates a successful submission. Anything else is an error (and will come back as 400 with descriptive text)
-* **statusText** - Descriptive error text explaining the failure
-* **requestId** - Request ID echoed from request (r parameter). Will not be present if not specified. Makes it easier to track asynchronous requests.
-* **testId** - ID assigned to the test request (and used in all of the urls)
-* **xmlUrl** - URL to use to get the results in XML format
-* **userUrl** - URL to use to direct the user to a results page (what you would normally get redirected to if not using the XML interface)
-* **summaryCSV** - URL to the summary results in CSV format (page-level data and timings). Will return a 404 if the test is not yet complete.
-* **detailCSV** - URL to the full detail results in CSV format (request-level data and timings). Will return a 404 if the test is not yet complete.
 
 ## Samples
 Test www.aol.com and redirect to the results page:
