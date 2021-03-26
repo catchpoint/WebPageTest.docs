@@ -1,5 +1,7 @@
 :root {
-    --wpt-navy: #092141;
+    --wpt-navy: #0d1e38;
+    --navy-light: #183157;
+    --light-blue: #2f80ed;
     --light-grey: #dddddd;
     --highlight: #F9D856;
     --blue-grey: rgb(52,64,84);
@@ -8,6 +10,9 @@
     --attention-border: rgb(255,229,100);
     --note-bg: #f1f8ff;
     --note-border: #0366d6;
+    --warning-bg: #ffe4e2;
+    --warning-border: #eb0f00;
+    --key-term: #074dad;
 }
 body{
     color: #222;
@@ -475,8 +480,16 @@ footer{
     margin-bottom: 1em;
     border-bottom: 1px solid var(--light-grey);
 }
+.api-list ul ul{
+    margin-top: 1.5em;
+}
+.api-list li li{
+    border-bottom: 0;
+    padding: 0 .5em;
+    margin-left: 1em;
+}
 /* callout boxes */
-.tip {
+.caution {
     background: var(--attention-bg);
     padding: 1px 1em;
     border: 1px solid var(--attention-border);
@@ -490,7 +503,60 @@ footer{
     border-radius: 4px;
     border-width: 0 0 0 5px;
 }
+.warning {
+    background: var(--warning-bg);
+    padding: 1px 1em;
+    border: 1px solid var(--warning-border);
+    border-radius: 4px;
+    border-width: 0 0 0 5px;
+}
+.key-term {
+    padding: 1px 1em;
+    border: 1px solid var(--key-term);
+    color: var(--key-term);
+    border-width: 2px 0;
+}
+.key-term p::before{
+    content: "Key Term to Know: ";
+    padding-top: 1em;
+    font-weight: bold;
+    display:inline;
+}
+/* tables */
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+table thead{
+    overflow: hidden;
+}
+table thead th:first-child{
+    border-top-left-radius: 4px;
+}
+table thead th:last-child{
+    border-top-right-radius: 4px;
+}
+table th{
+    background: var(--wpt-navy);
+    color: #fff;
+    font-weight: normal;
+    padding: .5em;
+}
+table tbody{
+    border: 1px solid var(--light-grey);
 
+}
+table td{
+    padding: .5em;
+    border: 1px solid var(--light-grey);
+}
+table tbody tr:nth-child(2n+2) td{
+    background: var(--lightest-grey);
+}
+table td code + small {
+    display: block;
+    margin-top: .5em;
+}
 /* code-tabs */
 .has-js .code-tabs pre{
     display: none;
@@ -499,7 +565,7 @@ footer{
     display: block;
 }
 .code-tabs-nav{
-    background: #001b31;
+    background: var(--wpt-navy);
     display: flex;
     margin-left: 0;
     padding-left: .5em;
@@ -534,7 +600,7 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
 code[class*="language-"],
 pre[class*="language-"] {
   color: #d6deeb;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: monospace,monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -576,107 +642,121 @@ code[class*="language-"] ::selection {
 }
 
 /* Code blocks */
-pre[class*="language-"] {
-  padding: 1em;
-  margin: 0.5em 0;
-  overflow: auto;
+
+code {
+    padding: .25rem
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  color: white;
-  background: #011627;
+pre {
+    overflow: auto;
+    width: 100%;
+    scrollbar-color: var(--light-blue) var(--navy-light)
 }
 
-:not(pre) > code[class*="language-"] {
-  padding: 0.1em;
-  border-radius: 0.3em;
-  white-space: normal;
+pre::after {
+    content: "";
+    flex: 0 0 1.25rem
 }
 
-.token.comment,
-.token.prolog,
-.token.cdata {
-  color: rgb(99, 119, 119);
-  font-style: italic;
+pre::-webkit-scrollbar {
+    height: 1rem
 }
 
-.token.punctuation {
-  color: rgb(199, 146, 234);
+pre::-webkit-scrollbar-track {
+    background: var(--navy-light)
 }
 
-.namespace {
-  color: rgb(178, 204, 214);
+pre::-webkit-scrollbar-thumb {
+    background-color: var(--light-blue);
+    border-radius: 0;
+    border: .125rem solid var(--navy-light)
 }
 
-.token.deleted {
-  color: rgba(239, 83, 80, 0.56);
-  font-style: italic;
+pre code {
+    display: block;
+    padding: .5rem 1rem;
+    font-size: 1rem
 }
 
-.token.symbol,
-.token.property {
-  color: rgb(128, 203, 196);
+code,pre {
+    background-color: var(--wpt-navy);
+    color: #fff;
 }
 
-.token.tag,
-.token.operator,
-.token.keyword {
-  color: rgb(127, 219, 202);
+
+pre[class*=language-] .token.comment,pre[class*=language-] .token.prolog,pre[class*=language-] .token.doctype,pre[class*=language-] .token.cdata,code[class*=language-] .token.comment,code[class*=language-] .token.prolog,code[class*=language-] .token.doctype,code[class*=language-] .token.cdata {
+    color: #ccc
 }
 
-.token.boolean {
-  color: rgb(255, 88, 116);
+pre[class*=language-] .token.punctuation,code[class*=language-] .token.punctuation {
+    color: #68a4f3
 }
 
-.token.number {
-  color: rgb(247, 140, 108);
+pre[class*=language-] .token.property,pre[class*=language-] .token.tag,pre[class*=language-] .token.constant,pre[class*=language-] .token.symbol,pre[class*=language-] .token.deleted,code[class*=language-] .token.property,code[class*=language-] .token.tag,code[class*=language-] .token.constant,code[class*=language-] .token.symbol,code[class*=language-] .token.deleted {
+    color: #c2d8f9
 }
 
-.token.constant,
-.token.function,
-.token.builtin,
-.token.char {
-  color: rgb(130, 170, 255);
+pre[class*=language-] .token.boolean,pre[class*=language-] .token.number,code[class*=language-] .token.boolean,code[class*=language-] .token.number {
+    color: #bd9a00
 }
 
-.token.selector,
-.token.doctype {
-  color: rgb(199, 146, 234);
-  font-style: italic;
+pre[class*=language-] .token.selector,pre[class*=language-] .token.attr-name,pre[class*=language-] .token.string,pre[class*=language-] .token.char,pre[class*=language-] .token.builtin,pre[class*=language-] .token.inserted,code[class*=language-] .token.selector,code[class*=language-] .token.attr-name,code[class*=language-] .token.string,code[class*=language-] .token.char,code[class*=language-] .token.builtin,code[class*=language-] .token.inserted {
+    color: var(--color-yellow)
 }
 
-.token.attr-name,
-.token.inserted {
-  color: rgb(173, 219, 103);
-  font-style: italic;
+pre[class*=language-] .token.operator,pre[class*=language-] .token.entity,pre[class*=language-] .token.url,pre[class*=language-] .language-css .token.string,pre[class*=language-] .style .token.string,pre[class*=language-] .token.variable,code[class*=language-] .token.operator,code[class*=language-] .token.entity,code[class*=language-] .token.url,code[class*=language-] .language-css .token.string,code[class*=language-] .style .token.string,code[class*=language-] .token.variable {
+    color: #00e0e0
 }
 
-.token.string,
-.token.url,
-.token.entity,
-.language-css .token.string,
-.style .token.string {
-  color: rgb(173, 219, 103);
+pre[class*=language-] .token.atrule,pre[class*=language-] .token.attr-value,pre[class*=language-] .token.function,code[class*=language-] .token.atrule,code[class*=language-] .token.attr-value,code[class*=language-] .token.function {
+    color: var(--color-yellow)
 }
 
-.token.class-name,
-.token.atrule,
-.token.attr-value {
-  color: rgb(255, 203, 139);
+pre[class*=language-] .token.keyword,code[class*=language-] .token.keyword {
+    color: #00e0e0
 }
 
-.token.regex,
-.token.important,
-.token.variable {
-  color: rgb(214, 222, 235);
+pre[class*=language-] .token.regex,pre[class*=language-] .token.important,code[class*=language-] .token.regex,code[class*=language-] .token.important {
+    color: var(--color-yellow)
 }
 
-.token.important,
-.token.bold {
-  font-weight: bold;
+pre[class*=language-] .token.important,pre[class*=language-] .token.bold,code[class*=language-] .token.important,code[class*=language-] .token.bold {
+    font-weight: bold
 }
 
-.token.italic {
-  font-style: italic;
+pre[class*=language-] .token.italic,code[class*=language-] .token.italic {
+    font-style: italic
+}
+
+pre[class*=language-] .token.entity,code[class*=language-] .token.entity {
+    cursor: help
+}
+
+@media screen and (-ms-high-contrast: active) {
+    pre[class*=language-] code[class*=language-],pre[class*=language-] pre[class*=language-],code[class*=language-] code[class*=language-],code[class*=language-] pre[class*=language-] {
+        color: windowText;
+        background: window
+    }
+
+    pre[class*=language-] :not(pre)>code[class*=language-],pre[class*=language-] pre[class*=language-],code[class*=language-] :not(pre)>code[class*=language-],code[class*=language-] pre[class*=language-] {
+        background: window
+    }
+
+    pre[class*=language-] .token.important,code[class*=language-] .token.important {
+        background: highlight;
+        color: window;
+        font-weight: normal
+    }
+
+    pre[class*=language-] .token.atrule,pre[class*=language-] .token.attr-value,pre[class*=language-] .token.function,pre[class*=language-] .token.keyword,pre[class*=language-] .token.operator,pre[class*=language-] .token.selector,code[class*=language-] .token.atrule,code[class*=language-] .token.attr-value,code[class*=language-] .token.function,code[class*=language-] .token.keyword,code[class*=language-] .token.operator,code[class*=language-] .token.selector {
+        font-weight: bold
+    }
+
+    pre[class*=language-] .token.attr-value,pre[class*=language-] .token.comment,pre[class*=language-] .token.doctype,pre[class*=language-] .token.function,pre[class*=language-] .token.keyword,pre[class*=language-] .token.operator,pre[class*=language-] .token.property,pre[class*=language-] .token.string,code[class*=language-] .token.attr-value,code[class*=language-] .token.comment,code[class*=language-] .token.doctype,code[class*=language-] .token.function,code[class*=language-] .token.keyword,code[class*=language-] .token.operator,code[class*=language-] .token.property,code[class*=language-] .token.string {
+        color: highlight
+    }
+
+    pre[class*=language-] .token.attr-value,pre[class*=language-] .token.url,code[class*=language-] .token.attr-value,code[class*=language-] .token.url {
+        font-weight: normal
+    }
 }

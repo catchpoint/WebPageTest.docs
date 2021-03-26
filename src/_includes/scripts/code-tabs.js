@@ -2,11 +2,12 @@ if( "querySelector" in document ) {
     let codeTabs = document.querySelectorAll('.code-tabs');
     if (codeTabs) {
         let count = 1;
-        let tabNav = document.createElement('ul');
-        tabNav.className = 'code-tabs-nav';
+        
 
         // each tab will be a pre
         codeTabs.forEach(tab => {
+            let tabNav = document.createElement('ul');
+        tabNav.className = 'code-tabs-nav';
             // grab all pre's
             let panels = tab.querySelectorAll('pre');
 

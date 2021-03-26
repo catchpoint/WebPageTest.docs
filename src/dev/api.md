@@ -18,17 +18,32 @@ The WebPageTest API uses API keys to authenticate all tests submitted to the pub
 API keys may or may not be required for requests made to any [private instances](/private-instances/) you maintain on your own. Check with the administrator of your private instance to verify.
 :::
 
-Your API keys are directly tied to your account, so be sure to keep them secure. Avoid sharing them in any public area, such as GitHub or client-side code.
-
 You can pass your API key along with tests requests by using the `k` parameter.
 
 ```text
 https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}
 ```
 
+::: warning
+Your API keys are directly tied to your account, so be sure to keep them secure. Avoid sharing them in any public area, such as GitHub or client-side code.
+:::
+## Status Codes
+The WebPageTest API uses HTTP response codes in the `statusCode` property of return objects to indicate whether an API request was sucessful or failed. Codes in the `1xx` range indicate that the requested test is not yet ready. Codes in the `4xx` range indicate there was an error with the requested test. A status code of `200` indicates a successful test run.
+
+| Status Code | Description                    |
+|-------------|:-------------------------------|
+| 100         | Test started                   |
+| 101         | Test is in the queue           |
+| 102         | The test server is unreachable |
+| 200         | The test is complete           |
+| 400         | A test with the `testId` passed was not found |
+| 401         | The `testId` is valid, but no test was found in the work queue |
+| 402         | The test with the `testId` passed was cancelled |
+
 ## Running a Test
 To submit a test to the WebPageTest agents, you submit either a POST or GET request to the https://www.webpagetest.org/runtest.php, along with your API key, the URL you want to test and any optional parameters to configure your how the test is run and what data it will return when completed.
 
+### Response Format
 By default, after a successful request to the /runtest.php endpoint, you will be redirected to the results page.
 
 You can optionally set the response format using the `f` parameter to return either an XML response (`f=xml`) or JSON response (`f=json`).
@@ -52,12 +67,12 @@ Here's an example response when the format parameter is provided to the endpoint
 	"statusCode": 200,
 	"statusText": "Ok",
 	"data": {
-		"testId": "210226_DiFK_f46266890a46bb1bff7a59a20ddc339c",
-		"jsonUrl": "https://www.webpagetest.org/jsonResult.php?test=210226_DiFK_f46266890a46bb1bff7a59a20ddc339c",
-		"xmlUrl": "https://www.webpagetest.org/xmlResult/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/",
-		"userUrl": "https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/",
-		"summaryCSV": "https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/page_data.csv",
-		"detailCSV": "https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/requests.csv"
+		"testId": "210304_Ai8T_b21a9c202a106632afd2c6485bda4211",
+		"jsonUrl": "https://www.webpagetest.org/jsonResult.php?test=210304_Ai8T_b21a9c202a106632afd2c6485bda4211",
+		"xmlUrl": "https://www.webpagetest.org/xmlResult/210304_Ai8T_b21a9c202a106632afd2c6485bda4211/",
+		"userUrl": "https://www.webpagetest.org/result/210304_Ai8T_b21a9c202a106632afd2c6485bda4211/",
+		"summaryCSV": "https://www.webpagetest.org/result/210304_Ai8T_b21a9c202a106632afd2c6485bda4211/page_data.csv",
+		"detailCSV": "https://www.webpagetest.org/result/210304_Ai8T_b21a9c202a106632afd2c6485bda4211/requests.csv"
 	}
 }
 ```
@@ -67,12 +82,12 @@ Here's an example response when the format parameter is provided to the endpoint
 	<statusCode>200</statusCode>
 	<statusText>Ok</statusText>
 	<data>
-		<testId>210226_DiFK_f46266890a46bb1bff7a59a20ddc339c</testId>
-		<xmlUrl>https://www.webpagetest.org/xmlResult/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/</xmlUrl>
-		<userUrl>https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/</userUrl>
-		<summaryCSV>https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/page_data.csv</summaryCSV>
-		<detailCSV>https://www.webpagetest.org/result/210226_DiFK_f46266890a46bb1bff7a59a20ddc339c/requests.csv</detailCSV>
-		<jsonUrl>https://www.webpagetest.org/jsonResult.php?test=210226_DiFK_f46266890a46bb1bff7a59a20ddc339c</jsonUrl>
+		<testId>210304_Ai8T_b21a9c202a106632afd2c6485bda4211</testId>
+		<xmlUrl>https://www.webpagetest.org/xmlResult/210304_Ai8T_b21a9c202a106632afd2c6485bda4211/</xmlUrl>
+		<userUrl>https://www.webpagetest.org/result/210304_Ai8T_b21a9c202a106632afd2c6485bda4211/</userUrl>
+		<summaryCSV>https://www.webpagetest.org/result/210304_Ai8T_b21a9c202a106632afd2c6485bda4211/page_data.csv</summaryCSV>
+		<detailCSV>https://www.webpagetest.org/result/210304_Ai8T_b21a9c202a106632afd2c6485bda4211/requests.csv</detailCSV>
+		<jsonUrl>https://www.webpagetest.org/jsonResult.php?test=210304_Ai8T_b21a9c202a106632afd2c6485bda4211</jsonUrl>
 	</data>
 </response>
 ```
@@ -88,30 +103,27 @@ Descriptive error text explaining the failure. In the case of a 200 status code,
 - `requestId` (string)
 The request ID echoed back from the request parameter (`r`). If no request parameter was sent, the requestID will not be included in the response object.
 - `data` (object)
-An object containing information for the test run, including URLs and the test ID.
-:::
-
-The `data` object is comprised of the following attributes:
-
-::: api-list
-- `testId` (string)  
+An object containing information for the test run, including URLs and the test ID. The `data` object is comprised of the following attributes:
+    - `testId` (string)  
 The ID assigned to the test request and used in all of the associated URLs.
-- `xmlUrl` (string)
+    - `xmlUrl` (string)
 The URL used to retrieve the test results in XML format.
-- `jsonURL` (string)
+    - `jsonURL` (string)
 The URL used to retrieve the test results in JSON format.
-- `userURL` (string)
+    - `userURL` (string)
 The URL used to direct users to a results page on WebPageTest (the same page you would be redirected to by default if the format parameter was not passed along when submitting the test).
-- `summaryCSV` (string)
+    - `summaryCSV` (string)
 A URL to the summary results (page-level data and basic timings) in CSV format. *Will return a 404 if the test is not yet complete.*
-- `detailCSV` (string)
+    - `detailCSV` (string)
 A URL to the full detailed results (including request-level data and timings) in CSV format. *Will return a 404 if the test is not yet complete.*
 :::
 
 ### Full List of Parameters
 ::: api-list
 - `url` <small>required</small>
-The URL to be tested
+The URL to be tested. The value must be UTF-8 encoded to work.
+- `k` <small>required</small>
+API Key. Applies only to calls made to the runtest.php endpoint. *API Key is optional for any private instances you maintain on your own.
 - `label` <small>optional</small>
 A label for the test.
 - `location` <small>optional</small>
@@ -155,64 +167,120 @@ Email-address to notify with the test results.
 URL to ping when the test is complete. The test ID will be passed as an "id" parameter.
 - `bwDown` <small>optional</small>
 Download bandwidth in Kbps (used when specifiying a custom connectivity profile).
-- 
+- `bwUp` <small>optional</small>
+Upload bandwidth in Kbps (used when specifying a custom connectivity profile)
+- `latency` <small>optional</small>
+First-hop Round Trip Time in ms (used when specifying a custom connectivity profile)
+- `plr` <small>optional</small>
+Packet loss rate—the percentage of packets to drop (used when specifying a custom connectivity profile)
+- `tcpdump` <small>optional</small>
+Set to 1 to enable tcpdump capture. 
+**Default:** 0
+- `noopt` <small>optional</small>
+Set to 1 to disable optimization checks (for faster testing).
+**Default:** 0
+- `noimages` <small>optional</small>
+Set to 1 to disable screenshot capturing. 
+**Default:** 0
+- `noheaders` <small>optional</small>
+Set to 1 to disable saving of HTTP headers, as well as browser status messages and CPU utilization.
+**Default:** 0
+- `pngss` <small>optional</small>
+Set to 1 to save a full-resolution version of the fully loaded screenshhot as a PNG.
+**Default:** 0
+- `iq` <small>optional</small>
+Specify a JPEG compression level (between 30-100) for the screenshots and video capture.
+- `noscript` <small>optional</small>
+Set to 1 to disable JavaScript (IE, Edge, Chrome and Firefox)
+**Default:** 0
+- `clearcerts` <small>optional</small>
+Set to 1 to clear the OS certificate caches (causes the browser to do OCSP/CRL checks during SSL negotiation).
+**Default:** 0
+- `mobile` <small>optional</small>
+Set to 1 to have Chrome emulate a mobile browser by adjust the screen resolution, UA string and providing a fixed viewport. 
+**Default:** 0
+- `keepua` <small>optional</small>
+Set to 1 to preserve the original browser User Agent string (don't append PTST to it)
+- `uastring` <small>optional</small>
+Custom User Agent String to use
+- `width` <small>optional</small>
+Viewport Width in css pixels
+- `height` <small>optional</small>
+Viewport Height in css pixels
+- `browser_width` <small>optional</small>
+Browser window width (in display pixels)
+- `browser_height` <small>optional</small>
+Browser window height (in display pixels)
+- `dpr` <small>optional</small>
+Device Pixel Ratio to use when emulating mobile
+- `mv` <small>optional</small>
+Set to 1 when capturing video to only store the video from the median run.
+**Default:** 0
+- `medianMetric` <small>optional</small>
+Default metric to use when calculating the median run.
+**Default:** loadTime
+- `cmdline` <small>optional</small>
+Custom command-line options (Chrome only)
+- `htmlbody` <small>optional</small>
+Set to 1 to save the content of the first response (base page) instead of all of the text responses (bodies=1)
+- `tsview_id` <small>optional</small>
+Test name to use when submitting results to tsviewdb (for private instances that have integrated with tsviewdb)
+- `custom` <small>optional</small>
+[Custom metrics](/custom-metrics) to collect at the end of a test
+- `tester` <small>optional</small>
+Specify a specific tester that the test should run on (must match the PC name in /getTesters.php).  If the tester is not available the job will never run.
+- `affinity` <small>optional</small>
+Specify a string that will be used to hash the test to a specific test agent.  The tester will be picked by index among the available testers.  If the number of testers changes then the tests will be distributed to different machines but if the counts remain consistent then the same string will always run the tests on the same test machine.  This can be useful for controlling variability when comparing a given URL over time or different parameters against each other (using the URL as the hash string).
+- `timeline` <small>optional</small>
+Set to 1 to have Chrome capture the Dev Tools timeline
+**Default:** 0
+- `timelineStack` <small>optional</small>
+Set to between 1 - 5 to have Chrome include the Javascript call stack. Must be used in conjunction with `timeline`. 
+**Default:** 0
+- `ignoreSSL` <small>optional</small>
+Set to 1 to Ignore SSL Certificate Errors e.g. Name mismatch, Self-signed certificates, etc.
+**Default:** 0
+- `mobileDevice` <small>optional</small>
+Device name from mobile_devices.ini to use for mobile emulation (only when mobile=1 is specified to enable emulation and only for Chrome)
+- `appendua` <small>optional</small>
+String to append to the user agent string. This is in addition to the default PTST/ver string. If "keepua" is also specified it will still append. Allows for substitution with some test parameters:
+  - %TESTID% - Replaces with the test ID for the current test
+  - %RUN% - Replaces with the current run number
+  - %CACHED% - Replaces with 1 for repeat view tests and 0 for initial view
+  - %VERSION% - Replaces with the current wptdriver version number
+- `lighthouse` <small>optional</small>
+Set to 1 to have a lighthouse test also performed (Chrome-only, wptagent agents only)
+- `type` <small>optional</small>
+For running alternative test types, can specify 'traceroute' or 'lighthouse' (lighthouse as a test type is only supported on wptagent agents)
+- `injectScript` <small>optional</small>
+JavaScript to run on the page as soon as the document exists. 
+- `profiler` <small>optional</small>
+Set to 1 to enable the V8 sampling profiler (Chromium only).
+**Default:** 0
+- `disableAVIF` <small>optional</small>
+Set to 1 to disable AVIF support (Chromium 88+).
+**Default:** 0
+- `disableWEBP` <small>optional</small>
+Set to 1 to disable AVIF support (Chromium 88+).
+**Default:** 0
 :::
 
-| notify | optional | e-mail address to notify with the test results |  |
-| pingback | optional | URL to ping when the test is complete (the test ID will be passed as an "id" parameter) |  |
-| bwDown | optional | Download bandwidth in Kbps (used when specifying a custom connectivity profile) |  |
-| bwUp | optional | Upload bandwidth in Kbps (used when specifying a custom connectivity profile) |  |
-| latency | optional | First-hop Round Trip Time in ms (used when specifying a custom connectivity profile) |  |
-| plr | optional | Packet loss rate - percent of packets to drop (used when specifying a custom connectivity profile) |  |
-| k | optional**(required for public instance)** | API Key (if assigned) - applies only to runtest.php calls. Contact the site owner for a key if required (<http://www.webpagetest.org/getkey.php> for the public instance) |  |
-|  tcpdump |  optional |  Set to 1 to enable tcpdump capture |  0 |
-| noopt | optional | Set to 1 to disable optimization checks (for faster testing) | 0 |
-| noimages | optional | Set to 1 to disable screen shot capturing | 0 |
-| noheaders | optional | Set to 1 to disable saving of the http headers (as well as browser status messages and CPU utilization) | 0 |
-|  pngss |  optional |  Set to 1 to save a full-resolution version of the fully loaded screen shot as a png |   |
-|  iq |  optional |  Specify a jpeg compression level (30-100) for the screen shots and video capture |   |
-|  noscript |  optional |  Set to 1 to disable javascript (IE, Chrome, Firefox) |   |
-|  clearcerts |  optional |  Set to 1 to clear the OS certificate caches (causes IE to do OCSP/CRL checks during SSL negotiation if the certificates are not already cached). Added in 2.11 |  0 |
-|  mobile |  optional |  Set to 1 to have Chrome emulate a mobile browser (screen resolution, UA string, fixed viewport).  Added in 2.11 |  0 |
-|  keepua |  optional |  Set to 1 to preserve the original browser User Agent string (don't append PTST to it) |   |
-|  uastring |  optional |  Custom User Agent String to use |   |
-|  width |  optional |  Viewport Width in css pixels |   |
-|  height |  optional |  Viewport Height in css pixels |   |
-|  browser_width |  optional |  Browser window width (in display pixels) |   |
-|  browser_height |  optional |  Browser window height (in display pixels) |   |
-|  dpr |  optional |  Device Pixel Ratio to use when emulating mobile |   |
-|  mv |  optional |  Set to 1 when capturing video to only store the video from the median run. |  0 |
-|  medianMetric |  optional |  Default metric to use when calculating the median run |  loadTime |
-|  cmdline |  optional |  Custom command-line options (Chrome only) |   |
-|  htmlbody |  optional | Set to 1 to save the content of the first response (base page) instead of all of the text responses (bodies=1) |   |
-|  tsview_id |  optional |  Test name to use when submitting results to tsviewdb (for private instances that have integrated with tsviewdb) |   |
-|  custom |  optional |  [Custom metrics](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/custom-metrics) to collect at the end of a test |   |
-|  tester |  optional | Specify a specific tester that the test should run on (must match the PC name in /getTesters.php).  If the tester is not available the job will never run. |   |
-|  affinity |  optional | Specify a string that will be used to hash the test to a specific test agent.  The tester will be picked by index among the available testers.  If the number of testers changes then the tests will be distributed to different machines but if the counts remain consistent then the same string will always run the tests on the same test machine.  This can be useful for controlling variability when comparing a given URL over time or different parameters against each other (using the URL as the hash string). |   |
-| timeline |  optional |  Set to 1 to have Chrome capture the Dev Tools timeline |  0 |
-| timelineStack |  optional |  Set to between 1 - 5 to have Chrome include the Javascript call stack. Must be used in conjunction with "timeline".  |  0 |
-| ignoreSSL |  optional |  Set to 1 to Ignore SSL Certificate Errors e.g. Name mismatch, Self-signed certificates, etc. |  0 |
-|  mobileDevice |  optional |  Device name from mobile_devices.ini to use for mobile emulation (only when mobile=1 is specified to enable emulation and only for Chrome) |   |
-|  appendua |  optional |  String to append to the user agent string. This is in addition to the default PTST/ver string. If "keepua" is also specified it will still append. Allows for substitution with some test parameters:%TESTID% - Replaces with the test ID for the current test%RUN% - Replaces with the current run number%CACHED% - Replaces with 1 for repeat view tests and 0 for initial view%VERSION% - Replaces with the current wptdriver version number |   |
-|  lighthouse |  optional |  Set to 1 to have a lighthouse test also performed (Chrome-only, wptagent agents only) |   |
-|  type |  optional |  For running alternative test types, can specify 'traceroute' or 'lighthouse' (lighthouse as a test type is only supported on wptagent agents) |   |
-|  injectScript |  optional |  JavaScript to run on the page as soon as the document exists.  |   |
-|  profiler |  optional |  Set to 1 to enable the V8 sampling profiler (Chromium only). |  0 |
-|  disableAVIF |  optional |  Set to 1 to disable AVIF support (Chromium 88+). |  0 |
-|  disableWEBP |  optional |  Set to 1 to disable AVIF support (Chromium 88+). |  0 |
 
-## Specifying connectivity
+
+
+### Specifying connectivity
 If the connectivity is not specified, by default you will get the Cable (5/1 Mbps, 28ms RTT) profile. The connectivity is specified as part of the location in the format:
 
 **location:browser.connectivity**
 
 For example:
-* Dulles_IE7.DSL
-* Frankfurt.Dial
-* China.custom
-* Dulles:Chrome.DSL
 
-The supported profiles for the public instance are:
+* Dulles_IE7.**DSL**
+* Frankfurt.**Dial**
+* China.**custom**
+* Dulles:Chrome.**DSL**
+
+Public instances of WebPageTest provide a number of out-of-the box connection profiles for you to use to run tests:
 
 * **DSL** - 1.5 Mbps down, 384 Kbps up, 50 ms first-hop RTT, 0% packet loss
 * **Cable** - 5 Mbps down, 1 Mbps up, 28ms first-hop RTT, 0% packet loss
@@ -226,7 +294,7 @@ The supported profiles for the public instance are:
 * **4G** - 9 Mbps down and up, 170 ms first-hop RTT, 0% packet loss
 * **LTE** - 12 Mbps down and up, 70 ms first-hop RTT, 0% packet loss
 * **Native** - No synthetic traffic shaping applied
-* **custom** - Custom profile, bandwidth and latency must also be specified using the bwIn, bwOut, latency and plr parameters
+* **custom** - Custom profile, bandwidth and latency must also be specified using the `bwUp`, `bwDown`, `latency` and `plr` parameters
 
 Browser is only required in a Chrome/Firefox install where wptdriver is configured for multiple browsers.
 
@@ -234,58 +302,161 @@ Browser is only required in a Chrome/Firefox install where wptdriver is configur
 
 On the public instance with an API key that starts with "A.", only locations listed [here](https://www.webpagetest.org/getLocations.php?k=A&f=html) are available for API calls. Others will return `invalid location` when requested.
 
-## Samples
+### Examples
 Test www.aol.com and redirect to the results page:
-```
+
+```text
 http://www.webpagetest.org/runtest.php?url=www.aol.com
 ```
 
 Test www.aol.com 10 times, first view only and redirect to the results page:
-```
+```text
 http://www.webpagetest.org/runtest.php?url=www.aol.com&runs=10&fvonly=1
 ```
 Test www.aol.com 2 times and get the response as xml with the request ID "12345" embedded in the response:
-```
+```text
 http://www.webpagetest.org/runtest.php?url=www.aol.com&runs=2&f=xml&r=12345
 ```
 
-```xml
-<response>
-	<statusCode>200</statusCode>
-	<statusText>Ok</statusText>
-	<requestId>12345</requestId>
-	<data>
-		<testId>091111_2XFH</testId>
-		<xmlUrl>http://www.webpagetest.org/xmlResult/091111_2XFH/</xmlUrl>
-		<userUrl>http://www.webpagetest.org/result/091111_2XFH/</userUrl>
-	</data>
-</response>
+## Check test status
+You can check the status of a test by doing a GET to http://www.webpagetest.org/testStatus.php with your test id and an optional format parameter You will get a HTTP 200 response to the request itself indicating that the request was parsed, as well as a return object with details about the test run itself. 
+
+### Response Format
+By default, the `/testStatus.php` endpoint returns a JSON object. Alternatively, you can request the response object be returned as XML by passing the format (`f`) parameter.
+
+```text
+//this will return a JSON response
+https://www.webpagetest.org/testStatus.php?test={your_test_id}
+
+//this will return an XML response
+https://www.webpagetest.org/testStatus.php?test={your_test_id}&f=xml
 ```
 
-## Check test status
-You can check the status of a test by doing a GET to http://www.webpagetest.org/testStatus.php with your test id. You will get a HTTP 200 response to the request itself indicating that the request was parsed but the result of the submission itself will be in the XML. 
-http://www.webpagetest.org/testStatus.php?f=xml&test=your_test_id
-```xml
-<?xml version="1.0" encoding="UTF-8"?> 
-<response> 
-        <statusCode>100</statusCode> 
-        <statusText>Test Started</statusText> 
-        <data> 
-                <statusCode>100</statusCode> 
-                <statusText>Test Started</statusText> 
-                <testId>your_test_id</testId> 
-                <runs>9</runs> 
-                <fvonly>1</fvonly> 
-                <location>Dulles_IE8</location> 
-                <startTime>02/12/11 1:06:16</startTime> 
-                <fvRunsCompleted>1</fvRunsCompleted> 
-                <rvRunsCompleted>0</rvRunsCompleted> 
-        </data> 
-</response> 
+::: code-tabs
+```json
+{
+   "statusCode":200,
+   "statusText":"Test Complete",
+   "data":{
+      "statusCode":200,
+      "statusText":"Test Complete",
+      "id":"210304_Ai8T_b21a9c202a106632afd2c6485bda4211",
+      "completeTime":"03\/05\/21 16:44:35",
+      "testInfo":{
+         "url":"https:\/\/docs.webpagetest.org",
+         "runs":3,
+         "fvonly":1,
+         "web10":0,
+         "ignoreSSL":0,
+         "label":"Netlify Deploy undefined",
+         "priority":5,
+         "location":"Dulles",
+         "browser":"Chrome",
+         "connectivity":"Cable",
+         "bwIn":5000,
+         "bwOut":1000,
+         "latency":28,
+         "plr":"0",
+         "tcpdump":0,
+         "timeline":0,
+         "trace":0,
+         "bodies":0,
+         "netlog":0,
+         "standards":0,
+         "noscript":0,
+         "pngss":0,
+         "iq":0,
+         "keepua":0,
+         "mobile":0,
+         "scripted":0
+      },
+      "remote":false,
+      "testsExpected":3,
+      "runs":3,
+      "fvonly":1,
+      "location":"Dulles"
+   }
+}
 ```
-* **statusCode** - 200 indicates test is completed. 1XX means the test is still in progress. And 4XX indicates some error.
-* **statusText** - Descriptive text explaining the status
-* **data** - Some test information including the test ID, the number of runs the test requested, the start time, etc.(non-xml) 
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+   <statusCode>200</statusCode>
+   <statusText>Test Complete</statusText>
+   <data>
+      <statusCode>200</statusCode>
+      <statusText>Test Complete</statusText>
+      <id>210304_Ai8T_b21a9c202a106632afd2c6485bda4211</id>
+      <completeTime>03/09/21 14:15:34</completeTime>
+      <testInfo>
+         <url>https://docs.webpagetest.org</url>
+         <runs>3</runs>
+         <fvonly>1</fvonly>
+         <web10>0</web10>
+         <ignoreSSL>0</ignoreSSL>
+         <label>Netlify Deploy undefined</label>
+         <priority>5</priority>
+         <location>Dulles</location>
+         <browser>Chrome</browser>
+         <connectivity>Cable</connectivity>
+         <bwIn>5000</bwIn>
+         <bwOut>1000</bwOut>
+         <latency>28</latency>
+         <plr>0</plr>
+         <tcpdump>0</tcpdump>
+         <timeline>0</timeline>
+         <trace>0</trace>
+         <bodies>0</bodies>
+         <netlog>0</netlog>
+         <standards>0</standards>
+         <noscript>0</noscript>
+         <pngss>0</pngss>
+         <iq>0</iq>
+         <keepua>0</keepua>
+         <mobile>0</mobile>
+         <scripted>0</scripted>
+      </testInfo>
+      <remote />
+      <testsExpected>3</testsExpected>
+      <runs>3</runs>
+      <fvonly>1</fvonly>
+      <location>Dulles</location>
+   </data>
+</response>
+```
+:::
+
+The response object contains the following attributes:
+
+::: api-list
+- `statusCode` (int)  
+The HTTP response status code for the submission. A 200 code indicates a successful submission. 1XX means the test is still in progress. 4XX indicates some error.
+- `statusText` (string)  
+Descriptive error text explaining the failure. In the case of a 200 status code, the `statusText` will be "Test Complete".
+- `remote` (boolean)
+- `testsExpected` (int)  
+The number of tests expected in the test results.
+- `runs` (int)  
+The number of test runs for the test with the provided test ID.
+- `fvonly` (int)
+Whether the test was for the first view only (1), or included tests for a repeat view (0)
+- `location` (string)  
+The location of the testing agent used to run the test.
+- `data` (object)  
+An object containing information about the test that was run. The `data` object is comprised of the following attributes:  
+    - `statusCode` (int)  
+	The HTTP response status code for the submission. A 200 code indicates a successful submission. 1XX means the test is still in progress. 4XX indicates some error. (Same as the top level `statusCode`.)
+	- `statusText` (string)
+	Descriptive error text explaining the failure. In the case of a 200 status code, the `statusText` will be "Test Complete". (Same as the top level `statusText`.)
+	- `id` (string)  
+	The unique test id.
+	- `completeTime` (string)
+	The time and date the test was completed at.
+	- `testInfo` (object)  
+	An object containing additional meta data about the characteristics of the test that was run.c
+
+:::
 
 ## Getting test results
 under normal use (non-xml) you will be redirected to the results page. When using the XML API you should use the xmlUrl provided in the response to the test request. The XML url can also take some optional parameters:
@@ -627,37 +798,89 @@ With a test ID (and if required, API key) you can cancel a test if it has not st
 http://www.webpagetest.org/cancelTest.php?test=<testId>&k=<API key>
 ```
 
-## Location information
-You can request a list of locations as well as the number of pending tests for each using the getLocations.php interface:
+## Retrieving Available Locations
+You can request a list of available WebPageTest as well as the number of pending tests for each using the /getLocations.php interface.
+
+### Response Format
+By default, a successful request to the /getLocations.php endpoint, results in an XML response. 
+
+You can optionally set the response format using the `f` parameter to request a JSON response (`f=json`).
+
+```text
+//this will result in an XML response
+https://webpagetest.org/getLocations.php
+
+//this will return a JSON response
+https://webpagetest.org/getLocations.php?f=json
 ```
-http://www.webpagetest.org/getLocations.php?f=xml
-```
+
+Here is an example of a (truncated for brevity) response from the /getLocations.php endpoint.
+
+::: code-tabs
+
 ```xml
+<?xml version="1.0" encoding="UTF-8"?>
 <response>
-	<statusCode>200</statusCode>
-	<statusText>Ok</statusText>
-	<data>
-		<location>
-			<id>Dulles_IE7</id>
-			<Label>Dulles, VA USA</Label>
-			<Browser>IE 7</Browser>
-			<default>1</default>
-			<PendingTests>
-				<Total>0</Total>
-				<HighPriority>0</HighPriority>
-				<LowPriority>0</LowPriority>
-			</PendingTests>
-		</location>
-		<location>
-			<id>Dulles_IE8</id>
-			<Label>Dulles, VA USA</Label>
-			<Browser>IE 8</Browser>
-			<PendingTests>
-				<Total>0</Total>
-				<HighPriority>0</HighPriority>
-				<LowPriority>0</LowPriority>
-			</PendingTests>
-		</location>
-	</data>
+  <statusCode>200</statusCode>
+  <statusText>Ok</statusText>
+  <data>
+    <location>
+      <id>Dulles_MotoG4</id>
+      <Label>Moto G (gen 4)</Label>
+      <location>Dulles_MotoG4</location>
+      <Browsers>Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox,Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox</Browsers>
+      <status>OK</status>
+      <relayServer />
+      <relayLocation />
+      <labelShort>Dulles, VA</labelShort>
+      <group>Android Devices - Dulles, VA</group>
+      <PendingTests>
+        <p1>0</p1>
+        <p2>11</p2>
+        <p3>0</p3>
+        <p4>0</p4>
+        <p5>9</p5>
+        <p6>0</p6>
+        <p7>0</p7>
+        <p8>137</p8>
+        <p9>0</p9>
+        <Total>187</Total>
+        <HighPriority>16</HighPriority>
+        <LowPriority>157</LowPriority>
+        <Testing>14</Testing>
+        <Idle>0</Idle>
+        <TestAgentRatio><![CDATA[13.357142857143]]></TestAgentRatio>
+      </PendingTests>
+    </location>
+    <location>
+      <id>Dulles_MotoG</id>
+      <Label>Moto G (gen 1)</Label>
+      <location>Dulles_MotoG</location>
+      <Browsers>Moto G - Chrome,Moto G - Chrome Canary,Moto G - Chrome Beta,Moto G - Chrome Dev,Moto G - UC Browser,Moto G - UC Mini,Moto G - Opera Mini (Extreme),Moto G - Opera Mini (High),Moto G - Firefox,Moto G - Chrome,Moto G - Chrome Canary,Moto G - Chrome Beta,Moto G - Chrome Dev,Moto G - UC Browser,Moto G - UC Mini,Moto G - Opera Mini (Extreme),Moto G - Opera Mini (High),Moto G - Firefox</Browsers>
+      <status>OK</status>
+      <relayServer />
+      <relayLocation />
+      <labelShort>Dulles, VA</labelShort>
+      <group>Android Devices - Dulles, VA</group>
+      <PendingTests>
+        <p1>0</p1>
+        <p2>0</p2>
+        <p3>0</p3>
+        <p4>0</p4>
+        <p5>0</p5>
+        <p6>0</p6>
+        <p7>0</p7>
+        <p8>0</p8>
+        <p9>0</p9>
+        <Total>0</Total>
+        <HighPriority>0</HighPriority>
+        <LowPriority>0</LowPriority>
+        <Testing>0</Testing>
+        <Idle>8</Idle>
+        <TestAgentRatio>0</TestAgentRatio>
+      </PendingTests>
+    </location>
+	...
+  </data>
 </response>
 ```
