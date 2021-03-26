@@ -110,4 +110,9 @@ You can choose to cancel anytime during the subscription period. Once you choose
 
 ### Why does my credit card/bank statement show a charge for Braintree.com?
 Braintree is our payment gateway provider for the site, so your charge description might show as a charge to Braintree. It is up to your individual payment provider to determine the best description for the charge, and the description is subject to change after the typical 7-day settlement period. If you should have any questions, please contact your payment provider after the settlement period to see how they handle the charge description.  
+
+### Can I add more users to the plan?
+Currently, we only support one user account to sign in and set up your account to purchase the WebPageTest API. However, you can generate up to 30 keys for multiple use cases and teams, from a single WebPageTest API account. Generate a new key by clicking on “+ API consumer”.  
+
+We have plans to support adding multiple users and defining roles in the future.  
 :::
