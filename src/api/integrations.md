@@ -2,7 +2,8 @@
 title: 'WebPageTest API Integrations'
 eleventyNavigation:
   parent: API 
-  key: Integrations
+  key: Integrations 
+  order: 2
 layout: layouts/integrations.njk
 ---
 WebPageTest provides integrations to make it easier to use the API with your existing tooling, as well as to consume the WebPageTest information in new and interesting ways.
