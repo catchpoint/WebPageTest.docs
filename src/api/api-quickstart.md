@@ -13,6 +13,8 @@ If you already have an account, go to **My Account** on [WebPageTest](http://web
 
 We currently offer 4 subscription plans (billed monthly or annually) based on the total test runs you wish to run in a month. All our subscription plans offer the same features and capabilities. YOu can read more about account, tests, and billing or payment questions [here](http://docs.webpagetest.org/api/faqs) 
 
+For Custom Enterprise plans where you want to run more than 25,000 tests per month, please [contact us](https://www.product.webpagetest.org/contact).
+
 ## Adding more users
 
 Currently, we only support one user account to sign in and set up your account to purchase the WebPageTest API. However, you can generate up to 30 keys for multiple use cases and teams, from a single WebPageTest API account. You can generate a new key by clicking on **+ API consumer.**
