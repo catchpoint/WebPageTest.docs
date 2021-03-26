@@ -41,7 +41,7 @@ The WebPageTest API uses HTTP response codes in the `statusCode` property of ret
 | 402         | The test with the `testId` passed was cancelled |
 
 ## Running a Test
-To submit a test to the WebPageTest agents, you submit either a POST or GET request to the https://www.webpagetest.org/runtest.php, along with your API key, the URL you want to test and any optional parameters to configure your how the test is run and what data it will return when completed.
+To submit a test to the WebPageTest agents, you submit either a POST or GET request to the https://www.webpagetest.org/runtest.php endpoint, along with your API key, the URL you want to test and any optional parameters to configure your how the test is run and what data it will return when completed.
 
 ### Response Format
 By default, after a successful request to the /runtest.php endpoint, you will be redirected to the results page.
@@ -794,17 +794,17 @@ http://www.webpagetest.org/xmlResult/091111_2XFH/?r=12345
 ```
 ## Cancelling Tests
 With a test ID (and if required, API key) you can cancel a test if it has not started running.
-```
+```text
 http://www.webpagetest.org/cancelTest.php?test=<testId>&k=<API key>
 ```
 
 ## Retrieving Available Locations
-You can request a list of available WebPageTest as well as the number of pending tests for each using the /getLocations.php interface.
+You can request a list of available WebPageTest agents as well as the number of pending tests for each using the https://webpagetest.org/getLocations.php endpoint.
 
 ### Response Format
-By default, a successful request to the /getLocations.php endpoint, results in an XML response. 
+By default, a successful request to the /getLocations.php endpoint, results an XML response. You can optionally set the response format using the `f` parameter to request a JSON response (`f=json`).
 
-You can optionally set the response format using the `f` parameter to request a JSON response (`f=json`).
+If you pass the `callback` parameter in conjunction with using `f=json`, the endpoint will return a [JSONP](https://en.wikipedia.org/wiki/JSONP) response with the JSON wrapped in the given callback function name.
 
 ```text
 //this will result in an XML response
@@ -812,75 +812,133 @@ https://webpagetest.org/getLocations.php
 
 //this will return a JSON response
 https://webpagetest.org/getLocations.php?f=json
+
+//this will return a JSONP response, with the JSON wrapped in myCallback()
+https://webpagetest.org/getLocations.php?f=json&callback=myCallback
 ```
 
-Here is an example of a (truncated for brevity) response from the /getLocations.php endpoint.
+Here's an example response from the /getLocations.php endpoint, (truncated for brevity):
 
 ::: code-tabs
+```json
+{
+  "statusCode": 200,
+  "statusText": "Ok",
+  "data": {
+    "Dulles_MotoG4": {
+      "Label": "Moto G (gen 4)",
+      "location": "Dulles_MotoG4",
+      "Browsers": "Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox,Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox",
+      "status": "OK",
+      "labelShort": "Dulles, VA",
+      "group": "Android Devices - Dulles, VA",
+      "PendingTests": {
+        "p1": 0,
+        "p2": 0,
+        "p3": 0,
+        "p4": 0,
+        "p5": 1,
+        "p6": 1,
+        "p7": 0,
+        "p8": 0,
+        "p9": 0,
+        "Total": 37,
+        "HighPriority": 20,
+        "LowPriority": 2,
+        "Testing": 15,
+        "Idle": 0,
+        "TestAgentRatio": 2.466666666666667
+      }
+    },
+    "Dulles_MotoG6": {
+      "Label": "Moto G (gen 6)",
+      "location": "Dulles_MotoG6",
+      "Browsers": "Moto G6 - Chrome,Moto G6 - Chrome Canary,Moto G6 - Chrome Beta,Moto G6 - Chrome Dev,Moto G6 - UC Browser,Moto G6 - UC Mini,Moto G6 - Opera Mini (Extreme),Moto G6 - Opera Mini (High),Moto G6 - Firefox,Moto G6 - Chrome,Moto G6 - Chrome Canary,Moto G6 - Chrome Beta,Moto G6 - Chrome Dev,Moto G6 - UC Browser,Moto G6 - UC Mini,Moto G6 - Opera Mini (Extreme),Moto G6 - Opera Mini (High),Moto G6 - Firefox",
+      "status": "OK",
+      "labelShort": "Dulles, VA",
+      "group": "Android Devices - Dulles, VA",
+      "PendingTests": {
+        "p1": 0,
+        "p2": 0,
+        "p3": 0,
+        "p4": 0,
+        "p5": 3,
+        "p6": 0,
+        "p7": 0,
+        "p8": 0,
+        "p9": 0,
+        "Total": 32,
+        "HighPriority": 28,
+        "LowPriority": 3,
+        "Testing": 1,
+        "Idle": 0,
+        "TestAgentRatio": 32
+      }
+    },
+    ...
+  }
+}
 
+```
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-  <statusCode>200</statusCode>
-  <statusText>Ok</statusText>
-  <data>
-    <location>
-      <id>Dulles_MotoG4</id>
-      <Label>Moto G (gen 4)</Label>
-      <location>Dulles_MotoG4</location>
-      <Browsers>Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox,Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox</Browsers>
-      <status>OK</status>
-      <relayServer />
-      <relayLocation />
-      <labelShort>Dulles, VA</labelShort>
-      <group>Android Devices - Dulles, VA</group>
-      <PendingTests>
-        <p1>0</p1>
-        <p2>11</p2>
-        <p3>0</p3>
-        <p4>0</p4>
-        <p5>9</p5>
-        <p6>0</p6>
-        <p7>0</p7>
-        <p8>137</p8>
-        <p9>0</p9>
-        <Total>187</Total>
-        <HighPriority>16</HighPriority>
-        <LowPriority>157</LowPriority>
-        <Testing>14</Testing>
-        <Idle>0</Idle>
-        <TestAgentRatio><![CDATA[13.357142857143]]></TestAgentRatio>
-      </PendingTests>
-    </location>
-    <location>
-      <id>Dulles_MotoG</id>
-      <Label>Moto G (gen 1)</Label>
-      <location>Dulles_MotoG</location>
-      <Browsers>Moto G - Chrome,Moto G - Chrome Canary,Moto G - Chrome Beta,Moto G - Chrome Dev,Moto G - UC Browser,Moto G - UC Mini,Moto G - Opera Mini (Extreme),Moto G - Opera Mini (High),Moto G - Firefox,Moto G - Chrome,Moto G - Chrome Canary,Moto G - Chrome Beta,Moto G - Chrome Dev,Moto G - UC Browser,Moto G - UC Mini,Moto G - Opera Mini (Extreme),Moto G - Opera Mini (High),Moto G - Firefox</Browsers>
-      <status>OK</status>
-      <relayServer />
-      <relayLocation />
-      <labelShort>Dulles, VA</labelShort>
-      <group>Android Devices - Dulles, VA</group>
-      <PendingTests>
-        <p1>0</p1>
-        <p2>0</p2>
-        <p3>0</p3>
-        <p4>0</p4>
-        <p5>0</p5>
-        <p6>0</p6>
-        <p7>0</p7>
-        <p8>0</p8>
-        <p9>0</p9>
-        <Total>0</Total>
-        <HighPriority>0</HighPriority>
-        <LowPriority>0</LowPriority>
-        <Testing>0</Testing>
-        <Idle>8</Idle>
-        <TestAgentRatio>0</TestAgentRatio>
-      </PendingTests>
-    </location>
-	...
-  </data>
+   <statusCode>200</statusCode>
+   <statusText>Ok</statusText>
+   <data>
+      <location>
+         <id>Dulles_MotoG4</id>
+         <Label>Moto G (gen 4)</Label>
+         <location>Dulles_MotoG4</location>
+         <Browsers>Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox,Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox</Browsers>
+         <status>OK</status>
+         <labelShort>Dulles, VA</labelShort>
+         <group>Android Devices - Dulles, VA</group>
+         <PendingTests>
+            <p1>0</p1>
+            <p2>0</p2>
+            <p3>0</p3>
+            <p4>0</p4>
+            <p5>0</p5>
+            <p6>1</p6>
+            <p7>0</p7>
+            <p8>0</p8>
+            <p9>0</p9>
+            <Total>45</Total>
+            <HighPriority>29</HighPriority>
+            <LowPriority>1</LowPriority>
+            <Testing>15</Testing>
+            <Idle>0</Idle>
+            <TestAgentRatio>3</TestAgentRatio>
+         </PendingTests>
+      </location>
+      <location>
+         <id>Dulles_MotoG6</id>
+         <Label>Moto G (gen 6)</Label>
+         <location>Dulles_MotoG6</location>
+         <Browsers>Moto G6 - Chrome,Moto G6 - Chrome Canary,Moto G6 - Chrome Beta,Moto G6 - Chrome Dev,Moto G6 - UC Browser,Moto G6 - UC Mini,Moto G6 - Opera Mini (Extreme),Moto G6 - Opera Mini (High),Moto G6 - Firefox,Moto G6 - Chrome,Moto G6 - Chrome Canary,Moto G6 - Chrome Beta,Moto G6 - Chrome Dev,Moto G6 - UC Browser,Moto G6 - UC Mini,Moto G6 - Opera Mini (Extreme),Moto G6 - Opera Mini (High),Moto G6 - Firefox</Browsers>
+         <status>OK</status>
+         <labelShort>Dulles, VA</labelShort>
+         <group>Android Devices - Dulles, VA</group>
+         <PendingTests>
+            <p1>0</p1>
+            <p2>0</p2>
+            <p3>0</p3>
+            <p4>0</p4>
+            <p5>3</p5>
+            <p6>0</p6>
+            <p7>0</p7>
+            <p8>0</p8>
+            <p9>0</p9>
+            <Total>33</Total>
+            <HighPriority>29</HighPriority>
+            <LowPriority>3</LowPriority>
+            <Testing>1</Testing>
+            <Idle>0</Idle>
+            <TestAgentRatio>33</TestAgentRatio>
+         </PendingTests>
+      </location>
+      ...
+   </data>
 </response>
 ```

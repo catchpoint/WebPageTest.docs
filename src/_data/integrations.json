@@ -3,7 +3,7 @@
         "name": "Request Map",
         "owner": "Simon Hearne",
         "ownerLink": "https://simonhearne.com/",
-        "description": "Generate a node map of all the requests on a page  identify what third-parties are on your site, where your transmitted bytes are coming from and how slow your domains are.",
+        "description": "Generate a node map of all the requests on a page to identify what third-parties are on your site, where your transmitted bytes are coming from and how slow your domains are.",
         "link": "https://requestmap.webperf.tools/"
     },
     {

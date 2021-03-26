@@ -647,11 +647,14 @@ table td code + small {
     border-top: 1px solid var(--light-grey);
     padding-top: 1.5em;
 }
+pre,code {
+    background-color: var(--light-grey);
+    font-size: 1.1em;
+}
 /* PrismJS 1.23.0
 https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+json */
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #d6deeb;
   font-family: monospace,monospace;
   text-align: left;
   white-space: pre;
@@ -659,7 +662,8 @@ pre[class*="language-"] {
   word-break: normal;
   word-wrap: normal;
   line-height: 1.5;
-
+  background-color: var(--wpt-navy);
+  color: #fff;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
@@ -730,10 +734,6 @@ pre code {
     font-size: 1rem
 }
 
-code,pre {
-    background-color: var(--wpt-navy);
-    color: #fff;
-}
 
 
 pre[class*=language-] .token.comment,pre[class*=language-] .token.prolog,pre[class*=language-] .token.doctype,pre[class*=language-] .token.cdata,code[class*=language-] .token.comment,code[class*=language-] .token.prolog,code[class*=language-] .token.doctype,code[class*=language-] .token.cdata {
