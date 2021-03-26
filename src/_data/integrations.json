@@ -26,5 +26,19 @@
         "ownerLink": "https://timkadlec.com/",
         "description": "Find out how much it costs for someone to use your site on mobile networks around the world.",
         "link": "https://whatdoesmysitecost.com/"
+    },
+    {
+        "name": "Image Analysis Tool",
+        "owner": "Cloudinary",
+        "ownerLink": "https://cloudinary.com/",
+        "description": "The Image Analysis Tool provides measurable and actionable information about how to go beyond simple compression: discover how changes to image size, format selection, quality and encoding can dramatically improve page load speed.",
+        "link": "https://webspeedtest.cloudinary.com/"
+    },
+    {
+        "name": "Snyk Website Scanner",
+        "owner": "Snyk",
+        "ownerLink": "https://snyk.io/",
+        "description": "Snyk's WebSite Scanner surfaces a security grade and details about specfic security headers that could be used to improve your site's security, as well as any vulnerable JavaScript libraries that were found during testing.",
+        "link": "https://snyk.io/blog/test-website-security-with-webpagetest-integration/"
     }
 ]

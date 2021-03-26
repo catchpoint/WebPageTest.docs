@@ -616,6 +616,11 @@ table td code + small {
 .integrations h3 + p{
     margin-top: 0;
 }
+.integrations li:last-child{
+    border-bottom : 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 
 .callout{
     padding-bottom: 1.5em;
