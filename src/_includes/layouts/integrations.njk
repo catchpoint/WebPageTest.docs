@@ -1,0 +1,29 @@
+{% include 'siteHead.html' %}
+<body>
+    {% include 'head.html' %}
+    {% include 'doc-nav.html' %}
+    <main>
+        {{ content | safe }}
+        <ul class="integrations">
+        {% for integration in integrations %}
+        
+            <li>
+                <h3><a href="{{integration.link}}">{{integration.name}}</a></h3>
+                {% if integration.ownerLink %}
+                <p><small>Built by <a href="{{integration.ownerLink}}">{{integration.owner}}</a></small></p>
+                {% else %}
+                <p><small>Built by {{integration.owner}}</small></p>
+                {% endif %}
+                <p>{{integration.description}}</p>
+                <p><a class="btn" href="{{integration.link}}">Learn more</a></p>
+            </li>
+
+        {% endfor %}
+        </ul>
+    </main>
+    <aside class="pageNav">
+            {{ content | toc | safe }}
+    </aside>
+    {% include 'footer.html' %}
+</body>
+</html>

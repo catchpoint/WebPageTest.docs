@@ -67,7 +67,7 @@ body{
     .g-two-up{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-auto-flow: column;
+        grid-row-gap: 2em;
     }
     .g-two-up div:first-child {
         border-right: 1px solid var(--light-grey);
@@ -594,6 +594,36 @@ table td code + small {
 .code-tabs-ready pre[class*=language-]{
     border-radius: 0;
     margin-top: 0;
+}
+
+.integrations,
+.integrations li{
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+.integrations {
+    margin-top: 3em;
+}
+.integrations li{
+    padding-bottom: 1.5em;
+    margin-bottom: 1.5em;
+    border-bottom: 1px solid var(--light-grey);
+}
+.integrations h3 {
+    margin-bottom: .1em;
+}
+.integrations h3 + p{
+    margin-top: 0;
+}
+
+.callout{
+    padding-bottom: 1.5em;
+    margin-top: 1.5em;
+}
+.callout + .callout{
+    border-top: 1px solid var(--light-grey);
+    padding-top: 1.5em;
 }
 /* PrismJS 1.23.0
 https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+json */

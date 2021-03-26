@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Request Map",
+        "owner": "Simon Hearne",
+        "ownerLink": "https://simonhearne.com/",
+        "description": "Generate a node map of all the requests on a page  identify what third-parties are on your site, where your transmitted bytes are coming from and how slow your domains are.",
+        "link": "https://requestmap.webperf.tools/"
+    },
+    {
+        "name": "AutoWebPerf",
+        "owner": "The Google Chrome Team",
+        "ownerLink": "https://github.com/GoogleChromeLabs",
+        "description": "AutoWebPerf provides a flexible and scalable framework for running web performance audits with arbitrary audit tools like WebPageTest and PageSpeedInsights. This library enables developers to collect metrics consistently and store metrics to a preferred data store such as local JSON files, Google Sheets, BigQuery, or an in-house SQL database.",
+        "link": "https://github.com/GoogleChromeLabs/AutoWebPerf"
+    },
+    {
+        "name": "WebPageTest Bulk Tester",
+        "owner": "Andy Davies",
+        "ownerLink": "https://andydavies.me/",
+        "description": "Use Google Sheets to test multiple URLs using WebPageTest using configurable test settings. As tests complete, the metric values you request will be automatically added to your spreadsheet for furhter analysis.",
+        "link": "https://github.com/andydavies/WPT-Bulk-Tester"
+    },
+    {
+        "name": "What Does My Site Cost?",
+        "owner": "Tim Kadlec",
+        "ownerLink": "https://timkadlec.com/",
+        "description": "Find out how much it costs for someone to use your site on mobile networks around the world.",
+        "link": "https://whatdoesmysitecost.com/"
+    }
+]
