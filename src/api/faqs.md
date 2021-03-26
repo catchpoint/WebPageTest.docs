@@ -45,7 +45,7 @@ There are also several existing integrations built by our community members that
 ### How will I be charged?  
 For monthly and annual subscriptions plans, your credit card will be automatically billed when you sign up and purchase the subscription, you’ll be able to access your payment history under Billing History in My Account on www.webpagetest.org. All subscription plans can be canceled at any time without penalty. Once you choose to cancel, it stops the WebPageTest API subscription from auto-renewing for the next billing cycle. You’ll continue to have access to run tests for that plan, until the end of your current billing period. 
 
-For Enterprise plans where you want to run more than 25,000 tests per month, please contact us here.  
+For Custom Enterprise plans where you want to run more than 25,000 tests per month, please [contact us](https://www.product.webpagetest.org/contact).  
 
 If you are based out of the United States of America, You will be charged in US Dollars, but the exact amount you will see on your credit card statement may vary, depending on foreign exchange rates and any foreign transaction fees your bank may impose. 
 
@@ -54,7 +54,7 @@ We accept payment via Credit Card (VISA, Mastercard, American Express, JCB, Maes
 
 We do not accept and will not ask you to provide payments with cash or a physical check. 
 
-For enterprise plans, requiring more than 25K tests per month, we offer invoicing. Contact us. 
+For Custom Enterprise plans, requiring more than 25,000 tests per month, please [contact us](https://www.product.webpagetest.org/contact). 
 
 ### How do I change the credit card that I have on file or update my payment method?  
 On My Account page, you will be able to edit your credit card details and update your payment method. Please note that these changes made to your payment method will reflect on your next billing receipt. Please ensure the accuracy of your payment method and that it is properly funded to avoid any issues with payment acceptance. 
@@ -66,7 +66,7 @@ You will be charged in US Dollars, but the exact amount you will see on your cre
 You can access your payment history by logging into your account on www.webpagetest.org under the Billing History view on the My Account page.  Be sure to keep a valid email on file and check your spam folder for emailed copies of your charges.
 
 ### Why was my payment declined?
-A payment can be denied for a variety of reasons, like insufficient funds, incorrect/incomplete credit card information, or your card is not recognizing the charge on a new vendor. It’s best to contact your bank to advise them that the charge is valid and to allow charges from WPT/Catchpoint.   
+A payment can be denied for a variety of reasons, like insufficient funds, incorrect/incomplete credit card information, or your card is not recognizing the charge on a new vendor. It’s best to contact your bank to advise them that the charge is valid and to allow charges from WebPageTest/Catchpoint.   
 
 Here are steps to ensure your payment goes through:
 
@@ -79,7 +79,7 @@ Here are steps to ensure your payment goes through:
 You will be charged at the time of purchase for the subscription plan you chose. Please allow additional time for your financial institution to post the charge on your bank account.  
 
 ### What do I do if I have any immediate billing questions or if I need to speak with someone regarding charges on my account? 
-Currently, we provide email support for all your API related questions around account, tests and billing. You can contact us anytime. Simply select ‘Contact Support’ on the top right section of My Account and submit your query. Our support specialist will get back to you within 2-3 business days.  
+Currently, we provide email support for all your API related questions around account, API tests, and billing. You can contact us anytime. Simply select ‘Contact Support’ on the top right section of My Account and submit your query. Our support specialist will get back to you within 2-3 business days.  
 
 ### What do I do if I did not sign up for your service and suspect a fraudulent charge has been made on my credit card? 
 Please contact our support team and provide us with your name, contact information, date of the charge, and the amount. Select ‘Contact Support’ on the top right section of My Account and submit your query.
@@ -88,7 +88,7 @@ Please contact our support team and provide us with your name, contact informati
 We currently do not support adding multiple credit cards to your subscription plan. We are working on including this in our future releases. Please ensure that one selected payment method will be sufficient for your purchase in order to ensure payment authorization. You can also change your payment method by editing the payment details on your My Account page. Please note we do not accept and will not ask you to provide payments with cash or a physical check.  
 
 ### Why was the price of my plan higher than expected?  
-If you purchased the subscription during our introductory promo period, you’ll be billed the original cost of subscription in the next billing cycle after the promo period. For any other discrepancy, please contact your bank?  
+If you purchased the subscription during our introductory promo period, you’ll be billed the original cost of subscription in the next billing cycle after the promo period. For any other discrepancy, please contact your bank.   
 
 ### How often will I be charged for this service? 
 Your billing date will correspond with the day that you first purchased the plan, and auto-renewed depending on the subscription term. You will be charged in accordance with your selected plan. This will occur monthly if you select a monthly plan, or it will occur on an annual basis if you have selected an annual plan. If you purchased the monthly subscription on the 3rd of a month, unless otherwise canceled, your subscription will automatically renew, and you will always be billed on the 3rd day of the first month in a billing cycle. If you purchased the monthly subscription on the 29th, 30 or 31st of the month, you will be billed on the last day of the first month in a billing cycle. 
@@ -103,7 +103,7 @@ You’ll be able to access your payment history under Billing History in My Acco
 You can change your billing details and payment method by editing the payment details on your My Account page. Please note we do not accept and will not ask you to provide payments with cash or a physical check. 
 
 ### Where can I find a list of different plans and their pricing? 
-All our subscription plans offer the same features and capabilities, and the pricing is based on the total tests you want to run per month. You can view our subscription plans when you [sign up](https://app.webpagetest.org/ui/entry/wpt/signup) or [log into](https://app.webpagetest.org/ui/entry/wptLogin.aspx) "My Account" on https://webpagetest.org/ For Enterprise plans where you want to run more than 25000 tests per month, please contact us here. 
+All our subscription plans offer the same features and capabilities, and the pricing is based on the total tests you want to run per month. You can view our subscription plans when you [sign up](https://app.webpagetest.org/ui/entry/wpt/signup) or [log into](https://app.webpagetest.org/ui/entry/wptLogin.aspx) "My Account" on https://webpagetest.org/ For Custom Enterprise plans where you want to run more than 25000 tests per month, please [contact us](https://www.product.webpagetest.org/contact). 
 
 ### What is the cancellation policy?  
 You can choose to cancel anytime during the subscription period. Once you choose to cancel, it stops the WPT API subscription from auto-renewing for the next billing cycle. You’ll continue to have access to run tests for that plan, until the end of your current billing period. When you cancel, you cancel only the subscription. You’ll continue to have access to the WebPageTest account and history of the manual tests you ran with that account. Please note all subscriptions are automatically renewed unless explicitly cancelled.
