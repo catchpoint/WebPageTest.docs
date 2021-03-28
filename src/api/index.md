@@ -21,8 +21,15 @@ To make sure your API key is ready to go, let's get your first test submitted. I
 Copy and paste the following command into your terminal, inserting your api key and email address in place of the placeholders:
 
 ```bash
-curl https://www.webpagetest.org/runtest.php?url=www.webpagetest.com&k={YOUR_API_KEY}&f=json&notify={YOUR_EMAIL}
+curl https://www.webpagetest.org/runtest.php?url=https://www.webpagetest.org&k={YOUR_API_KEY}&f=json&notify={YOUR_EMAIL}
 ```
+
+The request above will:
+
+- Submit a test for www.webpagetest.com (using the `url` parameter)
+- Authenticate using your API key (using the `k` parameter)
+- Request a JSON response (using the `f` parameter)
+- Request that the API send an email to your email address when the test is complete (using the `notify` parameter)
 
 If all goes well, you should get a JSON response, similar to the one below, telling you the test has been successfully submitted (`statusCode`=200), and providing you with the `testId` as well as several links for digging into results once the test has been completed.
 
@@ -31,12 +38,12 @@ If all goes well, you should get a JSON response, similar to the one below, tell
    "statusCode": 200,
    "statusText": "Ok",
       "data": {
-         "testId": "210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911",
-         "jsonUrl": "https://www.webpagetest.org/jsonResult.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911",
-         "xmlUrl": "https://www.webpagetest.org/xmlResult/210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911/",
-         "userUrl": "https://www.webpagetest.org/result/210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911/",
-         "summaryCSV": "https://www.webpagetest.org/result/210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911/page_data.csv",
-         "detailCSV": "https://www.webpagetest.org/result/210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911/requests.csv"
+         "testId": "210328_XiVQ_b694021b2a24ca1912dae50fb58b5861",
+         "jsonUrl": "https://www.webpagetest.org/jsonResult.php?test=210328_XiVQ_b694021b2a24ca1912dae50fb58b5861",
+         "xmlUrl": "https://www.webpagetest.org/xmlResult/210328_XiVQ_b694021b2a24ca1912dae50fb58b5861/",
+         "userUrl": "https://www.webpagetest.org/result/210328_XiVQ_b694021b2a24ca1912dae50fb58b5861/",
+         "summaryCSV": "https://www.webpagetest.org/result/210328_XiVQ_b694021b2a24ca1912dae50fb58b5861/page_data.csv",
+         "detailCSV": "https://www.webpagetest.org/result/210328_XiVQ_b694021b2a24ca1912dae50fb58b5861/requests.csv"
       }
 }
 ```

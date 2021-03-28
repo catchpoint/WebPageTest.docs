@@ -148,6 +148,18 @@ img[width] {
 img[width][height] {
     height: auto; /* Preserve aspect ratio */
 }
+h1 .direct-link{
+    display: none;
+}
+
+h2 .direct-link{
+    opacity: 0;
+    transition: opacity .2 ease-in-out;
+}
+h2:hover .direct-link{
+    opacity: 1;
+    text-decoration: none;
+}
 /* Let SVG scale without boundaries */
 img[src$=".svg"] {
     width: 100%;
