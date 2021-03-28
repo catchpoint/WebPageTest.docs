@@ -101,8 +101,8 @@ The response object contains the following attributes:
 The HTTP response status code for the submission. A 200 code indicates a succesful submission. Any errors will result in a status code of 400.
 - `statusText` (string)
 Descriptive error text explaining the failure. In the case of a 200 status code, the `statusText` will be "Ok".
-- `requestId` (string)
-The request ID echoed back from the request parameter (`r`). If no request parameter was sent, the requestID will not be included in the response object.
+- `r` (string)
+Request ID. When used with the "xml" or "json" format, will echo back in the response object.
 - `data` (object)
 An object containing information for the test run, including URLs and the test ID. The `data` object is comprised of the following attributes:
     - `testId` (string)  
@@ -320,7 +320,7 @@ http://www.webpagetest.org/runtest.php?url=www.aol.com&runs=2&f=xml&r=12345
 ```
 
 ## Check test status
-You can check the status of a test by doing a GET to http://www.webpagetest.org/testStatus.php with your test id and an optional format parameter You will get a HTTP 200 response to the request itself indicating that the request was parsed, as well as a return object with details about the test run itself. 
+You can check the status of a test by doing a GET to http://www.webpagetest.org/testStatus.php with your test id and an optional format parameter. You will get a HTTP 200 response to the request itself indicating that the request was parsed, as well as a return object with details about the test run itself. 
 
 ### Response Format
 By default, the `/testStatus.php` endpoint returns a JSON object. Alternatively, you can request the response object be returned as XML by passing the format (`f`) parameter.
@@ -459,346 +459,145 @@ An object containing information about the test that was run. The `data` object 
 
 :::
 
-## Getting test results
-under normal use (non-xml) you will be redirected to the results page. When using the XML API you should use the xmlUrl provided in the response to the test request. The XML url can also take some optional parameters:
+### Full List of Parameters
+::: api-list
+- `test` <small>required</small>  
+The test ID for the test you want to check the status of.
+- `f` <small>optional</small>
+The format to return. Set to "xml" to request an XML response; set to "json" to request a JSON-encoded response. If no format parameter is passed, the API call will result in a redirect.
+- `callback` <small>optional</small>
+Callback function name. When used with `f=json`, the API will return an JSONP response by wrapping the JSON object with the provided callback name.
+:::
+## Retrieving test results
+To retrieve the results of a test run, you can use either the https://www.webpagetest.org/xmlResult.php (to return an XML response) or https://www.webpagetest.org/jsonResult.php (to return a JSON response) endpoint. The endpoint will return a response containing some information about the test itself, as well as an object containing all the metrics recorded across each test run.
 
-|  **Parameter** | ** Description** |
-| --- |  --- |
-|  r |  A request ID that will be echoed back in the response |
-|  requests |  Pass requests=1 to include the request data in the XML (slower and results in much larger responses) |
-|  pagespeed |  Pass pagespeed=1 to include the PageSpeed score in the response (may be slower) |
-|  domains |  Pass domains=1 to include the breakdown of requests and bytes by domain |
-|  breakdown |  Pass breakdown=1 to include the breakdown of requests and bytes by mime type |
+### Response Format
+The results endpoints will return a different response type depending on the endpoint you use.
 
-
-The format of the response for the test details is the same as for submitting the request (with different data). All times are in ms.
-```xml
-<response>
-	<statusCode></statusCode>
-	<statusText></statusText>
-	<requestId></requestId>
-	<data>
-		<runs></runs>
-		<average>
-			<firstView>
-			</firstView>
-			<repeatView>
-			</repeatView>
-		</average>
-		<run>
-			<id></id>
-			<firstView>
-				<results>
-				</results>
-				<pages>
-				</pages>
-				<thumbnails>
-				</thumbnails>
-				<images>
-				</images>
-				<rawData>
-				</rawData>
-			</firstView>
-			<repeatView>
-				<results>
-				</results>
-				<pages>
-				</pages>
-				<thumbnails>
-				</thumbnails>
-				<images>
-				</images>
-				<rawData>
-				</rawData>
-			</repeatView>
-		</run>
-		<run>
-		...
-		</run>
-	</data>
-</response>
-```
-* **statusCode** - 200 if the test is complete and results are available. 1xx if the test is still pending (try again in a reasonable amount of time - 5-10 seconds). 400 if it is an invalid test ID.
-* **statusText** - Descriptive text of any failures
-* **requestId** - Request ID echoed from the request
-* **runs** - Number of runs in the response
-* **average** - Averaged test results across all of the successful runs (a block each for first and repeat view data)
-* **run** - A block for each test run with the results for that run
-* **id** - Run number (increments up from 1 in order)
-* **firstView/repeatView** - A block of results each for First and Repeat view data
-* **results** - Test results (all times are in ms)
-* **pages** - URL's to user pages
-* **thumbnails** - URL's to the thumbnails for the various images (waterfall, checklist, screen shot)
-* **images** - URL's to the full-sized images (waterfall, checklist, screen shot)
-* **rawData** - URL's to the headers and tab-delimited results files
-
-## Sample
-Using the test request sample from earlier (and adding a requestId), we get:
-
-http://www.webpagetest.org/xmlResult/091111_2XFH/?r=12345
-```xml
-<?xml version="1.0" encoding="UTF-8" ?> 
-<response>
-	<statusCode>200</statusCode> 
-	<statusText>Ok</statusText> 
-	<requestId>12345</requestId> 
-	<data>
-		<runs>2</runs> 
-		<average>
-			<firstView>
-				<loadTime>4495</loadTime> 
-				<TTFB>315</TTFB> 
-				<bytesIn>392645</bytesIn> 
-				<bytesInDoc>392645</bytesInDoc> 
-				<requests>44</requests> 
-				<requestsDoc>44</requestsDoc> 
-				<render>1904</render> 
-				<fullyLoaded>4495</fullyLoaded> 
-				<docTime>4495</docTime> 
-				<domTime>0</domTime> 
-				<avgRun>1</avgRun> 
-			</firstView>
-			<repeatView>
-				<loadTime>3266</loadTime> 
-				<TTFB>359</TTFB> 
-				<bytesIn>102151</bytesIn> 
-				<bytesInDoc>102151</bytesInDoc> 
-				<requests>13</requests> 
-				<requestsDoc>13</requestsDoc> 
-				<render>682</render> 
-				<fullyLoaded>3266</fullyLoaded> 
-				<docTime>3266</docTime> 
-				<domTime>0</domTime> 
-				<avgRun>1</avgRun> 
-			</repeatView>
-		</average>
-		<run>
-			<id>1</id> 
-			<firstView>
-				<results>
-					<URL>http://www.aol.com</URL> 
-					<loadTime>4467</loadTime> 
-					<TTFB>346</TTFB> 
-					<bytesOut>22403</bytesOut> 
-					<bytesOutDoc>22403</bytesOutDoc> 
-					<bytesIn>386528</bytesIn> 
-					<bytesInDoc>386528</bytesInDoc> 
-					<requests>43</requests> 
-					<requestsDoc>43</requestsDoc> 
-					<result>0</result> 
-					<render>1963</render> 
-					<fullyLoaded>4467</fullyLoaded> 
-					<cached>0</cached> 
-					<web>1</web> 
-					<docTime>4467</docTime> 
-					<domTime>0</domTime> 
-					<score_cache>48</score_cache> 
-					<score_cdn>96</score_cdn> 
-					<score_gzip>100</score_gzip> 
-					<score_cookies>87</score_cookies> 
-					<score_keep-alive>94</score_keep-alive> 
-					<score_minify>91</score_minify> 
-					<score_combine>75</score_combine> 
-					<score_compress>99</score_compress> 
-					<score_etags>93</score_etags> 
-					<date>1257974116</date> 
-				</results>
-				<pages>
-					<details>http://www.webpagetest.org/result/091111_2XFH/1/details/</details> 
-					<checklist>http://www.webpagetest.org/result/091111_2XFH/1/performance_optimization/</checklist> 
-					<report>http://www.webpagetest.org/result/091111_2XFH/1/optimization_report/</report> 
-					<breakdown>http://www.webpagetest.org/result/091111_2XFH/1/breakdown/</breakdown> 
-					<domains>http://www.webpagetest.org/result/091111_2XFH/1/domains/</domains> 
-					<screenShot>http://www.webpagetest.org/result/091111_2XFH/1/screen_shot/</screenShot> 
-				</pages>
-				<thumbnails>
-					<waterfall>http://www.webpagetest.org/result/091111_2XFH/1_waterfall_thumb.png</waterfall> 
-					<checklist>http://www.webpagetest.org/result/091111_2XFH/1_optimization_thumb.png</checklist> 
-					<screenShot>http://www.webpagetest.org/result/091111_2XFH/1_screen_thumb.jpg</screenShot> 
-				</thumbnails>
-				<images>
-					<waterfall>http://www.webpagetest.org/results/09/11/11/2XFH/1_waterfall.png</waterfall> 
-					<checklist>http://www.webpagetest.org/results/09/11/11/2XFH/1_optimization.png</checklist> 
-					<screenShot>http://www.webpagetest.org/results/09/11/11/2XFH/1_screen.jpg</screenShot> 
-				</images>
-				<rawData>
-					<headers>http://www.webpagetest.org/results/09/11/11/2XFH/1_report.txt</headers> 
-					<pageData>http://www.webpagetest.org/results/09/11/11/2XFH/1_IEWPG.txt</pageData> 
-					<requestsData>http://www.webpagetest.org/results/09/11/11/2XFH/1_IEWTR.txt</requestsData> 
-				</rawData>
-			</firstView>
-			<repeatView>
-				<results>
-					<URL>http://www.aol.com</URL> 
-					<loadTime>3418</loadTime> 
-					<TTFB>357</TTFB> 
-					<bytesOut>8762</bytesOut> 
-					<bytesOutDoc>8762</bytesOutDoc> 
-					<bytesIn>108138</bytesIn> 
-					<bytesInDoc>108138</bytesInDoc> 
-					<requests>14</requests> 
-					<requestsDoc>14</requestsDoc> 
-					<result>0</result> 
-					<render>682</render> 
-					<fullyLoaded>3418</fullyLoaded> 
-					<cached>1</cached> 
-					<web>1</web> 
-					<docTime>3418</docTime> 
-					<domTime>0</domTime> 
-					<score_cache>35</score_cache> 
-					<score_cdn>83</score_cdn> 
-					<score_gzip>100</score_gzip> 
-					<score_cookies>66</score_cookies> 
-					<score_keep-alive>83</score_keep-alive> 
-					<score_minify>100</score_minify> 
-					<score_combine>100</score_combine> 
-					<score_compress>100</score_compress> 
-					<score_etags>93</score_etags> 
-					<date>1257974129</date> 
-				</results>
-				<pages>
-					<details>http://www.webpagetest.org/result/091111_2XFH/1/details/cached/</details> 
-					<checklist>http://www.webpagetest.org/result/091111_2XFH/1/performance_optimization/cached/</checklist> 
-					<report>http://www.webpagetest.org/result/091111_2XFH/1/optimization_report/cached/</report> 
-					<breakdown>http://www.webpagetest.org/result/091111_2XFH/1/breakdown/</breakdown> 
-					<domains>http://www.webpagetest.org/result/091111_2XFH/1/domains/</domains> 
-					<screenShot>http://www.webpagetest.org/result/091111_2XFH/1/screen_shot/cached/</screenShot> 
-				</pages>
-				<thumbnails>
-					<waterfall>http://www.webpagetest.org/result/091111_2XFH/1_Cached_waterfall_thumb.png</waterfall> 
-					<checklist>http://www.webpagetest.org/result/091111_2XFH/1_Cached_optimization_thumb.png</checklist> 
-					<screenShot>http://www.webpagetest.org/result/091111_2XFH/1_Cached_screen_thumb.jpg</screenShot> 
-				</thumbnails>
-				<images>
-					<waterfall>http://www.webpagetest.org/results/09/11/11/2XFH/1_Cached_waterfall.png</waterfall> 
-					<checklist>http://www.webpagetest.org/results/09/11/11/2XFH/1_Cached_optimization.png</checklist> 
-					<screenShot>http://www.webpagetest.org/results/09/11/11/2XFH/1_Cached_screen.jpg</screenShot> 
-				</images>
-				<rawData>
-					<headers>http://www.webpagetest.org/results/09/11/11/2XFH/1_Cached_report.txt</headers> 
-					<pageData>http://www.webpagetest.org/results/09/11/11/2XFH/1_Cached_IEWPG.txt</pageData> 
-					<requestsData>http://www.webpagetest.org/results/09/11/11/2XFH/1_Cached_IEWTR.txt</requestsData> 
-				</rawData>
-			</repeatView>
-		</run>
-		<run>
-			<id>2</id> 
-			<firstView>
-				<results>
-					<URL>http://www.aol.com</URL> 
-					<loadTime>4523</loadTime> 
-					<TTFB>283</TTFB> 
-					<bytesOut>22772</bytesOut> 
-					<bytesOutDoc>22772</bytesOutDoc> 
-					<bytesIn>398762</bytesIn> 
-					<bytesInDoc>398762</bytesInDoc> 
-					<requests>44</requests> 
-					<requestsDoc>44</requestsDoc> 
-					<result>0</result> 
-					<render>1845</render> 
-					<fullyLoaded>4523</fullyLoaded> 
-					<cached>0</cached> 
-					<web>1</web> 
-					<docTime>4523</docTime> 
-					<domTime>0</domTime> 
-					<score_cache>48</score_cache> 
-					<score_cdn>96</score_cdn> 
-					<score_gzip>100</score_gzip> 
-					<score_cookies>88</score_cookies> 
-					<score_keep-alive>97</score_keep-alive> 
-					<score_minify>91</score_minify> 
-					<score_combine>75</score_combine> 
-					<score_compress>98</score_compress> 
-					<score_etags>93</score_etags> 
-					<date>1257974140</date> 
-				</results>
-				<pages>
-					<details>http://www.webpagetest.org/result/091111_2XFH/2/details/</details> 
-					<checklist>http://www.webpagetest.org/result/091111_2XFH/2/performance_optimization/</checklist> 
-					<report>http://www.webpagetest.org/result/091111_2XFH/2/optimization_report/</report> 
-					<breakdown>http://www.webpagetest.org/result/091111_2XFH/2/breakdown/</breakdown> 
-					<domains>http://www.webpagetest.org/result/091111_2XFH/2/domains/</domains> 
-					<screenShot>http://www.webpagetest.org/result/091111_2XFH/2/screen_shot/</screenShot> 
-				</pages>
-				<thumbnails>
-					<waterfall>http://www.webpagetest.org/result/091111_2XFH/2_waterfall_thumb.png</waterfall> 
-					<checklist>http://www.webpagetest.org/result/091111_2XFH/2_optimization_thumb.png</checklist> 
-					<screenShot>http://www.webpagetest.org/result/091111_2XFH/2_screen_thumb.jpg</screenShot> 
-				</thumbnails>
-				<images>
-					<waterfall>http://www.webpagetest.org/results/09/11/11/2XFH/2_waterfall.png</waterfall> 
-					<checklist>http://www.webpagetest.org/results/09/11/11/2XFH/2_optimization.png</checklist> 
-					<screenShot>http://www.webpagetest.org/results/09/11/11/2XFH/2_screen.jpg</screenShot> 
-				</images>
-				<rawData>
-					<headers>http://www.webpagetest.org/results/09/11/11/2XFH/2_report.txt</headers> 
-					<pageData>http://www.webpagetest.org/results/09/11/11/2XFH/2_IEWPG.txt</pageData> 
-					<requestsData>http://www.webpagetest.org/results/09/11/11/2XFH/2_IEWTR.txt</requestsData> 
-				</rawData>
-			</firstView>
-			<repeatView>
-				<results>
-					<URL>http://www.aol.com</URL> 
-					<loadTime>3113</loadTime> 
-					<TTFB>360</TTFB> 
-					<bytesOut>7426</bytesOut> 
-					<bytesOutDoc>7426</bytesOutDoc> 
-					<bytesIn>96163</bytesIn> 
-					<bytesInDoc>96163</bytesInDoc> 
-					<requests>11</requests> 
-					<requestsDoc>11</requestsDoc> 
-					<result>0</result> 
-					<render>682</render> 
-					<fullyLoaded>3113</fullyLoaded> 
-					<cached>1</cached> 
-					<web>1</web> 
-					<docTime>3113</docTime> 
-					<domTime>0</domTime> 
-					<score_cache>25</score_cache> 
-					<score_cdn>66</score_cdn> 
-					<score_gzip>100</score_gzip> 
-					<score_cookies>58</score_cookies> 
-					<score_keep-alive>77</score_keep-alive> 
-					<score_minify>100</score_minify> 
-					<score_combine>100</score_combine> 
-					<score_compress>100</score_compress> 
-					<score_etags>91</score_etags> 
-					<date>1257974152</date> 
-				</results>
-				<pages>
-					<details>http://www.webpagetest.org/result/091111_2XFH/2/details/cached/</details> 
-					<checklist>http://www.webpagetest.org/result/091111_2XFH/2/performance_optimization/cached/</checklist> 
-					<report>http://www.webpagetest.org/result/091111_2XFH/2/optimization_report/cached/</report> 
-					<breakdown>http://www.webpagetest.org/result/091111_2XFH/2/breakdown/</breakdown> 
-					<domains>http://www.webpagetest.org/result/091111_2XFH/2/domains/</domains> 
-					<screenShot>http://www.webpagetest.org/result/091111_2XFH/2/screen_shot/cached/</screenShot> 
-				</pages>
-				<thumbnails>
-					<waterfall>http://www.webpagetest.org/result/091111_2XFH/2_Cached_waterfall_thumb.png</waterfall> 
-					<checklist>http://www.webpagetest.org/result/091111_2XFH/2_Cached_optimization_thumb.png</checklist> 
-					<screenShot>http://www.webpagetest.org/result/091111_2XFH/2_Cached_screen_thumb.jpg</screenShot> 
-				</thumbnails>
-				<images>
-					<waterfall>http://www.webpagetest.org/results/09/11/11/2XFH/2_Cached_waterfall.png</waterfall> 
-					<checklist>http://www.webpagetest.org/results/09/11/11/2XFH/2_Cached_optimization.png</checklist> 
-					<screenShot>http://www.webpagetest.org/results/09/11/11/2XFH/2_Cached_screen.jpg</screenShot> 
-				</images>
-				<rawData>
-					<headers>http://www.webpagetest.org/results/09/11/11/2XFH/2_Cached_report.txt</headers> 
-					<pageData>http://www.webpagetest.org/results/09/11/11/2XFH/2_Cached_IEWPG.txt</pageData> 
-					<requestsData>http://www.webpagetest.org/results/09/11/11/2XFH/2_Cached_IEWTR.txt</requestsData> 
-				</rawData>
-			</repeatView>
-		</run>
-	</data>
-</response>
-```
-## Cancelling Tests
-With a test ID (and if required, API key) you can cancel a test if it has not started running.
 ```text
-http://www.webpagetest.org/cancelTest.php?test=<testId>&k=<API key>
+//this will result in an XML response
+https://webpagetest.org/xmlResult.php
+
+//this will return a JSON response
+https://webpagetest.org/jsonResult.php
 ```
 
+Here's an example response, truncated for brevity:
+
+:::code-tabs
+```json
+{
+  "data": {
+    "id": "210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911",
+    "url": "http://www.webpagetest.com",
+    "summary": "https://www.webpagetest.org/results.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911",
+    "testUrl": "http://www.webpagetest.com",
+    "location": "Dulles:Chrome",
+    "from": "Dulles, VA - <b>Chrome</b> - <b>Cable</b>",
+    "connectivity": "Cable",
+    "bwDown": 5000,
+    "bwUp": 1000,
+    "latency": 28,
+    "plr": "0",
+    "shaperLimit": 0,
+    "mobile": 0,
+    "completed": 1616896955,
+    "testRuns": 1,
+    "fvonly": false,
+    "successfulFVRuns": 1,
+    "successfulRVRuns": 1,
+    "average": {
+        //all metrics for this  run
+    },
+    "standardDeviation": {
+        //all metrics for this run
+    },
+    "median": {
+        //all metrics for this run
+    },
+    "runs": {
+        //all metrics for all runs
+    }
+  },
+  "statusCode": 200,
+  "statusText": "Test Complete",
+  "webPagetestVersion": "20.06"
+}
+```
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+   <statusCode>200</statusCode>
+   <statusText>Ok</statusText>
+   <webPagetestVersion>20.06</webPagetestVersion>
+   <data>
+      <testId>210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911</testId>
+      <summary>https://www.webpagetest.org/result/210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911/</summary>
+      <testUrl>http://www.webpagetest.com</testUrl>
+      <location>Dulles:Chrome</location>
+      <from>
+         Dulles, VA -
+         <b>Chrome</b>
+         -
+         <b>Cable</b>
+      </from>
+      <connectivity>Cable</connectivity>
+      <bwDown>5000</bwDown>
+      <bwUp>1000</bwUp>
+      <latency>28</latency>
+      <plr>0</plr>
+      <mobile>0</mobile>
+      <completed>Sun, 28 Mar 2021 02:02:35 +0000</completed>
+      <runs>1</runs>
+      <successfulFVRuns>1</successfulFVRuns>
+      <successfulRVRuns>1</successfulRVRuns>
+      <average>...</average>
+      <standardDeviation>...</standardDeviation>
+      <median>...</median>
+      <run>...</run>
+   </data>
+</response>
+```
+
+:::caution
+There are a **lot** of [metrics](/metrics) recorded by WebPageTest and exposed via the API. We're working on documenting them all. In the meantime, feel free to poke at some sample results (in either [JSON](https://webpagetest.org/jsonResult.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911) or [XML](https://webpagetest.org/xmlResult.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911) format) to see what's available.
+:::
+
+### Full List of Parameters
+::: api-list
+- `test` <small>required</small>  
+The test ID for the test you want to cancel.
+- `callback` <small>optional</small>
+Callback function name. When used with `f=json`, the API will return an JSONP response by wrapping the JSON object with the provided callback name.
+- `breakdown` <small>optional</small>  
+Pass 1 to include the breakdown of requests and bytes by mime type.
+**Default:** 0
+- `domains` <small>optional</small>  
+Pass 1 to include the breakdown of requests and bytes by domain.
+**Default:** 0
+- `requests` <small>optional</small>  
+Pass 1 to include the request data in the response (slower and results in a much longer response).
+**Default:** 0
+- `requests` <small>optional</small>  
+Pass 1 to include the request data in the response (slower and results in a much longer response).
+**Default:** 0
+- `r` <small>optional</small>
+Request ID. Will echo back in the response object.
+:::
+## Cancelling Tests
+To cancel a test that has not started running, you can use the http://www.webpagetest.org/cancelTest.php endpoint.
+
+```text
+http://www.webpagetest.org/cancelTest.php?test=210328_XiMJ_3c426d8c00c689f22f4097cbb1dfd697&k=81c119174fe742f7a2d778d0a505d096\
+```
+
+### Full List of Parameters
+::: api-list
+- `k` <small>required</small>
+API Key. *API Key is optional for any private instances you maintain on your own.
+- `test` <small>required</small>  
+The test ID for the test you want to cancel.
+:::
 ## Retrieving Available Locations
 You can request a list of available WebPageTest agents as well as the number of pending tests for each using the https://webpagetest.org/getLocations.php endpoint.
 
@@ -943,3 +742,13 @@ Here's an example response from the /getLocations.php endpoint, (truncated for b
    </data>
 </response>
 ```
+
+### Full list of parameters
+::: api-list
+- `f` <small>optional</small>
+The format to return. Set to "xml" to request an XML response; set to "json" to request a JSON-encoded response. If no format parameter is passed, the API call will default to an XML reponse.
+- `callback` <small>optional</small>
+Callback function name. When used with `f=json`, the API will return an JSONP response by wrapping the JSON object with the provided callback name.
+- `r` (string)
+Request ID. Will echo back in the response object.
+:::
