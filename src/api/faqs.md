@@ -2,7 +2,7 @@
 title: 'WebPageTest API FAQs'
 eleventyNavigation:
   parent: API 
-  key: API FAQs
+  key: FAQs
   order: 3
 ---
 # WebPageTest API FAQs
