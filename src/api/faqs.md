@@ -15,7 +15,7 @@ This page answers frequently asked questions about account, test options and bil
 A test run on WebPageTest is defined as a single run within a test set up to measure webpage performance on a specific browser and location. For example, if you run a 5-run test with **Repeat View**, then that counts as 10 test runs.    
 
 ### What countries and browsers do you support with the WebPageTest API?
-With WebPageTest API, you can test across 29 locations worldwide, including mainland China.  
+With WebPageTest API, you can test across 30 locations worldwide, including mainland China.  
 
 WebPageTest API is always up-to-date on the current version of every browser and you can test on Chrome (stable, beta, canary), Firefox (stable, beta, ESR), Microsoft Edge (dev) and Brave.  
 
