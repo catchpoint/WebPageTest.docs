@@ -5,7 +5,7 @@ eleventyNavigation:
   order: 99
 ---
 # Accounts
-Click on **Sign Up** on [WebPageTest](http://webpagetest.org/) to create a user account on WebPageTest. You can create a user account on WebPageTest if you are looking to: 
+Click on **Sign Up** on [WebPageTest](http://webpagetest.org/?utm_source=docs&utm_medium=docs&utm_campaign=account&utm_content=signup) to create a user account on WebPageTest. You can create a user account on WebPageTest if you are looking to: 
 * Post on the [WebPageTest Forum](https://forums.webpagetest.org/). Otherwise it's read-only. 
 * Access your past [test results](https://webpagetest.org/testlog/1/)
 * Use the [WebPageTest API](http://docs.webpagetest.org/api)
@@ -15,6 +15,6 @@ For access to your past test results, please note that WebPageTest currently sto
 ## Unable to sign in
 Did you previously register on the forum, or sign up with Google on WebPageTest? 
 
-WebPageTest is now integrated with Catchpoint's account management instead of relying on the legacy forums or Google accounts for authentication. As of March 30, 2021, you'll have to create a new account [here](https://app.webpagetest.org/ui/entry/wpt/signup) to be able to log into WebPageTest to either post on the forum, save your test results under **Test History**, or subscribe to the WebPageTest API. 
+WebPageTest is now integrated with Catchpoint's account management instead of relying on the legacy forums or Google accounts for authentication. As of March 30, 2021, you'll have to create a new account [here](https://app.webpagetest.org/ui/entry/wpt/signup?utm_source=docs&utm_medium=docs&utm_campaign=account&utm_content=newaccount) to be able to log into WebPageTest to either post on the forum, save your test results under **Test History**, or subscribe to the WebPageTest API. 
 
-You'll be to have access to your previous test results under **Test History**, when you create your account [here](https://app.webpagetest.org/ui/entry/wpt/signup) using the same email address as your previosuly registered email address with WebPageTest. 
+You'll be to have access to your previous test results under **Test History**, when you create your account [here](https://app.webpagetest.org/ui/entry/wpt/signup?utm_source=docs&utm_medium=docs&utm_campaign=account&utm_content=testhistory) using the same email address as your previosuly registered email address with WebPageTest. 
