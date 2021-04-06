@@ -3,7 +3,6 @@ const observer = new IntersectionObserver(entries => {
         const id = entry.target.getAttribute('id');
 
         if (entry.intersectionRatio > 0) {
-            console.log(entry.intersectionRatio);
             if (document.querySelector(`.pageNav li.is-active`)) {
                 document.querySelector(`.pageNav li.is-active`).classList.remove('is-active');
             }

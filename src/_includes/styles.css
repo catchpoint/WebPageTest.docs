@@ -1,8 +1,18 @@
 :root {
-    --wpt-navy: #092141;
+    --wpt-navy: #0d1e38;
+    --navy-light: #183157;
+    --light-blue: #2f80ed;
     --light-grey: #dddddd;
+    --highlight: #F9D856;
     --blue-grey: rgb(52,64,84);
     --lightest-grey: #f5f5f5;
+    --attention-bg: rgb(255,248,216);
+    --attention-border: rgb(255,229,100);
+    --note-bg: #f1f8ff;
+    --note-border: #0366d6;
+    --warning-bg: #ffe4e2;
+    --warning-border: #eb0f00;
+    --key-term: #074dad;
 }
 body{
     color: #222;
@@ -23,7 +33,7 @@ body{
         grid-column: 1 / 3;
     }
     .primaryNav {
-        grid-row: 2 / 4;
+        grid-row: 2 / 3;
         grid-column: 1;
     }
     main{
@@ -57,7 +67,7 @@ body{
     .g-two-up{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-auto-flow: column;
+        grid-row-gap: 2em;
     }
     .g-two-up div:first-child {
         border-right: 1px solid var(--light-grey);
@@ -118,6 +128,7 @@ h3{
     font-size: 1.3125em;
     margin-top: 1em;
     margin-bottom: 1em;
+    line-height: 1.4em;
     /* letter-spacing: -1px; */
 }
 h4{
@@ -136,6 +147,18 @@ img[width] {
 }
 img[width][height] {
     height: auto; /* Preserve aspect ratio */
+}
+h1 .direct-link{
+    display: none;
+}
+
+h2 .direct-link{
+    opacity: 0;
+    transition: opacity .2 ease-in-out;
+}
+h2:hover .direct-link{
+    opacity: 1;
+    text-decoration: none;
 }
 /* Let SVG scale without boundaries */
 img[src$=".svg"] {
@@ -230,6 +253,13 @@ main{
     overflow: auto;
     padding: 1em;
 }
+main h1 + p {
+    font-size: 1.3em;
+    line-height: 1.5em;
+}
+main li{
+    margin-bottom: .5em;
+}
 @media (min-width: 44em) {
     main{
         padding-top: 0;
@@ -291,7 +321,7 @@ nav{
 .pageNav{
     display: none;
 }
-@media (min-width: 44em) {
+@media (min-width: 68em) {
     nav{
         padding: 0 .5em;
     }
@@ -346,7 +376,16 @@ nav li ul{
     }
 }
 .toc li{
-    font-size: .9em;
+    font-size: 1em;
+}
+.toc li ol{
+    margin-left: 1em;
+    border-left: 0;
+    margin-top: .8em;
+}
+.toc li li{
+    margin-bottom: 1em;
+    line-height: 1.2em;
 }
 /* Primary Nav */
 .primaryNav details{ 
@@ -448,133 +487,340 @@ footer{
     border-top: 1px solid var(--light-grey);
     padding: 1em 1em;
 }
+/* api-list */
+.api-list ul, .api-list li {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+.api-list code {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.api-list strong{
+    padding-top: 1em;
+    display: inline-block;
+}
+.api-list{
+    margin-bottom: 2.5em;
+}
+.api-list li{
+    padding: .5em .5em 1em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid var(--light-grey);
+}
+.api-list ul ul{
+    margin-top: 1.5em;
+}
+.api-list li li{
+    border-bottom: 0;
+    padding: 0 .5em;
+    margin-left: 1em;
+}
+/* callout boxes */
+.caution {
+    background: var(--attention-bg);
+    padding: 1px 1em;
+    border: 1px solid var(--attention-border);
+    border-radius: 4px;
+    border-width: 0 0 0 5px;
+}
+.note {
+    background: var(--note-bg);
+    padding: 1px 1em;
+    border: 1px solid var(--note-border);
+    border-radius: 4px;
+    border-width: 0 0 0 5px;
+}
+.warning {
+    background: var(--warning-bg);
+    padding: 1px 1em;
+    border: 1px solid var(--warning-border);
+    border-radius: 4px;
+    border-width: 0 0 0 5px;
+}
+.key-term {
+    padding: 1px 1em;
+    border: 1px solid var(--key-term);
+    color: var(--key-term);
+    border-width: 2px 0;
+}
+.key-term p::before{
+    content: "Key Term to Know: ";
+    padding-top: 1em;
+    font-weight: bold;
+    display:inline;
+}
+/* tables */
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+table thead{
+    overflow: hidden;
+}
+table thead th:first-child{
+    border-top-left-radius: 4px;
+}
+table thead th:last-child{
+    border-top-right-radius: 4px;
+}
+table th{
+    background: var(--wpt-navy);
+    color: #fff;
+    font-weight: normal;
+    padding: .5em;
+}
+table tbody{
+    border: 1px solid var(--light-grey);
 
+}
+table td{
+    padding: .5em;
+    border: 1px solid var(--light-grey);
+}
+table tbody tr:nth-child(2n+2) td{
+    background: var(--lightest-grey);
+}
+table td code + small {
+    display: block;
+    margin-top: .5em;
+}
+/* code-tabs */
+.has-js .code-tabs pre{
+    display: none;
+}
+.has-js .code-tabs pre.is-active{
+    display: block;
+}
+.code-tabs-nav{
+    background: var(--wpt-navy);
+    display: flex;
+    margin-left: 0;
+    padding-left: .5em;
+    list-style-type: none;
+    margin-bottom: 0;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid rgba(255,255,255,.4);
+}
+.code-tabs-nav li {
+    padding-left: 0;
+    list-style-type: none;
+    margin: 0 .3em;
+}
+.code-tabs-nav a{
+    color: var(--light-grey);
+    text-transform: uppercase;
+    padding: .3em;
+    display: block;
+    font-size: .9em;
+}
+.code-tabs-nav li.is-active a{
+    color: #fff;
+    border-bottom: 3px solid #F9D856;
+    font-weight: bold;
+}
+.code-tabs-ready pre[class*=language-]{
+    border-radius: 0;
+    margin-top: 0;
+}
 
+.integrations,
+.integrations li{
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+.integrations {
+    margin-top: 3em;
+}
+.integrations li{
+    padding-bottom: 1.5em;
+    margin-bottom: 1.5em;
+    border-bottom: 1px solid var(--light-grey);
+}
+.integrations h3 {
+    margin-bottom: .1em;
+}
+.integrations h3 + p{
+    margin-top: 0;
+}
+.integrations li:last-child{
+    border-bottom : 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 
+.callout{
+    padding-bottom: 1.5em;
+    margin-top: 1.5em;
+}
+.callout + .callout{
+    border-top: 1px solid var(--light-grey);
+    padding-top: 1.5em;
+}
+pre,code {
+    background-color: var(--light-grey);
+    font-size: 1.1em;
+}
 /* PrismJS 1.23.0
 https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+json */
-/**
- * okaidia theme for JavaScript, CSS and HTML
- * Loosely based on Monokai textmate theme by http://www.monokai.nl/
- * @author ocodia
- */
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: monospace,monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  background-color: var(--wpt-navy);
+  color: #fff;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
 
- code[class*="language-"],
- pre[class*="language-"] {
-     color: #f8f8f2;
-     background: none;
-     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-     font-size: 1em;
-     text-align: left;
-     white-space: pre;
-     word-spacing: normal;
-     word-break: normal;
-     word-wrap: normal;
-     line-height: 1.5;
- 
-     -moz-tab-size: 4;
-     -o-tab-size: 4;
-     tab-size: 4;
- 
-     -webkit-hyphens: none;
-     -moz-hyphens: none;
-     -ms-hyphens: none;
-     hyphens: none;
- }
- 
- /* Code blocks */
- pre[class*="language-"] {
-     padding: 1em;
-     margin: .5em 0;
-     overflow: auto;
-     border-radius: 0.3em;
- }
- 
- :not(pre) > code[class*="language-"],
- pre[class*="language-"] {
-     background: #272822;
- }
- 
- /* Inline code */
- :not(pre) > code[class*="language-"] {
-     padding: .1em;
-     border-radius: .3em;
-     white-space: normal;
- }
- 
- .token.comment,
- .token.prolog,
- .token.doctype,
- .token.cdata {
-     color: #8292a2;
- }
- 
- .token.punctuation {
-     color: #f8f8f2;
- }
- 
- .token.namespace {
-     opacity: .7;
- }
- 
- .token.property,
- .token.tag,
- .token.constant,
- .token.symbol,
- .token.deleted {
-     color: #f92672;
- }
- 
- .token.boolean,
- .token.number {
-     color: #ae81ff;
- }
- 
- .token.selector,
- .token.attr-name,
- .token.string,
- .token.char,
- .token.builtin,
- .token.inserted {
-     color: #a6e22e;
- }
- 
- .token.operator,
- .token.entity,
- .token.url,
- .language-css .token.string,
- .style .token.string,
- .token.variable {
-     color: #f8f8f2;
- }
- 
- .token.atrule,
- .token.attr-value,
- .token.function,
- .token.class-name {
-     color: #e6db74;
- }
- 
- .token.keyword {
-     color: #66d9ef;
- }
- 
- .token.regex,
- .token.important {
-     color: #fd971f;
- }
- 
- .token.important,
- .token.bold {
-     font-weight: bold;
- }
- .token.italic {
-     font-style: italic;
- }
- 
- .token.entity {
-     cursor: help;
- }
- 
- 
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: rgba(29, 59, 83, 0.99);
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: rgba(29, 59, 83, 0.99);
+}
+
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+
+code {
+    padding: .25rem
+}
+
+pre {
+    overflow: auto;
+    width: 100%;
+    scrollbar-color: var(--light-blue) var(--navy-light)
+}
+
+pre::after {
+    content: "";
+    flex: 0 0 1.25rem
+}
+
+pre::-webkit-scrollbar {
+    height: 1rem
+}
+
+pre::-webkit-scrollbar-track {
+    background: var(--navy-light)
+}
+
+pre::-webkit-scrollbar-thumb {
+    background-color: var(--light-blue);
+    border-radius: 0;
+    border: .125rem solid var(--navy-light)
+}
+
+pre code {
+    display: block;
+    padding: .5rem 1rem;
+    font-size: 1rem
+}
+
+
+
+pre[class*=language-] .token.comment,pre[class*=language-] .token.prolog,pre[class*=language-] .token.doctype,pre[class*=language-] .token.cdata,code[class*=language-] .token.comment,code[class*=language-] .token.prolog,code[class*=language-] .token.doctype,code[class*=language-] .token.cdata {
+    color: #ccc
+}
+
+pre[class*=language-] .token.punctuation,code[class*=language-] .token.punctuation {
+    color: #68a4f3
+}
+
+pre[class*=language-] .token.property,pre[class*=language-] .token.tag,pre[class*=language-] .token.constant,pre[class*=language-] .token.symbol,pre[class*=language-] .token.deleted,code[class*=language-] .token.property,code[class*=language-] .token.tag,code[class*=language-] .token.constant,code[class*=language-] .token.symbol,code[class*=language-] .token.deleted {
+    color: #c2d8f9
+}
+
+pre[class*=language-] .token.boolean,pre[class*=language-] .token.number,code[class*=language-] .token.boolean,code[class*=language-] .token.number {
+    color: #bd9a00
+}
+
+pre[class*=language-] .token.selector,pre[class*=language-] .token.attr-name,pre[class*=language-] .token.string,pre[class*=language-] .token.char,pre[class*=language-] .token.builtin,pre[class*=language-] .token.inserted,code[class*=language-] .token.selector,code[class*=language-] .token.attr-name,code[class*=language-] .token.string,code[class*=language-] .token.char,code[class*=language-] .token.builtin,code[class*=language-] .token.inserted {
+    color: var(--color-yellow)
+}
+
+pre[class*=language-] .token.operator,pre[class*=language-] .token.entity,pre[class*=language-] .token.url,pre[class*=language-] .language-css .token.string,pre[class*=language-] .style .token.string,pre[class*=language-] .token.variable,code[class*=language-] .token.operator,code[class*=language-] .token.entity,code[class*=language-] .token.url,code[class*=language-] .language-css .token.string,code[class*=language-] .style .token.string,code[class*=language-] .token.variable {
+    color: #00e0e0
+}
+
+pre[class*=language-] .token.atrule,pre[class*=language-] .token.attr-value,pre[class*=language-] .token.function,code[class*=language-] .token.atrule,code[class*=language-] .token.attr-value,code[class*=language-] .token.function {
+    color: var(--color-yellow)
+}
+
+pre[class*=language-] .token.keyword,code[class*=language-] .token.keyword {
+    color: #00e0e0
+}
+
+pre[class*=language-] .token.regex,pre[class*=language-] .token.important,code[class*=language-] .token.regex,code[class*=language-] .token.important {
+    color: var(--color-yellow)
+}
+
+pre[class*=language-] .token.important,pre[class*=language-] .token.bold,code[class*=language-] .token.important,code[class*=language-] .token.bold {
+    font-weight: bold
+}
+
+pre[class*=language-] .token.italic,code[class*=language-] .token.italic {
+    font-style: italic
+}
+
+pre[class*=language-] .token.entity,code[class*=language-] .token.entity {
+    cursor: help
+}
+
+@media screen and (-ms-high-contrast: active) {
+    pre[class*=language-] code[class*=language-],pre[class*=language-] pre[class*=language-],code[class*=language-] code[class*=language-],code[class*=language-] pre[class*=language-] {
+        color: windowText;
+        background: window
+    }
+
+    pre[class*=language-] :not(pre)>code[class*=language-],pre[class*=language-] pre[class*=language-],code[class*=language-] :not(pre)>code[class*=language-],code[class*=language-] pre[class*=language-] {
+        background: window
+    }
+
+    pre[class*=language-] .token.important,code[class*=language-] .token.important {
+        background: highlight;
+        color: window;
+        font-weight: normal
+    }
+
+    pre[class*=language-] .token.atrule,pre[class*=language-] .token.attr-value,pre[class*=language-] .token.function,pre[class*=language-] .token.keyword,pre[class*=language-] .token.operator,pre[class*=language-] .token.selector,code[class*=language-] .token.atrule,code[class*=language-] .token.attr-value,code[class*=language-] .token.function,code[class*=language-] .token.keyword,code[class*=language-] .token.operator,code[class*=language-] .token.selector {
+        font-weight: bold
+    }
+
+    pre[class*=language-] .token.attr-value,pre[class*=language-] .token.comment,pre[class*=language-] .token.doctype,pre[class*=language-] .token.function,pre[class*=language-] .token.keyword,pre[class*=language-] .token.operator,pre[class*=language-] .token.property,pre[class*=language-] .token.string,code[class*=language-] .token.attr-value,code[class*=language-] .token.comment,code[class*=language-] .token.doctype,code[class*=language-] .token.function,code[class*=language-] .token.keyword,code[class*=language-] .token.operator,code[class*=language-] .token.property,code[class*=language-] .token.string {
+        color: highlight
+    }
+
+    pre[class*=language-] .token.attr-value,pre[class*=language-] .token.url,code[class*=language-] .token.attr-value,code[class*=language-] .token.url {
+        font-weight: normal
+    }
+}
