@@ -24,10 +24,10 @@ eleventyNavigation:
 - **January 21, 2021:** Added an option to [enable the V8 sampling profiler](https://twitter.com/patmeenan/status/1352434691740213260) for much richer JavaScript stack traces.
 - **January 6, 2021:** Added [Largest Contentful Paint](https://twitter.com/patmeenan/status/1346941018227187716) visualizations to the filmstrip view.
 
-## December, 2021
+## December, 2020
 - **December 12, 2020:** Changed video rendering to be [done on the fly](https://twitter.com/patmeenan/status/1337805490340966404) and added support for generating animated Gifs.
 
-## November, 2021
+## November, 2020
 - **November 30, 2021:** Added [layout shift visualizations](https://twitter.com/TheRealNooshu/status/1333525160259891207) to the filmstrip view.
 - **November 25, 2021:** Updated the [JavaScript execution visualization](https://twitter.com/patmeenan/status/1331625445104754688) in the waterfall to better represent frequent but short events.
 - **November 13, 2021:** Added support for [testing WebKit on Linux.](https://twitter.com/patmeenan/status/1327277663891894273)
