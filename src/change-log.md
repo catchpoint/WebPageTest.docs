@@ -1,5 +1,8 @@
 ---
 title: WebPageTest Change Log
+eleventyNavigation:
+  key: Change Log
+  order: 999
 ---
 # WebPageTest Change Log
 
