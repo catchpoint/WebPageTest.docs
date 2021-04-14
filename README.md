@@ -51,3 +51,6 @@ Because of the change to the documentation, some links will be pointing to a pat
 * [Metrics](https://docs.webpagetest.org/metrics/)
   * [SpeedIndex](https://docs.webpagetest.org/metrics/speedindex/)
 * [Private Instances](https://docs.webpagetest.org/private-instances/)
+
+## WebPageTest Change Log
+View the [Change Log for WebPageTest](https://docs.webpagetest.org/change-log/).
