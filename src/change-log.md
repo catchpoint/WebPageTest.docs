@@ -9,7 +9,7 @@ eleventyNavigation:
 ## April, 2021
 - **April 14:** Cumulative Layout Shift [was updated to use](https://twitter.com/patmeenan/status/1382439517328715777) the new windowed approach. The [filmstrip also now shows layout window scores](https://twitter.com/tkadlec/status/1382440917186002945), and additional context is available in the JSON. [PR #1478](https://github.com/WPO-Foundation/webpagetest/pull/1478)
 - **April 9:** [WebPageTest test results now pull in URL-specific field data from Chrome User Experience Report](https://twitter.com/patmeenan/status/1380514866390269952)
-- **April 6:** [WebPageTest moved to a new account management system](https://twitter.com/patmeenan/status/1380514866390269952)
+- **April 6:** [WebPageTest moved to a new account management system](https://twitter.com/patmeenan/status/1380514866390269952). The enhanced and fully supported [WebPageTest API](https://product.webpagetest.org/api?utm_source=docs&utm_medium=docs&utm_campaign=changelog&utm_content=api) was [released to general availability](https://blog.webpagetest.org/posts/the-webpagetest-api-has-gone-public/).
 
 ## March, 2021
 - **March 23, 2021:** The default desktop browser size was [changed from 1024x768 to 1376x768](https://twitter.com/patmeenan/status/1374444703962132490). A dropdown was added to choose from a number of other resolution sizes.
