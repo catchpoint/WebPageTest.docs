@@ -162,8 +162,6 @@ Set to 1 to capture video. Video is required for calculating Speed Index as well
 The format to return. Set to "xml" to request an XML response; set to "json" to request a JSON-encoded response. If no format parameter is passed, the API call will result in a redirect.
 - `r` <small>optional</small>
 Request ID. When used with the "xml" or "json" format, will echo back in the response object.
-- `notify` <small>optional</small>
-Email-address to notify with the test results.
 - `pingback` <small>optional</small>
 URL to ping when the test is complete. The test ID will be passed as an "id" parameter.
 - `bwDown` <small>optional</small>

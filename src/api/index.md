@@ -16,20 +16,19 @@ Once created, your API keys are always available in your [account dashboard](htt
 If you can't see any API Keys, that means you don't currently have any and you will need to [create a new one](/api/keys/#obtaining-your-keys).
 
 ## 2. Submit your first test
-To make sure your API key is ready to go, let's get your first test submitted. It takes some time for a test to complete, but instead of [programmatically accessing the results](/api/reference/#getting-test-results), we'll use the `notify` parameter to tell the API to send us an email when the test has completed.
+To make sure your API key is ready to go, let's get your first test submitted. It takes some time for a test to complete.
 
 Copy and paste the following command into your terminal, inserting your api key and email address in place of the placeholders:
 
 ```bash
-curl https://www.webpagetest.org/runtest.php?url=https://www.webpagetest.org&k={YOUR_API_KEY}&f=json&notify={YOUR_EMAIL}
+curl https://www.webpagetest.org/runtest.php?url=https://www.webpagetest.org&k={YOUR_API_KEY}&f=json
 ```
 
 The request above will:
 
-- Submit a test for www.webpagetest.com (using the `url` parameter)
+- Submit a test for www.webpagetest.org (using the `url` parameter)
 - Authenticate using your API key (using the `k` parameter)
 - Request a JSON response (using the `f` parameter)
-- Request that the API send an email to your email address when the test is complete (using the `notify` parameter)
 
 If all goes well, you should get a JSON response, similar to the one below, telling you the test has been successfully submitted (`statusCode`=200), and providing you with the `testId` as well as several links for digging into results once the test has been completed.
 
@@ -48,9 +47,9 @@ If all goes well, you should get a JSON response, similar to the one below, tell
 }
 ```
 
-## 3. Check your email
-All that's left is to check your email!
+## 3. Navigate to the result page
+All that's left is to view the test result!
 
-Once the test has completed running, you'll receive an email at the email address you provided using the `notify` parameter. The email will let you know the test has completed, provide you with a link to the full results, and give you a brief summary of potential optimizations.
+If you go to the "userUrl" from the JSON result, you will see the normal "Test waiting" page that will refresh and load the test results when it completes. If you navigate to the "jsonUrl" in a browser you should see a JSON view of the test status.  If you refresh the page periodically you will see the status change until it finally returns the full test result as JSON.
 
 Congratulations! You've just successfully submitted your first test using the WebPageTest API. You can dig deeper into the [API reference guide](/api/reference/) for your next steps, or check out some of the [existing integrations built around the API](/api/integrations/) and maybe even [build your own](/api/integrations/#officially-supported-integrations).
