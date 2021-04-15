@@ -7,6 +7,7 @@ eleventyNavigation:
 # WebPageTest Change Log
 
 ## April, 2021
+- **April 15:** The mobile emulation devices are now also available directly in the browser dropdown for any locations that support testing with Chrome. It will use Chrome stable for the emulation. Emulating mobile with beta or canary is still possible by manually selecting the emulation options in the Chromium tab of advanced settings.
 - **April 14:** Cumulative Layout Shift [was updated to use](https://twitter.com/patmeenan/status/1382439517328715777) the new windowed approach. The [filmstrip also now shows layout window scores](https://twitter.com/tkadlec/status/1382440917186002945), and additional context is available in the JSON. [PR #1478](https://github.com/WPO-Foundation/webpagetest/pull/1478)
 - **April 9:** [WebPageTest test results now pull in URL-specific field data from Chrome User Experience Report](https://twitter.com/patmeenan/status/1380514866390269952)
 - **April 6:** [WebPageTest moved to a new account management system](https://twitter.com/patmeenan/status/1380514866390269952). The enhanced and fully supported [WebPageTest API](https://product.webpagetest.org/api?utm_source=docs&utm_medium=docs&utm_campaign=changelog&utm_content=api) was [released to general availability](https://blog.webpagetest.org/posts/the-webpagetest-api-has-gone-public/).
