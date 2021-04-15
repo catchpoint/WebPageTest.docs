@@ -11,7 +11,7 @@ Manage your API keys to authenticate your requests and start running tests using
 WebPageTest requires an API key to submit any test using the API. If you don't provide an API key when trying to run a test, the API will return an error. Each account receives separate keys for interacting with the API.
 
 ## Signing Up for the API
-To get started with WebPageTest API, you'll need to first [create an account](https://app.webpagetest.org/ui/entry/wpt/signup) and purchase a subscription plan.
+To get started with WebPageTest API, you'll need to first [create an account](https://app.webpagetest.org/ui/entry/wpt/signup?enableSub=true&utm_source=docs&utm_medium=docs&utm_campaign=apidocs&utm_content=account) and purchase a subscription plan.
 
 If you already have an account, go to [**My Account**](https://app.webpagetest.org/ui/wpt/myAccount) on WebPageTest and purchase a subscription plan by clicking on **+ API Subscription Plan**. Once you complete your purchase, you'll be able to generate the API key and start testing using the WPT API. 
 
