@@ -6,7 +6,6 @@
         {{ content | safe }}
         <ul class="integrations">
         {% for integration in integrations %}
-        
             <li>
                 <h3><a href="{{integration.link}}">{{integration.name}}</a></h3>
                 {% if integration.ownerLink %}
@@ -22,7 +21,7 @@
         </ul>
     </main>
     <aside class="pageNav">
-            {{ content | toc | safe }}
+        {{ content | toc | safe }}
     </aside>
     {% include 'footer.html' %}
 </body>

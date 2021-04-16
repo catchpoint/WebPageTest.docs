@@ -40,6 +40,9 @@ body{
         grid-row: 2;
         grid-column: 2;
     }
+    main.wide{
+        grid-column: 2/3;
+    }
     .pageNav{
         grid-row: 2;
         grid-column: 2;
@@ -649,6 +652,26 @@ table td code + small {
     border-bottom : 0;
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+.code-recipes {
+    grid-column-gap: 2em;
+    grid-auto-rows: 1fr;
+    grid-row-gap: 0;
+}
+.code-recipes div:first-child,
+.code-recipes div{
+    border-right: 0;
+    padding: 1.5em 1em;
+    margin-bottom: 2em;
+}
+.code-recipes .recipe h2{
+    font-size: 1.4em;
+    margin-top: 0;
+}
+.code-recipes .recipe{
+    background: #f6f6f6;
+    border-radius: .6em;
 }
 
 .callout{

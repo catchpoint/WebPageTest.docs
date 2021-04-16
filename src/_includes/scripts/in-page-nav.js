@@ -14,6 +14,8 @@ const observer = new IntersectionObserver(entries => {
 );
 
 //track h2's with an id
-document.querySelectorAll('h2[id]').forEach((section) => {
-    observer.observe(section);
-});
+if (document.querySelector('.pageNav')) {
+    document.querySelectorAll('h2[id]').forEach((section) => {
+        observer.observe(section);
+    });
+}

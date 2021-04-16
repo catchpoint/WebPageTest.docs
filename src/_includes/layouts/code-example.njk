@@ -1,0 +1,13 @@
+{% include 'siteHead.html' %}
+<body>
+    {% include 'head.html' %}
+    {% include 'doc-nav.html' %}
+    <main class="wide">
+        <h1>{{title}}</h1>
+        {{ description | markdown | safe }}
+        {{ content | safe }}
+
+    </main>
+    {% include 'footer.html' %}
+</body>
+</html>
