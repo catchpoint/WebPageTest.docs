@@ -152,7 +152,7 @@ Sets the value attribute of the given DOM element to the provided value. This is
 Browser Support: IE, Chrome, Firefox
 ```
 usage: setValue	<attribute=value>	<value>
-example: setValue	name'loginId	userName
+example: setValue	name=loginId	userName
 
 <attribute=value> - DOM element to set the value of
 <value> - value to use
@@ -163,7 +163,7 @@ Triggers a submit event for the identified form.
 Browser Support: IE, Chrome, Firefox
 ```
 usage: submitForm	<attribute=value>
-example: submitForm	name'AOLLoginForm
+example: submitForm	name=AOLLoginForm
 
 <attribute=value> - Form element to submit
 ```
