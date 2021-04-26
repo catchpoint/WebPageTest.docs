@@ -241,6 +241,8 @@ Set to 1 to Ignore SSL Certificate Errors e.g. Name mismatch, Self-signed certif
 **Default:** 0
 - `mobileDevice` <small>optional</small>
 Device name from mobile_devices.ini to use for mobile emulation (only when mobile=1 is specified to enable emulation and only for Chrome)
+- `throttle_cpu` <small>optional, float, Chromium-only</small>
+Throttle the test machine's CPU performance. i.e. 2.5 will result in a 2.5 times slower CPU than 1.0. Mobile device emulation automatically throttles based on the device selected. This value will override any mobile defaults and allow for throttling desktop tests.
 - `appendua` <small>optional</small>
 String to append to the user agent string. This is in addition to the default PTST/ver string. If "keepua" is also specified it will still append. Allows for substitution with some test parameters:
   - %TESTID% - Replaces with the test ID for the current test
