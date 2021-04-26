@@ -1,4 +1,5 @@
 ---
+title: 'Custom Metrics'
 eleventyNavigation:
   key: Custom Metrics
   order: 1

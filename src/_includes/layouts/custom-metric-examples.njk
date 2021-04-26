@@ -1,0 +1,18 @@
+{% include 'siteHead.html' %}
+<body>
+    {% include 'head.html' %}
+    {% include 'doc-nav.html' %}
+    <main class="wide">
+        {{ content | safe }}
+        <div class="g-two-up code-recipes">
+    {% for post in collections.customMetrics %}
+    <div class="recipe">
+        <h2 id="{{ post.data.title | slug }}"><a href="{{post.url}}">{{ post.data.title }}</a></h2>
+        {{ post.data.description | markdown | safe }}
+    </div>
+    {% endfor %}
+        </div>
+    </main>
+    {% include 'footer.html' %}
+</body>
+</html>

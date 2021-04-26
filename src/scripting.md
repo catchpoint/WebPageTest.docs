@@ -26,7 +26,7 @@ Can be identified by innerText=Delete. The matching is case sensitive and matche
 
 In order to suppress intermediate steps you need to make sure that data logging is disabled for the steps up to the ones you want to record. For example:
 
-```
+```text
 logData    0
 
 // put any urls you want to navigate
@@ -43,7 +43,7 @@ The script above will navigate to the main aol portal, then to the news page and
 
 Another significant use case is if you want to test a site that requires authentication. Here is what an authentication script would look like:
 
-```
+```text
 logData	0
 
 // bring up the login screen
@@ -152,7 +152,7 @@ Sets the value attribute of the given DOM element to the provided value. This is
 Browser Support: IE, Chrome, Firefox
 ```
 usage: setValue	<attribute=value>	<value>
-example: setValue	name'loginId	userName
+example: setValue	name=loginId	userName
 
 <attribute=value> - DOM element to set the value of
 <value> - value to use
@@ -163,7 +163,7 @@ Triggers a submit event for the identified form.
 Browser Support: IE, Chrome, Firefox
 ```
 usage: submitForm	<attribute=value>
-example: submitForm	name'AOLLoginForm
+example: submitForm	name=AOLLoginForm
 
 <attribute=value> - Form element to submit
 ```
@@ -179,7 +179,7 @@ example: exec	window.setInterval('window.scrollBy(0,600)', 1000);
 #### execAndWait
 Executes javascript and waits for the browser to complete any activity generated from the action.
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: execAndWait	<javascript code>
 example: execAndWait	window.setInterval('window.scrollBy(0,600)', 1000);
 ```
@@ -212,12 +212,12 @@ example: setActivityTimeout	5000
 #### setTimeout
 Overrides the timeout value for the individual script steps.
 Browser Support: IE, Chrome, Firefox, Safari
-
+```
 usage: setTimeout	<timeout in seconds>
 example: setTimeout	240
 
 <timeout in seconds> - Number of seconds to allow for the navigation/step to complete.
-
+```
 ### Request Manipulation
 
 #### block

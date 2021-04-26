@@ -57,7 +57,22 @@ module.exports = function(config) {
 				}
 			}
 		});
-	
+	config.addNunjucksAsyncFilter('markdown', async function (
+		code,
+		callback
+	) {
+		try {
+			console.log(code);
+		  const converted = markdownLib.render(code);
+		  
+		  callback(null, converted);
+		} catch (err) {
+		  console.error("Terser error: ", err);
+		  // Fail gracefully.
+		  callback(null, code);
+		}
+	  });
+
 	config.setLibrary("md", markdownLib);
 
 	return {
