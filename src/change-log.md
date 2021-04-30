@@ -7,6 +7,7 @@ eleventyNavigation:
 # WebPageTest Change Log
 
 ## April, 2021
+- **April 30:** WebPageTest now defaults to using the `https` protocol if the protocol is left off a test URL.
 - **April 15:** The mobile emulation devices are now also [available directly in the browser dropdown](https://twitter.com/patmeenan/status/1382790307956264963) for any locations that support testing with Chrome. It will use Chrome stable for the emulation. Emulating mobile with beta or canary is still possible by manually selecting the emulation options in the Chromium tab of advanced settings.
 - **April 14:** Cumulative Layout Shift [was updated to use](https://twitter.com/patmeenan/status/1382439517328715777) the new windowed approach. The [filmstrip also now shows layout window scores](https://twitter.com/tkadlec/status/1382440917186002945), and additional context is available in the JSON. [PR #1478](https://github.com/WPO-Foundation/webpagetest/pull/1478)
 - **April 9:** [WebPageTest test results now pull in URL-specific field data from Chrome User Experience Report](https://twitter.com/patmeenan/status/1380514866390269952)
