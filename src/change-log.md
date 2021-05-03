@@ -6,6 +6,9 @@ eleventyNavigation:
 ---
 # WebPageTest Change Log
 
+## May, 2021
+- **May 3:** The plot full results page now allows folks to force the graphs to start at zero ([issue #1485](https://github.com/WPO-Foundation/webpagetest/issues/1485)) to help normalize for comparison ([here's an example](https://www.webpagetest.org/graph_page_data.php?tests=210329_XiBZ_82b5bf1bae2119591621a677202ecfda-l%3A3PL%2C210329_Xi4A_0679d30b2dc8de471d1cade9f793183c-l%3A2.5PL%2C210329_XiKN_d329ef9e13a07bcd4bbca866777375fb-l%3A1.5PL%2C210329_Xi4C_ad8e2d4857cb143b85748b8e0ec6a8d2-l%3A1PL%2C210329_Xi3T_3e9b78ff5114579915f521df5d10045e-l%3A0PL&medianMetric=LoadTime&fv=1&zero_start=true&control=4)). We also now show metric tables for all tests on the graph results page, not just the first test ([issue #1484](https://github.com/WPO-Foundation/webpagetest/issues/1484)).
+
 ## April, 2021
 - **April 30:** WebPageTest now defaults to using the `https` protocol if the protocol is left off a test URL.
 - **April 15:** The mobile emulation devices are now also [available directly in the browser dropdown](https://twitter.com/patmeenan/status/1382790307956264963) for any locations that support testing with Chrome. It will use Chrome stable for the emulation. Emulating mobile with beta or canary is still possible by manually selecting the emulation options in the Chromium tab of advanced settings.
