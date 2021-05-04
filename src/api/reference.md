@@ -622,61 +622,64 @@ Here's an example response from the /getLocations.php endpoint, (truncated for b
 ::: code-tabs
 ```json
 {
-  "statusCode": 200,
-  "statusText": "Ok",
-  "data": {
-    "Dulles_MotoG4": {
-      "Label": "Moto G (gen 4)",
-      "location": "Dulles_MotoG4",
-      "Browsers": "Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox,Moto G4 - Chrome,Moto G4 - Chrome Canary,Moto G4 - Chrome Beta,Moto G4 - Chrome Dev,Moto G4 - Samsung Internet,Moto G4 - UC Browser,Moto G4 - UC Mini,Moto G4 - Opera Mini (Extreme),Moto G4 - Opera Mini (High),Moto G4 - Firefox",
-      "status": "OK",
-      "labelShort": "Dulles, VA",
-      "group": "Android Devices - Dulles, VA",
-      "PendingTests": {
-        "p1": 0,
-        "p2": 0,
-        "p3": 0,
-        "p4": 0,
-        "p5": 1,
-        "p6": 1,
-        "p7": 0,
-        "p8": 0,
-        "p9": 0,
-        "Total": 37,
-        "HighPriority": 20,
-        "LowPriority": 2,
-        "Testing": 15,
-        "Idle": 0,
-        "TestAgentRatio": 2.466666666666667
+   "statusCode":200,
+   "statusText":"Ok",
+   "data":{
+      "Dulles":{
+         "Label":"Dulles, VA USA (Desktop, Android, iOS)",
+         "location":"Dulles",
+         "Browsers":"Chrome,Chrome Beta,Chrome Canary,Firefox,Firefox Nightly,Firefox ESR,Brave",
+         "status":"OFFLINE",
+         "labelShort":"Dulles, VA",
+         "node":"4789",
+         "group":"North America",
+         "PendingTests":{
+            "p1":0,
+            "p2":0,
+            "p3":0,
+            "p4":0,
+            "p5":0,
+            "p6":0,
+            "p7":0,
+            "p8":0,
+            "p9":0,
+            "Total":0,
+            "HighPriority":0,
+            "LowPriority":0,
+            "Testing":0,
+            "Idle":0,
+            "TestAgentRatio":0
+         }
+      },
+      "ec2-us-east-1":{
+         "Label":"Virginia - EC2 (Chrome,Firefox)",
+         "location":"ec2-us-east-1",
+         "Browsers":"Chrome,Chrome Beta,Chrome Canary,Firefox,Firefox Nightly,Firefox ESR,Brave",
+         "status":"OK",
+         "labelShort":"Virginia USA - EC2 ",
+         "node":"4789",
+         "default":true,
+         "group":"North America",
+         "PendingTests":{
+            "p1":0,
+            "p2":0,
+            "p3":0,
+            "p4":0,
+            "p5":0,
+            "p6":0,
+            "p7":0,
+            "p8":0,
+            "p9":0,
+            "Total":12,
+            "HighPriority":0,
+            "LowPriority":0,
+            "Testing":12,
+            "Idle":34,
+            "TestAgentRatio":0.2608695652173913
+         }
       }
-    },
-    "Dulles_MotoG6": {
-      "Label": "Moto G (gen 6)",
-      "location": "Dulles_MotoG6",
-      "Browsers": "Moto G6 - Chrome,Moto G6 - Chrome Canary,Moto G6 - Chrome Beta,Moto G6 - Chrome Dev,Moto G6 - UC Browser,Moto G6 - UC Mini,Moto G6 - Opera Mini (Extreme),Moto G6 - Opera Mini (High),Moto G6 - Firefox,Moto G6 - Chrome,Moto G6 - Chrome Canary,Moto G6 - Chrome Beta,Moto G6 - Chrome Dev,Moto G6 - UC Browser,Moto G6 - UC Mini,Moto G6 - Opera Mini (Extreme),Moto G6 - Opera Mini (High),Moto G6 - Firefox",
-      "status": "OK",
-      "labelShort": "Dulles, VA",
-      "group": "Android Devices - Dulles, VA",
-      "PendingTests": {
-        "p1": 0,
-        "p2": 0,
-        "p3": 0,
-        "p4": 0,
-        "p5": 3,
-        "p6": 0,
-        "p7": 0,
-        "p8": 0,
-        "p9": 0,
-        "Total": 32,
-        "HighPriority": 28,
-        "LowPriority": 3,
-        "Testing": 1,
-        "Idle": 0,
-        "TestAgentRatio": 32
-      }
-    },
-    ...
-  }
+      ...
+   }
 }
 
 ```
