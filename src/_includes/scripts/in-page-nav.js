@@ -1,21 +1,22 @@
 const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        const id = entry.target.getAttribute('id');
-
-        if (entry.intersectionRatio > 0) {
-            if (document.querySelector(`.pageNav li.is-active`)) {
-                document.querySelector(`.pageNav li.is-active`).classList.remove('is-active');
-            }
-            
-            document.querySelector(`.pageNav a[href="#${id}"]`).parentElement.classList.add('is-active');
+    const intersectingEntries = entries.filter(e => e.isIntersecting);
+    for (const entry of intersectingEntries) {
+        const previouslyActive = document.querySelector('.pageNav a.is-active');
+        if (previouslyActive) {
+            previouslyActive.classList.remove('is-active');
         }
-    })
+
+        const id = entry.target.getAttribute('id')
+        const newActive = document.querySelector(`.pageNav a[href="#${id}"]`);
+        newActive.classList.add('is-active');
+        newActive.scrollIntoView({ block: 'nearest' });
+    }
 }, { rootMargin: `0% 0% -90% 0%` }
 );
 
-//track h2's with an id
+//track headings with an id
 if (document.querySelector('.pageNav')) {
-    document.querySelectorAll('h2[id]').forEach((section) => {
-        observer.observe(section);
-    });
+    for (const heading of document.querySelectorAll(':is(h2,h3,h4)[id]')) {
+        observer.observe(heading)
+    }
 }
