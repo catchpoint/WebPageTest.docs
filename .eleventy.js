@@ -8,7 +8,7 @@ module.exports = function(config) {
 	config.addPassthroughCopy('src/img');
 	config.addPassthroughCopy('src/manifest.json');
 
-	config.addPlugin(pluginTOC, {tags: ['h2']});
+	config.addPlugin(pluginTOC, {tags: ['h2', 'h3', 'h4']});
 	config.addPlugin(syntaxHighlight);
 	config.addPlugin(imageOptimizations);
 	config.addPlugin(eleventyNavigationPlugin);
