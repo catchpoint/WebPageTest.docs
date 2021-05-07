@@ -66,7 +66,8 @@ You won't get a lot of feedback as to why a script failed. For debugging purpose
 #### navigate
 Navigates the browser to the provided URL and waits for it to complete.
 Browser Support: IE, Chrome, Firefox, Safari
-```
+
+```text
 usage: navigate	<url>
 example: navigate	http://webmail.aol.com
 
@@ -76,7 +77,7 @@ example: navigate	http://webmail.aol.com
 #### click
 Triggers a click event for the identified DOM element. This version does not have an implied wait and the script will continue running after the event is submitted (see clickAndWait for the wait version).
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: click	<attribute=value>
 example: click	title=Delete (del)
 
@@ -86,7 +87,7 @@ example: click	title=Delete (del)
 #### clickAndWait
 Triggers a click event for the identified DOM element and subsequently waits for browser activity to complete.
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: clickAndWait	<attribute=value>
 example: clickAndWait	innerText=Send
 
@@ -96,7 +97,7 @@ example: clickAndWait	innerText=Send
 #### selectValue
 Selects a value from a dropdown list of the given DOM element.
 Browser Support: IE
-```
+```text
 usage: selectValue	<attribute=value>	<value>
 example: selectValue	id=country	usa
 
@@ -107,7 +108,7 @@ example: selectValue	id=country	usa
 #### sendClick / sendClickAndWait
 Creates a javascript OnClick event and sends it to the indicated element.
 Browser Support: IE
-```
+```text
 usage: sendClickAndWait	<attribute=value>
 example: sendClickAndWait	innerText=Send
 
@@ -117,7 +118,7 @@ example: sendClickAndWait	innerText=Send
 #### sendKeyDown / sendKeyUp / sendKeyPress (AndWait)
 Creates a javascript keyboard event (OnKeyDown, OnKeyUp, OnKeyPress) and sends it to the indicated element.
 Browser Support: IE
-```
+```text
 usage: sendKeyDownAndWait	<attribute=value>    <key>
 example: sendKeyDownAndWait	name=user    x
 
@@ -128,7 +129,7 @@ example: sendKeyDownAndWait	name=user    x
 #### setInnerHTML
 Sets the innerHTML of the given DOM element to the provided value. This is usually used for filling in something like an editable HTML panel (like the message body in webmail). Use this if you want to include HTML formatting.
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: setInnerHTML	<attribute=value>	<value>
 example: setInnerHTML	contentEditable'true	%MSG%
 
@@ -139,7 +140,7 @@ example: setInnerHTML	contentEditable'true	%MSG%
 #### setInnerText
 Sets the innerText of the given DOM element to the provided value. This is usually used for filling in something like an editable HTML panel (like the message body in webmail). Use this if you don't want to include any HTML formatting.
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: setInnerText	<attribute=value>	<value>
 example: setInnerText	contentEditable'true	%MSG%
 
@@ -150,7 +151,7 @@ example: setInnerText	contentEditable'true	%MSG%
 #### setValue
 Sets the value attribute of the given DOM element to the provided value. This is usually used for filling in text elements on a page (forms or otherwise). Currently only "input" and "textArea" element types are supported.
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: setValue	<attribute=value>	<value>
 example: setValue	name=loginId	userName
 
@@ -161,7 +162,7 @@ example: setValue	name=loginId	userName
 #### submitForm
 Triggers a submit event for the identified form.
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: submitForm	<attribute=value>
 example: submitForm	name=AOLLoginForm
 
@@ -171,7 +172,7 @@ example: submitForm	name=AOLLoginForm
 #### exec
 Executes javascript.
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: exec	<javascript code>
 example: exec	window.setInterval('window.scrollBy(0,600)', 1000);
 ```
@@ -192,7 +193,7 @@ Sets the "Activity Based Measurement" mode. The valid values are:
 * 1 - Enabled (Web 2.0 - Measure until activity stops)
 The default if not specified in the script is 1 (Enabled)
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: setABM	<mode>
 example: setABM	0
 
@@ -202,7 +203,7 @@ example: setABM	0
 #### setActivityTimeout
 Overrides the timeout value for the time after the last network activity before a test is considered complete (defaults to 2000 which is 2 seconds).
 Browser Support: IE, Chrome, Firefox, Safari
-```
+```text
 usage: setActivityTimeout	<timeout in milliseconds>
 example: setActivityTimeout	5000
 
@@ -212,7 +213,7 @@ example: setActivityTimeout	5000
 #### setTimeout
 Overrides the timeout value for the individual script steps.
 Browser Support: IE, Chrome, Firefox, Safari
-```
+```text
 usage: setTimeout	<timeout in seconds>
 example: setTimeout	240
 
@@ -223,7 +224,7 @@ example: setTimeout	240
 #### block
 Blocks individual requests from loading (useful for blocking content like ads). The command matches the list of things to block against the full url of each request (including host name).
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: block    <block strings>
 example: block    adswrapper.js addthis.com
 
@@ -243,7 +244,7 @@ example: blockDomains    adswrapper.js addthis.com
 #### blockDomainsExcept
 Blocks all requests not from one of the given domains from loading (useful for blocking content like ads). Takes a space-delimited list of full domains to allow.
 Browser Support: Desktop (wptdriver 300+)
-```
+```text
 usage: blockDomainsExcept    <allow domains>
 example: blockDomainsExcept    www.example.com cdn.example.com
 
@@ -253,7 +254,7 @@ example: blockDomainsExcept    www.example.com cdn.example.com
 #### setCookie
 Stores a browser cookie to be used while navigating.
 Browser Support: IE, Chrome, Firefox
-```
+```text
 usage: setCookie	<path>	<value>
 example: setCookie	http://www.aol.com	zip=20166
 example: setCookie	http://www.aol.com	TestData = Test; expires = Sat,01-Jan-2000 00:00:00 GMT
@@ -265,7 +266,7 @@ example: setCookie	http://www.aol.com	TestData = Test; expires = Sat,01-Jan-2000
 #### setDns
 Allows for overriding the IP address to be used for a host name. The override is effectively the same as populating an entry in the hosts file and will eliminate the DNS lookup times.
 Browser Support: IE, Chrome, Firefox, Safari
-```
+```text
 usage: setDns	<host name>	<IP Address>
 example: setDns	www.aol.com	127.0.0.1
 
@@ -276,7 +277,7 @@ example: setDns	www.aol.com	127.0.0.1
 #### setDNSName
 Allows for overriding a host name (creating a fake CNAME).
 Browser Support: IE, Chrome, Firefox, Safari
-```
+```text
 usage: setDnsName	<name to override>	<real name>
 example: setDnsName	pat.aol.com	www.aol.com
 
@@ -289,7 +290,7 @@ Overrides the User Agent string sent by the browser
 Browser Support: IE, Chrome, Firefox, Safari
 
 CAUTION : You will still be using the same browser engine so you are still limited by the capabilities and behavior of that browser even if you are spoofing another browser
-```
+```text
 usage: setUserAgent    <user agent string>
 example: setUserAgent    Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543 Safari/419.3
 
@@ -299,7 +300,7 @@ example: setUserAgent    Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWeb
 #### overrideHost
 Replaces the value of the Host: HTTP header for the given host with the provided replacement.  It also adds a new header (x-Host:) with the original value.
 Browser Support: IE, Chrome, Firefox, Safari (no SSL)
-```
+```text
 usage: overrideHost	<host>    <new host>
 example: overrideHost	www.aol.com    www.notaol.com
 
@@ -310,7 +311,7 @@ example: overrideHost	www.aol.com    www.notaol.com
 #### overrideHostUrl
 For all requests to the given host, rewrite the requests to go to a different server and include the original host in the new URI.
 Browser Support: IE
-```
+```text
 usage: overrideHostUrl	<host>    <new host>
 example: overrideHostUrl	www.webpagetest.org    staging.webpagetest.org
 
@@ -322,7 +323,7 @@ In this example, http://www.webpagetest.org/index.php will get rewritten to actu
 #### addHeader
 Adds the specified header to every http request (in addition to the headers that exist, does not overwrite an existing header).
 Browser Support: IE, Chrome, Firefox, Safari (no SSL)
-```
+```text
 usage: addHeader	<header>    {filter}
 example: addHeader	Pragma: akamai-x-cache-on
 
@@ -333,7 +334,7 @@ example: addHeader	Pragma: akamai-x-cache-on
 #### setHeader
 Adds the specified header to every http request, overriding the header if it already exists.
 Browser Support: IE, Chrome, Firefox, Safari (no SSL)
-```
+```text
 usage: setHeader	<header>    {filter}
 example: setHeader	UA-CPU: none-ya
 
@@ -344,7 +345,7 @@ example: setHeader	UA-CPU: none-ya
 #### resetHeaders
 Clears any headers that were specified through addHeaders or setHeaders (in case you want to only override headers for part of a script).
 Browser Support: IE, Chrome, Firefox, Safari
-```
+```text
 usage: resetHeaders
 example: resetHeaders
 ```
@@ -354,7 +355,7 @@ example: resetHeaders
 #### combineSteps
 Causes multiple script steps to be combined into a single "step" in the results
 Browser Support: IE, Chrome, Firefox, Safari
-```
+```text
 usage: combineSteps	[count]
 example: combineSteps
 
@@ -370,7 +371,7 @@ navigate	www.aol.com
 #### if/else/endif
 Conditionally execute a block of script code based on run number or cached state for the test.  Conditional blocks can be nested.
 Browser Support: IE, Chrome, Firefox, Safari
-```
+```text
 usage:  if	[cached|run]    <value>
         else
         endif
@@ -390,7 +391,7 @@ example:    if    run    1
 #### expireCache
 Expires any cache entries that will expire within the specified number of seconds.  This can be used to simulate a repeat view after a certain amount of time (for example, what it would be like to browse the page the next day).  It doesn't help with simulating content changes but any resources with a short expiration will end up being checked with if-modified-since requests.
 Browser Support: IE
-```
+```text
 usage: expireCache	<seconds>
 example: expireCache	86400
 
@@ -400,7 +401,7 @@ example: expireCache	86400
 #### firefoxPref
 Allows you to specify arbitrary preferences that will be configured before launching the browser.
 Browser Support: Firefox
-```
+```text
 usage: firefoxPref	<pref>    <value>
 examples:
 firefoxPref    network.http.pipelining    false
@@ -414,7 +415,7 @@ firefoxPref    general.useragent.override    "Some User Agent String"
 #### setEventName
 Sets the name of the event for the next measurable operation. It is important to only set this right before the action that will generate the activity you want to measure so that you don't inadvertently measure other page activity. Without explicit event names each step will be automatically named Step_1, Step_2, etc.
 Browser Support: IE
-```
+```text
 usage: setEventName	<event name>
 example: setEventName	loadWebmail
 
@@ -424,7 +425,7 @@ example: setEventName	loadWebmail
 #### setLocation
 Specifies a geolocation override position.
 Browser Support: Chrome
-```
+```text
 usage: setLocation	<lat>,<lng>    <accuracy>
 example: setLocation    38.954980,-77.447956    10
 
@@ -436,7 +437,7 @@ example: setLocation    38.954980,-77.447956    10
 #### setViewportSize
 Changes the size of the visible browser window so that the page viewport matches the given dimensions.  If you get black areas on your screen shots then the viewport is larger than the desktop.
 Browser Support: IE, Chrome, Firefox, Safari
-```
+```text
 usage: setViewportSize	<width>    <height>
 example: setViewportSize    320    365
 
@@ -447,7 +448,7 @@ example: setViewportSize    320    365
 #### sleep
 Pauses the script operation for a given number of seconds.
 Browser Support: IE, Chrome, Firefox, Safari
-```
+```text
 usage: sleep	<seconds to sleep>
 example: sleep	5
 
@@ -456,7 +457,7 @@ example: sleep	5
 
 ## Sample scripts
 ### Mail test
-```
+```text
 // load the account name and password
 // bring up the login screen
 setEventName	launch
@@ -509,7 +510,7 @@ clickAndWait	className=signOutLink
 ```
 
 ### MyAOL Authenticated profile
-```
+```text
 // bring up the login screen
 setDOMElement	name=loginId
 navigate	https://my.screenname.aol.com/_cqr/login/login.psp?mcState=initialized&sitedomain=my.aol.com&authLev=0&siteState=OrigUrl%3Dhttp%3A%2F%2Fmy.aol.com%2F
@@ -528,7 +529,7 @@ This script will:
 * Force www.aol.com to resolve to 127.0.0.1
 * Set a "zip" cookie on the www.aol.com domain
 * Navigate and measure the time to load www.aol.com
-```
+```text
 setDnsName	www1.aol.com	www.aol.com
 setDns	www.aol.com	127.0.0.1
 setCookie	http://www.aol.com	zip=20166
@@ -541,7 +542,7 @@ This script will:
 * Use the iPhone user agent string
 * Change the browser dimensions to match the iPhone
 * Navigate to www.aol.com
-```
+```text
 setUserAgent	Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25
 setViewportSize    320    356
 navigate	http://www.aol.com
