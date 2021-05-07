@@ -1,5 +1,5 @@
 ---
-title: "WebPageTest Custom Scripting"
+title: "Custom Scripting"
 eleventyNavigation:
   key: Scripting
   order: 2
