@@ -5,6 +5,9 @@
     <main class="wide">
         <h1>{{title}}</h1>
         {{ description | markdown | safe }}
+        {% if contributedBy %}
+        <p class="contributedBy">Contributed by <a href="{{contributedBy.url}}">{{contributedBy.name}}</a></p>
+        {% endif %}
         {{ content | safe }}
 
     </main>

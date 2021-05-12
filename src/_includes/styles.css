@@ -690,6 +690,14 @@ pre,code {
     background-color: var(--light-grey);
     font-size: 1.1em;
 }
+p.contributedBy{
+    margin-top: -1.8em;
+    font-size: .9em;
+}
+.recipe p.contributedBy{
+    font-size: .8em;
+    margin-top: -1.4em;
+}
 /* PrismJS 1.23.0
 https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+json */
 code[class*="language-"],
