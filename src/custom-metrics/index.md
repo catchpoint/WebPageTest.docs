@@ -80,10 +80,11 @@ return viewport;
 
 ## Accessing Requests Data (Chrome-only)
 
-Usually custom metrics only have access to the DOM but WebPageTest supports a script substitution where it will replace any occurrences of **$WPT_REQUESTS** or **$WPT_BODIES** in the script with a javascript array that contains the raw request data, optionally including text bodies, headers and other details provided by the Chrome dev tools protocol. The requests are ordered in the order that theywere created, not necessarily the order they were sent on the network.
+Usually custom metrics only have access to the DOM but WebPageTest supports a script substitution where it will replace any occurrences of **$WPT_REQUESTS** or **$WPT_BODIES** in the script with a javascript array that contains the raw request data, optionally including text bodies, headers and other details provided by the Chrome dev tools protocol. The requests are ordered in the order that they were created, not necessarily the order they were sent on the network.
 
 * **$WPT_REQUESTS** - All request data except for bodies (significantly smaller)
 * **$WPT_BODIES** - All request data including bodies in the "response_body" entry
+* **$WPT_ACCESSIBILITY_TREE** - Array of the nodes of the [Chromium Accessibility tree](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getFullAXTree) (with the DOM node info recorded in node_info for each node in the array)
 
 Non-Chrome browsers (or in the case of an error collecting the requests) the replacement will replace null instead of an array (so it can be checked explicitly and differently from an empty array). That should make it possible to use the same script across all browsers.
 
@@ -93,6 +94,14 @@ For example, this script will return the number of requests:
 let requests = $WPT_REQUESTS;
 return requests.length;
 ```
+
+This will dump the full accessibility tree into a custom metric:
+```javascript
+[acc_tree]
+let ac_tree = $WPT_ACCESSIBILITY_TREE;
+return ac_tree;
+```
+
 
 This is an example of what each entry in the requests array looks like:
 ```javascript
