@@ -337,10 +337,11 @@ nav{
     padding-left: 0;
     border-left: 1px solid var(--light-grey);
     font-size: .9em;
-
+    margin: 0;
 }
 .pageNav a{
     padding-left: 1em;
+    border-left: 3px solid transparent;
     display: inline-block;
 }
 nav ul{
@@ -358,7 +359,7 @@ nav a:hover{
 nav li{
     margin-bottom: 1em;
 }
-nav .is-active > a{
+.primaryNav .is-active > a{
     font-weight: bold;
     color: #000;
 }
@@ -368,14 +369,17 @@ nav li ul{
 }
 
 .toc .is-active{
-    border-left: 3px solid var(--wpt-navy);
+    border-left-color: var(--wpt-navy);
     color: var(--wpt-navy);
 }
 @media (min-width: 68em) {
     .toc{
+        --top-offset: 1em;
         position: sticky;
-        top: 1em;
-        padding-top: .5em;
+        top: var(--top-offset);
+        margin-top: 1.5em;
+        max-height: calc(100vh - 2 * var(--top-offset));
+        overflow-y: auto;
     }
 }
 .toc li{
@@ -685,6 +689,14 @@ table td code + small {
 pre,code {
     background-color: var(--light-grey);
     font-size: 1.1em;
+}
+p.contributedBy{
+    margin-top: -1.8em;
+    font-size: .9em;
+}
+.recipe p.contributedBy{
+    font-size: .8em;
+    margin-top: -1.4em;
 }
 /* PrismJS 1.23.0
 https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+json */
