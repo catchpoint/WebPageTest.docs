@@ -82,7 +82,7 @@ Browser Support: IE, Chrome, Firefox
 usage: click	<attribute=value>
 example: click	title=Delete (del)
 
-<attribute'value> - DOM element to click on
+<attribute=value> - DOM element to click on
 ```
 
 #### clickAndWait
@@ -92,7 +92,7 @@ Browser Support: IE, Chrome, Firefox
 usage: clickAndWait	<attribute=value>
 example: clickAndWait	innerText=Send
 
-<attribute'value> - DOM element to click on
+<attribute=value> - DOM element to click on
 ```
 
 #### selectValue
