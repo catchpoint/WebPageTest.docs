@@ -60,6 +60,45 @@ submitForm	name=AOLLoginForm
 
 You won't get a lot of feedback as to why a script failed. For debugging purposes it is easiest to limit scripts to navigate and exec/execAndWait commands which can be debugged locally in a browser's dev tools.
 
+## Variable substitutions
+
+Some variables are replaced based on the URL provided for the test.
+
+### %URL%
+
+URL provided for the test.
+
+```markup
+URL: https://wpt.example
+input: navigate %URL%
+output: navigate  https://wpt.example
+```
+
+### %HOST%
+
+This will be the Host of the URL provided for the test. This does not include the protocol.
+
+```markup
+URL: https://wpt.example
+input: setDnsName %HOST% dns.example
+output: setDnsName  wpt.example dns.example
+```
+
+### %HOST_REGEX%
+
+Same as %HOST% but with dots escaped to make it suitable for use in regular expressions.
+
+```markup
+URL: https://wpt.example
+input: setHeader  Foo: Bar  %HOST_REGEX%
+output: setHeader Foo: Bar  wpt\.example
+```
+
+### %HOSTR%
+
+🤷
+
+
 ## Command Reference
 
 ### Navigation/DOM Interaction
