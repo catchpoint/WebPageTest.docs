@@ -103,7 +103,6 @@ URL: https://redirect.wpt.example
 input: setDnsName %HOSTR% dns.example
 output: setDnsName  wpt.example dns.example
 
-
 ## Command Reference
 
 ### Navigation/DOM Interaction
