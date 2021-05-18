@@ -102,6 +102,7 @@ Same as %HOST% but uses the final host name of the test URL after following any 
 URL: https://redirect.wpt.example
 input: setDnsName %HOSTR% dns.example
 output: setDnsName  wpt.example dns.example
+```
 
 ## Command Reference
 
