@@ -7,6 +7,9 @@ eleventyNavigation:
 # WebPageTest Change Log
 
 ## May, 2021
+- **May 17:** WebPageTest custom metrics now can access the [full accessibility tree in Chromium-based browsers using the $WPT_ACCESSIBILITY_TREE placeholder](https://twitter.com/patmeenan/status/1394303297931157506). 
+- **May 13:** The Cumulative Layout Shift section of the core web vitals page [lets you hover over a thumbnail to see what content is moving and why](https://twitter.com/patmeenan/status/1392906405036888064).
+- **May 5:** WebPageTest now has a [core web vitals diagnostics page](https://twitter.com/patmeenan/status/1390030084543811586) to help debug your core web vitals by exposing additional context and providing focused visualizations.
 - **May 3:** The plot full results page now allows folks to force the graphs to start at zero ([issue #1485](https://github.com/WPO-Foundation/webpagetest/issues/1485)) to help normalize for comparison ([here's an example](https://www.webpagetest.org/graph_page_data.php?tests=210329_XiBZ_82b5bf1bae2119591621a677202ecfda-l%3A3PL%2C210329_Xi4A_0679d30b2dc8de471d1cade9f793183c-l%3A2.5PL%2C210329_XiKN_d329ef9e13a07bcd4bbca866777375fb-l%3A1.5PL%2C210329_Xi4C_ad8e2d4857cb143b85748b8e0ec6a8d2-l%3A1PL%2C210329_Xi3T_3e9b78ff5114579915f521df5d10045e-l%3A0PL&medianMetric=LoadTime&fv=1&zero_start=true&control=4)). We also now show metric tables for all tests on the graph results page, not just the first test ([issue #1484](https://github.com/WPO-Foundation/webpagetest/issues/1484)).
 
 ## April, 2021
