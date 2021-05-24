@@ -7,6 +7,7 @@ eleventyNavigation:
 # WebPageTest Change Log
 
 ## May, 2021
+-   **May 24:** [%ORIGIN% can be used in your scripts](/scripting/#%25origin%25).
 - **May 17:** WebPageTest custom metrics now can access the [full accessibility tree in Chromium-based browsers using the $WPT_ACCESSIBILITY_TREE placeholder](https://twitter.com/patmeenan/status/1394303297931157506). 
 - **May 13:** The Cumulative Layout Shift section of the core web vitals page [lets you hover over a thumbnail to see what content is moving and why](https://twitter.com/patmeenan/status/1392906405036888064).
 - **May 5:** WebPageTest now has a [core web vitals diagnostics page](https://twitter.com/patmeenan/status/1390030084543811586) to help debug your core web vitals by exposing additional context and providing focused visualizations.
