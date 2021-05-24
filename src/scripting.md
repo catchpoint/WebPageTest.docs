@@ -84,6 +84,21 @@ input: setDnsName %HOST% dns.example
 output: setDnsName  wpt.example dns.example
 ```
 
+### %ORIGIN%
+
+The Origin of the URL. This includes the protocol, the host and the port (if it is defined).
+
+```markup
+URL: https://wpt.example/hello
+input: setCookie  %ORIGIN% foo=bar
+output: setCookie https://wpt.example foo=bar
+
+URL: https://wpt.example:8080/hello
+input: setCookie  %ORIGIN% foo=bar
+output: setCookie https://wpt.example:8080 foo=bar
+```
+
+
 ### %HOST_REGEX%
 
 Same as %HOST% but with dots escaped to make it suitable for use in regular expressions.
