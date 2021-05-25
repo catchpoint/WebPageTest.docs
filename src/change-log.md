@@ -7,6 +7,7 @@ eleventyNavigation:
 # WebPageTest Change Log
 
 ## May, 2021
+- **May 25:** Recalibrated the mobile CPU emulation throttling (Most devices needed around twice as much throttling).
 - **May 24:** Updated the [Wappalyzer](https://www.wappalyzer.com/) engine and detections to the latest.
 - **May 24:** [%ORIGIN% can be used in your scripts](/scripting/#%25origin%25).
 - **May 19:** Fixed an issue where video capture may have terminated prematurely (at 30 seconds). Particularly noticeable when running SPOF comparison tests.
