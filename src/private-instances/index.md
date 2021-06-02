@@ -5,7 +5,7 @@ eleventyNavigation:
   order: 3
 ---
 # Private Instances
-WebPagetest is available as a software package for installation and running of private instances. 
+The WebPageTest code is available for installation and running of private instances. 
 
 ## Releases
 
@@ -52,7 +52,7 @@ The configuration files in the archive have a .sample extension so if you are up
 
 # Web Server Install
 
-1. If you will be using agents that upload .pcap files, consider setting upload_max_filesize and post_max_size to large values (10mb should be enough) and in php.ini.
+1. If you will be using agents that upload .pcap files, consider setting upload_max_filesize and post_max_size to large values (50mb should be enough) and in php.ini.
 1. If you will be collecting Chrome dev tools traces, consider setting memory_limit to a large value or disabling the memory limit by setting it to -1.
 1. Copy the files from the www folder in the archive to the DocumentRoot location (e.g. /var/www/webpagetest).
 1. Grant the apache or nginx user read/write permissions to the following folders under the DocumentRoot:
