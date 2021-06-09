@@ -5,7 +5,6 @@ eleventyNavigation:
   order: 999
 ---
 # WebPageTest Change Log
-=
 ## June, 2021
 - **June 1** If an image or background image triggers Largest Contentful Paint, the [vitals page will now auto-highlight the request in the waterfall](https://twitter.com/tkadlec/status/1399846310933585924) and display the image at full size to make it more obvious. The Total Blocking Time of the page now also shows the origins with the largest scripting-related CPU time and provides a quick link to the Chrome Developer Tools timeline for the test.
 ## May, 2021
