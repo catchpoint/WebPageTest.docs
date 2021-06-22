@@ -175,6 +175,26 @@ example: sendClickAndWait	innerText=Send
 <attribute=value> - DOM element to send the click event to
 ```
 
+#### type (AndWait)
+Simulate keyboard keypresses for each character in the given string.
+Browser Support: Chrome
+```markup
+usage: type <string>
+example: type Hello World
+
+<string> - String of characters to type into the keyboard.
+```
+
+#### keypress (AndWait)
+Simulate a keyboard keypress for the given key.
+Browser Support: Chrome
+```markup
+usage: keypressAndWait <key>
+example: keypressAndWait Enter
+
+<key> - Keyboard key to simulate pressing. Full list of supported keys is [here](https://github.com/WPO-Foundation/wptagent/blob/master/internal/support/keys.json).
+```
+
 #### sendKeyDown / sendKeyUp / sendKeyPress (AndWait)
 Creates a javascript keyboard event (OnKeyDown, OnKeyUp, OnKeyPress) and sends it to the indicated element.
 Browser Support: IE
