@@ -40,5 +40,12 @@
         "ownerLink": "https://snyk.io/",
         "description": "Snyk's WebSite Scanner surfaces a security grade and details about specfic security headers that could be used to improve your site's security, as well as any vulnerable JavaScript libraries that were found during testing.",
         "link": "https://snyk.io/website-scanner"
+    },
+    {
+        "name": "FRUSTRATIONindex",
+        "owner": "Tim Vereecke",
+        "ownerLink": "https://twitter.com/TimVereecke",
+        "description": "Easily calculate the frustration levels of your website using any WPT result page. FRUSTRATIONindex is an easy to consume score indicating the level of frustration while loading a page.",
+        "link": "https://www.frustrationindex.com/"
     }
 ]

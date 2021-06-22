@@ -41,6 +41,20 @@ Features:
 <a class="btn" href="https://github.com/marcelduran/webpagetest-api">Get started with the API Wrapper →</a>
 :::
 
+:::callout
+### WebPageTest Slack Bot
+<img src="/img/api-slack-bot.png" alt="Screenshot from Slack showing the WebPageTest bot being triggered by running /webpagetest">
+
+The WebPageTest Slack bot lets you run tests against WebPageTest from within Slack. Once the tests are complete, a copy of the waterfall and a link to the full results will be posted in your Slack channel, helping you to easily troubleshoot and diagnose performance issues directly from your Slack development channels.
+
+Features:
+
+- Run WebPageTest from within Slack, and get the results posted back automatically.
+- Full access to WebPageTest's 30+ test locations.
+
+<a class="btn" href="https://github.com/WebPageTest/webpagetest-slack">Get started with the Slack Bot →</a>
+:::
+
 ## Community-Built Integrations
 One of the great things about WebPageTest is the fantastic community that has built up around it. These are some great community-built integrations that we recommend. 
 
