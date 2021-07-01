@@ -41,6 +41,6 @@ We have plans to support adding multiple users and defining roles in the future.
 ## Keeping your keys secret and safe
 Your API keys are directly tied to your account and can be used to submit tests, which impact your billing. You should plan to keep them secret and safe, just as you would with any account password. Only share your key with the people who absolutely need access and make sure to keep your keys out of any version control system. We recommend storing them in a password manage or secrets management system.
 
-If a key is compromised, you can either choose to delete they key altogether or regenerate the key to start fresh. Both options are available to you in [your account dashboard](https://app.webpagetest.org/ui/wpt/myAccount).
+If a key is compromised, you can either choose to delete the key altogether or regenerate the key to start fresh. Both options are available to you in [your account dashboard](https://app.webpagetest.org/ui/wpt/myAccount).
 
 <img src="/img/api-key-delete.png" alt="Screenshot showing a contextual menu next to the name of your API key, letting you choose to Delete the key, Regenerate the key, or copy the existing key.">
