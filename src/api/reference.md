@@ -264,6 +264,12 @@ Set to 1 to disable AVIF support (Chromium 88+).
 - `disableWEBP` <small>optional</small>
 Set to 1 to disable AVIF support (Chromium 88+).
 **Default:** 0
+- `disableJXL` <small>optional</small>
+Set to 1 to disable JpegXL support (Chromium 88+).
+**Default:** 0
+- `dtShaper` <small>optional</small>
+Set to 1 to use Chrome's built-in traffic-shaping instead of the packet-level netem shaping usually used by the test agents.
+**Default:** 0
 :::
 
 
