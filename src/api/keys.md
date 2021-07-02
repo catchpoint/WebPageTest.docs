@@ -16,7 +16,7 @@ To get started with WebPageTest API, you'll need to first [create an account](ht
 If you already have an account, go to [**My Account**](https://app.webpagetest.org/ui/wpt/myAccount) on WebPageTest and purchase a subscription plan by clicking on **+ API Subscription Plan**. Once you complete your purchase, you'll be able to generate the API key and start testing using the WPT API. 
 
 :::note
-We currently offer 4 subscription plans (billed monthly or annually) based on the total test runs you wish to run in a month. All our subscription plans offer the same features and capabilities. You can read more about account, tests, and billing or payment questions [here](http://docs.webpagetest.org/api/faqs). There is also a promotional offer of up to **34% discount on these subscription plans until July 1, 2021**.
+We currently offer 4 subscription plans (billed monthly or annually) based on the total test runs you wish to run in a month. All our subscription plans offer the same features and capabilities. You can read more about account, tests, and billing or payment questions [here](http://docs.webpagetest.org/api/faqs). There is also a promotional offer of up to **34% discount on these subscription plans until July 12, 2021**.
 
 For Custom Enterprise plans where you want to run more than 25,000 tests per month, please [contact us](https://www.product.webpagetest.org/contact).
 :::
