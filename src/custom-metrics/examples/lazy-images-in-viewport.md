@@ -2,17 +2,24 @@
 tags: customMetrics
 layout: layouts/code-example.njk
 title: Lazy Loaded Images in Viewport
-description: Return an object containing the sources of all images that have `loading=lazy` applied, but are within the initial viewport.
+description: Return an array containing the sources of all images that have `loading=lazy` applied, but are visible within the initial viewport.
 ---
 
 ```js
 [lazy-in-viewport]
-let images = document.querySelectorAll('img[loading=lazy]');
-let lazyImages = [];
-images.forEach( img => {
- if (img.getBoundingClientRect().top < window.innerHeight) {
-    lazyImages.push(img.src);
- }
-});
-return JSON.stringify(lazyImages);
+function isVisibleInInitialViewport(element) {
+    let boundingRect = element.getBoundingClientRect();
+    let isVisible = boundingRect.width != 0 && boundingRect.height != 0;
+    let inInitialViewport =
+        boundingRect.top <= window.innerHeight &&
+        boundingRect.left <= window.innerWidth;
+
+    return isVisible && inInitialViewport;
+}
+
+let lazyImages = document.querySelectorAll("img[loading=lazy]");
+let candidatesforEagerLoading = Array.from(lazyImages)
+    .filter(img => isVisibleInInitialViewport(img))
+    .map(img => img.src);
+return JSON.stringify(candidatesforEagerLoading);
 ```
