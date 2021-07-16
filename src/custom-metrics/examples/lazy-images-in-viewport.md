@@ -7,19 +7,21 @@ description: Return an array containing the sources of all images that have `loa
 
 ```js
 [lazy-in-viewport]
-function isVisibleInInitialViewport(element) {
-    let boundingRect = element.getBoundingClientRect();
-    let isVisible = boundingRect.width != 0 && boundingRect.height != 0;
-    let inInitialViewport =
-        boundingRect.top <= window.innerHeight &&
-        boundingRect.left <= window.innerWidth;
+return new Promise(function (resolve) {
+    let lazyImages = document.querySelectorAll("img[loading=lazy]");
+    if (lazyImages.length == 0) {
+        return resolve([]);
+    }
 
-    return isVisible && inInitialViewport;
-}
-
-let lazyImages = document.querySelectorAll("img[loading=lazy]");
-let candidatesforEagerLoading = Array.from(lazyImages)
-    .filter(img => isVisibleInInitialViewport(img))
-    .map(img => img.src);
-return JSON.stringify(candidatesforEagerLoading);
+    let observer = new IntersectionObserver(function (entries, observer) {
+        observer.disconnect();
+        const eagerLoadingCandidates = entries
+            .filter(e => e.isIntersecting)
+            .map(e => e.target.src);
+        return resolve(JSON.stringify(eagerLoadingCandidates));
+    });
+    for (let img of lazyImages) {
+        observer.observe(img);
+    }
+});
 ```
