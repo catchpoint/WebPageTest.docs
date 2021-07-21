@@ -48,7 +48,7 @@ There are also several existing integrations built by our community members that
 ### How will I be charged?  
 For monthly and annual subscriptions plans, your credit card will be automatically billed when you sign up and purchase the subscription, you’ll be able to access your payment history under **Billing History** in **My Account** on www.webpagetest.org. All subscription plans can be canceled at any time without penalty. Once you choose to cancel, it stops the WebPageTest API subscription from auto-renewing for the next billing cycle. You’ll continue to have access to run tests for that plan, until the end of your current billing period. 
 
-For Custom Enterprise plans where you want to run more than 25,000 tests per month, please **[contact us](https://www.product.webpagetest.org/contact)**.  
+For Custom Enterprise plans where you want to run more than 20,000 tests per month, please **[contact us](https://www.product.webpagetest.org/contact)**.  
 
 If you are based out of the United States of America, You will be charged in US Dollars, but the exact amount you will see on your credit card statement may vary, depending on foreign exchange rates and any foreign transaction fees your bank may impose. 
 
@@ -57,7 +57,7 @@ We accept payment via Credit Card (VISA, Mastercard, American Express, JCB, Maes
 
 We do not accept and will not ask you to provide payments with cash or a physical check. 
 
-For Custom Enterprise plans, requiring more than 25,000 tests per month, please **[contact us](https://www.product.webpagetest.org/contact)**. 
+For Custom Enterprise plans, requiring more than 20,000 tests per month, please **[contact us](https://www.product.webpagetest.org/contact)**. 
 
 ### How do I change the credit card that I have on file or update my payment method?  
 On My Account page, you will be able to edit your credit card details and update your payment method. Please note that these changes made to your payment method will reflect on your next billing receipt. Please ensure the accuracy of your payment method and that it is properly funded to avoid any issues with payment acceptance. 
@@ -106,7 +106,7 @@ You’ll be able to access your payment history under **Billing History** in **M
 You can change your billing details and payment method by editing the payment details on your **My Account** page. Please note we do not accept and will not ask you to provide payments with cash or a physical check. 
 
 ### Where can I find a list of different plans and their pricing? 
-All our subscription plans offer the same features and capabilities, and the pricing is based on the total tests you want to run per month. You can view our subscription plans when you [sign up](https://app.webpagetest.org/ui/entry/wpt/signup) or [log in](https://app.webpagetest.org/ui/entry/wptLogin.aspx) and go to **My Account** on https://webpagetest.org/ For Custom Enterprise plans where you want to run more than 25,000 tests per month, please **[contact us](https://www.product.webpagetest.org/contact)**. 
+All our subscription plans offer the same features and capabilities, and the pricing is based on the total tests you want to run per month. You can view our subscription plans when you [sign up](https://app.webpagetest.org/ui/entry/wpt/signup) or [log in](https://app.webpagetest.org/ui/entry/wptLogin.aspx) and go to **My Account** on https://webpagetest.org/ For Custom Enterprise plans where you want to run more than 20,000 tests per month, please **[contact us](https://www.product.webpagetest.org/contact)**. 
 
 ### What is the cancellation policy?  
 You can choose to cancel anytime during the subscription period. Once you choose to cancel, it stops the WPT API subscription from auto-renewing for the next billing cycle. You’ll continue to have access to run tests for that plan, until the end of your current billing period. When you cancel, you cancel only the subscription. You’ll continue to have access to the WebPageTest account and history of the manual tests (under **Test History**) that you ran while signed in to that account. Please note all subscriptions are automatically renewed unless explicitly cancelled.
