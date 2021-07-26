@@ -5,6 +5,10 @@ eleventyNavigation:
   order: 999
 ---
 # WebPageTest Change Log
+## July, 2021
+- **July 20** Any [render blocking resources are now indicated in the Waterfall with an orange icon](https://twitter.com/tkadlec/status/1417543014705246214), making it easier to zero-in on one of the most common performance bottlenecks.
+- **July 13** [The waterfalls now treat HTTPS as the default experience instead of HTTP.](https://twitter.com/tkadlec/status/1414973621517406210) This means HTTPS requests no longer show a lock icon. Instead, HTTP requests are actively marked as insecure, cleaning up the waterfall and making it easier to spot insecure requests at a glance.
+- **July 1** WebPageTest now has an option [to use Chrome's built-in traffic shaping](https://twitter.com/patmeenan/status/1410676572596678657) instead of the packet-level network shaping it normally uses. (Not recommended for normal testing.)
 ## June, 2021
 - **June 30** The visual comparison page now has a [compare all runs button](https://twitter.com/tkadlec/status/1410344917113659397) that makes it easier to quickly see all runs of a given test so you can investigate variability.
 - **June 30** We added a new [Web Vitals test](https://www.webpagetest.org/webvitals). It provides all the same level detailed results as a normal test, but the form is greatly simplified and lands directly on the core web vitals diganostics page.

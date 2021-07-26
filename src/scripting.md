@@ -98,17 +98,6 @@ input: setCookie  %ORIGIN% foo=bar
 output: setCookie https://wpt.example:8080 foo=bar
 ```
 
-
-### %HOST_REGEX%
-
-Same as %HOST% but with dots escaped to make it suitable for use in regular expressions.
-
-```markup
-URL: https://wpt.example
-input: setHeader  Foo: Bar  %HOST_REGEX%
-output: setHeader Foo: Bar  wpt\.example
-```
-
 ### %HOSTR%
 
 Same as %HOST% but uses the final host name of the test URL after following any redirects.
@@ -404,22 +393,20 @@ In this example, http://www.webpagetest.org/index.php will get rewritten to actu
 Adds the specified header to every http request (in addition to the headers that exist, does not overwrite an existing header).
 Browser Support: IE, Chrome, Firefox, Safari (no SSL)
 ```markup
-usage: addHeader	<header>    {filter}
+usage: addHeader	<header>
 example: addHeader	Pragma: akamai-x-cache-on
 
 <header> - Full header entry to add (including label)
-{filter} - (optional) regex match for host names where the header should be added
 ```
 
 #### setHeader
 Adds the specified header to every http request, overriding the header if it already exists.
 Browser Support: IE, Chrome, Firefox, Safari (no SSL)
 ```markup
-usage: setHeader	<header>    {filter}
+usage: setHeader	<header>
 example: setHeader	UA-CPU: none-ya
 
 <header> - Full header entry to set (including label)
-{filter} - (optional) regex match for host names where the header should be set
 ```
 
 #### resetHeaders
