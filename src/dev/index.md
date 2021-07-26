@@ -27,7 +27,7 @@ Additionally, there are several utilities used by the main components or helper 
 
 ### Processing Flows
 #### Submitting a test
-![Submit test flow](../img/submit-test-flow.png)
+![Submit test flow](/img/submit-test-flow.png)
 All tests are submitted through the runtest.php entrypoint.  The UI pages for submitting tests are just forms that populate the appropriate API parameters. Resubmitting an existing test is a slight exception in that it doesn't provide all of the test params in the call to runtest.php, it passes the existing test ID and runtest.php loads all of the params from the existing test.
 
 runtest.php does a fair bit of processing to the request before generating the test job:
