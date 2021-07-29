@@ -5,9 +5,9 @@ eleventyNavigation:
   order: 99
 ---
 # Accounts
-Click on **Sign Up** on [WebPageTest](http://webpagetest.org/?utm_source=docs&utm_medium=docs&utm_campaign=account&utm_content=signup) to create a user account on WebPageTest. You can create a user account on WebPageTest if you are looking to: 
+Click on **Sign Up** on [WebPageTest](http://www.webpagetest.org/?utm_source=docs&utm_medium=docs&utm_campaign=account&utm_content=signup) to create a user account on WebPageTest. You can create a user account on WebPageTest if you are looking to: 
 * Post on the [WebPageTest Forum](https://forums.webpagetest.org/). Otherwise it's read-only. 
-* Access your past [test results](https://webpagetest.org/testlog/1/)
+* Access your past [test results](https://www.webpagetest.org/testlog/1/)
 * Use the [WebPageTest API](http://docs.webpagetest.org/api)
 
 For access to your past test results, please note that WebPageTest currently stores up to 30 days of test history from the local browser that is made available as long as storage isn't cleared. Creating an account helps keep your test history for longer and to see test history across multiple browsers.

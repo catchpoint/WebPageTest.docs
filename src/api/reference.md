@@ -227,14 +227,14 @@ Test name to use when submitting results to tsviewdb (for private instances that
 - `custom` <small>optional</small>
 [Custom metrics](/custom-metrics) to collect at the end of a test
 - `tester` <small>optional</small>
-Specify a specific tester that the test should run on (must match the PC name in /getTesters.php).  If the tester is not available the job will never run.
+Specify a specific tester that the test should run on (must match the PC name in /getTesters.php).  If the tester is not available the job will never run.
 - `affinity` <small>optional</small>
-Specify a string that will be used to hash the test to a specific test agent.  The tester will be picked by index among the available testers.  If the number of testers changes then the tests will be distributed to different machines but if the counts remain consistent then the same string will always run the tests on the same test machine.  This can be useful for controlling variability when comparing a given URL over time or different parameters against each other (using the URL as the hash string).
+Specify a string that will be used to hash the test to a specific test agent.  The tester will be picked by index among the available testers.  If the number of testers changes then the tests will be distributed to different machines but if the counts remain consistent then the same string will always run the tests on the same test machine.  This can be useful for controlling variability when comparing a given URL over time or different parameters against each other (using the URL as the hash string).
 - `timeline` <small>optional</small>
-Set to 1 to have Chrome capture the Dev Tools timeline
+Set to 1 to have Chrome capture the Dev Tools timeline
 **Default:** 0
 - `timelineStack` <small>optional</small>
-Set to between 1 - 5 to have Chrome include the Javascript call stack. Must be used in conjunction with `timeline`. 
+Set to between 1 - 5 to have Chrome include the Javascript call stack. Must be used in conjunction with `timeline`. 
 **Default:** 0
 - `ignoreSSL` <small>optional</small>
 Set to 1 to Ignore SSL Certificate Errors e.g. Name mismatch, Self-signed certificates, etc.
@@ -482,10 +482,10 @@ The results endpoints will return a different response type depending on the end
 
 ```text
 //this will result in an XML response
-https://webpagetest.org/xmlResult.php
+https://www.webpagetest.org/xmlResult.php
 
 //this will return a JSON response
-https://webpagetest.org/jsonResult.php
+https://www.webpagetest.org/jsonResult.php
 ```
 
 Here's an example response, truncated for brevity:
@@ -566,7 +566,7 @@ Here's an example response, truncated for brevity:
 ```
 
 :::caution
-There are a **lot** of [metrics](/metrics) recorded by WebPageTest and exposed via the API. We're working on documenting them all. In the meantime, feel free to poke at some sample results (in either [JSON](https://webpagetest.org/jsonResult.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911) or [XML](https://webpagetest.org/xmlResult.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911) format) to see what's available.
+There are a **lot** of [metrics](/metrics) recorded by WebPageTest and exposed via the API. We're working on documenting them all. In the meantime, feel free to poke at some sample results (in either [JSON](https://www.webpagetest.org/jsonResult.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911) or [XML](https://www.webpagetest.org/xmlResult.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911) format) to see what's available.
 :::
 
 ### Full List of Parameters
@@ -605,7 +605,7 @@ API Key. *API Key is optional for any private instances you maintain on your own
 The test ID for the test you want to cancel.
 :::
 ## Retrieving Available Locations
-You can request a list of available WebPageTest agents as well as the number of pending tests for each using the https://webpagetest.org/getLocations.php endpoint.
+You can request a list of available WebPageTest agents as well as the number of pending tests for each using the https://www.webpagetest.org/getLocations.php endpoint.
 
 ### Response Format
 By default, a successful request to the /getLocations.php endpoint, results an XML response. You can optionally set the response format using the `f` parameter to request a JSON response (`f=json`).
@@ -614,13 +614,13 @@ If you pass the `callback` parameter in conjunction with using `f=json`, the end
 
 ```text
 //this will result in an XML response
-https://webpagetest.org/getLocations.php
+https://www.webpagetest.org/getLocations.php
 
 //this will return a JSON response
-https://webpagetest.org/getLocations.php?f=json
+https://www.webpagetest.org/getLocations.php?f=json
 
 //this will return a JSONP response, with the JSON wrapped in myCallback()
-https://webpagetest.org/getLocations.php?f=json&callback=myCallback
+https://www.webpagetest.org/getLocations.php?f=json&callback=myCallback
 ```
 
 Here's an example response from the /getLocations.php endpoint, (truncated for brevity):
