@@ -189,9 +189,6 @@ Set to 1 to save a full-resolution version of the fully loaded screenshhot as a 
 **Default:** 0
 - `iq` <small>optional</small>
 Specify a JPEG compression level (between 30-100) for the screenshots and video capture.
-- `noscript` <small>optional</small>
-Set to 1 to disable JavaScript (IE, Edge, Chrome and Firefox)
-**Default:** 0
 - `clearcerts` <small>optional</small>
 Set to 1 to clear the OS certificate caches (causes the browser to do OCSP/CRL checks during SSL negotiation).
 **Default:** 0
