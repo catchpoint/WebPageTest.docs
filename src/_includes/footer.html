@@ -16,3 +16,14 @@
     {% endset %}
     {{ siteJS  | jsmin | safe}}
 </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"></script>
+<script type="text/javascript">
+  algoliasearchNetlify({
+    appId: 'JCWC2G1HQW',
+    apiKey: 'f90bbf03613e10bf65dc46a8c2b9b9e1',
+    siteId: '3a32d901-7ebe-42a6-94ec-7425bc6e595d',
+    branch: 'main',
+    selector: 'div#search',
+    placeholder: 'Search the WebPageTest Docs...'
+  });
+</script>
