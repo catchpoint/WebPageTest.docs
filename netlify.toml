@@ -6,8 +6,8 @@
     to = "/.netlify/functions/get-webpagetest-url"
     status = 200
 [[redirects]]
-    from = "/js/:script"
-    to = "https://cdn.jsdelivr.net/npm/:script"
+    from = "/js/*"
+    to = "https://cdn.jsdelivr.net/npm/:splat"
     status = 200
 [[headers]]
   for = "/*"
