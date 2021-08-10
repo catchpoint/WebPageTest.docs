@@ -5,7 +5,10 @@
     from = "/latest-webpagetest-run"
     to = "/.netlify/functions/get-webpagetest-url"
     status = 200
-
+[[redirects]]
+    from = "/js/:script"
+    to = "https://cdn.jsdelivr.net/npm/:script"
+    status = 200
 [[headers]]
   for = "/*"
     [headers.values]
