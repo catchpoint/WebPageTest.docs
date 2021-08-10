@@ -864,6 +864,7 @@ pre[class*=language-] .token.entity,code[class*=language-] .token.entity {
 #search {
     display: block;
     padding: .5em 0;
+    min-height: 3.875em;
 }
 #search .aa-Autocomplete{
     font-size: .8em;
