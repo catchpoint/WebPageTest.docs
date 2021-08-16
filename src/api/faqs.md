@@ -32,6 +32,11 @@ You will have access to all the tests you run via WebPageTest API for 13 months.
 ### Is there a daily limit for the test runs?  
 There is a monthly limit on the total tests you can run with the WebPageTest API, based on the subscription plan you choose. There is currently no daily limit on top of that monthly limit.  
 
+### How can I see how many tests I have remaining?
+You can always see how many tests you have remaining in your current month by looking at the **Remaining Runs** value under the **Subscription Plan** section of your **My Account** page. 
+
+You can also programmaticaly check how many tests you have remaining by using the [testBalance.php](/api/reference/#checking-remaining-test-balance) endpoint of the API itself.
+
 ### Do you provide any integrations that I can use with the API? 
 We currently support the following integrations:
 
