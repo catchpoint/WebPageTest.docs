@@ -44,6 +44,10 @@ We currently support the following integrations:
 An npm package that wraps WebPageTest API for NodeJS as a module and a command-line tool  
 - **[WebPageTest GitHub Action](https://github.com/WPO-Foundation/webpagetest-github-action)**   
 A GitHub Action that lets you automatically run tests against WebPageTest on code changes, set and enforce performance budgets, and have performance data automatically added to your pull requests to move the performance conversation directly into your existing development workflow.
+- **[WebPageTest Slack Bot](https://github.com/WebPageTest/webpagetest-slack)**  
+A Slack bot that lets you run tests against WebPageTest from within Slack. Once the tests are complete, a copy of the waterfall and a link to the full results will be posted in your Slack channel, helping you to easily troubleshoot and diagnose performance issues directly from your Slack development channels.
+- **[WebPageTest VSCode Extension](https://marketplace.visualstudio.com/items?itemName=WebPageTest.wpt-vscode-extension)**  
+The Visual Studio Code(Vscode) Extension for WebPageTest lets you run tests against WebPageTest from within Vscode, helping you to easily troubleshoot and diagnose performance issues directly from Vscode and possibly refactor the code if needed.
 
 There are also several existing integrations built by our community members that you can try out to build on top of the WebPageTest API. [Check out some of them here.](/api/integrations/#community-built-integrations)
 :::
