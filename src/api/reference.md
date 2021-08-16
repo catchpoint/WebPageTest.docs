@@ -758,3 +758,61 @@ Callback function name. When used with `f=json`, the API will return an JSONP re
 - `r` (string)
 Request ID. Will echo back in the response object.
 :::
+
+## Checking Remaining Test Balance
+To check how how many API tests you have remaining in your current billing period, you can use the https://webpagetest.org/testBalance.php endpoint.
+
+
+### Response Format
+By default, a sucessful request to the /testBalance.php endpoint will result in an JSON response. You can optionally set the response format using the `f` parameter to request an XML response (`f=xml`).
+
+```text
+//this will result in a JSON response
+https://webpagetest.org/testBalance.php?{your_api_key}
+
+//this will result in an XML response
+https://webpagetest.org/testBalance.php?{your_api_key}&f=xml
+```
+
+Here's an example response:
+
+:::code-tabs
+```json
+{
+    "data": {
+        "remaining": 1175
+    }
+}
+```
+
+```xml
+<response>
+   <data>
+      <remaining>1175</remaining>
+   </data>
+</response>
+```
+:::
+
+If your API key is invalid, or expired, you will instead see an `error` property with an appropriate message.
+
+```json
+{
+    "data": {
+        "remaining": "Error validating API Key Account"
+    }
+}
+```
+
+```xml
+<response>
+   <data>
+      <remaining>Error validating API Key Account</remaining>
+   </data>
+</response>
+```
+### Full List of Parameters
+::: api-list
+- `k` <small>required</small>
+API Key. *API Key is optional for any private instances you maintain on your own.
+:::
