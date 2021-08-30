@@ -323,7 +323,7 @@ http://www.webpagetest.org/runtest.php?url=www.aol.com&runs=2&f=xml&r=12345
 ```
 
 ## Check test status
-You can check the status of a test by doing a GET to http://www.webpagetest.org/testStatus.php with your test id and an optional format parameter. You will get a HTTP 200 response to the request itself indicating that the request was parsed, as well as a return object with details about the test run itself. Alternatively, you can check the status of a test by doing a GET to a [results endpoint](/#retrieving-test-results).
+You can check the status of a test by doing a GET to http://www.webpagetest.org/testStatus.php with your test id and an optional format parameter. You will get a HTTP 200 response to the request itself indicating that the request was parsed, as well as a return object with details about the test run itself. Alternatively, you can check the status of a test by doing a GET to a [results endpoint](#retrieving-test-results).
 
 ### Response Format
 By default, the `/testStatus.php` endpoint returns a JSON object. Alternatively, you can request the response object be returned as XML by passing the format (`f`) parameter.
@@ -474,7 +474,7 @@ Callback function name. When used with `f=json`, the API will return an JSONP re
 ## Retrieving test results
 To retrieve the results of a test run, you can use either the https://www.webpagetest.org/xmlResult.php (to return an XML response) or https://www.webpagetest.org/jsonResult.php (to return a JSON response) endpoint. The endpoint will return a response containing some information about the test itself, as well as an object containing all the metrics recorded across each test run.
 
-As noted in [Status Codes](/#status-codes), response codes in the 1xx range indicate that the requested test is not yet ready. Codes in the 4xx range indicate there was an error with the requested test. A status code of 200 indicates a successful test run.
+As noted in [Status Codes](#status-codes), response codes in the 1xx range indicate that the requested test is not yet ready. Codes in the 4xx range indicate there was an error with the requested test. A status code of 200 indicates a successful test run.
 
 ### Response Format
 The results endpoints will return a different response type depending on the endpoint you use.
