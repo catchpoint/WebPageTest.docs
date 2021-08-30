@@ -1,5 +1,6 @@
 ---
 title: "Running Lighthouse"
+description: WebPageTest can run a Lighthouse test on a given URL, either by itself, or as an additional test alongside your WebPageTest results.
 eleventyNavigation:
   key: Running Lighthouse
   order: 2
