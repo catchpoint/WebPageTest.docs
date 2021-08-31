@@ -279,10 +279,9 @@ If the connectivity is not specified, by default you will get the Cable (5/1 Mbp
 
 For example:
 
-* Dulles_IE7.**DSL**
-* Frankfurt.**Dial**
-* China.**custom**
-* Dulles:Chrome.**DSL**
+* ec2-us-east-1.**DSL**
+* ec2-eu-central-1.**Dial**
+* tencent-beijing.**custom**
 
 Public instances of WebPageTest provide a number of out-of-the box connection profiles for you to use to run tests:
 
