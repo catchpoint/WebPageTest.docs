@@ -128,7 +128,7 @@ API Key. Applies only to calls made to the runtest.php endpoint. *API Key is opt
 - `label` <small>optional</small>
 A label for the test.
 - `location` <small>optional</small>
-The location to test from. The location is comprised of the location of the testing agent, the browser to test on, and the connectivity in the following format: `location:browser.connectivity`  
+The location to test from. The location is comprised of the location of the testing agent, the browser to test on (optional), and the connectivity in the following format: `location:browser.connectivity` or `location.connectivity` 
 **Default:** Dulles:Chrome.Cable
 - `runs` <small>optional</small>
 The number of test runs (1-10 on the public instance).
@@ -273,15 +273,17 @@ Set to 1 to use Chrome's built-in traffic-shaping instead of the packet-level ne
 
 
 ### Specifying connectivity
-If the connectivity is not specified, by default you will get the Cable (5/1 Mbps, 28ms RTT) profile. The connectivity is specified as part of the location in the format:
+If the connectivity is not specified, by default you will get the Cable (5/1 Mbps, 28ms RTT) profile. The connectivity is specified using the `location` parameter in the format:
 
-**location:browser.connectivity**
+`location:browser.connectivity` or `location.connectivity` 
 
 For example:
 
-* ec2-us-east-1.**DSL**
-* ec2-eu-central-1.**Dial**
-* tencent-beijing.**custom**
+* ec2-us-east-1:Firefox.DSL
+* ec2-us-east-1.DSL
+* ec2-eu-central-1.Dial
+* ec2-eu-west-3:Chrome%20Canary.4G
+* tencent-beijing.custom
 
 Public instances of WebPageTest provide a number of out-of-the box connection profiles for you to use to run tests:
 
