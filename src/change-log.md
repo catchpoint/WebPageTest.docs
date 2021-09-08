@@ -5,6 +5,11 @@ eleventyNavigation:
   order: 999
 ---
 # WebPageTest Change Log
+## August, 2021
+- **August 30** WebPageTest now provides an "experiments" tab in the resource dialog to make it
+[easier to test the performance impact of requests on WebPageTest](https://twitter.com/tkadlec/status/1432380417286578187)
+- **August 16** The API now provides a [test balance endpoint](https://docs.webpagetest.org/api/reference/#checking-remaining-test-balance) to programmatically check your remaining API balance for the current billing period.
+- **August 10** All EC2 instances of the WebPageTest testing agents now use [static IP addresses](https://twitter.com/tkadlec/status/1425184088147832836).
 ## July, 2021
 - **July 20** Any [render blocking resources are now indicated in the Waterfall with an orange icon](https://twitter.com/tkadlec/status/1417543014705246214), making it easier to zero-in on one of the most common performance bottlenecks.
 - **July 13** [The waterfalls now treat HTTPS as the default experience instead of HTTP.](https://twitter.com/tkadlec/status/1414973621517406210) This means HTTPS requests no longer show a lock icon. Instead, HTTP requests are actively marked as insecure, cleaning up the waterfall and making it easier to spot insecure requests at a glance.
