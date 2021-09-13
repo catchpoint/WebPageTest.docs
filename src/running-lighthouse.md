@@ -47,5 +47,8 @@ Lighthouse scores are based on the collection of different performance metrics. 
 
 While some variability between tests is to be expected, by providing a consistent test environment for all Lighthouse runs, WebPageTest helps to minimize that variability and provide a realistic and repeatable point of comparison.
 
+## Lighthouse version
+WebPageTest's agents automatically update the Lighthouse engine each time Chrome ships a new version, meaning you're always seeing the results of the latest version.
 
+Currently, WebPageTest runs Lighthouse version 8.4.0.
 
