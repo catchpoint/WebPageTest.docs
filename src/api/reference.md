@@ -771,10 +771,10 @@ By default, a sucessful request to the /testBalance.php endpoint will result in 
 
 ```text
 //this will result in a JSON response
-https://webpagetest.org/testBalance.php?{your_api_key}
+https://webpagetest.org/testBalance.php?k={your_api_key}
 
 //this will result in an XML response
-https://webpagetest.org/testBalance.php?{your_api_key}&f=xml
+https://webpagetest.org/testBalance.php?k={your_api_key}&f=xml
 ```
 
 Here's an example response:
