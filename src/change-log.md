@@ -8,6 +8,7 @@ eleventyNavigation:
 ## September, 2021
 - **September 17** Instead of exposing the Net Priority for requests, we now [map that back to Chrome's Dev Tools priorities.](https://github.com/WPO-Foundation/wptagent/pull/431)
 - **September 16** The custom waterfall page has been refreshed to provide better visual hierarchy and update the [waterfall dynamically as you make adjustments](https://twitter.com/scottjehl/status/1438579832129007629).
+- **September 20** When a test result's runs all have first-byte times greater than 3 seconds, we offer a note that it might be worth re-testing with the original UA preserved, and include a checkbox to do so when submitting the form. This can help when sites intentionally slow their response times for bots like WPT. [Here's a result that shows the message](https://webpagetest.org/result/210920_AiDcXT_e6c90d77aad0b50e9c40b7c87f0af20c/) and a [result after re-testing with it checked](https://webpagetest.org/result/210920_BiDcZ4_1ebd4f591519a543f77f0e0f9104de30/). (Implementation notes [in pull request here](https://github.com/WPO-Foundation/webpagetest/pull/1540)).
 ## August, 2021
 - **August 30** WebPageTest now provides an "experiments" tab in the resource dialog to make it
 [easier to test the performance impact of requests on WebPageTest](https://twitter.com/tkadlec/status/1432380417286578187)
