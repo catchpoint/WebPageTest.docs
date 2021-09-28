@@ -38,7 +38,7 @@ Features:
 - Convenient CLI to simplify integrating with your existing CI/CD tooling
 - Polling and pingback functionality to make it easier to get test results as soon as tests are completed
 
-<a class="btn" href="https://github.com/marcelduran/webpagetest-api">Get started with the API Wrapper →</a>
+<a class="btn" href="https://github.com/webpagetest/webpagetest-api">Get started with the API Wrapper →</a>
 :::
 
 :::callout
@@ -53,6 +53,21 @@ Features:
 - Full access to WebPageTest's 30+ test locations.
 
 <a class="btn" href="https://github.com/WebPageTest/webpagetest-slack">Get started with the Slack Bot →</a>
+:::
+
+:::callout
+### WebPageTest Visual Studio Code Extension
+<img src="/img/api-vscode.png" alt="An image of Visual Studio Code's command bar, showing that as you start typing 'webpagetest', the WebPageTest extension command shows up.">
+
+The Visual Studio Code (VSCode) Extension for WebPageTest lets you run tests against WebPageTest from within VSCode. Once the tests are complete, some of the performance metrics, a copy of the waterfall, screenshot, and a link to the full results will be displayed in VSCode, right where you are developing, helping you to easily troubleshoot and diagnose performance issues directly from VSCode and possibly refactor the code if needed.
+
+Features:
+
+- Run WebPageTest from within VSCode, and get the results posted back automatically.
+- Full access to the underlying WebPageTest API
+- Test performance on local code changes, as you're making the change
+
+<a class="btn" href="https://marketplace.visualstudio.com/items?itemName=WebPageTest.wpt-vscode-extension">Get started with the VS Code Extension →</a>
 :::
 
 ## Community-Built Integrations

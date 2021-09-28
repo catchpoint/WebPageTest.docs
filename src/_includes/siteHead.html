@@ -10,7 +10,9 @@
     <link rel="icon" href="/img/favicon-32x32.png" sizes="32x32" type="image/png" />
     <link rel="icon" href="/img/favicon-16x16.png" sizes="16x16" type="image/png" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="description" content="{{site.description}}" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <meta name="description" content="{% if description %}{{description}}{% else %}{{site.description}}{% endif %}" />
     <style type="text/css">
         {% set siteCSS %}
             {% include 'styles.css' %}
