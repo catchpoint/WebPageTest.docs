@@ -749,6 +749,11 @@ Here's an example response from the /getLocations.php endpoint, (truncated for b
 </response>
 ```
 
+You can also optionally pass a `location` parameter referencing an individual location ID to be able to check the status of a single location at a time.
+ 
+```text
+https://webpagetest.org/getLocations.php?f=json&location=ec2-us-east-1
+```
 ### Full list of parameters
 ::: api-list
 - `f` <small>optional</small>
@@ -757,6 +762,8 @@ The format to return. Set to "xml" to request an XML response; set to "json" to 
 Callback function name. When used with `f=json`, the API will return an JSONP response by wrapping the JSON object with the provided callback name.
 - `r` (string)
 Request ID. Will echo back in the response object.
+- `location` <small>optional</small>
+Location ID. If provided, the response will return only the status and information for the specified location.
 :::
 
 ## Checking Remaining Test Balance
