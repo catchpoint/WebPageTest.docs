@@ -7,7 +7,7 @@ eleventyNavigation:
 # Scripting
 WebPageTest has a scripting capability that lets you automate a multi-step test (for example, logging into a site or sending an e-mail message). 
 
-Each line of the script file contains a command and any necessary parameters and is tab-delimited (i.e. the command is followed by a tab then the first parameter then a tab and the second parameter etc until the end of the line). The number of parameters and what they control is dependent on the command.
+Each line of the script file contains a command and any necessary parameters. The number of parameters and what they control is dependent on the command.
 
 Blank lines and lines beginning with // are ignored so you can embed comments in a script.
 Script commands that operate on a DOM element identify the DOM element with a format of attribute=value where the attribute identifies a unique attribute of the DOM element that you want to act on. For example, if you are filling out a form and the element you want to populate looks like this:
