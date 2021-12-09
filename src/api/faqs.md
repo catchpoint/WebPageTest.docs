@@ -14,6 +14,24 @@ This page answers frequently asked questions about account, test options and bil
 ### How do you define a test run?
 A test run on WebPageTest is defined as a single run within a test set up to measure webpage performance on a specific browser and location. For example, if you run a 5-run test with **Repeat View**, then that counts as 10 test runs.    
 
+### Do you have a free trial option to test the API? 
+We do not have a free trial option since the API gives you all the metrics you see on the JSON today for any test you run on www.webpagetest.org. Note that our annual subscription plans offer a **25% savings** over monthly subscriptions. 
+- Run a test on www.webpagetest.org.  
+- Click on **'View JSON'** under **Export Files** on any test result. You can see the metrics that a test run via the WebPageTest API will provide. Customize what metrics you want to pull in and where.  
+- You can also check out our [API integrations](https://docs.webpagetest.org/api/integrations/) to integrate WebPageTest into your developer workflow, build visualizations, set performance budgets, see code changes and more. 
+
+Here are a few more resources you may find helpful: 
+- [Getting started on API](https://docs.webpagetest.org/api) which also includes information about all the metrics you can pull with the API  
+- [External post](https://css-tricks.com/webpagetest-api/) by CSS Tricks about running tests using the API
+- New features and updates to WebPageTest on [Change Log](https://docs.webpagetest.org/change-log/) and [WebPageTest Blog](https://blog.webpagetest.org/)
+
+### Can I use WebPageTest API to get Core Web Vitals metrics? 
+Yes, the WebPageTest API provides comprehnsive details when you run a test and access the Core Web Vitals metrics that come along with that test. You can measure, report and fix the Core Web Vital metrics as well as other performance areas to improve user experience. WebPageTest also pulls in the URL-specific field data from Chrome User Experience Report (CrUX) and includes it with the results. 
+
+This is helpful to see how representative the test is of the Chrome users' experience. The current test results are marked on the top side of the CrUX bars. p75 field data below. 
+
+Check out the [Guide to Core Web Vitals](https://product.webpagetest.org/core-web-vitals) for more information as well as tips to tackle Core Web Vitals issues. 
+
 ### What countries and browsers do you support with the WebPageTest API?
 With WebPageTest API, you can test across 30 locations worldwide, including mainland China.  
 
