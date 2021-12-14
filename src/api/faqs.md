@@ -26,7 +26,7 @@ Here are a few more resources you may find helpful:
 - New features and updates to WebPageTest on [Change Log](https://docs.webpagetest.org/change-log/) and [WebPageTest Blog](https://blog.webpagetest.org/)
 
 ### Can I use WebPageTest API to get Core Web Vitals metrics? 
-Yes, the WebPageTest API provides comprehnsive details when you run a test and access the Core Web Vitals metrics that come along with that test. You can measure, report and fix the Core Web Vital metrics as well as other performance areas to improve user experience. WebPageTest also pulls in the URL-specific field data from Chrome User Experience Report (CrUX) and includes it with the results. 
+Yes, the WebPageTest API provides comprehensive details when you run a test and access the Core Web Vitals metrics that come along with that test. You can measure, report and fix the Core Web Vital metrics as well as other performance areas to improve user experience. WebPageTest also pulls in the URL-specific field data from Chrome User Experience Report (CrUX) and includes it with the results. 
 
 This is helpful to see how representative the test is of the Chrome users' experience. The current test results are marked on the top side of the CrUX bars. p75 field data below. 
 
