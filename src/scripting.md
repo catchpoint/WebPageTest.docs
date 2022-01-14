@@ -288,6 +288,25 @@ example: setTimeout	240
 
 <timeout in seconds> - Number of seconds to allow for the navigation/step to complete.
 ```
+
+#### waitFor
+Poll the page waiting for the supplied script to evaluate to true. Must be set before the navigation step that is to be measured and persists until cleared (by providing an empty script).
+```markup
+usage: waitFor	<javascript snippet>
+example: waitFor	document.getElementById('results-with-statistics') && document.getElementById('results-with-statistics').innerText.length > 0
+
+<javascript snippet> - Code to evaluate periodically to test for complete. Should evaluate to true when the step is to stop.
+```
+
+#### waitInterval
+Set the polling interval (in seconds) for the waitFor command. Defaults to a 5-second polling interval to minimize overhead.
+```markup
+usage: waitInterval	<interval in seconds>
+example: waitInterval	1.5
+
+<interval in seconds> - Polling interval (in seconds). Supports sub-second values as a float.
+```
+
 ### Request Manipulation
 
 #### block
