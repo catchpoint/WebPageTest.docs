@@ -267,6 +267,9 @@ Set to 1 to disable JpegXL support (Chromium 88+).
 - `dtShaper` <small>optional</small>
 Set to 1 to use Chrome's built-in traffic-shaping instead of the packet-level netem shaping usually used by the test agents.
 **Default:** 0
+- `wappalyzer` <small>optional</small>
+Set to 1 to run [Wappalyzer](https://www.wappalyzer.com/) to identify what technologies are used on a page. If set to 0, WebPageTest will skip the Wappalyzer detection phase (resulting in faster test results).
+**Default:** 1
 :::
 
 
