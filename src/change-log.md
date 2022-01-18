@@ -5,6 +5,9 @@ eleventyNavigation:
   order: 999
 ---
 # WebPageTest Change Log
+## January, 2022
+- **January 18** The WebPageTest agent now [supports a new script command](https://twitter.com/patmeenan/status/1483490979944488966) (`waitFor`) that tells the testing agent to poll the page until a provided snippet of JavaScript evaluates to true. [PR #462](https://github.com/WPO-Foundation/wptagent/pull/462)
+- **January 14** The WebPageTest API supports a new parameter (`wappalyzer`) to conditionally turn off Wappalyzer detection, resulting in faster test results. [PR #459](https://github.com/WPO-Foundation/wptagent/pull/459)
 ## September, 2021
 - **September 24** WebPageTest now supports the [Element Timing API whenever trace events are present](https://twitter.com/tkadlec/status/1441434261349875720) (starting in Chrome v95), surfacing the results in the overview, waterfall, graphed results and JSON response. ([Implementation notes here](https://github.com/WPO-Foundation/webpagetest/issues/1533))
 - **September 20** When a test result's runs all have first-byte times greater than 3 seconds, we offer a note that it might be worth re-testing with the original UA preserved, and include a checkbox to do so when submitting the form. This can help when sites intentionally slow their response times for bots like WPT. [Here's a result that shows the message](https://webpagetest.org/result/210920_AiDcXT_e6c90d77aad0b50e9c40b7c87f0af20c/) and a [result after re-testing with it checked](https://webpagetest.org/result/210920_BiDcZ4_1ebd4f591519a543f77f0e0f9104de30/). (Implementation notes [in pull request here](https://github.com/WPO-Foundation/webpagetest/pull/1540)).
