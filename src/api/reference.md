@@ -270,6 +270,8 @@ Set to 1 to use Chrome's built-in traffic-shaping instead of the packet-level ne
 - `wappalyzer` <small>optional</small>
 Set to 1 to run [Wappalyzer](https://www.wappalyzer.com/) to identify what technologies are used on a page. If set to 0, WebPageTest will skip the Wappalyzer detection phase (resulting in faster test results).
 **Default:** 1
+- `metadata` <small>optional</small>
+String (up to 10KB) that will be stored with the test result and echoed back as "metadata" in the page data of the API results (JSON, HAR and XML). If the string is encoded JSON, then the decoded JSON data will be used instead of the raw string.
 :::
 
 
