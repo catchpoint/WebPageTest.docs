@@ -48,7 +48,7 @@ See more [commands](#recommended-commands) and [examples](#sample-scripts) below
 
 ## Recommended Commands
 
-For historical reasons, if a script step fails, it does so silently. If something doesn’t work, unfortunately, you won’t get any feedback why. If you’re new to scripting, we recommend using the following commands only. It’s easier to debug them as you can run them manually yourself.
+For historical reasons, if a script step fails, it does so silently. If something doesn’t work, unfortunately, you won’t get any feedback why. If you’re new to scripting, we recommend using the following commands only. It’s easier to debug them as you can run them manually in the browser.
 
 #### `navigate`
 Navigates the browser to the provided URL and waits for it to complete.
@@ -758,7 +758,7 @@ setDOMElement className=more_pics
 submitForm name=AOLLoginForm
 ```
 
-#### DNS Override
+### DNS Override
 This script will:
 
 * Create a fake DNS entry for www1.aol.com and have it lookup www.aol.com instead
@@ -772,7 +772,7 @@ setCookie http://www.aol.com zip=20166
 navigate http://www.aol.com
 ```
 
-#### iPhone Spoofing
+### iPhone Spoofing
 This script will:
 
 * Use the iPhone user agent string
