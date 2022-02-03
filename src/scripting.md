@@ -55,8 +55,8 @@ Navigates the browser to the provided URL and waits for it to complete.
 Browser Support: IE, Chrome, Firefox, Safari
 
 ```markup
-usage: navigate	<url>
-example: navigate	http://webmail.aol.com
+usage:   navigate <url>
+example: navigate http://webmail.aol.com
 
 <url> - URL to provide the browser for navigation (same as you would enter into the address bar)
 ```
@@ -65,16 +65,16 @@ example: navigate	http://webmail.aol.com
 Executes javascript.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: exec	<javascript code>
-example: exec	window.setInterval('window.scrollBy(0,600)', 1000);
+usage:   exec <javascript code>
+example: exec window.setInterval('window.scrollBy(0,600)', 1000);
 ```
 
 #### execAndWait
 Executes javascript and waits for the browser to complete any activity generated from the action.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: execAndWait	<javascript code>
-example: execAndWait	window.setInterval('window.scrollBy(0,600)', 1000);
+usage:   execAndWait <javascript code>
+example: execAndWait window.setInterval('window.scrollBy(0,600)', 1000);
 ```
 
 ## Full Reference
@@ -228,8 +228,8 @@ Navigates the browser to the provided URL and waits for it to complete.
 Browser Support: IE, Chrome, Firefox, Safari
 
 ```markup
-usage: navigate	<url>
-example: navigate	http://webmail.aol.com
+usage:   navigate <url>
+example: navigate http://webmail.aol.com
 
 <url> - URL to provide the browser for navigation (same as you would enter into the address bar)
 ```
@@ -238,8 +238,8 @@ example: navigate	http://webmail.aol.com
 Triggers a click event for the identified DOM element. This version does not have an implied wait and the script will continue running after the event is submitted (see [clickAndWait](#clickandwait) for the wait version).
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: click	<wpt-selector>
-example: click	title=Delete
+usage:   click <wpt-selector>
+example: click title=Delete
 
 <wpt-selector> - DOM element to click on
 ```
@@ -250,8 +250,8 @@ For the list of supported selectors, see [Selectors](#selectors).
 Triggers a click event for the identified DOM element and subsequently waits for browser activity to complete.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: clickAndWait	<wpt-selector>
-example: clickAndWait	innerText=Send
+usage:   clickAndWait <wpt-selector>
+example: clickAndWait innerText=Send
 
 <wpt-selector> - DOM element to click on
 ```
@@ -262,8 +262,8 @@ For the list of supported selectors, see [Selectors](#selectors).
 Selects a value from a dropdown list of the given DOM element.
 Browser Support: IE
 ```markup
-usage: selectValue	<wpt-selector>	<value>
-example: selectValue	id=country	usa
+usage:   selectValue <wpt-selector> <value>
+example: selectValue id=country usa
 
 <wpt-selector> - DOM element to select the value of
 <value> - value to use
@@ -275,8 +275,8 @@ For the list of supported selectors, see [Selectors](#selectors).
 Creates a javascript OnClick event and sends it to the indicated element.
 Browser Support: IE
 ```markup
-usage: sendClickAndWait	<wpt-selector>
-example: sendClickAndWait	innerText=Send
+usage:   sendClickAndWait <wpt-selector>
+example: sendClickAndWait innerText=Send
 
 <wpt-selector> - DOM element to send the click event to
 ```
@@ -289,7 +289,7 @@ For the difference between sendClick and sendClickAndWait, see [click](#click) a
 Simulate keyboard keypresses for each character in the given string.
 Browser Support: Chrome
 ```markup
-usage: type <string>
+usage:   type <string>
 example: type Hello World
 
 <string> - String of characters to type into the keyboard.
@@ -301,7 +301,7 @@ For the difference between type and typeAndWait, see [click](#click) and [clickA
 Simulate a keyboard keypress for the given key.
 Browser Support: Chrome
 ```markup
-usage: keypress <key>
+usage:   keypress <key>
 example: keypress Enter
 
 <key> - Keyboard key to simulate pressing. Full list of supported keys is [here](https://github.com/WPO-Foundation/wptagent/blob/master/internal/support/keys.json).
@@ -313,8 +313,8 @@ For the difference between keypress and keypressAndWait, see [click](#click) and
 Creates a javascript keyboard event (OnKeyDown, OnKeyUp, OnKeyPress) and sends it to the indicated element.
 Browser Support: IE
 ```markup
-usage: sendKeyDownAndWait	<wpt-selector>    <key>
-example: sendKeyDownAndWait	name=user    x
+usage:   sendKeyDownAndWait <wpt-selector> <key>
+example: sendKeyDownAndWait name=user x
 
 <wpt-selector> - DOM element to send the click event to
 <key> - Key command to send (special values are ENTER, DEL, DELETE, BACKSPACE, TAB, ESCAPE, PAGEUP, PAGEDOWN)
@@ -328,8 +328,8 @@ For the difference between command and commandAndWait versions, see [click](#cli
 Sets the innerHTML of the given DOM element to the provided value. This is usually used for filling in something like an editable HTML panel (like the message body in webmail). Use this if you want to include HTML formatting.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: setInnerHTML	<wpt-selector>	<value>
-example: setInnerHTML	contentEditable'true	%MSG%
+usage:   setInnerHTML <wpt-selector> <value>
+example: setInnerHTML contentEditable'true %MSG%
 
 <wpt-selector> - DOM element to set the innerText of
 <value> - value to use
@@ -341,8 +341,8 @@ For the list of supported selectors, see [Selectors](#selectors).
 Sets the innerText of the given DOM element to the provided value. This is usually used for filling in something like an editable HTML panel (like the message body in webmail). Use this if you don't want to include any HTML formatting.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: setInnerText	<wpt-selector>	<value>
-example: setInnerText	contentEditable'true	%MSG%
+usage:   setInnerText <wpt-selector> <value>
+example: setInnerText contentEditable'true %MSG%
 
 <wpt-selector> - DOM element to set the innerText of
 <value> - value to use
@@ -354,8 +354,8 @@ For the list of supported selectors, see [Selectors](#selectors).
 Sets the value attribute of the given DOM element to the provided value. This is usually used for filling in text elements on a page (forms or otherwise). Currently only "input" and "textArea" element types are supported.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: setValue	<wpt-selector>	<value>
-example: setValue	name=loginId	userName
+usage:   setValue <wpt-selector> <value>
+example: setValue name=loginId userName
 
 <wpt-selector> - DOM element to set the value of
 <value> - value to use
@@ -367,8 +367,8 @@ For the list of supported selectors, see [Selectors](#selectors).
 Triggers a submit event for the identified form.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: submitForm	<wpt-selector>
-example: submitForm	name=AOLLoginForm
+usage:   submitForm <wpt-selector>
+example: submitForm name=AOLLoginForm
 
 <wpt-selector> - Form element to submit
 ```
@@ -379,16 +379,16 @@ For the list of supported selectors, see [Selectors](#selectors).
 Executes javascript.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: exec	<javascript code>
-example: exec	window.setInterval('window.scrollBy(0,600)', 1000);
+usage:   exec <javascript code>
+example: exec window.setInterval('window.scrollBy(0,600)', 1000);
 ```
 
 #### execAndWait
 Executes javascript and waits for the browser to complete any activity generated from the action.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: execAndWait	<javascript code>
-example: execAndWait	window.setInterval('window.scrollBy(0,600)', 1000);
+usage:   execAndWait <javascript code>
+example: execAndWait window.setInterval('window.scrollBy(0,600)', 1000);
 ```
 
 ### End Conditions
@@ -400,8 +400,8 @@ Sets the "Activity Based Measurement" mode. The valid values are:
 The default if not specified in the script is 1 (Enabled)
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: setABM	<mode>
-example: setABM	0
+usage:   setABM <mode>
+example: setABM 0
 
 <mode> - ABM mode to use
 ```
@@ -410,8 +410,8 @@ example: setABM	0
 Overrides the timeout value for the time after the last network activity before a test is considered complete (defaults to 2000 which is 2 seconds).
 Browser Support: IE, Chrome, Firefox, Safari
 ```markup
-usage: setActivityTimeout	<timeout in milliseconds>
-example: setActivityTimeout	5000
+usage:   setActivityTimeout <timeout in milliseconds>
+example: setActivityTimeout 5000
 
 <timeout in milliseconds> - Number of milliseconds after the last network activity (after onload) before calling a test done.
 ```
@@ -420,8 +420,8 @@ example: setActivityTimeout	5000
 Overrides the timeout value for the individual script steps.
 Browser Support: IE, Chrome, Firefox, Safari
 ```markup
-usage: setTimeout	<timeout in seconds>
-example: setTimeout	240
+usage:   setTimeout <timeout in seconds>
+example: setTimeout 240
 
 <timeout in seconds> - Number of seconds to allow for the navigation/step to complete.
 ```
@@ -429,8 +429,8 @@ example: setTimeout	240
 #### waitFor
 Poll the page waiting for the supplied script to evaluate to true. Must be set before the navigation step that is to be measured and persists until cleared (by providing an empty script).
 ```markup
-usage: waitFor	<javascript snippet>
-example: waitFor	document.getElementById('results-with-statistics') && document.getElementById('results-with-statistics').innerText.length > 0
+usage:   waitFor <javascript snippet>
+example: waitFor document.getElementById('results-with-statistics') && document.getElementById('results-with-statistics').innerText.length > 0
 
 <javascript snippet> - Code to evaluate periodically to test for complete. Should evaluate to true when the step is to stop.
 ```
@@ -438,8 +438,8 @@ example: waitFor	document.getElementById('results-with-statistics') && document.
 #### waitInterval
 Set the polling interval (in seconds) for the [waitFor](#waitfor) command. Defaults to a 5-second polling interval to minimize overhead.
 ```markup
-usage: waitInterval	<interval in seconds>
-example: waitInterval	1.5
+usage:   waitInterval <interval in seconds>
+example: waitInterval 1.5
 
 <interval in seconds> - Polling interval (in seconds). Supports sub-second values as a float.
 ```
@@ -450,8 +450,8 @@ example: waitInterval	1.5
 Blocks individual requests from loading (useful for blocking content like ads). The command matches the list of things to block against the full url of each request (including host name).
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: block    <block strings>
-example: block    adswrapper.js addthis.com
+usage:   block <block strings>
+example: block adswrapper.js addthis.com
 
 <block strings> - space-delimited list of substrings to block
 ```
@@ -460,8 +460,8 @@ example: block    adswrapper.js addthis.com
 Blocks all requests from the given domains from loading (useful for blocking content like ads). Takes a space-delimited list of full domains to block.
 Browser Support: Desktop (wptdriver 300+)
 ```
-usage: blockDomains    <block domains>
-example: blockDomains    adswrapper.js addthis.com
+usage:   blockDomains <block domains>
+example: blockDomains adswrapper.js addthis.com
 
 <block domains> - space-delimited list of domains to block
 ```
@@ -470,8 +470,8 @@ example: blockDomains    adswrapper.js addthis.com
 Blocks all requests not from one of the given domains from loading (useful for blocking content like ads). Takes a space-delimited list of full domains to allow.
 Browser Support: Desktop (wptdriver 300+)
 ```markup
-usage: blockDomainsExcept    <allow domains>
-example: blockDomainsExcept    www.example.com cdn.example.com
+usage:   blockDomainsExcept <allow domains>
+example: blockDomainsExcept www.example.com cdn.example.com
 
 <allow domains> - space-delimited list of domains to allow
 ```
@@ -480,9 +480,9 @@ example: blockDomainsExcept    www.example.com cdn.example.com
 Stores a browser cookie to be used while navigating.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: setCookie	<path>	<value>
-example: setCookie	http://www.aol.com	zip=20166
-example: setCookie	http://www.aol.com	TestData = Test; expires = Sat,01-Jan-2000 00:00:00 GMT
+usage:   setCookie <path> <value>
+example: setCookie http://www.aol.com zip=20166
+example: setCookie http://www.aol.com TestData = Test; expires = Sat,01-Jan-2000 00:00:00 GMT
 
 <path> - Path where the cookie should be used/stored
 <value> - Cookie value (if expiration information isn't included it will be stored as a session cookie)
@@ -492,8 +492,8 @@ example: setCookie	http://www.aol.com	TestData = Test; expires = Sat,01-Jan-2000
 Allows for overriding the IP address to be used for a host name. The override is effectively the same as populating an entry in the hosts file and will eliminate the DNS lookup times.
 Browser Support: IE, Chrome, Firefox, Safari
 ```markup
-usage: setDns	<host name>	<IP Address>
-example: setDns	www.aol.com	127.0.0.1
+usage:   setDns <host name> <IP Address>
+example: setDns www.aol.com 127.0.0.1
 
 <host name> - Host name for the DNS entry to override
 <IP Address> - IP Address for the host name to resolve to
@@ -503,8 +503,8 @@ example: setDns	www.aol.com	127.0.0.1
 Allows for overriding a host name (creating a fake CNAME).
 Browser Support: IE, Chrome, Firefox, Safari
 ```markup
-usage: setDnsName	<name to override>	<real name>
-example: setDnsName	pat.aol.com	www.aol.com
+usage:   setDnsName <name to override> <real name>
+example: setDnsName pat.aol.com www.aol.com
 
 <name to override> - Host name to replace
 <real name> - Real name to lookup instead
@@ -516,8 +516,8 @@ Browser Support: IE, Chrome, Firefox, Safari
 
 CAUTION : You will still be using the same browser engine so you are still limited by the capabilities and behavior of that browser even if you are spoofing another browser
 ```markup
-usage: setUserAgent    <user agent string>
-example: setUserAgent    Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543 Safari/419.3
+usage:   setUserAgent <user agent string>
+example: setUserAgent Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543 Safari/419.3
 
 <user agent string> - User agent string to use.
 ```
@@ -526,8 +526,8 @@ example: setUserAgent    Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWeb
 Replaces the value of the Host: HTTP header for the given host with the provided replacement.  It also adds a new header (x-Host:) with the original value.
 Browser Support: IE, Chrome, Firefox, Safari (no SSL)
 ```markup
-usage: overrideHost	<host>    <new host>
-example: overrideHost	www.aol.com    www.notaol.com
+usage:   overrideHost <host> <new host>
+example: overrideHost www.aol.com www.notaol.com
 
 <host> - host for which you want to override the Host: HTTP header
 <new host> - value to set for the Host header
@@ -537,8 +537,8 @@ example: overrideHost	www.aol.com    www.notaol.com
 For all requests to the given host, rewrite the requests to go to a different server and include the original host in the new URI.
 Browser Support: IE
 ```markup
-usage: overrideHostUrl	<host>    <new host>
-example: overrideHostUrl	www.webpagetest.org    staging.webpagetest.org
+usage:   overrideHostUrl <host> <new host>
+example: overrideHostUrl www.webpagetest.org staging.webpagetest.org
 
 <host> - host for which you want to redirect requests
 <new host> - target server to receive the redirected requests
@@ -549,8 +549,8 @@ In this example, http://www.webpagetest.org/index.php will get rewritten to actu
 Adds the specified header to every http request (in addition to the headers that exist, does not overwrite an existing header).
 Browser Support: IE, Chrome, Firefox, Safari (no SSL)
 ```markup
-usage: addHeader	<header>
-example: addHeader	Pragma: akamai-x-cache-on
+usage:   addHeader <header>
+example: addHeader Pragma: akamai-x-cache-on
 
 <header> - Full header entry to add (including label)
 ```
@@ -559,8 +559,8 @@ example: addHeader	Pragma: akamai-x-cache-on
 Adds the specified header to every http request, overriding the header if it already exists.
 Browser Support: IE, Chrome, Firefox, Safari (no SSL)
 ```markup
-usage: setHeader	<header>
-example: setHeader	UA-CPU: none-ya
+usage:   setHeader <header>
+example: setHeader UA-CPU: none-ya
 
 <header> - Full header entry to set (including label)
 ```
@@ -569,7 +569,7 @@ example: setHeader	UA-CPU: none-ya
 Clears any headers that were specified through addHeaders or setHeaders (in case you want to only override headers for part of a script).
 Browser Support: IE, Chrome, Firefox, Safari
 ```markup
-usage: resetHeaders
+usage:   resetHeaders
 example: resetHeaders
 ```
 
@@ -579,44 +579,49 @@ example: resetHeaders
 Causes multiple script steps to be combined into a single "step" in the results
 Browser Support: IE, Chrome, Firefox, Safari
 ```markup
-usage: combineSteps	[count]
+usage:   combineSteps [count]
 example: combineSteps
 
 [count] - Number of script steps to merge (optional, defaults to 0 which is ALL)
 Sample Script:
 
 combineSteps
-navigate	www.google.com
-navigate	www.yahoo.com
-navigate	www.aol.com
+navigate www.google.com
+navigate www.yahoo.com
+navigate www.aol.com
 ```
 
 #### if/else/endif
 Conditionally execute a block of script code based on run number or cached state for the test.  Conditional blocks can be nested.
 Browser Support: IE, Chrome, Firefox, Safari
 ```markup
-usage:  if	[cached|run]    <value>
-        else
-        endif
+usage:
+if [cached|run] <value>
+<commands>
+else
+<commands>
+endif
 
-example:    if    run    1
-            if    cached    0
-            <do something for first view of first run>
-            endif
-            else
-            <do something else for everything but first run>
-            endif
+example:
+if run 1
+  if cached 0
+  <do something for first view of first run>
+  endif
+else
+  <do something else for everything but first run>
+endif
 
 [cached|run] - Compare against run number or cached state
 <value> - matching run number or cached state to execute block
+<commands> - commands to run
 ```
 
 #### expireCache
 Expires any cache entries that will expire within the specified number of seconds.  This can be used to simulate a repeat view after a certain amount of time (for example, what it would be like to browse the page the next day).  It doesn't help with simulating content changes but any resources with a short expiration will end up being checked with if-modified-since requests.
 Browser Support: IE
 ```markup
-usage: expireCache	<seconds>
-example: expireCache	86400
+usage:   expireCache <seconds>
+example: expireCache 86400
 
 <seconds> - Any resources with a cache lifetime less than this amount of time will be forced to expire.
 ```
@@ -625,11 +630,11 @@ example: expireCache	86400
 Allows you to specify arbitrary preferences that will be configured before launching the browser.
 Browser Support: Firefox
 ```markup
-usage: firefoxPref	<pref>    <value>
+usage:   firefoxPref <pref> <value>
 examples:
-firefoxPref    network.http.pipelining    false
-firefoxPref    network.http.pipelining.maxrequests    5
-firefoxPref    general.useragent.override    "Some User Agent String"
+firefoxPref network.http.pipelining false
+firefoxPref network.http.pipelining.maxrequests 5
+firefoxPref general.useragent.override "Some User Agent String"
 
 <pref> - The preference that is to be modified
 <value> - The value to use.  String values should be enclosed in quotes like the example.
@@ -639,8 +644,8 @@ firefoxPref    general.useragent.override    "Some User Agent String"
 Sets the name of the event for the next measurable operation. It is important to only set this right before the action that will generate the activity you want to measure so that you don't inadvertently measure other page activity. Without explicit event names each step will be automatically named Step_1, Step_2, etc.
 Browser Support: IE
 ```markup
-usage: setEventName	<event name>
-example: setEventName	loadWebmail
+usage:   setEventName <event name>
+example: setEventName loadWebmail
 
 <event name> - Name to use for the event about to occur (in resulting log files)
 ```
@@ -649,8 +654,8 @@ example: setEventName	loadWebmail
 Specifies a geolocation override position.
 Browser Support: Chrome
 ```markup
-usage: setLocation	<lat>,<lng>    <accuracy>
-example: setLocation    38.954980,-77.447956    10
+usage:   setLocation <lat>,<lng> <accuracy>
+example: setLocation 38.954980,-77.447956 10
 
 <lat> - Latitude
 <lng> - Longitude
@@ -661,8 +666,8 @@ example: setLocation    38.954980,-77.447956    10
 Changes the size of the visible browser window so that the page viewport matches the given dimensions.  If you get black areas on your screen shots then the viewport is larger than the desktop.
 Browser Support: IE, Chrome, Firefox, Safari
 ```markup
-usage: setViewportSize	<width>    <height>
-example: setViewportSize    320    365
+usage:   setViewportSize <width> <height>
+example: setViewportSize 320 365
 
 <width> - Viewport Width
 <height> - Viewport Height
@@ -672,8 +677,8 @@ example: setViewportSize    320    365
 Pauses the script operation for a given number of seconds.
 Browser Support: IE, Chrome, Firefox, Safari
 ```markup
-usage: sleep	<seconds to sleep>
-example: sleep	5
+usage:   sleep <seconds to sleep>
+example: sleep 5
 
 <seconds to sleep> - An integer indicating how long to sleep.  The allowable range is 1-30.
 ```
@@ -683,66 +688,66 @@ example: sleep	5
 ```markup
 // load the account name and password
 // bring up the login screen
-setEventName	launch
-navigate	http://webmail.aol.com
+setEventName launch
+navigate http://webmail.aol.com
 
 // ignore any errors from here on (in case the mailbox is empty or we get image challenged)
-ignoreErrors	1
+ignoreErrors 1
 
 // log in
-setValue	name=loginId	<username>
-setValue	name=password	<password>
-setEventName	load
-submitForm	name=AOLLoginForm
+setValue name=loginId <username>
+setValue name=password <password>
+setEventName load
+submitForm name=AOLLoginForm
 
 // only read and send a mail once an hour
-minInterval	AOLMail	60
+minInterval AOLMail 60
 
 // close the today curtain
-click	className=backdrop
-sleep	5
+click className=backdrop
+sleep 5
 
 // Open the first message with a subject of "test"
-setEventName	read
-clickAndWait	innerText=test
+setEventName read
+clickAndWait innerText=test
 
 // delete the message
-click	title=Delete (del)
-sleep	5
+click title=Delete (del)
+sleep 5
 
 // open the compose mail form
-setEventName	compose
-clickAndWait	title=Write mail (Alt + w)
+setEventName compose
+clickAndWait title=Write mail (Alt + w)
 
 // send a test message to myself
-sleep	1
-setValue	tabindex=100	<username>
-setValue	name=Subject	test
-loadFile	msg.txt	%MSG%
-setInnerText	contentEditable=true	Some message text
-sleep	1
-setDOMElement	className=confirmMessage
-setEventName	send
-clickAndWait	innerText=Send
+sleep 1
+setValue tabindex=100 <username>
+setValue name=Subject test
+loadFile msg.txt %MSG%
+setInnerText contentEditable=true Some message text
+sleep 1
+setDOMElement className=confirmMessage
+setEventName send
+clickAndWait innerText=Send
 
 endInterval
 
 // sign off
-setEventName	logout
-clickAndWait	className=signOutLink
+setEventName logout
+clickAndWait className=signOutLink
 ```
 
 ### MyAOL Authenticated profile
 ```markup
 // bring up the login screen
-setDOMElement	name=loginId
-navigate	https://my.screenname.aol.com/_cqr/login/login.psp?mcState=initialized&sitedomain=my.aol.com&authLev=0&siteState=OrigUrl%3Dhttp%3A%2F%2Fmy.aol.com%2F
+setDOMElement name=loginId
+navigate https://my.screenname.aol.com/_cqr/login/login.psp?mcState=initialized&sitedomain=my.aol.com&authLev=0&siteState=OrigUrl%3Dhttp%3A%2F%2Fmy.aol.com%2F
 
 // log in
-setValue	name=loginId	<user name>
-setValue	name=password	<password>
-setDOMElement	className=more_pics
-submitForm	name=AOLLoginForm
+setValue name=loginId <user name>
+setValue name=password <password>
+setDOMElement className=more_pics
+submitForm name=AOLLoginForm
 ```
 
 #### DNS Override
@@ -753,10 +758,10 @@ This script will:
 * Set a "zip" cookie on the www.aol.com domain
 * Navigate and measure the time to load www.aol.com
 ```markup
-setDnsName	www1.aol.com	www.aol.com
-setDns	www.aol.com	127.0.0.1
-setCookie	http://www.aol.com	zip=20166
-navigate	http://www.aol.com
+setDnsName www1.aol.com www.aol.com
+setDns www.aol.com 127.0.0.1
+setCookie http://www.aol.com zip=20166
+navigate http://www.aol.com
 ```
 
 #### iPhone Spoofing
@@ -766,7 +771,7 @@ This script will:
 * Change the browser dimensions to match the iPhone
 * Navigate to www.aol.com
 ```markup
-setUserAgent	Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25
-setViewportSize    320    356
-navigate	http://www.aol.com
+setUserAgent Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25
+setViewportSize 320 356
+navigate http://www.aol.com
 ```
