@@ -46,54 +46,6 @@ execAndWait document.querySelector('.chat-dialog > button').click()
 
 See more [commands](#recommended-commands) and [examples](#sample-scripts) below.
 
-## Variable substitutions
-
-Some variables are replaced based on the URL provided for the test.
-
-### %URL%
-
-URL provided for the test.
-
-```markup
-URL: https://wpt.example
-input: navigate %URL%
-output: navigate  https://wpt.example
-```
-
-### %HOST%
-
-This will be the Host of the URL provided for the test. This does not include the protocol.
-
-```markup
-URL: https://wpt.example
-input: setDnsName %HOST% dns.example
-output: setDnsName  wpt.example dns.example
-```
-
-### %ORIGIN%
-
-The Origin of the URL. This includes the protocol, the host and the port (if it is defined).
-
-```markup
-URL: https://wpt.example/hello
-input: setCookie  %ORIGIN% foo=bar
-output: setCookie https://wpt.example foo=bar
-
-URL: https://wpt.example:8080/hello
-input: setCookie  %ORIGIN% foo=bar
-output: setCookie https://wpt.example:8080 foo=bar
-```
-
-### %HOSTR%
-
-Same as %HOST% but uses the final host name of the test URL after following any redirects.
-
-```markup
-URL: https://redirect.wpt.example
-input: setDnsName %HOSTR% dns.example
-output: setDnsName  wpt.example dns.example
-```
-
 ## Recommended Commands
 
 For historical reasons, if a script step fails, it does so silently. If something doesn’t work, unfortunately, you won’t get any feedback why. If you’re new to scripting, we recommend using the following commands only. It’s easier to debug them as you can run them manually yourself.
@@ -219,6 +171,54 @@ Example:
 ```markup
 // Click the Dashboard link
 click innerHtml=<span>Dashboard</span>
+```
+
+### Variable substitutions
+
+Some variables are replaced based on the URL provided for the test.
+
+#### %URL%
+
+URL provided for the test.
+
+```markup
+URL: https://wpt.example
+input: navigate %URL%
+output: navigate  https://wpt.example
+```
+
+#### %HOST%
+
+This will be the Host of the URL provided for the test. This does not include the protocol.
+
+```markup
+URL: https://wpt.example
+input: setDnsName %HOST% dns.example
+output: setDnsName  wpt.example dns.example
+```
+
+#### %ORIGIN%
+
+The Origin of the URL. This includes the protocol, the host and the port (if it is defined).
+
+```markup
+URL: https://wpt.example/hello
+input: setCookie  %ORIGIN% foo=bar
+output: setCookie https://wpt.example foo=bar
+
+URL: https://wpt.example:8080/hello
+input: setCookie  %ORIGIN% foo=bar
+output: setCookie https://wpt.example:8080 foo=bar
+```
+
+#### %HOSTR%
+
+Same as %HOST% but uses the final host name of the test URL after following any redirects.
+
+```markup
+URL: https://redirect.wpt.example
+input: setDnsName %HOSTR% dns.example
+output: setDnsName  wpt.example dns.example
 ```
 
 ### Navigation/DOM Interaction
