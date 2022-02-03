@@ -5,58 +5,46 @@ eleventyNavigation:
   order: 2
 ---
 # Scripting
-WebPageTest has a scripting capability that lets you automate a multi-step test (for example, logging into a site or sending an e-mail message). 
 
-Each line of the script file contains a command and any necessary parameters. The number of parameters and what they control is dependent on the command.
+If you need to log into a site or run arbitrary JavaScript while a test is running, use WebPageTest scripts.
 
-Blank lines and lines beginning with // are ignored so you can embed comments in a script.
-Script commands that operate on a DOM element identify the DOM element with a format of attribute=value where the attribute identifies a unique attribute of the DOM element that you want to act on. For example, if you are filling out a form and the element you want to populate looks like this:
-
-```html
-<input type="text" class="tabInputFields" id="lgnId1" value="" tabindex="1" maxlength="97" name="loginId"/>
-```
-
-you could identify it as **id=lgnId1** , **name=loginId** or **tabindex=1**
-
-For form fields it is usually best to use the name attribute when it is available since that is what will be uploaded to the server but any attribute is fair game. The class attribute is special and is referenced as className instead of class. In addition to the DOM element attribute matching, there are two special attributes that you can use to match on the contents. innerText and innerHtml both of which will match the contents of the DOM element instead of it's attributes.
-For example:
-```html
-<div dojoattachpoint="containerNode" class="label">Delete</div>
-```
-Can be identified by innerText=Delete. The matching is case sensitive and matches the full string.
-
-In order to suppress intermediate steps you need to make sure that data logging is disabled for the steps up to the ones you want to record. For example:
+A script lets you automate a WebPageTest test. Here’s how it looks:
 
 ```markup
-logData    0
+// EXAMPLE: log into a site before measuring a page
 
-// put any urls you want to navigate
-navigate    www.aol.com
-navigate    news.aol.com
+// Disable logging: we don’t want the login page to appear in test results
+logData 0
 
-logData    1
+// Visit the login page, enter the username and the password into the fields, and press “Submit”
+navigate https://my-site.com/login
+setValue name=email darth@vader.com
+setValue name=password foooooooooooooooorce
+click innerText=Sign in
 
-// this step will get recorded
-navigate    news.aol.com/world
+// Now, as we’ve signed in, enable logging again
+logData 1
+
+// And go the page we’re measuring
+navigate https://my-site.com/dashboard
 ```
 
-The script above will navigate to the main aol portal, then to the news page and then finally to the world-news specific page (logging results for just the world news page). This lets you test the impact of a given path to a site on it's performance (shared css and js caching for example).
-
-Another significant use case is if you want to test a site that requires authentication. Here is what an authentication script would look like:
+Here’s another example:
 
 ```markup
-logData	0
+// EXAMPLE: measure what happens when we interact with the page
 
-// bring up the login screen
-navigate	http://webmail.aol.com
+// Go the page we’re measuring
+navigate https://my-site.com/dashboard
 
-logData	1
+// Give it a bit of time to initialize after loading
+sleep 5
 
-// log in
-setValue	name=loginId	someuser@aol.com
-setValue	name=password	somepassword
-submitForm	name=AOLLoginForm
+// Open the support dialog and wait for the page to become idle
+execAndWait document.querySelector('.chat-dialog > button').click()
 ```
+
+See more [commands](#recommended-commands) and [examples](#sample-scripts) below.
 
 ## Variable substitutions
 
@@ -137,7 +125,101 @@ usage: execAndWait	<javascript code>
 example: execAndWait	window.setInterval('window.scrollBy(0,600)', 1000);
 ```
 
-## Full Command Reference
+## Full Reference
+
+### Comments
+
+A line that starts with  `// ` is ignored. Use this for comments.
+
+```markup
+// Example comment
+navigate not-a-comment.com
+```
+
+### Selectors
+
+Commands like [`click`](#click), [`setValue`](#setvalue), and others operate on DOM elements. To select a DOM element, use the following selectors:
+
+#### attribute=value
+
+This selector selects elements based on their HTML attributes. For the following input:
+
+```html
+<input type="email" id="emailField" class="input input-email">
+```
+
+the following selectors will work:
+
+* ✅ `type=email`
+* ✅ `id=emailField`
+
+and the following selectors will not:
+
+* ❌ `class=input input-email` (spaces inside attribute values are not supported)
+* ❌ `class="input input-email"` (not even if quoted)
+
+Example:
+
+```markup
+// Set the email to darth@vader.com
+setValue type=email darth@vader.com
+```
+
+#### innerText=text
+
+This selector selects elements based on its inner text. For the following button:
+
+```html
+<button type="submit">Login</button>
+```
+
+the following selectors will work:
+
+* ✅ `innerText=Login`
+
+and the following selectors will not:
+
+* ❌ `innerText=login` (the selector is case sensitive)
+* ❌ `innerText=log` (the selector must match the full string)
+
+Also, for a different button, this will not work either:
+
+* ❌ `innerText=log in` (spaces inside the text are not supported)
+
+Example:
+
+```markup
+// Click the Login button
+click innerText=Login
+```
+
+#### innerHtml=html
+
+This selector selects elements based on its inner HTML. For the following link:
+
+```html
+<a href="/dashboard"><span>Dashboard</span></button>
+```
+
+the following selectors will work:
+
+* ✅ `innerHtml=<span>Dashboard</span>`
+
+and the following selectors will not:
+
+* ❌ `innerHtml=<span>dashboard</span>` (the selector is case sensitive)
+* ❌ `innerHtml=span` (you can’t select just on tags)
+
+Also, for a different link, this will not work either:
+
+* ❌ `innerText=<span>Open Dashboard</span>` (spaces inside the HTML are not supported)
+
+Example:
+
+```markup
+// Click the Dashboard link
+click innerHtml=<span>Dashboard</span>
+```
 
 ### Navigation/DOM Interaction
 
