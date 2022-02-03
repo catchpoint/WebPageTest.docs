@@ -62,18 +62,18 @@ example: navigate http://webmail.aol.com
 ```
 
 #### `exec`
-Executes javascript.
+Executes JavaScript.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage:   exec <javascript code>
+usage:   exec <JavaScript code>
 example: exec window.setInterval('window.scrollBy(0,600)', 1000);
 ```
 
 #### `execAndWait`
-Executes javascript and waits for the browser to complete any activity generated from the action.
+Executes JavaScript and waits for the browser to complete any activity generated from the action.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage:   execAndWait <javascript code>
+usage:   execAndWait <JavaScript code>
 example: execAndWait window.setInterval('window.scrollBy(0,600)', 1000);
 ```
 
@@ -272,7 +272,7 @@ example: selectValue id=country usa
 For the list of supported selectors, see [Selectors](#selectors).
 
 #### `sendClick` / `sendClickAndWait`
-Creates a javascript `onclick` event and sends it to the indicated element.
+Creates a JavaScript `onclick` event and sends it to the indicated element.
 Browser Support: IE
 ```markup
 usage:   sendClickAndWait <wpt-selector>
@@ -310,7 +310,7 @@ example: keypress Enter
 For the difference between `keypress` and `keypressAndWait`, see [`click`](#click) and [`clickAndWait`](#clickandwait).
 
 #### `sendKeyDown` / `sendKeyUp` / `sendKeyPress` (`sendKeyDownAndWait` / `sendKeyUpAndWait` / `sendKeyPressAndWait`)
-Creates a javascript keyboard event (`onkeydown`, `onkeyup`, `onkeypress`) and sends it to the indicated element.
+Creates a JavaScript keyboard event (`onkeydown`, `onkeyup`, `onkeypress`) and sends it to the indicated element.
 Browser Support: IE
 ```markup
 usage:   sendKeyDownAndWait <wpt-selector> <key>
@@ -376,18 +376,18 @@ example: submitForm name=AOLLoginForm
 For the list of supported selectors, see [Selectors](#selectors).
 
 #### `exec`
-Executes javascript.
+Executes JavaScript.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage:   exec <javascript code>
+usage:   exec <JavaScript code>
 example: exec window.setInterval('window.scrollBy(0,600)', 1000);
 ```
 
 #### `execAndWait`
-Executes javascript and waits for the browser to complete any activity generated from the action.
+Executes JavaScript and waits for the browser to complete any activity generated from the action.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage:   execAndWait <javascript code>
+usage:   execAndWait <JavaScript code>
 example: execAndWait window.setInterval('window.scrollBy(0,600)', 1000);
 ```
 
@@ -429,10 +429,10 @@ example: setTimeout 240
 #### `waitFor`
 Poll the page waiting for the supplied script to evaluate to true. Must be set before the navigation step that is to be measured and persists until cleared (by providing an empty script).
 ```markup
-usage:   waitFor <javascript snippet>
+usage:   waitFor <JavaScript snippet>
 example: waitFor document.getElementById('results-with-statistics') && document.getElementById('results-with-statistics').innerText.length > 0
 
-<javascript snippet> - Code to evaluate periodically to test for complete. Should evaluate to true when the step is to stop.
+<JavaScript snippet> - Code to evaluate periodically to test for complete. Should evaluate to true when the step is to stop.
 ```
 
 #### `waitInterval`
