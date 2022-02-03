@@ -683,6 +683,12 @@ example: sleep 5
 <seconds to sleep> - An integer indicating how long to sleep.  The allowable range is 1-30.
 ```
 
+## Debugging
+
+There is currently no way to debug failing WebPageTest scripts. If a script command fails, it will fail silently.
+
+To simplify script development, consider limiting yourself to [Recommended commands](#recommended-commands) only.
+
 ## Sample scripts
 ### Mail test
 ```markup
