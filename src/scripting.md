@@ -213,7 +213,7 @@ output: setCookie https://wpt.example:8080 foo=bar
 
 #### %HOSTR%
 
-Same as %HOST% but uses the final host name of the test URL after following any redirects.
+Same as [%HOST%](#host) but uses the final host name of the test URL after following any redirects.
 
 ```markup
 URL: https://redirect.wpt.example
@@ -235,47 +235,57 @@ example: navigate	http://webmail.aol.com
 ```
 
 #### click
-Triggers a click event for the identified DOM element. This version does not have an implied wait and the script will continue running after the event is submitted (see clickAndWait for the wait version).
+Triggers a click event for the identified DOM element. This version does not have an implied wait and the script will continue running after the event is submitted (see [clickAndWait](#clickandwait) for the wait version).
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: click	<attribute=value>
-example: click	title=Delete (del)
+usage: click	<wpt-selector>
+example: click	title=Delete
 
-<attribute=value> - DOM element to click on
+<wpt-selector> - DOM element to click on
 ```
+
+For the list of supported selectors, see [Selectors](#selectors).
 
 #### clickAndWait
 Triggers a click event for the identified DOM element and subsequently waits for browser activity to complete.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: clickAndWait	<attribute=value>
+usage: clickAndWait	<wpt-selector>
 example: clickAndWait	innerText=Send
 
-<attribute=value> - DOM element to click on
+<wpt-selector> - DOM element to click on
 ```
+
+For the list of supported selectors, see [Selectors](#selectors).
 
 #### selectValue
 Selects a value from a dropdown list of the given DOM element.
 Browser Support: IE
 ```markup
-usage: selectValue	<attribute=value>	<value>
+usage: selectValue	<wpt-selector>	<value>
 example: selectValue	id=country	usa
 
-<attribute=value> - DOM element to select the value of
+<wpt-selector> - DOM element to select the value of
 <value> - value to use
 ```
+
+For the list of supported selectors, see [Selectors](#selectors).
 
 #### sendClick / sendClickAndWait
 Creates a javascript OnClick event and sends it to the indicated element.
 Browser Support: IE
 ```markup
-usage: sendClickAndWait	<attribute=value>
+usage: sendClickAndWait	<wpt-selector>
 example: sendClickAndWait	innerText=Send
 
-<attribute=value> - DOM element to send the click event to
+<wpt-selector> - DOM element to send the click event to
 ```
 
-#### type (AndWait)
+For the list of supported selectors, see [Selectors](#selectors).
+
+For the difference between sendClick and sendClickAndWait, see [click](#click) and [clickAndWait](#clickandwait).
+
+#### type / typeAndWait
 Simulate keyboard keypresses for each character in the given string.
 Browser Support: Chrome
 ```markup
@@ -285,69 +295,85 @@ example: type Hello World
 <string> - String of characters to type into the keyboard.
 ```
 
-#### keypress (AndWait)
+For the difference between type and typeAndWait, see [click](#click) and [clickAndWait](#clickandwait).
+
+#### keypress / keypressAndWait
 Simulate a keyboard keypress for the given key.
 Browser Support: Chrome
 ```markup
-usage: keypressAndWait <key>
-example: keypressAndWait Enter
+usage: keypress <key>
+example: keypress Enter
 
 <key> - Keyboard key to simulate pressing. Full list of supported keys is [here](https://github.com/WPO-Foundation/wptagent/blob/master/internal/support/keys.json).
 ```
 
-#### sendKeyDown / sendKeyUp / sendKeyPress (AndWait)
+For the difference between keypress and keypressAndWait, see [click](#click) and [clickAndWait](#clickandwait).
+
+#### sendKeyDown / sendKeyUp / sendKeyPress (sendKeyDownAndWait / sendKeyUpAndWait / sendKeyPressAndWait)
 Creates a javascript keyboard event (OnKeyDown, OnKeyUp, OnKeyPress) and sends it to the indicated element.
 Browser Support: IE
 ```markup
-usage: sendKeyDownAndWait	<attribute=value>    <key>
+usage: sendKeyDownAndWait	<wpt-selector>    <key>
 example: sendKeyDownAndWait	name=user    x
 
-<attribute=value> - DOM element to send the click event to
+<wpt-selector> - DOM element to send the click event to
 <key> - Key command to send (special values are ENTER, DEL, DELETE, BACKSPACE, TAB, ESCAPE, PAGEUP, PAGEDOWN)
 ```
+
+For the list of supported selectors, see [Selectors](#selectors).
+
+For the difference between command and commandAndWait versions, see [click](#click) and [clickAndWait](#clickandwait).
 
 #### setInnerHTML
 Sets the innerHTML of the given DOM element to the provided value. This is usually used for filling in something like an editable HTML panel (like the message body in webmail). Use this if you want to include HTML formatting.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: setInnerHTML	<attribute=value>	<value>
+usage: setInnerHTML	<wpt-selector>	<value>
 example: setInnerHTML	contentEditable'true	%MSG%
 
-<attribute=value> - DOM element to set the innerText of
+<wpt-selector> - DOM element to set the innerText of
 <value> - value to use
 ```
+
+For the list of supported selectors, see [Selectors](#selectors).
 
 #### setInnerText
 Sets the innerText of the given DOM element to the provided value. This is usually used for filling in something like an editable HTML panel (like the message body in webmail). Use this if you don't want to include any HTML formatting.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: setInnerText	<attribute=value>	<value>
+usage: setInnerText	<wpt-selector>	<value>
 example: setInnerText	contentEditable'true	%MSG%
 
-<attribute=value> - DOM element to set the innerText of
+<wpt-selector> - DOM element to set the innerText of
 <value> - value to use
 ```
+
+For the list of supported selectors, see [Selectors](#selectors).
 
 #### setValue
 Sets the value attribute of the given DOM element to the provided value. This is usually used for filling in text elements on a page (forms or otherwise). Currently only "input" and "textArea" element types are supported.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: setValue	<attribute=value>	<value>
+usage: setValue	<wpt-selector>	<value>
 example: setValue	name=loginId	userName
 
-<attribute=value> - DOM element to set the value of
+<wpt-selector> - DOM element to set the value of
 <value> - value to use
 ```
+
+For the list of supported selectors, see [Selectors](#selectors).
 
 #### submitForm
 Triggers a submit event for the identified form.
 Browser Support: IE, Chrome, Firefox
 ```markup
-usage: submitForm	<attribute=value>
+usage: submitForm	<wpt-selector>
 example: submitForm	name=AOLLoginForm
 
-<attribute=value> - Form element to submit
+<wpt-selector> - Form element to submit
 ```
+
+For the list of supported selectors, see [Selectors](#selectors).
 
 #### exec
 Executes javascript.
@@ -410,7 +436,7 @@ example: waitFor	document.getElementById('results-with-statistics') && document.
 ```
 
 #### waitInterval
-Set the polling interval (in seconds) for the waitFor command. Defaults to a 5-second polling interval to minimize overhead.
+Set the polling interval (in seconds) for the [waitFor](#waitfor) command. Defaults to a 5-second polling interval to minimize overhead.
 ```markup
 usage: waitInterval	<interval in seconds>
 example: waitInterval	1.5
