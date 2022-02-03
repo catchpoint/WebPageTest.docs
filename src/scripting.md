@@ -58,8 +58,6 @@ setValue	name=password	somepassword
 submitForm	name=AOLLoginForm
 ```
 
-You won't get a lot of feedback as to why a script failed. For debugging purposes it is easiest to limit scripts to navigate and exec/execAndWait commands which can be debugged locally in a browser's dev tools.
-
 ## Variable substitutions
 
 Some variables are replaced based on the URL provided for the test.
@@ -108,7 +106,38 @@ input: setDnsName %HOSTR% dns.example
 output: setDnsName  wpt.example dns.example
 ```
 
-## Command Reference
+## Recommended Commands
+
+For historical reasons, if a script step fails, it does so silently. If something doesn’t work, unfortunately, you won’t get any feedback why. If you’re new to scripting, we recommend using the following commands only. It’s easier to debug them as you can run them manually yourself.
+
+#### navigate
+Navigates the browser to the provided URL and waits for it to complete.
+Browser Support: IE, Chrome, Firefox, Safari
+
+```markup
+usage: navigate	<url>
+example: navigate	http://webmail.aol.com
+
+<url> - URL to provide the browser for navigation (same as you would enter into the address bar)
+```
+
+#### exec
+Executes javascript.
+Browser Support: IE, Chrome, Firefox
+```markup
+usage: exec	<javascript code>
+example: exec	window.setInterval('window.scrollBy(0,600)', 1000);
+```
+
+#### execAndWait
+Executes javascript and waits for the browser to complete any activity generated from the action.
+Browser Support: IE, Chrome, Firefox
+```markup
+usage: execAndWait	<javascript code>
+example: execAndWait	window.setInterval('window.scrollBy(0,600)', 1000);
+```
+
+## Full Command Reference
 
 ### Navigation/DOM Interaction
 
