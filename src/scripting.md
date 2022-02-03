@@ -397,8 +397,10 @@ example: execAndWait window.setInterval('window.scrollBy(0,600)', 1000);
 Sets the "Activity Based Measurement" mode. The valid values are:
 * 0 - Disabled (Web 1.0 - Measure based off of document complete)
 * 1 - Enabled (Web 2.0 - Measure until activity stops)
-The default if not specified in the script is 1 (Enabled)
+
+The default if not specified in the script is 1 (Enabled).
 Browser Support: IE, Chrome, Firefox
+
 ```markup
 usage:   setABM <mode>
 example: setABM 0
