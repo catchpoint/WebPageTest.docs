@@ -272,6 +272,12 @@ Set to 1 to run [Wappalyzer](https://www.wappalyzer.com/) to identify what techn
 **Default:** 1
 - `metadata` <small>optional</small>
 String (up to 10KB) that will be stored with the test result and echoed back as "metadata" in the page data of the API results (JSON, HAR and XML). If the string is encoded JSON, then the decoded JSON data will be used instead of the raw string.
+- `axe` <small>optional</small>
+Set to 0 to disable [Axe](https://github.com/dequelabs/axe-core) accessibility testing. 
+**Default:** 1
+- `axe_categories` <small>optional</small>
+Select which categories of accessibility tests to run. Accepts a comma-delimited list of [Axe-core tags](https://www.deque.com/axe/core-documentation/api-documentation/#axe-core-tags)l
+**Default:** 'wcag2a,wcag2aa'
 :::
 
 
