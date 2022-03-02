@@ -6,6 +6,10 @@
     to = "/.netlify/functions/get-webpagetest-url"
     status = 200
 [[redirects]]
+    from = "/api/integrations"
+    to = "/integrations"
+    status = 301
+[[redirects]]
     from = "/js/*"
     to = "https://cdn.jsdelivr.net/npm/:splat"
     status = 200

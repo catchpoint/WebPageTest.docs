@@ -52,4 +52,4 @@ All that's left is to view the test result!
 
 If you go to the "userUrl" from the JSON result, you will see the normal "Test waiting" page that will refresh and load the test results when it completes. If you navigate to the "jsonUrl" in a browser you should see a JSON view of the test status.  If you refresh the page periodically you will see the status change until it finally returns the full test result as JSON.
 
-Congratulations! You've just successfully submitted your first test using the WebPageTest API. You can dig deeper into the [API reference guide](/api/reference/) for your next steps, or check out some of the [existing integrations built around the API](/api/integrations/) and maybe even [build your own](/api/integrations/#officially-supported-integrations).
+Congratulations! You've just successfully submitted your first test using the WebPageTest API. You can dig deeper into the [API reference guide](/api/reference/) for your next steps, or check out some of the [existing integrations built around WebPageTest](/integrations/) and maybe even [build your own](/integrations/#officially-supported-integrations).

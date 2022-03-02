@@ -18,7 +18,7 @@ A test run on WebPageTest is defined as a single run within a test set up to mea
 We do not have a free trial option since the API gives you all the metrics you see on the JSON today for any test you run on www.webpagetest.org. Note that our annual subscription plans offer a **25% savings** over monthly subscriptions. 
 - Run a test on www.webpagetest.org.  
 - Click on **'View JSON'** under **Export Files** on any test result. You can see the metrics that a test run via the WebPageTest API will provide. Customize what metrics you want to pull in and where.  
-- You can also check out our [API integrations](https://docs.webpagetest.org/api/integrations/) to integrate WebPageTest into your developer workflow, build visualizations, set performance budgets, see code changes and more. 
+- You can also check out our [API integrations](https://docs.webpagetest.org/integrations/) to integrate WebPageTest into your developer workflow, build visualizations, set performance budgets, see code changes and more. 
 
 Here are a few more resources you may find helpful: 
 - [Getting started on API](https://docs.webpagetest.org/api) which also includes information about all the metrics you can pull with the API  
@@ -67,7 +67,7 @@ A Slack bot that lets you run tests against WebPageTest from within Slack. Once 
 - **[WebPageTest VSCode Extension](https://marketplace.visualstudio.com/items?itemName=WebPageTest.wpt-vscode-extension)**  
 The Visual Studio Code(Vscode) Extension for WebPageTest lets you run tests against WebPageTest from within Vscode, helping you to easily troubleshoot and diagnose performance issues directly from Vscode and possibly refactor the code if needed.
 
-There are also several existing integrations built by our community members that you can try out to build on top of the WebPageTest API. [Check out some of them here.](/api/integrations/#community-built-integrations)
+There are also several existing integrations built by our community members that you can try out to build on top of WebPageTest. [Check out some of them here.](/integrations/#community-built-integrations)
 :::
 
 ## Billing

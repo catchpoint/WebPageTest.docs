@@ -1,12 +1,10 @@
 ---
-title: 'WebPageTest API Integrations'
+title: 'WebPageTest Integrations'
 eleventyNavigation:
-  parent: API 
   key: Integrations 
-  order: 2
 layout: layouts/integrations.njk
 ---
-WebPageTest provides integrations to make it easier to use the API with your existing tooling, as well as to consume the WebPageTest information in new and interesting ways.
+WebPageTest provides integrations to make it easier to use WebPageTest with your existing tooling, as well as to consume the WebPageTest information in new and interesting ways.
 
 ## Officially Supported Integrations
 
@@ -74,5 +72,5 @@ Features:
 One of the great things about WebPageTest is the fantastic community that has built up around it. These are some great community-built integrations that we recommend. 
 
 :::note
-Built something awesome using the WebPageTest API? [Tell us about it](https://github.com/WPO-Foundation/webpagetest-docs/issues/new?assignees=&labels=integration&template=new-community-integration.md&title=%5BINTEGRATION%5D) so we can add it here.
+Built something awesome using WebPageTest? [Tell us about it](https://github.com/WPO-Foundation/webpagetest-docs/issues/new?assignees=&labels=integration&template=new-community-integration.md&title=%5BINTEGRATION%5D) so we can add it here.
 :::
