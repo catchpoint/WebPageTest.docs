@@ -593,31 +593,6 @@ navigate www.yahoo.com
 navigate www.aol.com
 ```
 
-#### `if`/`else`/`endif`
-Conditionally execute a block of script code based on run number or cached state for the test.  Conditional blocks can be nested.
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
-usage:
-if [cached|run] <value>
-<commands>
-else
-<commands>
-endif
-
-example:
-if run 1
-  if cached 0
-  <do something for first view of first run>
-  endif
-else
-  <do something else for everything but first run>
-endif
-
-[cached|run] - Compare against run number or cached state
-<value> - matching run number or cached state to execute block
-<commands> - commands to run
-```
-
 #### `expireCache`
 Expires any cache entries that will expire within the specified number of seconds.  This can be used to simulate a repeat view after a certain amount of time (for example, what it would be like to browse the page the next day).  It doesn't help with simulating content changes but any resources with a short expiration will end up being checked with if-modified-since requests.
 Browser Support: IE
@@ -626,6 +601,14 @@ usage:   expireCache <seconds>
 example: expireCache 86400
 
 <seconds> - Any resources with a cache lifetime less than this amount of time will be forced to expire.
+```
+
+#### `clearCache`
+Clears all cache and cookies.
+
+```markup
+usage:   clearCache <seconds>
+example: clearCache
 ```
 
 #### `firefoxPref`
