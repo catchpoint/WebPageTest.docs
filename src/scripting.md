@@ -4,546 +4,886 @@ eleventyNavigation:
   key: Scripting
   order: 2
 ---
+
 # Scripting
-WebPageTest has a scripting capability that lets you automate a multi-step test (for example, logging into a site or sending an e-mail message). 
 
-Each line of the script file contains a command and any necessary parameters. The number of parameters and what they control is dependent on the command.
+WebPageTest can automate multi-step tests (like logging into a site or sending an e-mail) by writing a script file:
 
-Blank lines and lines beginning with // are ignored so you can embed comments in a script.
-Script commands that operate on a DOM element identify the DOM element with a format of attribute=value where the attribute identifies a unique attribute of the DOM element that you want to act on. For example, if you are filling out a form and the element you want to populate looks like this:
+- Each line of the script file contains a command and any necessary parameters. The number of parameters and what they do depends on the command.
+
+- Blank lines are ignored.
+
+- Lines beginning with `//` are ignored, so you can add comments to a script.
+
+- Parameters are separated from the command and each other via <kbd>Tab</kbd> characters. (Not spaces!)
+
+- Because of the <kbd>Tab</kbd>-separation, parameter values can contain spaces without quoting or escaping:
+
+  ```text
+  someCommand some parameter
+  // The above is written as “someCommand\tsome parameter”
+  ```
+
+<!-- TODO: What character encodings/sets are allowed in script files? ASCII-only? UTF-8? -->
+
+## Debugging
+
+You won’t get a lot of feedback when a script fails. For debugging, it is easiest to limit scripts to `navigate` and `exec`/`execAndWait` commands, which can be debugged locally in browser developer tools. <!-- TODO: how? -->
+
+## Targeting elements for script commands
+
+Commands that operate on DOM elements can select which element to target in two ways:
+
+1. By attributes, where the attribute’s name/value is unique to that DOM element.
+2. By contents, such as an element’s text or the HTML it contains.
+
+<!-- TODO: how to select if the attribute value or the innerText/HTML contain tabs? -->
+
+### Targeting by attributes
+
+For example, if a form field you want to target looks like this:
 
 ```html
-<input type="text" class="tabInputFields" id="lgnId1" value="" tabindex="1" maxlength="97" name="loginId"/>
+<input name="loginId"
+       class="tabInputFields"
+       id="lgnId1"
+       title="The username, email address, or phone number you registered with."
+>
 ```
 
-you could identify it as **id=lgnId1** , **name=loginId** or **tabindex=1**
+…you could identify it via its `id`, `name`, or `title`. Any of these would work:
 
-For form fields it is usually best to use the name attribute when it is available since that is what will be uploaded to the server but any attribute is fair game. The class attribute is special and is referenced as className instead of class. In addition to the DOM element attribute matching, there are two special attributes that you can use to match on the contents. innerText and innerHtml both of which will match the contents of the DOM element instead of it's attributes.
+```text
+setValue  id=lgnId1 timbl
+setValue  name=loginId  timbl
+setValue  title=The username, email address, or phone number you registered with.
+```
+
+::: warning
+Why not `class`? To target an element by class, you must use an attribute name of `className`, like `className=tabInputFields`.
+<!-- TODO: is that also true for the `for` attribute and its `.htmlFor` property, as seen on <label>? -->
+:::
+
+::: note
+For form fields, prefer the `name` attribute if available, since that’s what’s uploaded to the server, but any attribute is fair game.
+:::
+
+### Targeting by contents
+
+Two special properties can target elements by their contents: `innerText` and `innerHTML`. The matching is **case-sensitive** and **must include the full string**.
+
+<!-- TODO: the original docs capitalized it as `innerHtml` — is that the correct spelling for WPT scripting, as opposed to the all-uppercase DOM property? -->
+
+For example, this element:
+
+```html
+<div dojoattachpoint="containerNode">Delete</div>
+```
+
+…can be identified by `innerText=Delete`. However, if the HTML looked like this:
+
+```html
+<div dojoattachpoint="containerNode">Delete ❌</div>
+```
+
+You would need `innerText=Delete ❌`, not just `innerText=Delete`.
+
+## Logging script results
+
+To suppress output from intermediate steps:
+
+1. Disable logging with the `logData 0` command.
+2. When you reach the steps you want to record, reenable logging with `logData 1`.
+
 For example:
-```html
-<div dojoattachpoint="containerNode" class="label">Delete</div>
-```
-Can be identified by innerText=Delete. The matching is case sensitive and matches the full string.
 
-In order to suppress intermediate steps you need to make sure that data logging is disabled for the steps up to the ones you want to record. For example:
+```text/0,7
+logData 0
 
-```markup
-logData    0
+// These steps are performed silently
+navigate  www.aol.com
+navigate  news.aol.com
 
-// put any urls you want to navigate
-navigate    www.aol.com
-navigate    news.aol.com
+logData 1
 
-logData    1
-
-// this step will get recorded
-navigate    news.aol.com/world
+// This step is logged
+navigate  news.aol.com/world
 ```
 
-The script above will navigate to the main aol portal, then to the news page and then finally to the world-news specific page (logging results for just the world news page). This lets you test the impact of a given path to a site on it's performance (shared css and js caching for example).
+The script above navigates to the aol.com homepage, then its news page, and then finally to the worldwide news page, but logs results for only the worldwide news page. This lets you test the impact of a user’s navigation path to a site on its performance (cookies, shared CSS and JS caching, etc.).
 
-Another significant use case is if you want to test a site that requires authentication. Here is what an authentication script would look like:
+Another common use is testing sites that require authentication, like so:
 
-```markup
+```text/0,9
 logData	0
 
-// bring up the login screen
-navigate	http://webmail.aol.com
+// Load the signin page
+navigate	https://webmail.aol.com
 
-logData	1
-
-// log in
 setValue	name=loginId	someuser@aol.com
 setValue	name=password	somepassword
+
+// Sign in and record the resulting authenticated page’s load
+logData	1
 submitForm	name=AOLLoginForm
 ```
 
-You won't get a lot of feedback as to why a script failed. For debugging purposes it is easiest to limit scripts to navigate and exec/execAndWait commands which can be debugged locally in a browser's dev tools.
-
 ## Variable substitutions
 
-Some variables are replaced based on the URL provided for the test.
+Some text strings act as variables that are replaced based on the test’s URL.
 
-### %URL%
+### `%URL%`
 
-URL provided for the test.
+Full URL provided for the test.
 
-```markup
-URL: https://wpt.example
-input: navigate %URL%
-output: navigate  https://wpt.example
-```
+::: api-list
+- Test URL
+`https://wpt.example`
+- Input 
+`navigate %URL%`
+- Output  
+`navigate  https://wpt.example`
+:::
 
-### %HOST%
+### `%HOST%`
 
-This will be the Host of the URL provided for the test. This does not include the protocol.
+The tested [URL’s hostname](https://developer.mozilla.org/en-US/docs/Web/API/URL/hostname). Does not include [the URL’s protocol](https://developer.mozilla.org/en-US/docs/Web/API/URL/protocol) — use [`%ORIGIN%`](#%25origin%25) if you want that.
 
-```markup
-URL: https://wpt.example
-input: setDnsName %HOST% dns.example
-output: setDnsName  wpt.example dns.example
-```
+::: api-list
+- Test URL
+`https://wpt.example`
+- Input 
+`setDnsName %HOST% dns.example`
+- Output  
+`setDnsName  wpt.example dns.example`
+:::
 
-### %ORIGIN%
+### `%HOSTR%`
 
-The Origin of the URL. This includes the protocol, the host and the port (if it is defined).
+Like [`%HOST%`](#%25host%25), but for the test URL’s final hostname _after_ redirects.
 
-```markup
-URL: https://wpt.example/hello
-input: setCookie  %ORIGIN% foo=bar
-output: setCookie https://wpt.example foo=bar
+::: api-list
+- Test URL
+`https://redirect.wpt.example`
+- Input 
+`setDnsName %HOSTR% dns.example`
+- Output  
+`setDnsName  wpt.example dns.example`
+:::
 
-URL: https://wpt.example:8080/hello
-input: setCookie  %ORIGIN% foo=bar
-output: setCookie https://wpt.example:8080 foo=bar
-```
+### `%ORIGIN%`
 
-### %HOSTR%
+The test [URL’s origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin). Includes the protocol, host, and port (if any).
 
-Same as %HOST% but uses the final host name of the test URL after following any redirects.
+::: api-list
+- Test URL
+`https://wpt.example/hello`
+- Input 
+`setCookie  %ORIGIN% foo=bar`
+- Output  
+`setCookie https://wpt.example foo=bar`
+:::
 
-```markup
-URL: https://redirect.wpt.example
-input: setDnsName %HOSTR% dns.example
-output: setDnsName  wpt.example dns.example
-```
+::: api-list
+- Test URL
+`https://wpt.example:8080/hello`
+- Input 
+`setCookie  %ORIGIN% foo=bar`
+- Output  
+`setCookie https://wpt.example:8080 foo=bar`
+:::
 
 ## Command Reference
 
 ### Navigation/DOM Interaction
 
-#### navigate
-Navigates the browser to the provided URL and waits for it to complete.
-Browser Support: IE, Chrome, Firefox, Safari
+#### `navigate`
 
-```markup
-usage: navigate	<url>
-example: navigate	http://webmail.aol.com
+Navigates the browser to the provided URL and waits for the page to finish loading.
 
-<url> - URL to provide the browser for navigation (same as you would enter into the address bar)
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`navigate	<url>`
+- `<url>`
+URL to provide the browser for navigation (same as you would enter into the address bar)
+- Example  
+`navigate	http://webmail.aol.com`
+:::
+
+#### `click` / `clickAndWait`
+
+Fires [a `click` event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event) at the identified DOM element.
+
+`clickAndWait` will wait for resulting browser activity to complete, but `click` will continue running immediately after the event fires.
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox
+- Usage 
+`click	<attribute=value>`
+`clickAndWait	<attribute=value>`
+- `<attribute=value>`
+DOM element to click on
+- Examples 
+`click	title=Delete (del)`
+`clickAndWait	innerText=Send`
+:::
+
+#### `selectValue`
+
+Selects a value from a dropdown list of the given DOM element. Pretty much only used for `<select>` elements. <!-- TODO: are `<keygen>` and/or `<datalist>` also supported? -->
+
+::: api-list
+- Browser Support
+Internet Explorer <!-- TODO: does that mean you can’t fill out <select> in other browsers, or are you supposed to use `setValue` in them instead? -->
+- Usage 
+`selectValue	<attribute=value>	<value>`
+- `<attribute=value>`
+DOM element to select the value of
+- `<value>`
+value to use
+- Example  
+`clickAndWait	innerText=Send`
+:::
+
+#### `sendClick` / `sendClickAndWait`
+
+Creates a JavaScript `click` event and sends it to the indicated element. Works similarly to [`click` / `clickAndWait`](#click-/-clickAndWait), but only for Internet Explorer. <!-- TODO: Since those events also support IE, should this be documented anymore? -->
+
+::: api-list
+- Browser Support
+Internet Explorer
+- Usage 
+`sendClickAndWait	<attribute=value>`
+- `<attribute=value>`
+DOM element to send the click event to
+- Example
+`sendClickAndWait	innerText=Send`
+:::
+
+#### `type` / `typeAndWait`
+
+Simulate keyboard presses for each character in the given string. <!-- TODO: how to press non-alphanumeric characters, like arrow keys? If the answer is “you can’t”, point out that `keypress`/`AndWait` can do that -->
+
+::: api-list
+- Browser Support
+Chrome
+- Usage 
+`type	<string>`
+- `<string>`
+String of characters to type into the keyboard
+- Examples
+`type	Hello World`
+`typeAndWait Robert'); DROP TABLE students;--`
+:::
+
+#### `keypress` / `keypressAndWait`
+
+Simulate a keyboard press for a given key name. <!-- TODO: the linked JSON file has property names, `key`, `code`, and `keyCode` properties. Which are the ones you can use? -->
+
+::: api-list
+- Browser Support
+Chrome
+- Usage 
+`keypress	<key>`
+- `<key>`
+Name of the keyboard key to simulate pressing. [See the list of supported keys.](https://github.com/WPO-Foundation/wptagent/blob/master/internal/support/keys.json)
+- Example
+```text
+keypress	UpArrow
+keypress	UpArrow
+keypress	DownArrow
+keypress	DownArrow
+keypress	LeftArrow
+keypress	RightArrow
+keypress	LeftArrow
+keypress	RightArrow
+keypress	a
+keypress	b
+keypressAndWait	Enter
 ```
+:::
 
-#### click
-Triggers a click event for the identified DOM element. This version does not have an implied wait and the script will continue running after the event is submitted (see clickAndWait for the wait version).
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: click	<attribute=value>
-example: click	title=Delete (del)
-
-<attribute=value> - DOM element to click on
-```
-
-#### clickAndWait
-Triggers a click event for the identified DOM element and subsequently waits for browser activity to complete.
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: clickAndWait	<attribute=value>
-example: clickAndWait	innerText=Send
-
-<attribute=value> - DOM element to click on
-```
-
-#### selectValue
-Selects a value from a dropdown list of the given DOM element.
-Browser Support: IE
-```markup
-usage: selectValue	<attribute=value>	<value>
-example: selectValue	id=country	usa
-
-<attribute=value> - DOM element to select the value of
-<value> - value to use
-```
-
-#### sendClick / sendClickAndWait
-Creates a javascript OnClick event and sends it to the indicated element.
-Browser Support: IE
-```markup
-usage: sendClickAndWait	<attribute=value>
-example: sendClickAndWait	innerText=Send
-
-<attribute=value> - DOM element to send the click event to
-```
-
-#### type (AndWait)
-Simulate keyboard keypresses for each character in the given string.
-Browser Support: Chrome
-```markup
-usage: type <string>
-example: type Hello World
-
-<string> - String of characters to type into the keyboard.
-```
-
-#### keypress (AndWait)
-Simulate a keyboard keypress for the given key.
-Browser Support: Chrome
-```markup
-usage: keypressAndWait <key>
-example: keypressAndWait Enter
-
-<key> - Keyboard key to simulate pressing. Full list of supported keys is [here](https://github.com/WPO-Foundation/wptagent/blob/master/internal/support/keys.json).
-```
-
-#### sendKeyDown / sendKeyUp / sendKeyPress (AndWait)
+#### `sendKeyDown` / `sendKeyUp` / `sendKeyPress` (-`AndWait`)
 Creates a javascript keyboard event (OnKeyDown, OnKeyUp, OnKeyPress) and sends it to the indicated element.
-Browser Support: IE
-```markup
-usage: sendKeyDownAndWait	<attribute=value>    <key>
-example: sendKeyDownAndWait	name=user    x
 
-<attribute=value> - DOM element to send the click event to
-<key> - Key command to send (special values are ENTER, DEL, DELETE, BACKSPACE, TAB, ESCAPE, PAGEUP, PAGEDOWN)
-```
+::: api-list
+- Browser Support
+Internet Explorer
+- Usage 
+`sendKeyDownAndWait	<attribute=value>    <key>`
+- `<attribute=value>`
+DOM element to send the event to
+- `<key>`
+Key command to send. Special values are `ENTER`, `DEL`/`DELETE`, `BACKSPACE`, `TAB`, `ESCAPE`, `PAGEUP`, and `PAGEDOWN`.
+- Example
+`sendKeyDownAndWait	name=user    x`
+:::
 
-#### setInnerHTML
-Sets the innerHTML of the given DOM element to the provided value. This is usually used for filling in something like an editable HTML panel (like the message body in webmail). Use this if you want to include HTML formatting.
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: setInnerHTML	<attribute=value>	<value>
-example: setInnerHTML	contentEditable'true	%MSG%
+#### `setInnerHTML`
+Sets the [`innerHTML` of the given DOM element](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) to the provided value. Usually for filling in something like a `contenteditable` HTML element (like the message body in web-based email).
 
-<attribute=value> - DOM element to set the innerText of
-<value> - value to use
-```
+Use this if you want to include HTML elements as the input content — otherwise, [`setInnerText`](#setInnerText) works just as well.
 
-#### setInnerText
-Sets the innerText of the given DOM element to the provided value. This is usually used for filling in something like an editable HTML panel (like the message body in webmail). Use this if you don't want to include any HTML formatting.
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: setInnerText	<attribute=value>	<value>
-example: setInnerText	contentEditable'true	%MSG%
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox
+- Usage 
+`setInnerHTML	<attribute=value>	<value>`
+- `<attribute=value>`
+DOM element to set the `innerHTML` of
+- `<value>`
+The HTML to use as the element’s contents
+- Example
+`setInnerHTML	contentEditable'true	%MSG%` <!-- TODO: Is that apostrophe a typo? What is `%MSG%`? -->
+:::
 
-<attribute=value> - DOM element to set the innerText of
-<value> - value to use
-```
+#### `setInnerText`
 
-#### setValue
-Sets the value attribute of the given DOM element to the provided value. This is usually used for filling in text elements on a page (forms or otherwise). Currently only "input" and "textArea" element types are supported.
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: setValue	<attribute=value>	<value>
-example: setValue	name=loginId	userName
+Sets the [`innerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText) of the given DOM element to the provided string. Usually for filling in something like a `contenteditable` HTML element (like the message body in web-based email).
 
-<attribute=value> - DOM element to set the value of
-<value> - value to use
-```
+If you want to include HTML elements as the input content, use  [`setInnerHTML`](#setInnerHTML) instead.
 
-#### submitForm
-Triggers a submit event for the identified form.
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: submitForm	<attribute=value>
-example: submitForm	name=AOLLoginForm
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox
+- Usage 
+`setInnerText	<attribute=value>	<value>`
+- `<attribute=value>`
+DOM element to set the `innerText` of
+- `<value>`
+The text to use as the element’s contents
+- Example
+`setInnerText	contentEditable'true	%MSG%` <!-- TODO: see above for innerHTML -->
+:::
 
-<attribute=value> - Form element to submit
-```
+#### `setValue`
 
-#### exec
-Executes javascript.
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: exec	<javascript code>
-example: exec	window.setInterval('window.scrollBy(0,600)', 1000);
-```
+Sets the `value` attribute of the targeted DOM element to the provided text. Used for filling in text fields on a page (whether inside `<form>`s or not).
 
-#### execAndWait
-Executes javascript and waits for the browser to complete any activity generated from the action.
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: execAndWait	<javascript code>
-example: execAndWait	window.setInterval('window.scrollBy(0,600)', 1000);
-```
+::: caution
+Currently only `<input>` and `<textarea>` elements are supported.
+:::
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox
+- Usage 
+`setValue	<attribute=value>	<text>`
+- `<attribute=value>`
+DOM element to set the `value` of
+- `<text>`
+Text to set the element’s `value` to
+- Example
+`setValue	name=loginId	userName`
+:::
+
+#### `submitForm`
+
+Fires [a `submit` event at the targeted `<form>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event).
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox
+- Usage 
+`submitForm	<attribute=value>`
+- `<attribute=value>`
+Form element to submit
+- Example
+`submitForm	name=AOLLoginForm`
+:::
+
+#### `exec` / `execAndWait`
+
+Executes a provided string of JavaScript. Unlike `exec`, `execAndWait` waits for any generated browser activity to complete before continuing.
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox
+- Usage 
+`exec	<javascript code>`
+- `<javascript code>`
+A valid JavaScript program for the browser to execute
+- Example
+`exec	window.setInterval('window.scrollBy(0,600)', 1000);`
+:::
 
 ### End Conditions
 
-#### setABM
-Sets the "Activity Based Measurement" mode. The valid values are:
-* 0 - Disabled (Web 1.0 - Measure based off of document complete)
-* 1 - Enabled (Web 2.0 - Measure until activity stops)
-The default if not specified in the script is 1 (Enabled)
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: setABM	<mode>
-example: setABM	0
+These commands control when WebPageTest stops measuring performance for a test.
 
-<mode> - ABM mode to use
-```
+#### `setABM`
 
-#### setActivityTimeout
-Overrides the timeout value for the time after the last network activity before a test is considered complete (defaults to 2000 which is 2 seconds).
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
-usage: setActivityTimeout	<timeout in milliseconds>
-example: setActivityTimeout	5000
+Enables “Activity-Based Measurement” mode. Allowed values:
 
-<timeout in milliseconds> - Number of milliseconds after the last network activity (after onload) before calling a test done.
-```
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox
+- Usage 
+`setABM	<mode>`
+- `<mode>`
+If set to `0`, measure based off “document complete”.
+If `1` (default), measure until network activity stops.
+- Example
+`setABM	0`
+:::
 
-#### setTimeout
-Overrides the timeout value for the individual script steps.
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
+#### `setActivityTimeout`
+
+Overrides the timeout value: how long after the last network activity after the `onload` event before a test is considered complete. Intended for use with `setABM 1`.
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`setActivityTimeout	<timeout in milliseconds>`
+- `<timeout in milliseconds>`
+Defaults to `2000` (2 seconds). Number of milliseconds after the last network activity after `onload` before calling a test done.
+- Example
+`setActivityTimeout	5000`
+:::
+
+#### `setTimeout`
+
+Overrides the timeout value for subsequent individual script steps, in seconds.
+
+```text
 usage: setTimeout	<timeout in seconds>
-example: setTimeout	240
+example: 
 
-<timeout in seconds> - Number of seconds to allow for the navigation/step to complete.
+<timeout in seconds> - 
 ```
 
-#### waitFor
-Poll the page waiting for the supplied script to evaluate to true. Must be set before the navigation step that is to be measured and persists until cleared (by providing an empty script).
-```markup
-usage: waitFor	<javascript snippet>
-example: waitFor	document.getElementById('results-with-statistics') && document.getElementById('results-with-statistics').innerText.length > 0
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`setTimeout	<timeout in seconds>`
+- `<timeout in seconds>`
+Number of seconds to allow for the navigation/step to complete. <!-- TODO: is there a default value? -->
+- Example
+`setTimeout	240`
+:::
 
-<javascript snippet> - Code to evaluate periodically to test for complete. Should evaluate to true when the step is to stop.
+#### `waitFor`
+
+Polls the page until the supplied script evaluates to `true`.
+
+Must be set before the navigation step to be measured, and persists until cleared (by providing an empty script).
+
+::: api-list
+- Browser Support
+TODO
+- Usage 
+`waitFor	<javascript snippet>`
+- `<javascript snippet>`
+A valid [JavaScript expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#expressions) that should eventually produce a value of `true`.
+- Example
+```text
+waitFor	document.getElementById('results-with-statistics') && document.getElementById('results-with-statistics').innerText.length > 0
+// stop polling
+waitFor	
 ```
+:::
 
-#### waitInterval
-Set the polling interval (in seconds) for the waitFor command. Defaults to a 5-second polling interval to minimize overhead.
-```markup
-usage: waitInterval	<interval in seconds>
-example: waitInterval	1.5
+#### `waitInterval`
 
-<interval in seconds> - Polling interval (in seconds). Supports sub-second values as a float.
-```
+Sets how frequently [the `waitFor` command](#waitFor) will poll to see if it’s true yet. Defaults to 5 seconds to minimize overhead.
+
+::: api-list
+- Browser Support
+TODO
+- Usage 
+`waitInterval	<interval in seconds>`
+- `<interval in seconds>`
+Polling interval in seconds. Defaults to `5`. Supports decimal values for intervals not in whole seconds.
+- Example
+`waitInterval	1.5`
+:::
 
 ### Request Manipulation
 
-#### block
-Blocks individual requests from loading (useful for blocking content like ads). The command matches the list of things to block against the full url of each request (including host name).
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: block    <block strings>
-example: block    adswrapper.js addthis.com
+These commands control, modify, and override network requests.
 
-<block strings> - space-delimited list of substrings to block
-```
+#### `block`
 
-#### blockDomains
-Blocks all requests from the given domains from loading (useful for blocking content like ads). Takes a space-delimited list of full domains to block.
-Browser Support: Desktop (wptdriver 300+)
-```
-usage: blockDomains    <block domains>
-example: blockDomains    adswrapper.js addthis.com
+Blocks individual requests from loading (useful for content like ads). Matches the list of things to block against the fully-qualified URL of each request, including its hostname.
 
-<block domains> - space-delimited list of domains to block
-```
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox
+- Usage 
+`block    <block strings>`
+- `<block strings>`
+Space-delimited list of substrings to block.
+- Example
+`block    adswrapper.js addthis.com`
+:::
 
-#### blockDomainsExcept
-Blocks all requests not from one of the given domains from loading (useful for blocking content like ads). Takes a space-delimited list of full domains to allow.
-Browser Support: Desktop (wptdriver 300+)
-```markup
-usage: blockDomainsExcept    <allow domains>
-example: blockDomainsExcept    www.example.com cdn.example.com
+#### `blockDomains`
 
-<allow domains> - space-delimited list of domains to allow
-```
+Blocks all requests from the given domains (useful for ad networks and trackers).
 
-#### setCookie
-Stores a browser cookie to be used while navigating.
-Browser Support: IE, Chrome, Firefox
-```markup
-usage: setCookie	<path>	<value>
-example: setCookie	http://www.aol.com	zip=20166
-example: setCookie	http://www.aol.com	TestData = Test; expires = Sat,01-Jan-2000 00:00:00 GMT
+::: api-list
+- Browser Support
+Desktop (`wptdriver` 300+)
+- Usage 
+`blockDomains    adswrapper.js addthis.com`
+- `<block domains>`
+Space-delimited list of domains to block.
+- Example
+`block    adswrapper.js addthis.com`
+:::
 
-<path> - Path where the cookie should be used/stored
-<value> - Cookie value (if expiration information isn't included it will be stored as a session cookie)
-```
+#### `blockDomainsExcept`
 
-#### setDns
-Allows for overriding the IP address to be used for a host name. The override is effectively the same as populating an entry in the hosts file and will eliminate the DNS lookup times.
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
-usage: setDns	<host name>	<IP Address>
-example: setDns	www.aol.com	127.0.0.1
+Blocks all requests ***not*** from one of the given domains from loading. Useful for isolating the performance of only domains you control.
 
-<host name> - Host name for the DNS entry to override
-<IP Address> - IP Address for the host name to resolve to
-```
+::: api-list
+- Browser Support
+Desktop (`wptdriver` 300+)
+- Usage 
+`blockDomainsExcept    <allow domains>`
+- `<allow domains>`
+Space-delimited list of domains to allow.
+- Example
+`blockDomainsExcept    www.example.com cdn.example.com`
+:::
 
-#### setDNSName
-Allows for overriding a host name (creating a fake CNAME).
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
-usage: setDnsName	<name to override>	<real name>
-example: setDnsName	pat.aol.com	www.aol.com
+#### `setCookie`
 
-<name to override> - Host name to replace
-<real name> - Real name to lookup instead
-```
+Stores [a browser cookie](https://developer.mozilla.org/en-US/docs/Glossary/Cookie) to be sent while navigating. <!-- TODO: for both HTTP and JS? -->
 
-#### setUserAgent
-Overrides the User Agent string sent by the browser
-Browser Support: IE, Chrome, Firefox, Safari
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox
+- Usage 
+`setCookie	<path>	<value>`
+- `<path>`
+URL path where the cookie should be used/stored.
+- `<value>`
+Cookie value and attributes. Uses the same syntax as [`document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie). If expiration information isn’t included, it will be stored as a session cookie.
+- Examples
+`setCookie	http://www.aol.com	zip=20166`
+`setCookie	http://www.aol.com	TestData = Test; expires = Sat,01-Jan-2000 00:00:00 GMT`
+:::
 
-CAUTION : You will still be using the same browser engine so you are still limited by the capabilities and behavior of that browser even if you are spoofing another browser
-```markup
-usage: setUserAgent    <user agent string>
-example: setUserAgent    Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543 Safari/419.3
+#### `setDns`
 
-<user agent string> - User agent string to use.
-```
+Overrides the IP address for a hostname.
 
-#### overrideHost
-Replaces the value of the Host: HTTP header for the given host with the provided replacement.  It also adds a new header (x-Host:) with the original value.
-Browser Support: IE, Chrome, Firefox, Safari (no SSL)
-```markup
-usage: overrideHost	<host>    <new host>
-example: overrideHost	www.aol.com    www.notaol.com
+The override is effectively the same as an entry in [the `hosts` file](https://en.wikipedia.org/wiki/Hosts_(file)), and will eliminate DNS lookup times.
 
-<host> - host for which you want to override the Host: HTTP header
-<new host> - value to set for the Host header
-```
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`setDns	<host name>	<IP Address>`
+- `<host name>`
+Hostname for the DNS entry to override.
+- `<IP Address>`
+IP Address for the host name to resolve to.
+- Example
+`setDns	www.aol.com	127.0.0.1`
+:::
 
-#### overrideHostUrl
-For all requests to the given host, rewrite the requests to go to a different server and include the original host in the new URI.
-Browser Support: IE
-```markup
-usage: overrideHostUrl	<host>    <new host>
-example: overrideHostUrl	www.webpagetest.org    staging.webpagetest.org
+#### `setDNSName`
 
-<host> - host for which you want to redirect requests
-<new host> - target server to receive the redirected requests
-```
-In this example, http://www.webpagetest.org/index.php will get rewritten to actually request http://staging.webpagetest.org/www.webpagetest.org/index.php
+Overrides a hostname by creating a fake [CNAME record](https://en.wikipedia.org/wiki/CNAME_record).
 
-#### addHeader
-Adds the specified header to every http request (in addition to the headers that exist, does not overwrite an existing header).
-Browser Support: IE, Chrome, Firefox, Safari (no SSL)
-```markup
-usage: addHeader	<header>
-example: addHeader	Pragma: akamai-x-cache-on
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`setDnsName	<name to override>	<real name>`
+- `<name to override>`
+Hostname to replace.
+- `<real name>`
+Real hostname to look up instead.
+- Example
+`setDnsName	pat.aol.com	www.aol.com`
+:::
 
-<header> - Full header entry to add (including label)
-```
+#### `setUserAgent`
 
-#### setHeader
-Adds the specified header to every http request, overriding the header if it already exists.
-Browser Support: IE, Chrome, Firefox, Safari (no SSL)
-```markup
-usage: setHeader	<header>
-example: setHeader	UA-CPU: none-ya
+Overrides [the `User-Agent` string](https://developer.mozilla.org/en-US/docs/Glossary/User_agent) exposed by the browser.
 
-<header> - Full header entry to set (including label)
-```
+<!-- TODO: is this HTTP-only or does it also include `navigator.userAgent`? -->
 
-#### resetHeaders
-Clears any headers that were specified through addHeaders or setHeaders (in case you want to only override headers for part of a script).
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
-usage: resetHeaders
-example: resetHeaders
-```
+::: caution
+You will be using the same browser engine, so you are limited by the capabilities and behavior of that engine even when spoofing another browser.
+:::
 
-### Misc
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`setUserAgent    <user agent string>`
+- `<user agent string>`
+Alternate user agent string to use.
+- Example
+`setUserAgent    Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543 Safari/419.3`
+:::
 
-#### combineSteps
-Causes multiple script steps to be combined into a single "step" in the results
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
-usage: combineSteps	[count]
-example: combineSteps
+#### `overrideHost`
 
-[count] - Number of script steps to merge (optional, defaults to 0 which is ALL)
-Sample Script:
+Replaces the value of [the `Host` HTTP header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host) for the given host with the provided replacement. Also adds a new `x-Host` header with the original value.
 
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari (no HTTPS) <!-- TODO: for all browsers, or just Safari? -->
+- Usage 
+`overrideHost	<host>    <new host>`
+- `<host>`
+Which host to override its `Host` header.
+- `<new host>`
+Value to set as the `Host` header.
+- Example
+`overrideHost	www.aol.com    www.notaol.com`
+:::
+
+#### `overrideHostUrl`
+
+For all requests to the given host, rewrite the requests to go to a different server and include the original host in the new URL.
+
+::: api-list
+- Browser Support
+Internet Explorer
+- Usage 
+`overrideHostUrl	<host>    <new host>`
+- `<host>`
+Hostname for which you want to redirect requests.
+- `<new host>`
+Target server to receive the redirected requests.
+- Example
+`overrideHostUrl	www.webpagetest.org    staging.webpagetest.org`
+In this example, `https://www.webpagetest.org/index.php` will be rewritten to `https://staging.webpagetest.org/www.webpagetest.org/index.php`.
+:::
+
+#### `addHeader`
+
+Adds an HTTP header to every HTTP request (does not overwrite existing headers).
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari (no HTTPS) <!-- TODO: for all browsers, or just Safari? -->
+- Usage 
+`addHeader	<header>`
+- `<header>`
+Full header name/value pair to add.
+- Example
+`addHeader	Pragma: akamai-x-cache-on`
+:::
+
+#### `setHeader`
+
+Adds an HTTP header to every HTTP request, _overriding the header if it already exists._
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari (no HTTPS) <!-- TODO: for all browsers, or just Safari? -->
+- Usage 
+`setHeader	<header>`
+- `<header>`
+Full header name/value pair to add/replace.
+- Example
+`setHeader	UA-CPU: none-ya`
+:::
+
+#### `resetHeaders`
+
+Clears any headers from `addHeaders` or `setHeaders`, in case you want to override headers for only part of a script.
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`resetHeaders`
+- Example
+`resetHeaders`
+:::
+
+### Miscellaneous
+
+#### `combineSteps`
+
+Combines multiple script steps into a single “step” in the results.
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`combineSteps	<count>`
+- `<count>`
+Number of script steps to merge. Defaults to `0`, which merges **all** steps.
+- Examples
+`combineSteps 2`
+```text
 combineSteps
 navigate	www.google.com
 navigate	www.yahoo.com
 navigate	www.aol.com
 ```
+:::
 
-#### if/else/endif
-Conditionally execute a block of script code based on run number or cached state for the test.  Conditional blocks can be nested.
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
-usage:  if	[cached|run]    <value>
-        else
-        endif
+#### `if` / `else` / `endif`
 
-example:    if    run    1
-            if    cached    0
-            <do something for first view of first run>
-            endif
-            else
-            <do something else for everything but first run>
-            endif
+Conditionally execute a block of script based on run number or cached state for the test.
 
-[cached|run] - Compare against run number or cached state
-<value> - matching run number or cached state to execute block
+Conditional blocks can be nested.
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`if	[cached|run]    <value>`
+`else`
+`endif`
+- `[cached|run]`
+Compare against run number or cached state
+- `<value>`
+Matching run number or cached state to execute block.
+- Example
+```text
+if    run    1
+if    cached    0
+<do something for first view of first run>
+endif
+else
+<do something else for everything but first run>
+endif
 ```
+:::
 
-#### expireCache
-Expires any cache entries that will expire within the specified number of seconds.  This can be used to simulate a repeat view after a certain amount of time (for example, what it would be like to browse the page the next day).  It doesn't help with simulating content changes but any resources with a short expiration will end up being checked with if-modified-since requests.
-Browser Support: IE
-```markup
-usage: expireCache	<seconds>
-example: expireCache	86400
+#### `expireCache`
 
-<seconds> - Any resources with a cache lifetime less than this amount of time will be forced to expire.
-```
+Expires any cached resources that would expire within a specified number of seconds.
 
-#### firefoxPref
-Allows you to specify arbitrary preferences that will be configured before launching the browser.
-Browser Support: Firefox
-```markup
-usage: firefoxPref	<pref>    <value>
-examples:
+Can be used to simulate a repeat view after some of time, like what it would be like to browse the page the next day. It doesn’t simulate content changes, but any resources with a short expiration will be checked with [`if-modified-since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since) conditional requests.
+
+::: api-list
+- Browser Support
+Internet Explorer
+- Usage 
+`expireCache	<seconds>`
+- `<seconds>`
+Any resources with a cache lifetime shorter than this amount of time will expire.
+- Example
+`expireCache	86400`
+:::
+
+#### `firefoxPref`
+
+Specifies arbitrary preferences to configure before launching Firefox.
+
+::: api-list
+- Browser Support
+Firefox
+- Usage 
+`firefoxPref	<pref>    <value>`
+- `<pref>`
+Which preference to modify. You can see available ones at `about:config`.
+- `<value>`
+The value to set the preference to. String values should be enclosed in quotes, like the example.
+- Example
+```text
 firefoxPref    network.http.pipelining    false
 firefoxPref    network.http.pipelining.maxrequests    5
 firefoxPref    general.useragent.override    "Some User Agent String"
-
-<pref> - The preference that is to be modified
-<value> - The value to use.  String values should be enclosed in quotes like the example.
 ```
+:::
 
-#### setEventName
-Sets the name of the event for the next measurable operation. It is important to only set this right before the action that will generate the activity you want to measure so that you don't inadvertently measure other page activity. Without explicit event names each step will be automatically named Step_1, Step_2, etc.
-Browser Support: IE
-```markup
-usage: setEventName	<event name>
-example: setEventName	loadWebmail
+#### `setEventName`
 
-<event name> - Name to use for the event about to occur (in resulting log files)
-```
+Sets the name of the event for the next measurable operation.
 
-#### setLocation
-Specifies a geolocation override position.
-Browser Support: Chrome
-```markup
-usage: setLocation	<lat>,<lng>    <accuracy>
-example: setLocation    38.954980,-77.447956    10
+::: caution
+Only set this right before the action that generates the activity you want to measure, to avoid accidentally measuring other page activity.
+:::
 
-<lat> - Latitude
-<lng> - Longitude
-<accuracy> - Accuracy (in meters)
-```
+Without explicit event names, each step will be automatically named `Step_1`, `Step_2`, etc.
 
-#### setViewportSize
-Changes the size of the visible browser window so that the page viewport matches the given dimensions.  If you get black areas on your screen shots then the viewport is larger than the desktop.
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
-usage: setViewportSize	<width>    <height>
-example: setViewportSize    320    365
+::: api-list
+- Browser Support
+Internet Explorer
+- Usage 
+`setEventName	<event name>`
+- `<event name>`
+Name to use for the event about to occur (in resulting log files).
+- Example
+`setEventName	loadWebmail`
+:::
 
-<width> - Viewport Width
-<height> - Viewport Height
-```
+#### `setLocation`
 
-#### sleep
+Overrides [geolocation position](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation).
+
+::: caution
+This does not override locations guessed from IP address.
+:::
+
+::: api-list
+- Browser Support
+Chrome
+- Usage 
+`setLocation	<lat>,<lng>    <accuracy>`
+- `<lat>`
+Latitude
+- `<lng>`
+Longitude
+- `<accuracy>`
+Accuracy, in meters.
+- Example
+`setLocation    38.954980,-77.447956    10`
+:::
+
+#### `setViewportSize`
+
+Changes the size of the window so that [the page viewport](https://developer.mozilla.org/en-US/docs/Glossary/Viewport) matches the given dimensions.
+
+::: note
+If you get black areas on your screenshots, then the viewport is larger than the desktop.
+:::
+
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`setViewportSize	<width>    <height>`
+- `<width>`
+Viewport width, in CSS pixels.
+- `<height>`
+Viewport height, in CSS pixels.
+- Example
+`setViewportSize    320    365`
+:::
+
+#### `sleep`
+
 Pauses the script operation for a given number of seconds.
-Browser Support: IE, Chrome, Firefox, Safari
-```markup
-usage: sleep	<seconds to sleep>
-example: sleep	5
 
-<seconds to sleep> - An integer indicating how long to sleep.  The allowable range is 1-30.
-```
+::: note
+This does not pause JavaScript execution, only the WPT script.
+:::
 
-## Sample scripts
+::: api-list
+- Browser Support
+Internet Explorer, Chrome, Firefox, Safari
+- Usage 
+`sleep	<seconds to sleep>`
+- `<seconds to sleep>`
+An integer for how long to sleep. The allowable range is 1–30.
+- Example
+`sleep	5`
+:::
+
+## Example scripts
+
 ### Mail test
-```markup
+
+```text
 // load the account name and password
 // bring up the login screen
 setEventName	launch
@@ -596,7 +936,8 @@ clickAndWait	className=signOutLink
 ```
 
 ### MyAOL Authenticated profile
-```markup
+
+```text
 // bring up the login screen
 setDOMElement	name=loginId
 navigate	https://my.screenname.aol.com/_cqr/login/login.psp?mcState=initialized&sitedomain=my.aol.com&authLev=0&siteState=OrigUrl%3Dhttp%3A%2F%2Fmy.aol.com%2F
@@ -609,13 +950,15 @@ submitForm	name=AOLLoginForm
 ```
 
 #### DNS Override
+
 This script will:
 
-* Create a fake DNS entry for www1.aol.com and have it lookup www.aol.com instead
-* Force www.aol.com to resolve to 127.0.0.1
-* Set a "zip" cookie on the www.aol.com domain
-* Navigate and measure the time to load www.aol.com
-```markup
+1. Create a fake DNS entry for `www1.aol.com` and have it look up `www.aol.com` instead.
+2. Force `www.aol.com` to resolve to `127.0.0.1` (localhost).
+3. Set a `zip` cookie on the `www.aol.com` domain.
+4. Navigate and measure the time to load `www.aol.com`.
+
+```text
 setDnsName	www1.aol.com	www.aol.com
 setDns	www.aol.com	127.0.0.1
 setCookie	http://www.aol.com	zip=20166
@@ -623,12 +966,14 @@ navigate	http://www.aol.com
 ```
 
 #### iPhone Spoofing
+
 This script will:
 
-* Use the iPhone user agent string
-* Change the browser dimensions to match the iPhone
-* Navigate to www.aol.com
-```markup
+1. Use the iPhone user agent string.
+2. Change the browser dimensions to match the original iPhone’s.
+3. Navigate to `www.aol.com`.
+
+```text
 setUserAgent	Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25
 setViewportSize    320    356
 navigate	http://www.aol.com
