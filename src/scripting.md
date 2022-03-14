@@ -309,21 +309,6 @@ example: keypress Enter
 
 For the difference between `keypress` and `keypressAndWait`, see [`click`](#click) and [`clickAndWait`](#clickandwait).
 
-#### `sendKeyDown` / `sendKeyUp` / `sendKeyPress` (`sendKeyDownAndWait` / `sendKeyUpAndWait` / `sendKeyPressAndWait`)
-Creates a JavaScript keyboard event (`onkeydown`, `onkeyup`, `onkeypress`) and sends it to the indicated element.
-Browser Support: IE
-```markup
-usage:   sendKeyDownAndWait <wpt-selector> <key>
-example: sendKeyDownAndWait name=user x
-
-<wpt-selector> - DOM element to send the click event to
-<key> - Key command to send (special values are ENTER, DEL, DELETE, BACKSPACE, TAB, ESCAPE, PAGEUP, PAGEDOWN)
-```
-
-For the list of supported selectors, see [Selectors](#selectors).
-
-For the difference between `command` and `commandAndWait` versions, see [`click`](#click) and [`clickAndWait`](#clickandwait).
-
 #### `setInnerHTML`
 Sets the innerHTML of the given DOM element to the provided value. This is usually used for filling in something like an editable HTML panel (like the message body in webmail). Use this if you want to include HTML formatting.
 Browser Support: IE, Chrome, Firefox
@@ -535,18 +520,6 @@ example: overrideHost www.aol.com www.notaol.com
 <new host> - value to set for the Host header
 ```
 
-#### `overrideHostUrl`
-For all requests to the given host, rewrite the requests to go to a different server and include the original host in the new URI.
-Browser Support: IE
-```markup
-usage:   overrideHostUrl <host> <new host>
-example: overrideHostUrl www.webpagetest.org staging.webpagetest.org
-
-<host> - host for which you want to redirect requests
-<new host> - target server to receive the redirected requests
-```
-In this example, http://www.webpagetest.org/index.php will get rewritten to actually request http://staging.webpagetest.org/www.webpagetest.org/index.php
-
 #### `addHeader`
 Adds the specified header to every http request (in addition to the headers that exist, does not overwrite an existing header).
 Browser Support: IE, Chrome, Firefox, Safari (no SSL)
@@ -591,16 +564,6 @@ combineSteps
 navigate www.google.com
 navigate www.yahoo.com
 navigate www.aol.com
-```
-
-#### `expireCache`
-Expires any cache entries that will expire within the specified number of seconds.  This can be used to simulate a repeat view after a certain amount of time (for example, what it would be like to browse the page the next day).  It doesn't help with simulating content changes but any resources with a short expiration will end up being checked with if-modified-since requests.
-Browser Support: IE
-```markup
-usage:   expireCache <seconds>
-example: expireCache 86400
-
-<seconds> - Any resources with a cache lifetime less than this amount of time will be forced to expire.
 ```
 
 #### `clearCache`
@@ -676,71 +639,6 @@ There is currently no way to debug failing WebPageTest scripts. If a script comm
 To simplify script development, consider limiting yourself to [Recommended commands](#recommended-commands) only.
 
 ## Sample scripts
-### Mail test
-```markup
-// load the account name and password
-// bring up the login screen
-setEventName launch
-navigate http://webmail.aol.com
-
-// ignore any errors from here on (in case the mailbox is empty or we get image challenged)
-ignoreErrors 1
-
-// log in
-setValue name=loginId <username>
-setValue name=password <password>
-setEventName load
-submitForm name=AOLLoginForm
-
-// only read and send a mail once an hour
-minInterval AOLMail 60
-
-// close the today curtain
-click className=backdrop
-sleep 5
-
-// Open the first message with a subject of "test"
-setEventName read
-clickAndWait innerText=test
-
-// delete the message
-click title=Delete (del)
-sleep 5
-
-// open the compose mail form
-setEventName compose
-clickAndWait title=Write mail (Alt + w)
-
-// send a test message to myself
-sleep 1
-setValue tabindex=100 <username>
-setValue name=Subject test
-loadFile msg.txt %MSG%
-setInnerText contentEditable=true Some message text
-sleep 1
-setDOMElement className=confirmMessage
-setEventName send
-clickAndWait innerText=Send
-
-endInterval
-
-// sign off
-setEventName logout
-clickAndWait className=signOutLink
-```
-
-### MyAOL Authenticated profile
-```markup
-// bring up the login screen
-setDOMElement name=loginId
-navigate https://my.screenname.aol.com/_cqr/login/login.psp?mcState=initialized&sitedomain=my.aol.com&authLev=0&siteState=OrigUrl%3Dhttp%3A%2F%2Fmy.aol.com%2F
-
-// log in
-setValue name=loginId <user name>
-setValue name=password <password>
-setDOMElement className=more_pics
-submitForm name=AOLLoginForm
-```
 
 ### DNS Override
 This script will:
