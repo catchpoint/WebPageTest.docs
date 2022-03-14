@@ -605,9 +605,10 @@ example: expireCache 86400
 
 #### `clearCache`
 Clears all cache and cookies.
+Browser Support: Chrome, Safari on iOS
 
 ```markup
-usage:   clearCache <seconds>
+usage:   clearCache
 example: clearCache
 ```
 
