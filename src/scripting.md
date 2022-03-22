@@ -90,9 +90,7 @@ navigate not-a-comment.com
 
 ### Selectors
 
-Commands like [`click`](#click), [`setValue`](#setvalue), and others operate on DOM elements. To select a DOM element, use the following selectors:
-
-#### `<attribute>=<value>`
+Commands like [`click`](#click), [`setValue`](#setvalue), and others operate on DOM elements. To select a DOM element, use the `<attribute>=<value>` selector.
 
 This selector selects elements based on their HTML attributes. For the following input:
 
@@ -115,62 +113,6 @@ Example:
 ```markup
 // Set the email to darth@vader.com
 setValue type=email darth@vader.com
-```
-
-#### `innerText=<text>`
-
-This selector selects elements based on its inner text. For the following button:
-
-```html
-<button type="submit">Login</button>
-```
-
-the following selectors will work:
-
-* ✅ `innerText=Login`
-
-and the following selectors will not:
-
-* ❌ `innerText=login` (the selector is case sensitive)
-* ❌ `innerText=log` (the selector must match the full string)
-
-Also, for a different button, this will not work either:
-
-* ❌ `innerText=log in` (spaces inside the text are not supported)
-
-Example:
-
-```markup
-// Click the Login button
-click innerText=Login
-```
-
-#### `innerHtml=<html>`
-
-This selector selects elements based on its inner HTML. For the following link:
-
-```html
-<a href="/dashboard"><span>Dashboard</span></button>
-```
-
-the following selectors will work:
-
-* ✅ `innerHtml=<span>Dashboard</span>`
-
-and the following selectors will not:
-
-* ❌ `innerHtml=<span>dashboard</span>` (the selector is case sensitive)
-* ❌ `innerHtml=span` (you can’t select just on tags)
-
-Also, for a different link, this will not work either:
-
-* ❌ `innerText=<span>Open Dashboard</span>` (spaces inside the HTML are not supported)
-
-Example:
-
-```markup
-// Click the Dashboard link
-click innerHtml=<span>Dashboard</span>
 ```
 
 ### Variable substitutions
