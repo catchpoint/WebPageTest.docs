@@ -39,8 +39,9 @@ WebPageTest API is always up-to-date on the current version of every browser and
 
 WebPageTest API also supports mobile emulation testing. You can test mobile content by emulating an Android browser by passing **“mobile=1”** as an API option. 
 
-### Does the API support testing on real mobile devices?
-The WebPageTest API currently does not support testing on real mobile devices at this moment. For mobile testing, we currently recommend using mobile emulation by passing **"mobile=1"** as an API parameter.
+### Does the API support testing on mobile devices?
+For mobile testing, we currently recommend using mobile emulation by passing **"mobile=1"** as an API parameter. If you are using the [API wrapper for NodeJS](https://docs.webpagetest.org/integrations/#webpagetest-api-wrapper-for-nodejs), then you can use **emulateMobile: true**
+
 ### What metrics can I access with the API?
 You can access [all the performance metrics](/metrics) that you would when you run a manual test on WebPageTest, as well as the film strip view and video capture. WebPageTest API also gives you additional metrics that are only currently exposed in the JSON and XML results, not in the UI itself.
 
