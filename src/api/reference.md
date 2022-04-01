@@ -8,6 +8,8 @@ eleventyNavigation:
 # WebPageTest REST API
 The WebPageTest [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API provides a way for you to programatically interact with WebPageTest and all of its functionality, enabling you to integrate WebPageTest data into your existing processes and workflows in the way that best suits your needs.
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/9aab0eaadf1e824ba841?action=collection%2Fimport)
+
 ::: note
 The [official Node.js WebPageTest API wrapper](https://github.com/marcelduran/webpagetest-api)—built by Marcel Duran—provides a convenient NodeJS interface for the API and also exposes handy a <abbr title="Command Line Interface">CLI</abbr>.
 :::
