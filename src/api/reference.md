@@ -595,9 +595,6 @@ Pass 1 to include the breakdown of requests and bytes by domain.
 - `requests` <small>optional</small>  
 Pass 1 to include the request data in the response (slower and results in a much longer response).
 **Default:** 0
-- `requests` <small>optional</small>  
-Pass 1 to include the request data in the response (slower and results in a much longer response).
-**Default:** 0
 - `r` <small>optional</small>
 Request ID. Will echo back in the response object.
 :::
