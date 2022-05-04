@@ -5,7 +5,7 @@ eleventyNavigation:
   order: 99
 ---
 # Accounts
-Click on **Sign Up** on [WebPageTest](http://www.webpagetest.org/?utm_source=docs&utm_medium=docs&utm_campaign=account&utm_content=signup) to create a user account on WebPageTest. You can create a user account on WebPageTest if you are looking to: 
+Click on **Sign Up** on [WebPageTest](https://app.webpagetest.org/ui/entry/wpt/signup?) to create a user account on WebPageTest. You can create a user account on WebPageTest if you are looking to: 
 * Post on the [WebPageTest Forum](https://forums.webpagetest.org/). Otherwise it's read-only. 
 * Access your past [test results](https://www.webpagetest.org/testlog/1/)
 * Use the [WebPageTest API](http://docs.webpagetest.org/api)
