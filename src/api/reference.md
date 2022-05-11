@@ -10,6 +10,8 @@ The WebPageTest [REST](https://en.wikipedia.org/wiki/Representational_state_tran
 
 ::: note
 The [official Node.js WebPageTest API wrapper](https://github.com/marcelduran/webpagetest-api)—built by Marcel Duran—provides a convenient NodeJS interface for the API and also exposes handy a <abbr title="Command Line Interface">CLI</abbr>.
+
+There's also an [ever-growing repository of common recipes for the the API](https://github.com/WebPageTest/WebPageTest-API-Recipes), using the Node.js wrapper to help you get started.
 :::
 
 ## Authentication

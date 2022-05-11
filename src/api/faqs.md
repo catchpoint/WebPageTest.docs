@@ -71,6 +71,10 @@ The Visual Studio Code(Vscode) Extension for WebPageTest lets you run tests agai
 There are also several existing integrations built by our community members that you can try out to build on top of WebPageTest. [Check out some of them here.](/integrations/#community-built-integrations)
 :::
 
+### Are there any code examples I can see for how to use the API?
+We have an [ever-growing collection of common recipes for the WebPageTest API available on GitHub](https://github.com/WebPageTest/WebPageTest-API-Recipes). If you don't see the recipe you're looking for, [file an issue](https://github.com/WebPageTest/WebPageTest-API-Recipes/issues) and we'll see if it's something we can add.
+
+
 ## Billing
 :::faqs
 ### How will I be charged?  
