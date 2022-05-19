@@ -8,6 +8,10 @@ eleventyNavigation:
 
 WebPagetest can execute arbitrary javascript at the end of a test to collect custom metrics.  These can be defined statically in the server configuration or be specified at runtime on a per-test basis.
 
+::: note
+[The HTTP Archive](https://httparchive.org/) uses WebPageTest custom metrics to power their reports, as well as the analysis in the [annual Web Almanac](https://almanac.httparchive.org/). The metrics are all available in a [public GitHub repository](https://github.com/HTTPArchive/custom-metrics) if you would like to dig in and get some ideas for what's possible.
+:::
+
 The javascript should be written as if it were executing inside of a function call and return the custom metric at the end.  Here is an example that finds the meta viewport for the page and extracts it:
 ```javascript
 var viewport = undefined;
