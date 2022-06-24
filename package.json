@@ -16,7 +16,7 @@
     "eleventy-plugin-nesting-toc": "^1.2.0",
     "fetch": "^1.1.0",
     "image-size": "^0.9.3",
-    "jsdom": "^16.4.0",
+    "jsdom": "^16.5.0",
     "markdown-it": "^12.0.4",
     "markdown-it-anchor": "^7.0.2",
     "markdown-it-attrs": "^4.0.0",
