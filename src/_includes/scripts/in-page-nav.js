@@ -9,7 +9,6 @@ const observer = new IntersectionObserver(entries => {
         const id = entry.target.getAttribute('id')
         const newActive = document.querySelector(`.pageNav a[href="#${id}"]`);
         newActive.classList.add('is-active');
-        newActive.scrollIntoView({ block: 'nearest' });
     }
 }, { rootMargin: `0% 0% -90% 0%` }
 );
