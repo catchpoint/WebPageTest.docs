@@ -10,6 +10,10 @@
     to = "/integrations"
     status = 301
 [[redirects]]
+    from = "/api/faqs"
+    to = "/webpagetest-faqs"
+    status = 301
+[[redirects]]
     from = "/js/*"
     to = "https://cdn.jsdelivr.net/npm/:splat"
     status = 200

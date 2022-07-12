@@ -1,24 +1,89 @@
 ---
-title: 'WebPageTest API FAQs'
+title: 'WebPageTest FAQs'
 eleventyNavigation:
-  parent: API 
-  key: FAQs
+  key: WebPageTest FAQs
   order: 3
 ---
-# WebPageTest API FAQs
-This page answers frequently asked questions about account, test options and billing for WebPageTest API. If you are unable to find information about your specific WPT API related question, please submit your question via the **Contact Support** option on **My Account** once you’ve signed into your WebPageTest account. You can also submit your question on our [forums](https://forums.webpagetest.org). Be careful to not share any sensitive account or payment related information there.  
+# WebPageTest FAQs
+This page answers frequently asked questions about account, test options and billing for WebPageTest Pro. If you are unable to find information about your specific WPT Pro related question, please submit your question via the *Contact Support* option on [*My Account*](https://www.webpagetest.org/account) once you’ve signed into your WebPageTest account. You can also submit your question on our [forums](https://forums.webpagetest.org). Be careful to not share any sensitive account or payment related information there.  
 
 ## Running Tests
 :::faqs
+### What is WebPageTest Pro and what is WebPageTest Starter?
+**WebPageTest Pro** is our premium, paid subscription plan that unlocks powerful functionality and features for WebPageTest including, but not limited to: bulk testing, premium testing locations, high priority in testing queues, the WebPageTest API, experiments, dedicated support and private tests.
+
+**WebPageTest Starter** is our free plan available to all users to run WebPageTest runs that provide all the performance metrics that WebPageTest has provided for years plus access to the new Opportunities report.
+
+Both WebPageTest Starter and Pro give you access to save your Test History for 13 months.
 
 ### How do you define a test run?
-A test run on WebPageTest is defined as a single run within a test set up to measure webpage performance on a specific browser and location. For example, if you run a 5-run test with **Repeat View**, then that counts as 10 test runs.    
+*FOR ALL PLANS*, a test on WebPageTest is comprised of one or more test runs. A test run is defined as a single page load within a test. Here are a few examples:
 
-### Do you have a free trial option to test the API? 
-We do not have a free trial option since the API gives you all the metrics you see on the JSON today for any test you run on www.webpagetest.org. Note that our annual subscription plans offer a **25% savings** over monthly subscriptions. 
+- A test from a single browser and location, with 3 test runs, first view only, counts as three test runs. (3 runs * 1 load per run)
+- A test from a single browser and location, with 5 test runs, first and repeat views for each run, counts as 10 test runs (5 runs * 2 loads per run)
+- A test from a single browser and location, with 4 tests runs, first and repeat views for each run, and an additional Lighthouse run, counts as 9 test runs ( (4 runs * 2 loads per run) + 1 Lighthouse run)
+- An experiment from a single browser and location, with 2 test runs, first view only for each run, counts as 4 runs (2 runs * 2 tests (one for the experiment, one for the control run).
+
+### What countries and browsers do you support with WebPageTest?
+WebPageTest is always up-to-date on the current version of every browser and you can test on Chrome (stable, beta, canary), Firefox (stable, beta, ESR), Microsoft Edge (dev) and Brave.
+
+**WebPageTest Starter** gives you access to 30 locations worldwide, including mainland China.
+
+**With WebPageTest Pro**, you get access to 11 more premium locations. WebPageTest Pro also supports mobile emulation testing. You can test mobile content by emulating an Android browser by passing `mobile=1` as an API option.
+
+### What are Opportunities and Experiments?
+Opportunities and Experiments are a powerful combination that will let you quickly identify areas of improvement for your website and test the impact of any relevant optimizations without ever having to write a line of code.
+
+Opportunities are recommendations that are broken down into three categories:
+
+- Quickness
+- Usability
+- Resilience
+
+Opportunities are a free feature of WebPageTest provided to all users.
+
+For every opportunity, you will be presented with some combination of tips (suggestions for what to do to improve) and experiments (the ability to apply optimizations right within the WebPageTest sandbox). When you choose to run an experiment, WebPageTest applies the optimization in our sandbox environment and then runs a test (alongside a control test which uses our sandbox environment without applying the optimization), and presents you with results showing you how significant, or insignificant, the improvement was.
+
+Experiments are a paid feature and are only available to WebPageTest Pro subscribers.
+
+### What is Bulk Testing?
+Bulk Testing lets you quickly run tests using the same settings, against a large number of URLs all at once. You are able to either provide a list of URLs or upload a CSV of URLs to test. Each URL will be tested using the settings you have defined, and the final results for each test will be presented as usual for further analysis. *Bulk Testing is only available to WebPageTest Pro subscribers.*
+
+### What is a Private Test?
+With WebPageTest Pro, you have the ability to run a private test. A private test is a test that can only be accessed by the account owner—if anyone who is not the account owner tries to access the test information, they will be presented with an error. *Private Tests are only available to WebPageTest Pro subscribers.*
+
+### How long will my test results be stored?
+You will have access to all the tests you run via as part of both WebPageTest Pro and Starter plans for 13 months. This also enables you to monitor performance over time and look at year-over-year performance analyses and trends.  
+
+### What metrics can I access with Pro?
+WebPageTest provides accurate, in-depth analysis of your page with hundreds of metrics collected on every run, as well as the ability to set and define custom metrics by running JavaScript at the end of any test. You also get powerful visual features such as the film strip view as well as video capture.
+
+### Is there a daily limit for the test runs?
+There is a monthly limit on the total tests you can run with the WebPageTest Pro and WebPageTest Starter Plans, based on the subscription plan you choose. There is currently no daily limit on top of that monthly limit.  
+
+### Do you provide any developer integrations that I can use with WebPageTest Pro?
+There are several existing first-party integrations built with the WebPageTest API, including our [GitHub Action](https://docs.webpagetest.org/integrations/#webpagetest-github-action), [Slack Bot](https://docs.webpagetest.org/integrations/#webpagetest-slack-bot), [Visual Studio Code Extension](https://docs.webpagetest.org/integrations/#webpagetest-visual-studio-code-extension), and our [Node.js API wrapper](https://docs.webpagetest.org/integrations/#webpagetest-api-wrapper-for-nodejs) (the preferred way to interact with our API).   
+
+There are also numerous integrations [built and maintained by our community members](https://docs.webpagetest.org/integrations/#community-built-integrations). 
+
+You can find more ideas of how to use the API in our[] constantly growing recipes repository](https://github.com/WebPageTest/WebPageTest-API-Recipes).
+
+### Can I add more users to my WPT Pro Pro or Starter account? 
+Currently, we only support one user account to sign in and set up your account for WebPageTest Starter or to purchase the WebPageTest Pro subscriptions. However, if you use the WebPageTest API under the Pro subscription, you can generate up to 30 API Consumer keys for multiple use cases and teams, from a single WebPageTest Pro account. Generate a new key by clicking on “+ New API Key” in your account page.  
+
+We have plans to support adding multiple users and defining roles in the future.  
+
+### Is there a free trial where I can test WebPageTest Pro? 
+We provide 1 free experiment per test for you to check out WebPageTest Experiments. You can also run Experiments from our in-house test page called The Metric Times where we have builti in anti-patterns for easy testing.  
+
+We do not have a free trial option apart from the above 2 options, since  WebPageTest Pro gives you all the [metrics](https://www.webpagetest.org/themetrictimes/index.php) (except for the option to run the experiments) you see on a typical WebPageTest test result page as well as in the JSON today for any test you run on www.webpagetest.org.
+
+For example, you can:
 - Run a test on www.webpagetest.org.  
-- Click on **'View JSON'** under **Export Files** on any test result. You can see the metrics that a test run via the WebPageTest API will provide. Customize what metrics you want to pull in and where.  
+- Click on **'View JSON'** under **Export Files** on any test result. You can see the metrics that a test run via the WebPageTest API will provide.
 - You can also check out our [API integrations](https://docs.webpagetest.org/integrations/) to integrate WebPageTest into your developer workflow, build visualizations, set performance budgets, see code changes and more. 
+
+[Contact us](https://www.product.webpagetest.org/contact) if you want to discuss a custom plan or run more than 20,000 test runs a month.
 
 Here are a few more resources you may find helpful: 
 - [Getting started on API](https://docs.webpagetest.org/api) which also includes information about all the metrics you can pull with the API  
@@ -32,48 +97,18 @@ This is helpful to see how representative the test is of the Chrome users' exper
 
 Check out the [Guide to Core Web Vitals](https://product.webpagetest.org/core-web-vitals) for more information as well as tips to tackle Core Web Vitals issues. 
 
-### What countries and browsers do you support with the WebPageTest API?
-With WebPageTest API, you can test across 30 locations worldwide, including mainland China.  
-
-WebPageTest API is always up-to-date on the current version of every browser and you can test on Chrome (stable, beta, canary), Firefox (stable, beta, ESR), Microsoft Edge (dev) and Brave.  
-
-WebPageTest API also supports mobile emulation testing. You can test mobile content by emulating an Android browser by passing **“mobile=1”** as an API option. 
-
-### Does the API support testing on mobile devices?
+### Does WebPageTest support testing on mobile devices?
 For mobile testing, we currently recommend using mobile emulation by passing **"mobile=1"** as an API parameter. If you are using the [API wrapper for NodeJS](https://docs.webpagetest.org/integrations/#webpagetest-api-wrapper-for-nodejs), then you can use **emulateMobile: true**
-
-### What metrics can I access with the API?
-You can access [all the performance metrics](/metrics) that you would when you run a manual test on WebPageTest, as well as the film strip view and video capture. WebPageTest API also gives you additional metrics that are only currently exposed in the JSON and XML results, not in the UI itself.
-
-### How long will my test results be stored?  
-You will have access to all the tests you run via WebPageTest API for 13 months. This also enables you to look at year-over-year performance analyses and trends. 
-
-### Is there a daily limit for the test runs?  
-There is a monthly limit on the total tests you can run with the WebPageTest API, based on the subscription plan you choose. There is currently no daily limit on top of that monthly limit.  
 
 ### How can I see how many tests I have remaining?
 You can always see how many tests you have remaining in your current month by looking at the **Remaining Runs** value under the **Subscription Plan** section of your **My Account** page. 
 
 You can also programmaticaly check how many tests you have remaining by using the [testBalance.php](/api/reference/#checking-remaining-test-balance) endpoint of the API itself.
 
-### Do you provide any integrations that I can use with the API? 
-We currently support the following integrations:
-
-- **[WebPageTest API Wrapper for NodeJS](https://github.com/marcelduran/webpagetest-api)**  
-An npm package that wraps WebPageTest API for NodeJS as a module and a command-line tool  
-- **[WebPageTest GitHub Action](https://github.com/WPO-Foundation/webpagetest-github-action)**   
-A GitHub Action that lets you automatically run tests against WebPageTest on code changes, set and enforce performance budgets, and have performance data automatically added to your pull requests to move the performance conversation directly into your existing development workflow.
-- **[WebPageTest Slack Bot](https://github.com/WebPageTest/webpagetest-slack)**  
-A Slack bot that lets you run tests against WebPageTest from within Slack. Once the tests are complete, a copy of the waterfall and a link to the full results will be posted in your Slack channel, helping you to easily troubleshoot and diagnose performance issues directly from your Slack development channels.
-- **[WebPageTest VSCode Extension](https://marketplace.visualstudio.com/items?itemName=WebPageTest.wpt-vscode-extension)**  
-The Visual Studio Code(Vscode) Extension for WebPageTest lets you run tests against WebPageTest from within Vscode, helping you to easily troubleshoot and diagnose performance issues directly from Vscode and possibly refactor the code if needed.
-
-There are also several existing integrations built by our community members that you can try out to build on top of WebPageTest. [Check out some of them here.](/integrations/#community-built-integrations)
-:::
-
 ### Are there any code examples I can see for how to use the API?
 We have an [ever-growing collection of common recipes for the WebPageTest API available on GitHub](https://github.com/WebPageTest/WebPageTest-API-Recipes). If you don't see the recipe you're looking for, [file an issue](https://github.com/WebPageTest/WebPageTest-API-Recipes/issues) and we'll see if it's something we can add.
 
+:::
 
 ## Billing
 :::faqs
@@ -114,7 +149,7 @@ Here are steps to ensure your payment goes through:
 You will be charged at the time of purchase for the subscription plan you chose. Please allow additional time for your financial institution to post the charge on your bank account.  
 
 ### What do I do if I have any immediate billing questions or if I need to speak with someone regarding charges on my account? 
-Currently, we provide email support for all your API related questions around account, API tests, and billing. You can contact us anytime. Simply select **Contact Support** on the top right section of **My Account** and submit your query. Our support specialist will get back to you within 2-3 business days.  
+Currently, we provide email support for all your WebPageTest Pro related questions around account, API tests, and billing. You can contact us anytime. Simply select **Contact Support** on the top right section of **My Account** and submit your query. Our support specialist will get back to you within 2-3 business days.  
 
 ### What do I do if I did not sign up for your service and suspect a fraudulent charge has been made on my credit card? 
 Please contact our support team and provide us with your name, contact information, date of the charge, and the amount. Select **Contact Support** on the top right section of **My Account** and submit your query.
