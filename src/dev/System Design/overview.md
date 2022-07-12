@@ -1,7 +1,7 @@
 # Overview
 Note: These docs are outdated and parts reference the old agent architecture
 
-Here is the overall system design for WebPagetest:
+Here is the overall system design for WebPageTest:
 
 ![Overview](/img/overview.png)
 

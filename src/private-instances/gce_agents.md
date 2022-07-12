@@ -24,7 +24,7 @@ The agents are configured through a metadata string with the name "wpt_data":
 
 ### Parameters
 
-* **wpt_server** - the web server where WebPagetest is running
+* **wpt_server** - the web server where WebPageTest is running
 * **wpt_url** - (optional in place of wpt_server) Base URL to the work directory for fetching.  i.e. https://www.webpagetest.org/work/
 * **wpt_loc** - The location ID (if not specified it will fall back to wpt_location or be built from the region - ec2-us-east for example)
 * **wpt_key** - secret key for the specified location

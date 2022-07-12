@@ -2,7 +2,7 @@
 The FCC prepared a report on the state of Broadband Internet access in the US and the data is useful for deciding on connectivity parameters used for testing.  I'm including the key charts here but the full report is available here: http://www.fcc.gov/document/measuring-broadband-america-report-consumer-broadband-performance-us
 
 ## Connectivity Emulation (dummynet)
-The purpose of the connectivity emulation in WebPagetest is to provide realistic "last mile" performance from the test agents (but not to alter additional latency in getting to servers physically distributed).  This means that the goal is to realistically emulate parts 2-6 of the network diagram from the FCC report with the public Internet segment being routed as it would normally:
+The purpose of the connectivity emulation in WebPageTest is to provide realistic "last mile" performance from the test agents (but not to alter additional latency in getting to servers physically distributed).  This means that the goal is to realistically emulate parts 2-6 of the network diagram from the FCC report with the public Internet segment being routed as it would normally:
 
 ![FCC Network diagram](/img/fcc_net.png)
 
