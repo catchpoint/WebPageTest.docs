@@ -6,7 +6,7 @@ For mobile testing you have a few options for network connectivity:
 * WiFi with no traffic shaping
 * WiFi with a fixed traffic shaping profile
 * WiFi with per-test traffic shaping
-This is what the mobile testing network looks like for the public instance of WebPagetest (at least as of this writing in 2014):
+This is what the mobile testing network looks like for the public instance of WebPageTest (at least as of this writing in 2014):
 
 ![Network Diagram](/img/mobile_testing.png)
 
@@ -23,7 +23,7 @@ For Windows there is also a support application adbwatch that watches adb and if
 
 The public instance currently has 10 devices connected to an Intel i5 NUC running Windows 7 with adbwatch managing the agent instances and keeping adb running.  One tip for running the NUC's as headless servers (for the newer haswell models that do not support AMT) is to use VNC and the Microsoft video drivers shipped with Windows, not the Intel ones.  If you use the Intel drivers the display will be disabled and VNC will not work.
 
-The data flow for test results and agent <-> WebPagetest server communication all happen from the tethered host so the only use of the data connection will be the actual test data (and any software updates).
+The data flow for test results and agent <-> WebPageTest server communication all happen from the tethered host so the only use of the data connection will be the actual test data (and any software updates).
 
 ## WiFi with no traffic shaping
 Testing over a WiFi connection gives you much more control over the stability of the results and usually produces much more consistent results than testing on a carrier network.  The main issues with running a stable WiFi test connection are:

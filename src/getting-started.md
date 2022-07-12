@@ -5,21 +5,21 @@ eleventyNavigation:
 ---
 
 # Quick Start Guide
-At its core, WebPagetest is used for measuring and analyzing the performance of web pages.  There are a lot of options that may seem intimidating at first but doing quick testing is pretty simple.  This guide will walk you through submitting a test and interpreting the results.
+At its core, WebPageTest is used for measuring and analyzing the performance of web pages.  There are a lot of options that may seem intimidating at first but doing quick testing is pretty simple.  This guide will walk you through submitting a test and interpreting the results.
 
 ## Running a Performance Test
 ### 1. Enter The Page URL:
-The first thing you need to do is decide on a page to test.  Most people start with the main page for their site (but don't neglect the other pages people visit either).  Once you have decided on a page you'd like to test you go to WebPagetest and give it the URL for the page you want tested:
+The first thing you need to do is decide on a page to test.  Most people start with the main page for their site (but don't neglect the other pages people visit either).  Once you have decided on a page you'd like to test you go to WebPageTest and give it the URL for the page you want tested:
 
 ![](/img/qs_url.png)
 
 ### 2. Select a Location:
-Next you should decide where you want the test to be run from.  WebPagetest has test machines that are physically located around the world and you should test from a location that is close to where your users are visiting from.  You can either pick a location from the list or if you click on the Change button you can pick a location from a map view (just click on a balloon to select a location and then click ok).  If you hold the pointer over the bubbles they will display a message telling you where the location is:
+Next you should decide where you want the test to be run from.  WebPageTest has test machines that are physically located around the world and you should test from a location that is close to where your users are visiting from.  You can either pick a location from the list or if you click on the Change button you can pick a location from a map view (just click on a balloon to select a location and then click ok).  If you hold the pointer over the bubbles they will display a message telling you where the location is:
 
 ![](/img/qs_map.png)
 
 ### 3. Select a Browser:
-Finally, you need to decide what browser to use for the test.  Different locations support different browsers so if a given location doesn't have the browser you are looking for, you can try a different location.  The Dulles, VA USA location supports all of the browsers that WebPagetest works with (Chrome, Firefox, Edge, Internet Explorer, Android, iOS).  We usually recommend using Chrome for initial testing because it has the most information reported.
+Finally, you need to decide what browser to use for the test.  Different locations support different browsers so if a given location doesn't have the browser you are looking for, you can try a different location.  The Dulles, VA USA location supports all of the browsers that WebPageTest works with (Chrome, Firefox, Edge, Internet Explorer, Android, iOS).  We usually recommend using Chrome for initial testing because it has the most information reported.
 
 ![](/img/qs_browser.png)
 
