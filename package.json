@@ -24,7 +24,7 @@
     "markdown-it-deflist": "^2.1.0",
     "netlify": "^6.1.9",
     "request": "^2.88.2",
-    "terser": "^5.6.0-beta",
+    "terser": "^5.14.2",
     "webpagetest": "^0.4.0"
   }
 }
