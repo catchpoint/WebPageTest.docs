@@ -54,5 +54,12 @@
         "ownerLink": "https://screenspan.net/",
         "description": "Sifty is a simple web app that lets you parse WebPageTest and Google Lighthouse JSON test results files so you can “sift through” network requests by URL, filter them by their render-blocking status or sort them. You can save all or selected requests as a CSV file so you can compare the requests from multiple test results. That can help you answer questions such as: Exactly which requests were removed? How many bytes or requests did we save? How many stylesheets, scripts, images, etc. did we have before and after?",
         "link": "https://screenspan.net/sifty/"
+    },
+    {
+        "name": "WebPageTest Gauntlet",
+        "owner": "Josh Nelson",
+        "ownerLink": "https://twitter.com/nelsonjoshpaul",
+        "description": "Run a single page through WebPageTest many times for benchmarking purposes. Extract full chrome traces, or summary data.",
+        "link": "https://github.com/jpnelson/wpt-gauntlet"
     }
 ]
