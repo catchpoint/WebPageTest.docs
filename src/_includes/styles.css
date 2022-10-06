@@ -169,6 +169,10 @@ img[src$=".svg"] {
     height: auto;
     max-width: none;
   }
+
+/* Run In Postman Button*/
+img[alt=runinpostman] { width: auto; }
+
 pre {
     overflow-x: scroll
 }
