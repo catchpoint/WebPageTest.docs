@@ -11,7 +11,7 @@ In this guide, we'll walk you through the process of getting up and running with
 
 ## 1. Get your API Key
 
-Once created, your API keys are always available in your [account dashboard](https://app.webpagetest.org/ui/wpt/myAccount), under **API Consumers**.
+Once created, your API keys are always available in your [account dashboard](https://www.webpagetest.org/account), under **API Consumers**.
 
 If you can't see any API Keys, that means you don't currently have any and you will need to [create a new one](/api/keys/#obtaining-your-keys).
 
