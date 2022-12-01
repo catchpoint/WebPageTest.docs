@@ -550,6 +550,24 @@ example: setEventName loadWebmail
 
 <event name> - Name to use for the event about to occur (in resulting log files)
 ```
+#### `setExecutionContext`
+Sets the execution context (main document, iframes, etc) for any subsequent `exec` or `execAndWait` commands to run against. It accepts either the origin or ID of the execution context.
+
+For example, if you navigate to a URL and there is an iframe that loads content form `https://cdpn.io`, you could have the script run in the iframe context by using the `setExecutionContext`.
+
+You can reset the execution context by using the command without a match.
+
+Browser support: Chrome, Edge
+
+```markup
+usage: setExecutionContext <execution context ID or origin>
+example: setExecutionContext origin=https://cdpn.io
+
+full example:
+navigate	https://codepen.io/juno_okyo/pen/yOjaEZ
+setExecutionContext	origin=https://cdpn.io
+execAndWait	document.getElementById('name-input').value = 'Bob'; fetch('https://cdpn.io/blank.html');
+```
 
 #### `setLocation`
 Specifies a geolocation override position.
