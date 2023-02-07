@@ -27,6 +27,8 @@ You can pass your API key along with tests requests by using the `k` parameter.
 https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}
 ```
 
+If you prefer, instead of passing the `k` parameter, you may pass the request header `X-WPT-API-KEY`
+
 ::: warning
 Your API keys are directly tied to your account, so be sure to keep them secure. Avoid sharing them in any public area, such as GitHub or client-side code.
 :::
