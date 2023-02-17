@@ -143,7 +143,7 @@ Set to 1 to skip the Repeat View test; set to 0 to run a test against both the f
 - `domelement` <small>optional</small>
 DOM element to record for sub-measurement.
 - `private` <small>optional</small>
-Set to 0 to make the test visible in the public history log. Set to 1 to make the test private.
+Set to 0 to make the test publicly visible to anybody with the link. Set to 1 to make the test only visible to the user who ran it. (Note, in order to retrieve the test from that point forward, the [API key must be passed](/api/reference/#Authentication)
 **Default:** 1
 - `web10` <small>optional</small>
 Set to 1 to force the test to stop at Document Complete (onLoad).
