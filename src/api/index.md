@@ -18,7 +18,7 @@ If you can't see any API Keys, that means you don't currently have any and you w
 ## 2. Submit your first test
 To make sure your API key is ready to go, let's get your first test submitted. It takes some time for a test to complete.
 
-Copy and paste the following command into your terminal, inserting your api key and email address in place of the placeholders:
+Copy and paste the following command into your terminal, inserting your api key in place of the placeholders:
 
 ```bash
 curl https://www.webpagetest.org/runtest.php?url=https://www.webpagetest.org&k={YOUR_API_KEY}&f=json
