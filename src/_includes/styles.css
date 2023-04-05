@@ -217,19 +217,14 @@ header a{
     margin-bottom: 1em;
     display: block;
 }
-header a:hover,
-header a:focus {
- text-decoration: underline;   
-}
-/* .logo-wptlink {
-    display: inline-block;
-} */
+
 header a+a{
     margin-bottom: 0;
     padding-right: .2em;
 }
-header a:hover{
-    text-decoration: none;
+header a:hover,
+header a:focus {
+ text-decoration: underline;   
 }
 @media (min-width: 50em) {
     header{
