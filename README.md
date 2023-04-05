@@ -1,4 +1,4 @@
-<p align="center"><img src="https://docs.webpagetest.org/img/wpt-navy-logo.png" alt="WebPageTest Logo" /></p>
+<p align="center"><img src="https://blog.webpagetest.org/hero_light_transparent.png" alt="WebPageTest Logo" /></p>
 
 # Official WebPageTest Documentation
 The source for the official Documentation for [WebPageTest](https://github.com/WPO-Foundation/webpagetest).
