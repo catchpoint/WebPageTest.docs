@@ -19,7 +19,7 @@ Next you should decide where you want the test to be run from.  WebPageTest has 
 ![](/img/qs_map.png)
 
 ### 3. Select a Browser:
-Finally, you need to decide what browser to use for the test.  Different locations support different browsers so if a given location doesn't have the browser you are looking for, you can try a different location.  The Dulles, VA USA location supports all of the browsers that WebPageTest works with (Chrome, Firefox, Edge, Internet Explorer, Android, iOS).  We usually recommend using Chrome for initial testing because it has the most information reported.
+Finally, you need to decide what browser to use for the test.  Different locations support different browsers so if a given location doesn't have the browser you are looking for, you can try a different location.  The Dulles, VA USA location supports all of the browsers that WebPageTest works with (Chrome, Firefox, Edge, Internet Explorer, Android, iOS).  We usually recommend using Chrome for initial testing because it has the most information reported. WebPageTest offers emulated devices as well which simulate various mobile devices' constraints (such as CPU throttling) via Chrome Devtools' [Device Mode](https://developer.chrome.com/docs/devtools/device-mode/).
 
 ![](/img/qs_browser.png)
 
