@@ -33,7 +33,7 @@ The results of a standard WebPageTest run begin on the summary page. This page s
 !["results summary page"](/img/results-summary.png)
 
 ## High-level Metrics
-![](/img/results-metrics.png)
+![](/img/results-metrics.jpg)
 
 ### Time to First Byte
 The First Byte time is the time from when the user started navigating to the page until the first bit of the server response arrived.  The bulk of this time is usually referred to the "back-end time" and is the amount of time the server spent building the page for the user.
@@ -73,7 +73,7 @@ You can [read more about Opportunities & Experiments on the WebPageTest blog](ht
 ## Carbon Control
 Carbon Control is a new Experimental feature that estimates a site's carbon footprint and allows you to run experiments to potentially improve that footprint. You can [read more about Carbon Control on the WebPageTest blog](https://blog.webpagetest.org/posts/carbon-control/).
 
-![](/img/results-carboncontrol.png)
+![](/img/results-carboncontrol.jpg)
 
 ## Details Page
 The details result page provides additional metrics for each run and repeat run of a test as well as a waterfall for requests and connections that a site makes.
