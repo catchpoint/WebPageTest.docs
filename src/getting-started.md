@@ -32,10 +32,8 @@ The results of a standard WebPageTest run begin on the summary page. This page s
 
 !["results summary page"](/img/results-summary.png)
 
-### High-level Metrics:
-
+## High-level Metrics
 ![](/img/results-metrics.png)
-
 
 ### Time to First Byte
 The First Byte time is the time from when the user started navigating to the page until the first bit of the server response arrived.  The bulk of this time is usually referred to the "back-end time" and is the amount of time the server spent building the page for the user.
@@ -85,8 +83,6 @@ The filmstrip page provides a visual keyframe view of the page as it loaded. It 
 
 ## Optimization Page:
 At the top of the optimization page are a set of grades for the most critical performance optimizations.  These cover the basic optimizations that apply to just about all sites and anything that isn't an A or a B justifies some serious scrutiny and investigation.
-
-![](/img/qs_grades.png)
 
 ### Keep-alive Enabled:
 Each request for a piece of content on the page (image, javascript, css, flash, etc) needs to be made over a connection to the web server.  Setting up new connections can take a lot of time so it is best to re-use connections when you can and keep-alive is the way that is done.  They are enabled by default on most configurations and are part of the HTTP 1.1 standard but there are times when they will be broken (sometimes unintentionally).  Enabling keep-alives is usually just a configuration change on the server and does not require any changes to the page itself and can usually reduce the time to load a page by 40-50%.
