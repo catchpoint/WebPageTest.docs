@@ -241,7 +241,7 @@ Set to between 1 - 5 to have Chrome include the Javascript call stack. Must be u
 Set to 1 to Ignore SSL Certificate Errors e.g. Name mismatch, Self-signed certificates, etc.
 **Default:** 0
 - `mobileDevice` <small>optional</small>
-Device name from mobile_devices.ini to use for mobile emulation (only when mobile=1 is specified to enable emulation and only for Chrome)
+Device name from [mobile_devices.ini](https://github.com/WPO-Foundation/webpagetest/blob/master/www/settings/mobile_devices.ini) to use for mobile emulation (only when mobile=1 is specified to enable emulation and only for Chrome)
 - `throttle_cpu` <small>optional, float, Chromium-only</small>
 Throttle the test machine's CPU performance. i.e. 2.5 will result in a 2.5 times slower CPU than 1.0. Mobile device emulation automatically throttles based on the device selected. This value will override any mobile defaults and allow for throttling desktop tests.
 - `appendua` <small>optional</small>
