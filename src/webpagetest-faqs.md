@@ -108,6 +108,10 @@ You can also programmaticaly check how many tests you have remaining by using th
 ### Are there any code examples I can see for how to use the API?
 We have an [ever-growing collection of common recipes for the WebPageTest API available on GitHub](https://github.com/WebPageTest/WebPageTest-API-Recipes). If you don't see the recipe you're looking for, [file an issue](https://github.com/WebPageTest/WebPageTest-API-Recipes/issues) and we'll see if it's something we can add.
 
+### Are DNS lookups cached on the testing machine?
+
+The DNS cache is cleared before a run so all DNS lookups can be part of the test. If this is not the desired behavior, there is [a workaround](https://twitter.com/TimVereecke/status/1319615019680735232).
+
 :::
 
 ## Billing
