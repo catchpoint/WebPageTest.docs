@@ -509,9 +509,9 @@ Here's an example response, truncated for brevity:
 ```json
 {
   "data": {
-    "id": "210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911",
+    "id": "230524_BiDcEX_B06",
     "url": "http://www.webpagetest.com",
-    "summary": "https://www.webpagetest.org/results.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911",
+    "summary": "https://www.webpagetest.org/results.php?test=230524_BiDcEX_B06",
     "testUrl": "http://www.webpagetest.com",
     "location": "Dulles:Chrome",
     "from": "Dulles, VA - <b>Chrome</b> - <b>Cable</b>",
@@ -552,8 +552,8 @@ Here's an example response, truncated for brevity:
    <statusText>Ok</statusText>
    <webPagetestVersion>20.06</webPagetestVersion>
    <data>
-      <testId>210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911</testId>
-      <summary>https://www.webpagetest.org/result/210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911/</summary>
+      <testId>230524_BiDcEX_B06</testId>
+      <summary>https://www.webpagetest.org/result/230524_BiDcEX_B06/</summary>
       <testUrl>http://www.webpagetest.com</testUrl>
       <location>Dulles:Chrome</location>
       <from>
@@ -581,7 +581,7 @@ Here's an example response, truncated for brevity:
 ```
 
 :::caution
-There are a **lot** of [metrics](/metrics) recorded by WebPageTest and exposed via the API. We're working on documenting them all. In the meantime, feel free to poke at some sample results (in either [JSON](https://www.webpagetest.org/jsonResult.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911) or [XML](https://www.webpagetest.org/xmlResult.php?test=210328_XiS8_aeebf094c7b9e3c9c681ec509cdaa911) format) to see what's available.
+There are a **lot** of [metrics](/metrics) recorded by WebPageTest and exposed via the API. We're working on documenting them all. In the meantime, feel free to poke at some sample results (in either [JSON](https://www.webpagetest.org/jsonResult.php?test=230524_BiDcEX_B06) or [XML](https://www.webpagetest.org/xmlResult.php?test=230524_BiDcEX_B06) format) to see what's available.
 :::
 
 ### Full List of Parameters
