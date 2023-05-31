@@ -156,9 +156,6 @@ A space-delimited list of urls to block (based on a substring match).
 User name to use for authenticated tests (HTTP authentication).
 - `password` <small>optional</small>
 Password to use for authenticated tests (HTTP authentication).
-- `authType` <small>optional</small>
-Type of HTTP authentication to use. Set to 0 for Basic Authentication; set to 1 for SNS.
-**Default:** 0
 - `video` <small>optional</small>
 Set to 1 to capture video. Video is required for calculating Speed Index as well as providing the filmstrip view.
 **Default:** 0
