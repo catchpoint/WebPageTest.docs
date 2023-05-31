@@ -89,6 +89,7 @@ Usually custom metrics only have access to the DOM but WebPageTest supports a sc
 * **$WPT_REQUESTS** - All request data except for bodies (significantly smaller)
 * **$WPT_BODIES** - All request data including bodies in the "response_body" entry
 * **$WPT_ACCESSIBILITY_TREE** - Array of the nodes of the [Chromium Accessibility tree](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getFullAXTree) (with the DOM node info recorded in node_info for each node in the array)
+* **$WPT_URL** - String for the URL that WebPageTest last navigated to directly as part of the test
 
 Non-Chrome browsers (or in the case of an error collecting the requests) the replacement will replace null instead of an array (so it can be checked explicitly and differently from an empty array). That should make it possible to use the same script across all browsers.
 
