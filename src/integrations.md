@@ -28,7 +28,7 @@ Features:
 ### WebPageTest API Wrapper for NodeJS
 <img src="/img/integration-api-wrapper.png" alt="Screenshot of sample code from the Node.JS wrapper">
 
-WebPageTest API Wrapper is a NPM package that wraps WebPageTest API for NodeJS as a module and a command-line tool. It provides some syntactic sugar over the raw API, enabling easier integration into your existing worfklows, including built in polling for results, pingback support and more.
+WebPageTest API Wrapper is a NPM package that wraps WebPageTest API for NodeJS as a module and a command-line tool. It provides some syntactic sugar over the raw API, enabling easier integration into your existing workflows, including built in polling for results, pingback support and more.
 
 Features:
 
