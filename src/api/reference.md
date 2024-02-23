@@ -135,7 +135,7 @@ A label for the test.
 The location to test from. The location is comprised of the location of the testing agent, the browser to test on (optional), and the connectivity in the following format: `location:browser.connectivity` or `location.connectivity` 
 **Default:** Dulles:Chrome.Cable
 - `runs` <small>optional</small>
-The number of test runs (1-10 on the public instance).
+The number of test runs (1-9 on the public instance).
 **Default:** 1
 - `fvonly` <small>optional</small>
 Set to 1 to skip the Repeat View test; set to 0 to run a test against both the first view and the repeat view for a given test. Each repeat view test counts as another test run against your API limit.
@@ -326,9 +326,9 @@ Test www.aol.com and redirect to the results page:
 http://www.webpagetest.org/runtest.php?url=www.aol.com
 ```
 
-Test www.aol.com 10 times, first view only and redirect to the results page:
+Test www.aol.com 9 times, first view only and redirect to the results page:
 ```text
-http://www.webpagetest.org/runtest.php?url=www.aol.com&runs=10&fvonly=1
+http://www.webpagetest.org/runtest.php?url=www.aol.com&runs=9&fvonly=1
 ```
 Test www.aol.com 2 times and get the response as xml with the request ID "12345" embedded in the response:
 ```text
