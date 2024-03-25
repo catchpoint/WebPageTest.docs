@@ -21,14 +21,11 @@ The WebPageTest API uses API keys to authenticate all tests submitted to the pub
 API keys may or may not be required for requests made to any [private instances](/private-instances/) you maintain on your own. Check with the administrator of your private instance to verify.
 :::
 
-You can pass your API key along with tests requests by using the `k` parameter.
+You can pass your API key along with tests requests by using the `X-WPT-API-KEY` HTTP header.
 
 ```text
-https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}
+curl --request POST --url https://www.webpagetest.org/runtest.php?url={your_domain} --header "X-WPT-API-KEY: {your_api_key}"
 ```
-
-If you prefer, instead of passing the `k` parameter, you may pass the request header `X-WPT-API-KEY`
-
 ::: warning
 Your API keys are directly tied to your account, so be sure to keep them secure. Avoid sharing them in any public area, such as GitHub or client-side code.
 :::
@@ -55,13 +52,13 @@ You can optionally set the response format using the `f` parameter to return eit
 
 ```text
 //this will result in a redirect
-https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}
+curl --request POST https://www.webpagetest.org/runtest.php?url={your_domain} --header "X-WPT-API-KEY: {your_api_key}"
 
 //this will return an XML response
-https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}&f=xml
+curl --request POST https://www.webpagetest.org/runtest.php?url={your_domain}&f=xml --header "X-WPT-API-KEY: {your_api_key}"
 
 //this will return a JSON response
-https://www.webpagetest.org/runtest.php?url={your_domain}&k={your_api_key}&f=json
+curl --request POST https://www.webpagetest.org/runtest.php?url={your_domain}&f=json --header "X-WPT-API-KEY: {your_api_key}"
 ```
 
 Here's an example response when the format parameter is provided to the endpoint:
@@ -125,10 +122,10 @@ A URL to the full detailed results (including request-level data and timings) in
 
 ### Full List of Parameters
 ::: api-list
+- `X-WPT-API-KEY` <small>header, required</small>
+API Key. Applies only to calls made to the runtest.php endpoint. *API Key is optional for any private instances you maintain on your own.
 - `url` <small>required</small>
 The URL to be tested. The value must be UTF-8 encoded to work.
-- `k` <small>required</small>
-API Key. Applies only to calls made to the runtest.php endpoint. *API Key is optional for any private instances you maintain on your own.
 - `label` <small>optional</small>
 A label for the test.
 - `location` <small>optional</small>
@@ -317,7 +314,7 @@ Browser is only required in a Chrome/Firefox install where wptdriver is configur
 
 ### Available locations for API calls
 
-On the public instance with an API key that starts with "A.", only locations listed [here](https://www.webpagetest.org/getLocations.php?k=A&f=html) are available for API calls. Others will return `invalid location` when requested.
+On the public instance with an API key that starts with "A.", only locations listed [here](curl --request GET --url https://www.webpagetest.org/getLocations.php?&f=html --header "X-WPT-API-KEY: {your_api_key}") are available for API calls. Others will return `invalid location` when requested.
 
 ### Examples
 Test www.aol.com and redirect to the results page:
@@ -603,14 +600,14 @@ Request ID. Will echo back in the response object.
 To cancel a test that has not started running, you can use the http://www.webpagetest.org/cancelTest.php endpoint.
 
 ```text
-http://www.webpagetest.org/cancelTest.php?test=210328_XiMJ_3c426d8c00c689f22f4097cbb1dfd697&k=81c119174fe742f7a2d778d0a505d096\
+curl http://www.webpagetest.org/cancelTest.php?test=210328_XiMJ_3c426d8c00c689f22f4097cbb1dfd697 --header "X-WPT-API-KEY: {your_api_key}"
 ```
 
 ### Full List of Parameters
 ::: api-list
-- `k` <small>required</small>
+- `X-WPT-API-KEY` <small>header, required</small>
 API Key. *API Key is optional for any private instances you maintain on your own.
-- `test` <small>required</small>  
+- `test` <small>required</small>
 The test ID for the test you want to cancel.
 :::
 ## Retrieving Available Locations
@@ -787,10 +784,10 @@ By default, a sucessful request to the /testBalance.php endpoint will result in 
 
 ```text
 //this will result in a JSON response
-https://webpagetest.org/testBalance.php?k={your_api_key}
+curl https://webpagetest.org/testBalance.php --header "X-WPT-API-KEY: {your_api_key}"
 
 //this will result in an XML response
-https://webpagetest.org/testBalance.php?k={your_api_key}&f=xml
+curl https://webpagetest.org/testBalance.php?f=xml --header "X-WPT-API-KEY: {your_api_key}"
 ```
 
 Here's an example response:
@@ -832,6 +829,6 @@ If your API key is invalid, or expired, you will instead see an `error` property
 ```
 ### Full List of Parameters
 ::: api-list
-- `k` <small>required</small>
+- `X-WPT-API-KEY` <small>header, required</small>
 API Key. *API Key is optional for any private instances you maintain on your own.
 :::
