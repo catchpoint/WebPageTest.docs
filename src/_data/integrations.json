@@ -35,13 +35,6 @@
         "link": "https://webspeedtest.cloudinary.com/"
     },
     {
-        "name": "Snyk Website Vulnerability Scanner",
-        "owner": "Snyk",
-        "ownerLink": "https://snyk.io/",
-        "description": "Snyk's WebSite Scanner surfaces a security grade and details about specfic security headers that could be used to improve your site's security, as well as any vulnerable JavaScript libraries that were found during testing.",
-        "link": "https://snyk.io/website-scanner"
-    },
-    {
         "name": "FRUSTRATIONindex",
         "owner": "Tim Vereecke",
         "ownerLink": "https://twitter.com/TimVereecke",
