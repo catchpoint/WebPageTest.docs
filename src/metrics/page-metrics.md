@@ -134,8 +134,6 @@ These are the metrics and measurements captured at a page-level and exposed in t
 * **gzip_total** - Total text content size
 * **score_keep-alive** - Score for properly using keep-alive when more than one request is made to a given origin
 * **score_progressive_jpeg** - Score for using progressive JPEGs
-* **jsLibsVulns** - List of Snyk-detected vulnerable Javascript libraries
-* **securityHeaders** - Score for the SNYK security headers check
 * **score_etags** - (deprecated)
 * **score_cookies** - (deprecated) Score for not setting cookies on domains for static resources
 * **score_combine** - (deprecated) Score for combining separate JS files
