@@ -5,6 +5,8 @@ eleventyNavigation:
   order: 999
 ---
 # WebPageTest Change Log
+## May, 2024
+- **May 20** Added alert message for API users with mapping between old and new locations.
 ## January, 2022
 - **January 19** WebPageTest [now exposes Largest Contentful Paint as a comparison endpoint for our filmstrips](https://twitter.com/tkadlec/status/1483816634825551883), making it easier to compare LCP across test runs.
 - **January 18** The WebPageTest agent now [supports a new script command](https://twitter.com/patmeenan/status/1483490979944488966) (`waitFor`) that tells the testing agent to poll the page until a provided snippet of JavaScript evaluates to true. [PR #462](https://github.com/WPO-Foundation/wptagent/pull/462)
