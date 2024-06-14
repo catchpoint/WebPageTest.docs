@@ -33,6 +33,45 @@ The WebPageTest [REST](https://en.wikipedia.org/wiki/Representational_state_tran
 
 <br/>
 
+> <div><br/></div>
+> The following locations have been updated with the latest WebPageTest agent version; with this version update we have also updated the agent names, please take note of the new agent name and make any necessary changes to your API automation as the existing agent name will be retired.
+> <div><br/></div>
+>
+> | Current Location Name | Current Agent Name | New Location Name | New Agent Name |
+> |---|---|---|---|
+> | Dubai, UAE - Azure (4805) | azure-uae-north | Dubai, UAE  | DXB_AE_01 |
+> | Mumbai, India - EC2 (4806) | ap-south-1 | Mumbai, India | BOM_IN_01 |
+> | Jakarta, Indonesia - GCE (4809) | gce-asia-southeast2 | Jakarta, Indonesia | CGK_ID_01 |
+> | Shanghai, China - Tencent (4811) | tencent-shanghai | Shanghai, China | PVG_CN_04 |
+> | Beijing, China - Tencent (4813) | tencent-beijing | Beijing, China |BJS_CN_04 |
+> | Taiwan - GCE (4815) | gce-asia-east1 | Taiwan | TPE_TW_01 |
+> | Cape Town, South Africa - EC2 (4803) | ec2-af-south-1| Cape Town, South Africa  | CPT_ZA_01 |
+> | Bahrain - EC2 (4804) | ec2-me-south-1 | Bahrain | BAH_BH_01 |
+> | Salt Lake City, Utah - GCE (4790) | gce-us-west3 | Salt Lake City, Utah, USA| SLC_US_02 |
+> | Ireland - EC2 (4796)| ec2-eu-west-1 | Ireland | DUB_IE_01 |
+> | Paris - EC2 (4798) | ec2-eu-west-3 | Paris, France | CDG_FR_01 |
+> | Amsterdam, NL - GCE (4799) | gce-europe-west4 | Amsterdam, Netherlands | AMS_NL_02 |
+> | Osaka, Japan - EC2 (4826) | ec2-ap-northeast-3 | Osaka, Japan | ITM_JP_01 |
+> |Melbourne, Australia - Azure (4819) |azure-australia-southeast| Melbourne, Australia | MEL_AU_03 |
+> | Los Angeles, CA- M1 Mac Mini (4793) | LosAngeles_M1MacMini |Los Angeles, California, USA (M1 Mac Mini) | LAX_US_05 |
+> | New York, NY- M1 Mac Mini (4785) | NewYork_M1MacMini | New York, New York, USA (M1 Mac Mini) | NYC_US_05 |
+> | Council Bluffs USA (8122) | gce-us-central1 | Council Bluffs, Iowa, USA  |CBF_US_P02 |
+> | Atlanta USA (6088) | ec2-us-east-1-atl | Atlanta, Georgia, USA | ATL_US_P01|
+> | Boston USA (6089) | ec2-us-east-1-bos | Boston, Massachusetts, USA | BOS_US_P01 |
+> | Chicago USA (6090) | ec2-us-east-1-chi | Chicago, Illinois, USA | CHI_US_P01 |
+> | Dallas USA (6091) | ec2-us-east-1-dfw | Dallas, Texas, USA | DFW_US_P01 |
+> | Miami USA (6092) | ec2-us-east-1-mia | Miami, Florida, USA  | MIA_US_P01 |
+> | New York City (6093) | ec2-us-east-1-nyc | New York, New York, USA | NYC_US_P01 |
+> | Los Angeles (6094) | ec2-us-west-2-lax | Los Angeles, California, USA | LAX_US_P01 |
+> | Seattle (6095) |ec2-us-west-2-sea |Seattle, Washington, USA  | SEA_US_P01 |
+> | Portland (6096) | ec2-us-west-2-pdx | Portland, Oregon, USA | PDX_US_P01 |
+> | Seoul, Korea - EC2 | ec2-ap-northeast-2 | Seoul, Korea |  ICN_KR_01 |
+> | Bangkok, Thailand - Tencent | tencent-bangkok | Bangkok, Thailand | BKK_TH_01 |
+> | Hohhot, China - Alibaba | cn-het-ali-x01 | Hohhot, China | HET_CN_01 |
+> <div><br/></div>
+
+<br/>
+
 In this guide, we'll walk you through the process of getting up and running with you very first API test.
 
 ## 1. Get your API Key
