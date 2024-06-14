@@ -7,6 +7,8 @@ eleventyNavigation:
 # WebPageTest Quickstart
 The WebPageTest [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API gives you full access to the power and depth of WebPageTest's analysis, letting you pull performance data into your existing workflows and processes.
 
+## Agent Updates
+
 > <div><br/></div>
 > Effective June 15th, we will be transitioning from AWS (Amazon Web Services) to GCP (Google Cloud Platform) and your tests will be retargeted to the new locations based on the mapping below.
 > <div><br/></div>
