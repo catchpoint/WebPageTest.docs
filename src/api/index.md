@@ -36,7 +36,7 @@ The WebPageTest [REST](https://en.wikipedia.org/wiki/Representational_state_tran
 <br/>
 
 > <div><br/></div>
-> The following locations have been updated with the latest WebPageTest agent version; with this version update we have also updated the agent names, please take note of the new agent name and make any necessary changes to your API automation as the existing agent name will be retired.
+> The following locations have been updated with the latest WebPageTest agent version; with this version update we have also updated the agent names, please take note of the new agent name and make any necessary changes to your API automation as the existing agent name will be retired. Current agent names will be mapped the new name until retirement.
 > <div><br/></div>
 >
 > | Current Location Name | Current Agent Name | New Location Name | New Agent Name |
