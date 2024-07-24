@@ -14,27 +14,27 @@ Historically we have relied on milestone timings to determine how fast or slow w
 ## Introducing the Speed Index
 The speed index takes the visual progress of the visible page loading and computes an overall score for how quickly the content painted.  To do this, first it needs to be able to calculate how "complete" the page is at various points in time during the page load.  In WebPageTest this is done by capturing a video of the page loading in the browser and inspecting each video frame (10 frames per second in the current implementation and only works for tests where video capture is enabled).  The current algorithm for calculating the completeness of each frame is described below, but for now assume we can assign each video frame a % complete (numbers displayed under each frame):
 
-![](../img/si_compare_progress.png)
+![](/img/si_compare_progress.png)
 
 If we plot the completeness of a page over time we will end up with something that looks like this:
 
-![](../img/si_vc_progress.png)
+![](/img/si_vc_progress.png)
 
 We can then convert the progress into a number by calculating the area under the curve:
 
-![](../img/chart-progress-a-small.png) ![](../img/chart-progress-b-small.png)
+![](/img/chart-progress-a-small.png) ![](/img/chart-progress-b-small.png)
 
 This would be great except for one little detail, it is unbounded.  If a page spins for 10 seconds after reaching visually complete the score would keep increasing.  Using the "area above the graph" and calculating the unrendered portion of the page over time instead gives us a nicely bounded area that ends when the page is 100% complete and approaches 0 as the page gets faster:
 
-![](../img/chart-index-a-small.png) ![](../img/chart-index-b-small.png)
-![](../img/speedindexformula.png)
+![](/img/chart-index-a-small.png) ![](/img/chart-index-b-small.png)
+![](/img/speedindexformula.png)
 
 
 The Speed Index is the "area above the curve" calculated in ms and using 0.0-1.0 for the range of visually complete.  The calculation looks at each 0.1s interval and calculates IntervalScore = Interval * (1.0 - (Completeness/100)) where Completeness is the % Visually complete for that frame and Interval is the elapsed time for that video frame in ms (100 in this case).  The overall score is just a sum of the individual intervals: SUM(IntervalScore)
 
 For comparison, this is what the video frames looked like for the two pages ("A" is on top and "B" is on the bottom):
 
-![](../img/compare_trimmed.png)
+![](/img/compare_trimmed.png)
 
 ## Measuring Visual Progress
 I kind of hand-waved over how the "completeness" of each video frame is calculated and the calculating of the Speed Index itself is independent of the technique used for determining the completeness (and can be used with different methods of calculating completeness).  We have two methods available that we are currently working with:
@@ -71,10 +71,10 @@ The specific algorithm we are using to calculate the speed index from the dev to
 ### 5Mbps Cable
 Alexa top 300,000 from the testing done by the [HTTP Archive](http://httparchive.org/):
 
-![](../img/si-cable.png)
+![](/img/si-cable.png)
 
 ### 1.5Mbps DSL
 Alexa top 100,000 from the testing done by the [HTTP Archive](http://httparchive.org/):
 
 
-![](../img/si-dsl.png)
+![](/img/si-dsl.png)
