@@ -22,7 +22,7 @@
     "markdown-it-attrs": "^4.0.0",
     "markdown-it-container": "^3.0.0",
     "markdown-it-deflist": "^2.1.0",
-    "netlify": "^6.1.9",
+    "netlify": "^13.1.10",
     "request": "^2.88.2",
     "terser": "^5.6.0-beta",
     "webpagetest": "^0.4.0"
