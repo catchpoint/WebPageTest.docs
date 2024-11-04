@@ -249,14 +249,28 @@ example: type Hello World
 
 For the difference between `type` and `typeAndWait`, see [`click`](#click) and [`clickAndWait`](#clickandwait).
 
+#### `mouseClick` / `mouseClickAndWait`
+Simulate a trusted mouse click event for the indicated element.
+Browser Support: Chrome
+```markup
+usage:   mouseClick <wpt-selector> [<button>]
+example: mouseClick innerText=Send
+
+<wpt-selector> - DOM element to send the click event to
+<button> - optionally specify mouse button, supported values: left|right|double
+```
+
+For the list of supported selectors, see [Selectors](#selectors).
+
 #### `keypress` / `keypressAndWait`
 Simulate a keyboard keypress for the given key.
 Browser Support: Chrome
 ```markup
-usage:   keypress <key>
+usage:   keypress <key> [<modifier>]
 example: keypress Enter
 
 <key> - Keyboard key to simulate pressing. Full list of supported keys is [here](https://github.com/WPO-Foundation/wptagent/blob/master/internal/support/keys.json).
+<modifier> - optionally specify keypress modifier, supported values: Alt|Ctrl|Shift
 ```
 
 For the difference between `keypress` and `keypressAndWait`, see [`click`](#click) and [`clickAndWait`](#clickandwait).
