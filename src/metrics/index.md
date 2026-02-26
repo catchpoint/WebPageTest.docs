@@ -6,7 +6,7 @@ eleventyNavigation:
 ---
 # Metrics
 ## Page-level Metrics
-These are the top-level measurements captured and displayed for the overall page.
+These are the top-level measurements captured and displayed for the overall page. 
 ### Load Time
 The Load Time is measured as the time from the start of the initial navigation until the beginning of the window load event (onload).
 
